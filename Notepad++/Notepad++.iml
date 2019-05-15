@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../rsyntaxtextarea.jar!/" />
+          <root url="jar://$MODULE_DIR$/../rsyntaxtextarea-3.0.3.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
