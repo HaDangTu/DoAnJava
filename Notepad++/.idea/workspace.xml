@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be4116da-6dcb-4f28-950b-d328dde3f60f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="be4116da-6dcb-4f28-950b-d328dde3f60f" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +14,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/notepad/ui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4743">
+            <state relative-caret-position="353">
               <caret line="299" column="46" selection-start-line="299" selection-start-column="46" selection-end-line="299" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -25,7 +23,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/notepad/util/TabInteraction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -33,6 +31,29 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/notepad/listener/CloseTabButtonListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="47">
+              <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#623#624#0" expanded="true" />
+                <element signature="e#682#683#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-141">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -89,12 +110,12 @@
         <option value="$PROJECT_DIR$/src/notepad/listener/MenuLanguageActionListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/CategoryOfFile.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/MyTreeCellRenderer.java" />
-        <option value="$PROJECT_DIR$/src/notepad/listener/CloseTabButtonListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/EditorWindow.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/TextEditor.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/MenuFileActionListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/TabInteraction.java" />
+        <option value="$PROJECT_DIR$/src/notepad/listener/CloseTabButtonListener.java" />
       </list>
     </option>
   </component>
@@ -110,7 +131,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -165,6 +185,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -219,7 +240,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3517398" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3570348" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -228,7 +249,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32850242" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29951692" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29951692" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993559" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -497,17 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/CloseTabButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-          <folding>
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#645#646#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/util/OpenAndSaveFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -540,13 +550,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/ui/NewFileDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-340">
@@ -569,7 +572,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/ui/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4743">
+        <state relative-caret-position="353">
           <caret line="299" column="46" selection-start-line="299" selection-start-column="46" selection-end-line="299" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -584,6 +587,25 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/CloseTabButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-141">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
