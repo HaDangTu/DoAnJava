@@ -126,6 +126,8 @@ public class MenuFileActionListener extends MenuMainWindowListener {
                 catch(IOException ioe){
                     System.err.println(ioe.getMessage());
                 }
+
+                editorWindow.setSelectedIndex(index);
             }
         }
         else if (command.equalsIgnoreCase("Save")){

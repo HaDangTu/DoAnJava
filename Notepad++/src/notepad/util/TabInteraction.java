@@ -40,7 +40,7 @@ public class TabInteraction {
         if (!textEditor.getIsChanged()){
             if (editorWindow.getFilePathOfTab(index).equalsIgnoreCase(""))
                 editorWindow.addDeletedTab(textEditor.getNumberOfTab());
-
+            editorWindow.removeTabAt(index);
         }
         else{
             int result = JOptionPane.showConfirmDialog(null,

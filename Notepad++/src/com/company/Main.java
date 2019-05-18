@@ -1,10 +1,17 @@
 package com.company;
 import notepad.ui.MainWindow;
+
+import javax.swing.SwingUtilities;
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        MainWindow mainWindow = new MainWindow();
-        mainWindow.setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.setVisible(true);
+            }
+        });
     }
 }

@@ -1,8 +1,5 @@
 package notepad.ui;
-import notepad.listener.MenuFileActionListener;
-import notepad.listener.MenuLanguageActionListener;
-import notepad.listener.TreeMouseListener;
-import notepad.listener.MenuEditActionListener;
+import notepad.listener.*;
 
 import javax.swing.JMenuBar;
 import javax.swing.JFrame;
@@ -26,6 +23,8 @@ public class MainWindow extends  JFrame{
     private MenuLanguageActionListener langListener;
     private MenuFileActionListener fileListener;
     private MenuEditActionListener editListener;
+    private MenuSearchActionListener searchListener;
+
     private EditorWindow editorWindow;
     private MyTree myTree;
     private JPanel panel;
@@ -47,13 +46,19 @@ public class MainWindow extends  JFrame{
     private void loadComponent() {
         mainMenu = new JMenuBar();
         editorWindow = new EditorWindow();
-        langListener = new MenuLanguageActionListener(editorWindow);
+
         myTree = new MyTree(null);
+
+        langListener = new MenuLanguageActionListener(editorWindow);
         fileListener = new MenuFileActionListener(editorWindow, myTree, this);
         editListener = new MenuEditActionListener(editorWindow);
+        searchListener = new MenuSearchActionListener(editorWindow, this);
+
         panel = new JPanel(new GridLayout(1,  1));
+
         treeScrollPane = new JScrollPane(myTree);
         treeMouseListener = new TreeMouseListener(myTree, editorWindow);
+
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScrollPane, editorWindow);
         myTree.addMouseListener(treeMouseListener);
 
@@ -222,6 +227,37 @@ public class MainWindow extends  JFrame{
 
         //Menu Search
         JMenu menuSearch = new JMenu("Search");
+        JMenuItem searchFind = new JMenuItem("Find");
+        searchFind.addActionListener(searchListener);
+        searchFind.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F,
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+
+        JMenuItem searchFindNext = new JMenuItem("Find Next");
+        searchFindNext.setAccelerator(KeyStroke.getKeyStroke("F3"));
+
+        JMenuItem searchFindPrevious = new JMenuItem("Find Previous");
+        searchFindPrevious.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3,
+                ActionEvent.SHIFT_MASK));
+
+        JMenuItem searchReplace = new JMenuItem("Replace");
+        searchReplace.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R,
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+
+        JMenuItem incrementalSearch = new JMenuItem("Incremental Search");
+        incrementalSearch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,
+                ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK));
+
+        JMenuItem searchGoto = new JMenuItem("Go to...");
+
+        JMenuItem searchMark = new JMenuItem("Mark...");
+        menuSearch.add(searchFind);
+        menuSearch.add(searchFindNext);
+        menuSearch.add(searchFindPrevious);
+        menuSearch.add(searchReplace);
+        menuSearch.add(incrementalSearch);
+        menuSearch.addSeparator();
+        menuSearch.add(searchGoto);
+        menuSearch.add(searchMark);
         //-------------------------------------------------------------------------------------
 
         //Menu View
