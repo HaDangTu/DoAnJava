@@ -32,6 +32,7 @@ public class TextEditor extends JPanel{
 
         textArea.setCodeFoldingEnabled(true);
         textArea.getDocument().addDocumentListener(new MyDocumentListener(this));
+        textArea.setMarkOccurrences(true);
 
         undoableEditListener = new DocumentUndoableEditListener();
         textArea.getDocument().addUndoableEditListener(undoableEditListener);

@@ -8,13 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
-import java.awt.BorderLayout;
+import javax.swing.JRadioButton;
 import javax.swing.JDialog;
+import javax.swing.ButtonGroup;
 
-import notepad.listener.DialogListener;
-import notepad.listener.FindButtonListener;
-import notepad.listener.MarkButtonListener;
-import notepad.listener.ReplaceButtonListener;
+import java.awt.BorderLayout;
+
+import notepad.listener.*;
 
 public class SearchDialog extends JDialog{
     private JTabbedPane tabbedPane;
@@ -39,7 +39,7 @@ public class SearchDialog extends JDialog{
         //---------------------------------------------------------------------------
         panel.add(tabbedPane, BorderLayout.CENTER);
         add(panel);
-        setSize(500, 150);
+        setSize(500, 160);
         addWindowListener(new DialogListener(editorWindow, findListener));
         setResizable(false);
         setTitle("Find and Replace");
@@ -56,10 +56,22 @@ public class SearchDialog extends JDialog{
         layoutTabFind.setAutoCreateContainerGaps(true);
 
         JLabel labelFind = new JLabel("Find what: ");
+        JLabel labelSearchMode = new JLabel("SearchMode: ");
         JCheckBox checkMatchCase = new JCheckBox("Match case");
+        JCheckBox checkWholeWord = new JCheckBox("Whole word");
+
+        //Create radio button group for search mode;
+        ButtonGroup btGroup = new ButtonGroup();
+        JRadioButton radioRegex = new JRadioButton("Regular expression");
+        JRadioButton radioNormal = new JRadioButton("Normal");
+        radioNormal.setSelected(true);
+        btGroup.add(radioRegex);
+        btGroup.add(radioNormal);
+
         JTextField fieldFind = new JTextField();
 
-        findListener = new FindButtonListener(checkMatchCase, editorWindow, fieldFind, this);
+        findListener = new FindButtonListener(checkMatchCase, checkWholeWord, editorWindow,
+                fieldFind, radioRegex,this);
         JButton buttonFindNext = new JButton("Find Next");
         buttonFindNext.addActionListener(findListener);
 
@@ -70,8 +82,15 @@ public class SearchDialog extends JDialog{
                 layoutTabFind.createSequentialGroup()
                         .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(labelFind)
-                                .addComponent(checkMatchCase))
-                        .addComponent(fieldFind)
+                                .addComponent(labelSearchMode))
+                        .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(fieldFind)
+                                .addGroup(layoutTabFind.createSequentialGroup()
+                                        .addComponent(checkMatchCase)
+                                        .addComponent(checkWholeWord))
+                                .addGroup(layoutTabFind.createSequentialGroup()
+                                        .addComponent(radioNormal)
+                                        .addComponent(radioRegex)))
                         .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                 .addComponent(buttonFindNext, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonFindPrevious, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -85,7 +104,12 @@ public class SearchDialog extends JDialog{
                                 .addComponent(buttonFindNext))
                         .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                 .addComponent(checkMatchCase)
+                                .addComponent(checkWholeWord)
                                 .addComponent(buttonFindPrevious))
+                        .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelSearchMode)
+                                .addComponent(radioNormal)
+                                .addComponent(radioRegex))
         );
 
         tabbedPane.addTab("Find", tabFindPanel);
@@ -100,14 +124,24 @@ public class SearchDialog extends JDialog{
         JTextField fieldFindReplace = new JTextField();
         JLabel labelFindReplace = new JLabel("Find what: ");
         JLabel labelReplace = new JLabel("Replace with: ");
-        JCheckBox checkMatchCaseReplace = new JCheckBox("Match Case");
+        JLabel labelSearchMode = new JLabel ("Search mode: ");
 
-        replaceListener = new ReplaceButtonListener(checkMatchCaseReplace, editorWindow,
-                fieldFindReplace, fieldReplace, this);
+        ButtonGroup btGroup = new ButtonGroup();
+        JRadioButton radioRegex = new JRadioButton("Regular expression");
+        JRadioButton radioNormal = new JRadioButton("Normal");
+        radioNormal.setSelected(true);
+        btGroup.add(radioRegex);
+        btGroup.add(radioNormal);
+
+        JCheckBox checkMatchCaseReplace = new JCheckBox("Match Case");
+        JCheckBox checkWholeWordReplace  = new JCheckBox("Whole word");
+
+        replaceListener = new ReplaceButtonListener(checkMatchCaseReplace, checkWholeWordReplace, editorWindow,
+                fieldFindReplace, fieldReplace, radioRegex,this);
 
         JButton buttonFindReplace = new JButton("Find Next");
-        buttonFindReplace.addActionListener(new FindButtonListener(checkMatchCaseReplace,
-                editorWindow, fieldFindReplace, this));
+        buttonFindReplace.addActionListener(new FindButtonListener(checkMatchCaseReplace, checkWholeWordReplace,
+                editorWindow, fieldFindReplace, radioRegex, this));
 
         JButton buttonReplace = new JButton("Replace");
         buttonReplace.addActionListener(replaceListener);
@@ -120,10 +154,16 @@ public class SearchDialog extends JDialog{
                         .addGroup(layoutReplace.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(labelFindReplace)
                                 .addComponent(labelReplace)
-                                .addComponent(checkMatchCaseReplace))
+                                .addComponent(labelSearchMode))
                         .addGroup(layoutReplace.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(fieldFindReplace)
-                                .addComponent(fieldReplace))
+                                .addComponent(fieldReplace)
+                                .addGroup(layoutReplace.createSequentialGroup()
+                                        .addComponent(checkMatchCaseReplace)
+                                        .addComponent(checkWholeWordReplace))
+                                .addGroup(layoutReplace.createSequentialGroup()
+                                        .addComponent(radioNormal)
+                                        .addComponent(radioRegex)))
                         .addGroup(layoutReplace.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                 .addComponent(buttonFindReplace, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonReplace, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,13 +182,20 @@ public class SearchDialog extends JDialog{
                                 .addComponent(buttonReplace))
                         .addGroup(layoutReplace.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                 .addComponent(checkMatchCaseReplace)
+                                .addComponent(checkWholeWordReplace)
                                 .addComponent(buttonReplaceAll))
+                        .addGroup(layoutReplace.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelSearchMode)
+                                .addComponent(radioNormal)
+                                .addComponent(radioRegex))
         );
         tabbedPane.addTab("Replace", tabReplacePanel);
     }
 
     private void initTabMark(EditorWindow editorWindow){
         JLabel labelFindWhat = new JLabel("Find what: ");
+        JLabel labelSearchMode = new JLabel("Search mode: ");
+
         JTextField fieldFind = new JTextField();
 
         JCheckBox matchCase = new JCheckBox("Match case");
@@ -156,6 +203,19 @@ public class SearchDialog extends JDialog{
 
         MarkButtonListener listener = new MarkButtonListener(editorWindow, this, matchCase, matchWholeWord,
                 fieldFind);
+
+        //Group search mode
+        ButtonGroup btGroup = new ButtonGroup();
+
+        JRadioButton radioNormal = new JRadioButton("Normal");
+        radioNormal.setSelected(true);
+        radioNormal.addActionListener(new RadioMarkRegexListener(matchWholeWord));
+
+        JRadioButton radioRegex = new JRadioButton("Regular expression");
+        radioRegex.addActionListener(new RadioMarkRegexListener(matchWholeWord));
+        btGroup.add(radioNormal);
+        btGroup.add(radioRegex);
+        //----------------------------------------------------------------
 
         JButton buttonMark = new JButton("Mark all");
         buttonMark.addActionListener(listener);
@@ -170,10 +230,15 @@ public class SearchDialog extends JDialog{
                 layoutMark.createSequentialGroup()
                         .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(labelFindWhat)
-                                .addComponent(matchCase))
+                                .addComponent(labelSearchMode))
                         .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.LEADING)
                                 .addComponent(fieldFind)
-                                .addComponent(matchWholeWord))
+                                .addGroup(layoutMark.createSequentialGroup()
+                                        .addComponent(matchCase)
+                                        .addComponent(matchWholeWord))
+                                .addGroup(layoutMark.createSequentialGroup()
+                                        .addComponent(radioNormal)
+                                        .addComponent(radioRegex)))
                         .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                 .addComponent(buttonMark,GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonClearMark, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -189,6 +254,10 @@ public class SearchDialog extends JDialog{
                                 .addComponent(matchCase)
                                 .addComponent(matchWholeWord)
                                 .addComponent(buttonClearMark))
+                        .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelSearchMode)
+                                .addComponent(radioNormal)
+                                .addComponent(radioRegex))
         );
 
         tabbedPane.addTab("Mark", markPanel);

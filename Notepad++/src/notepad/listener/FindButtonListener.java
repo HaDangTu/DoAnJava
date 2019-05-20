@@ -9,6 +9,7 @@ import org.fife.ui.rtextarea.SearchEngine;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JDialog;
+import javax.swing.JRadioButton;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,17 +17,22 @@ import java.awt.event.ActionListener;
 public class FindButtonListener implements ActionListener {
 
     private JCheckBox matchCase;
+    private JCheckBox wholeWord;
     private EditorWindow editorWindow;
     private JTextField content;
     private JDialog parent;
     private SearchContext searchContext;
+    private JRadioButton regex;
 
-    public FindButtonListener(JCheckBox matchCase, EditorWindow editorWindow, JTextField content, JDialog parent){
+    public FindButtonListener(JCheckBox matchCase, JCheckBox wholeWord, EditorWindow editorWindow,
+                              JTextField content, JRadioButton regex, JDialog parent){
         this.matchCase = matchCase;
+        this.wholeWord = wholeWord;
         this.editorWindow = editorWindow;
         this.content = content;
         this.parent = parent;
         searchContext = new SearchContext();
+        this.regex = regex;
     }
 
     @Override
@@ -49,20 +55,16 @@ public class FindButtonListener implements ActionListener {
         searchContext.setSearchFor(content.getText());
         searchContext.setMatchCase(matchCase.isSelected());
         searchContext.setSearchForward(command.equalsIgnoreCase("Find Next"));
-        searchContext.setMarkAll(true);
-        searchContext.setWholeWord(false);
+        searchContext.setMarkAll(false);
+        searchContext.setWholeWord(wholeWord.isSelected());
+        searchContext.setRegularExpression(regex.isSelected());
 
         boolean found = SearchEngine.find(textArea, searchContext).wasFound();
 
         if (!found) {
             JOptionPane.showMessageDialog(parent, "Text not found", "Result",
                     JOptionPane.INFORMATION_MESSAGE);
-            searchContext.setMarkAll(false);
             textArea.setCaretPosition(0);
         }
-    }
-
-    public SearchContext getSearchContext(){
-        return searchContext;
     }
 }
