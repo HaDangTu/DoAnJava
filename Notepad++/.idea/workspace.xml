@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be4116da-6dcb-4f28-950b-d328dde3f60f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/notepad/listener/RadioMarkRegexListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/FindButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/FindButtonListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/ReplaceButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/ReplaceButtonListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/SearchDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/SearchDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/listener/FindButtonListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/FindButtonListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/listener/ReplaceButtonListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/ReplaceButtonListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/ui/SearchDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/SearchDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/ui/TextEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/TextEditor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/notepad/ui/TextEditor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="223">
+              <caret line="33" column="81" selection-start-line="33" selection-start-column="81" selection-end-line="33" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -215,7 +207,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558339294444" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558339297436" />
     <property name="last_opened_file_path" value="E:/JavaProject/DoAnJava/Notepad++" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -734,8 +726,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/ui/TextEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="223">
+          <caret line="33" column="81" selection-start-line="33" selection-start-column="81" selection-end-line="33" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
