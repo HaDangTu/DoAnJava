@@ -12,13 +12,14 @@ import java.awt.BorderLayout;
 import javax.swing.JDialog;
 
 import notepad.listener.DialogListener;
-import notepad.listener.FindNextButtonListener;
+import notepad.listener.FindButtonListener;
+import notepad.listener.MarkButtonListener;
 import notepad.listener.ReplaceButtonListener;
 
 public class SearchDialog extends JDialog{
     private JTabbedPane tabbedPane;
     private JPanel panel;
-    private FindNextButtonListener findListener;
+    private FindButtonListener findListener;
     private ReplaceButtonListener replaceListener;
 
     public SearchDialog(JFrame frame, EditorWindow editorWindow){
@@ -26,6 +27,27 @@ public class SearchDialog extends JDialog{
         panel = new JPanel(new BorderLayout());
 
         //tab Find
+        initTabFind(editorWindow);
+        //---------------------------------------------------------------------------
+
+        //tab Replace
+        initTabReplace(editorWindow);
+        //---------------------------------------------------------------------------
+
+        //tab Mark
+        initTabMark(editorWindow);
+        //---------------------------------------------------------------------------
+        panel.add(tabbedPane, BorderLayout.CENTER);
+        add(panel);
+        setSize(500, 150);
+        addWindowListener(new DialogListener(editorWindow, findListener));
+        setResizable(false);
+        setTitle("Find and Replace");
+        setLocationRelativeTo(frame);
+        setModal(true);
+    }
+
+    private void initTabFind(EditorWindow editorWindow){
         JPanel tabFindPanel = new JPanel();
         GroupLayout layoutTabFind = new GroupLayout(tabFindPanel);
         tabFindPanel.setLayout(layoutTabFind);
@@ -37,7 +59,7 @@ public class SearchDialog extends JDialog{
         JCheckBox checkMatchCase = new JCheckBox("Match case");
         JTextField fieldFind = new JTextField();
 
-        findListener = new FindNextButtonListener(checkMatchCase, editorWindow, fieldFind, this);
+        findListener = new FindButtonListener(checkMatchCase, editorWindow, fieldFind, this);
         JButton buttonFindNext = new JButton("Find Next");
         buttonFindNext.addActionListener(findListener);
 
@@ -46,13 +68,13 @@ public class SearchDialog extends JDialog{
 
         layoutTabFind.setHorizontalGroup(
                 layoutTabFind.createSequentialGroup()
-                    .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(labelFind)
-                            .addComponent(checkMatchCase))
-                    .addComponent(fieldFind)
-                    .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonFindNext, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonFindPrevious, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(labelFind)
+                                .addComponent(checkMatchCase))
+                        .addComponent(fieldFind)
+                        .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                .addComponent(buttonFindNext, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonFindPrevious, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layoutTabFind.setVerticalGroup(
@@ -62,15 +84,14 @@ public class SearchDialog extends JDialog{
                                 .addComponent(fieldFind)
                                 .addComponent(buttonFindNext))
                         .addGroup(layoutTabFind.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(checkMatchCase)
-                            .addComponent(buttonFindPrevious))
+                                .addComponent(checkMatchCase)
+                                .addComponent(buttonFindPrevious))
         );
 
         tabbedPane.addTab("Find", tabFindPanel);
-        //---------------------------------------------------------------------------
+    }
 
-
-        //tab Replace
+    private void initTabReplace(EditorWindow editorWindow){
         JPanel tabReplacePanel = new JPanel();
         GroupLayout layoutReplace = new GroupLayout(tabReplacePanel);
         tabReplacePanel.setLayout(layoutReplace);
@@ -85,7 +106,7 @@ public class SearchDialog extends JDialog{
                 fieldFindReplace, fieldReplace, this);
 
         JButton buttonFindReplace = new JButton("Find Next");
-        buttonFindReplace.addActionListener(new FindNextButtonListener(checkMatchCaseReplace,
+        buttonFindReplace.addActionListener(new FindButtonListener(checkMatchCaseReplace,
                 editorWindow, fieldFindReplace, this));
 
         JButton buttonReplace = new JButton("Replace");
@@ -124,19 +145,61 @@ public class SearchDialog extends JDialog{
                                 .addComponent(buttonReplaceAll))
         );
         tabbedPane.addTab("Replace", tabReplacePanel);
-        //---------------------------------------------------------------------------
-        panel.add(tabbedPane, BorderLayout.CENTER);
-        add(panel);
-        setSize(500, 150);
-        addWindowListener(new DialogListener(editorWindow));
-        setResizable(false);
-        setTitle("Find and Replace");
-        setLocationRelativeTo(frame);
-        //setModal(true);
+    }
+
+    private void initTabMark(EditorWindow editorWindow){
+        JLabel labelFindWhat = new JLabel("Find what: ");
+        JTextField fieldFind = new JTextField();
+
+        JCheckBox matchCase = new JCheckBox("Match case");
+        JCheckBox matchWholeWord = new JCheckBox("Whole word");
+
+        MarkButtonListener listener = new MarkButtonListener(editorWindow, this, matchCase, matchWholeWord,
+                fieldFind);
+
+        JButton buttonMark = new JButton("Mark all");
+        buttonMark.addActionListener(listener);
+        JButton buttonClearMark = new JButton("Clear all marks");
+        buttonClearMark.addActionListener(listener);
+
+        JPanel markPanel = new JPanel();
+        GroupLayout layoutMark = new GroupLayout(markPanel);
+        markPanel.setLayout(layoutMark);
+
+        layoutMark.setHorizontalGroup(
+                layoutMark.createSequentialGroup()
+                        .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(labelFindWhat)
+                                .addComponent(matchCase))
+                        .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addComponent(fieldFind)
+                                .addComponent(matchWholeWord))
+                        .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                .addComponent(buttonMark,GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonClearMark, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        layoutMark.setVerticalGroup(
+                layoutMark.createSequentialGroup()
+                        .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelFindWhat)
+                                .addComponent(fieldFind)
+                                .addComponent(buttonMark))
+                        .addGroup(layoutMark.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(matchCase)
+                                .addComponent(matchWholeWord)
+                                .addComponent(buttonClearMark))
+        );
+
+        tabbedPane.addTab("Mark", markPanel);
     }
 
     public void showDialog(){
         //pack();
         setVisible(true);
+    }
+
+    public void setSelectedTab(int index){
+        tabbedPane.setSelectedIndex(index);
     }
 }

@@ -13,18 +13,20 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FindNextButtonListener implements ActionListener {
+public class FindButtonListener implements ActionListener {
 
     private JCheckBox matchCase;
     private EditorWindow editorWindow;
     private JTextField content;
     private JDialog parent;
+    private SearchContext searchContext;
 
-    public FindNextButtonListener(JCheckBox matchCase, EditorWindow editorWindow, JTextField content, JDialog parent){
+    public FindButtonListener(JCheckBox matchCase, EditorWindow editorWindow, JTextField content, JDialog parent){
         this.matchCase = matchCase;
         this.editorWindow = editorWindow;
         this.content = content;
         this.parent = parent;
+        searchContext = new SearchContext();
     }
 
     @Override
@@ -34,8 +36,6 @@ public class FindNextButtonListener implements ActionListener {
         RSyntaxTextArea textArea = textEditor.getTextArea();
 
         String command = e.getActionCommand();
-
-        SearchContext searchContext = new SearchContext();
 
         if (content.getText().isEmpty())
             return;
@@ -49,6 +49,7 @@ public class FindNextButtonListener implements ActionListener {
         searchContext.setSearchFor(content.getText());
         searchContext.setMatchCase(matchCase.isSelected());
         searchContext.setSearchForward(command.equalsIgnoreCase("Find Next"));
+        searchContext.setMarkAll(true);
         searchContext.setWholeWord(false);
 
         boolean found = SearchEngine.find(textArea, searchContext).wasFound();
@@ -56,7 +57,12 @@ public class FindNextButtonListener implements ActionListener {
         if (!found) {
             JOptionPane.showMessageDialog(parent, "Text not found", "Result",
                     JOptionPane.INFORMATION_MESSAGE);
+            searchContext.setMarkAll(false);
             textArea.setCaretPosition(0);
         }
+    }
+
+    public SearchContext getSearchContext(){
+        return searchContext;
     }
 }

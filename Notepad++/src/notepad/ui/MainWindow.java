@@ -240,16 +240,21 @@ public class MainWindow extends  JFrame{
                 ActionEvent.SHIFT_MASK));
 
         JMenuItem searchReplace = new JMenuItem("Replace");
+        searchReplace.addActionListener(searchListener);
         searchReplace.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         JMenuItem incrementalSearch = new JMenuItem("Incremental Search");
+        incrementalSearch.addActionListener(searchListener);
         incrementalSearch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,
                 ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK));
 
         JMenuItem searchGoto = new JMenuItem("Go to...");
+        searchGoto.addActionListener(searchListener);
 
         JMenuItem searchMark = new JMenuItem("Mark...");
+        searchMark.addActionListener(searchListener);
+
         menuSearch.add(searchFind);
         menuSearch.add(searchFindNext);
         menuSearch.add(searchFindPrevious);
