@@ -32,25 +32,27 @@ public class TreeMouseListener implements MouseListener {
             int result = editorWindow.isExist(filePath);
             if (result < 0) {
                 File file = new File(filePath);
-                editorWindow.addTabEditor(file.getName());
-                int index = editorWindow.getTabCount() - 1;
-                editorWindow.setFilePathForTab(filePath, index);
+                if (!file.isDirectory()) {
+                    editorWindow.addTabEditor(file.getName());
+                    int index = editorWindow.getTabCount() - 1;
+                    editorWindow.setFilePathForTab(filePath, index);
 
-                CategoryOfFile category = new CategoryOfFile();
-                String extension = category.getExtensionOfFile(file.getName());
-                category.ChangeStyleEditorForFile(extension, editorWindow);
+                    CategoryOfFile category = new CategoryOfFile();
+                    String extension = category.getExtensionOfFile(file.getName());
+                    category.ChangeStyleEditorForFile(extension, editorWindow);
 
-                RSyntaxTextArea textArea = editorWindow.getTextEditor(editorWindow.getTabCount() - 1).getTextArea();
-                MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);
-                try {
-                    adapter.read(filePath);
-                    TextEditor textEditor = editorWindow.getTextEditor(index);
-                    textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = tru
-                    editorWindow.setSelectedIndex(index);
-                } catch (FileNotFoundException fe) {
-                    System.err.println(fe.getMessage());
-                } catch (IOException ioe) {
-                    System.err.println(ioe.getMessage());
+                    RSyntaxTextArea textArea = editorWindow.getTextEditor(editorWindow.getTabCount() - 1).getTextArea();
+                    MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);
+                    try {
+                        adapter.read(filePath);
+                        TextEditor textEditor = editorWindow.getTextEditor(index);
+                        textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = tru
+                        editorWindow.setSelectedIndex(index);
+                    } catch (FileNotFoundException fe) {
+                        System.err.println(fe.getMessage());
+                    } catch (IOException ioe) {
+                        System.err.println(ioe.getMessage());
+                    }
                 }
             }
             else

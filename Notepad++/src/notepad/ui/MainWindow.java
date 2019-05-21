@@ -7,16 +7,26 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JCheckBox;
 import javax.swing.JSplitPane;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.SwingUtilities;
 import javax.swing.ImageIcon;
-import java.awt.GridLayout;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+
 import java.lang.Exception;
 
 public class MainWindow extends  JFrame{
@@ -32,6 +42,7 @@ public class MainWindow extends  JFrame{
     private JScrollPane treeScrollPane;
     private TreeMouseListener treeMouseListener;
     private JSplitPane splitPane;
+    private JPanel panelIncrementalSearch;
 
     public MainWindow(){
         try{
@@ -55,7 +66,8 @@ public class MainWindow extends  JFrame{
         editListener = new MenuEditActionListener(editorWindow);
         searchListener = new MenuSearchActionListener(editorWindow, this);
 
-        panel = new JPanel(new GridLayout(1,  1));
+        panel = new JPanel(new BorderLayout());
+        panelIncrementalSearch = new JPanel(new FlowLayout());
 
         treeScrollPane = new JScrollPane(myTree);
         treeMouseListener = new TreeMouseListener(myTree, editorWindow);
@@ -63,7 +75,44 @@ public class MainWindow extends  JFrame{
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScrollPane, editorWindow);
         myTree.addMouseListener(treeMouseListener);
 
+
         //Menu File
+        loadMenuFile();
+        //-------------------------------------------------------------------------------------
+
+        //Menu Edit
+        loadMenuEdit();
+        //-------------------------------------------------------------------------------------
+
+        //Menu Search
+        loadMenuSearch();
+        //-------------------------------------------------------------------------------------
+
+        //Menu Language
+        loadMenuLanguage();
+        //-------------------------------------------------------------------------------------
+
+        //Innit split pane
+        initSplitPane();
+        //-------------------------------------------------------------------------------------
+
+        //Init search incremental
+        panelIncrementalSearch.setVisible(false);
+        panelIncrementalSearch.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        createIncrementalSearchPanel();
+        //-------------------------------------------------------------------------------------
+
+        panel.add(splitPane,BorderLayout.CENTER);
+        panel.add(panelIncrementalSearch, BorderLayout.SOUTH);
+
+        this.setJMenuBar(mainMenu);
+        this.setTitle("Notepad++");
+        this.setSize(1000, 600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.add(panel);
+    }
+
+    private void loadMenuFile(){
         JMenu menuFile = new JMenu("File");
         JMenu fileNew = new JMenu("New");
         fileNew.setIcon(new ImageIcon("icon\\new.png"));
@@ -188,9 +237,12 @@ public class MainWindow extends  JFrame{
         menuFile.add(fileCloseLeftTab);
         menuFile.addSeparator();
         menuFile.add(fileExit);
-        //-------------------------------------------------------------------------------------
 
-        //Menu Edit
+        //add to main menu
+        mainMenu.add(menuFile);
+    }
+
+    private void loadMenuEdit(){
         JMenu menuEdit = new JMenu("Edit");
         JMenuItem editUndo = new JMenuItem("Undo");
         editUndo.setIcon(new ImageIcon("icon\\undo.png"));
@@ -237,9 +289,12 @@ public class MainWindow extends  JFrame{
         menuEdit.add(editDelete);
         menuEdit.addSeparator();
         menuEdit.add(editSelectAll);
-        //-------------------------------------------------------------------------------------
 
-        //Menu Search
+        //Add to main menu
+        mainMenu.add(menuEdit);
+    }
+
+    private void loadMenuSearch(){
         JMenu menuSearch = new JMenu("Search");
         JMenuItem searchFind = new JMenuItem("Find");
         searchFind.setIcon(new ImageIcon("icon\\find.png"));
@@ -248,9 +303,11 @@ public class MainWindow extends  JFrame{
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         JMenuItem searchFindNext = new JMenuItem("Find Next");
+        searchFindNext.addActionListener(searchListener);
         searchFindNext.setAccelerator(KeyStroke.getKeyStroke("F3"));
 
         JMenuItem searchFindPrevious = new JMenuItem("Find Previous");
+        searchFindPrevious.addActionListener(searchListener);
         searchFindPrevious.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3,
                 ActionEvent.SHIFT_MASK));
 
@@ -279,9 +336,11 @@ public class MainWindow extends  JFrame{
         menuSearch.addSeparator();
         menuSearch.add(searchGoto);
         menuSearch.add(searchMark);
-        //-------------------------------------------------------------------------------------
 
-        //Menu View
+        mainMenu.add(menuSearch);
+    }
+
+    private void loadMenuLanguage(){
         JMenu menuLanguage = new JMenu("Language");
         JMenu menuC = new JMenu("C");
         JMenuItem languageC = new JMenuItem("C");
@@ -342,28 +401,58 @@ public class MainWindow extends  JFrame{
         menuLanguage.add(menuH);
         menuLanguage.add(menuS);
         menuLanguage.add(menuX);
-        //------------------------------------------------------------------------------------
 
-        mainMenu.add(menuFile);
-        mainMenu.add(menuEdit);
-        mainMenu.add(menuSearch);
         mainMenu.add(menuLanguage);
+    }
 
-        //treeScrollPane.setPreferredSize(new Dimension(150, 600));
-
+    private void initSplitPane(){
         splitPane.setDividerLocation(150);
-        //splitPane.setOneTouchExpandable(true);
         splitPane.setResizeWeight(0.2);
         Dimension minimumSize = new Dimension(150, 600);
         treeScrollPane.setMinimumSize(minimumSize);
         editorWindow.setMinimumSize(minimumSize);
+    }
 
-        panel.add(splitPane);
+    private void createIncrementalSearchPanel(){
+        JButton buttonClose = new JButton(new ImageIcon("icon\\close.png"));
+        buttonClose.setSize(10, 10);
+        buttonClose.setPreferredSize(new Dimension(16, 16));
+        buttonClose.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelIncrementalSearch.setEnabled(false);
+            }
+        });
 
-        this.setJMenuBar(mainMenu);
-        this.setTitle("Notepad++");
-        this.setSize(1000, 600);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(panel);
+        JButton buttonFindNext = new JButton("Find next");
+        JButton buttonFindPrevious = new JButton("Find previous");
+
+        JLabel labelFind = new JLabel("Find what: ");
+        JLabel labelResult = new JLabel();
+
+        JCheckBox chbMatchCase = new JCheckBox("Match case");
+        JCheckBox chbHighlightAll = new JCheckBox("Highlight all");
+
+        JTextField fieldFind = new JTextField();
+        fieldFind.setPreferredSize(new Dimension(180, 20));
+
+        FindButtonListener listener = new FindButtonListener(chbMatchCase, editorWindow, fieldFind, null,
+                labelResult, chbHighlightAll.isSelected());
+
+        buttonFindNext.addActionListener(listener);
+        buttonFindPrevious.addActionListener(listener);
+
+        panelIncrementalSearch.add(buttonClose);
+        panelIncrementalSearch.add(labelFind);
+        panelIncrementalSearch.add(fieldFind);
+        panelIncrementalSearch.add(buttonFindNext);
+        panelIncrementalSearch.add(buttonFindPrevious);
+        panelIncrementalSearch.add(chbHighlightAll);
+        panelIncrementalSearch.add(chbMatchCase);
+        panelIncrementalSearch.add(labelResult);
+    }
+
+    public void setVisiblePanelSearchIncremental(boolean visible){
+        panelIncrementalSearch.setVisible(visible);
     }
 }
