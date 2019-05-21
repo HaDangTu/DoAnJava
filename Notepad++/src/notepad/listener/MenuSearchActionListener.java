@@ -1,6 +1,7 @@
 package notepad.listener;
 
 import notepad.ui.EditorWindow;
+import notepad.ui.GoToDialog;
 import notepad.ui.SearchDialog;
 
 import javax.swing.JFrame;
@@ -24,6 +25,10 @@ public class MenuSearchActionListener extends MenuMainWindowListener {
         else if (command.equalsIgnoreCase("Replace")){
             SearchDialog dialog = new SearchDialog(parentFrame, editorWindow);
             dialog.setSelectedTab(1);
+            dialog.showDialog();
+        }
+        else if (command.equalsIgnoreCase("Go to...")){
+            GoToDialog dialog = new GoToDialog(editorWindow, parentFrame);
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Mark...")){

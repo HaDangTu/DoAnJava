@@ -11,6 +11,7 @@ import javax.swing.JSplitPane;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.SwingUtilities;
+import javax.swing.ImageIcon;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
@@ -65,6 +66,7 @@ public class MainWindow extends  JFrame{
         //Menu File
         JMenu menuFile = new JMenu("File");
         JMenu fileNew = new JMenu("New");
+        fileNew.setIcon(new ImageIcon("icon\\new.png"));
 
         JMenuItem newFile = new JMenuItem("New file");
         newFile.addActionListener(fileListener);
@@ -113,7 +115,11 @@ public class MainWindow extends  JFrame{
         fileNew.add(newJSon);
         fileNew.addSeparator();
         fileNew.add(newOtherFile);
+
+
         JMenu fileOpen = new JMenu("Open");
+        fileOpen.setIcon(new ImageIcon("icon\\open.png"));
+
         JMenuItem openFolder = new JMenuItem("Open directory");
         openFolder.addActionListener(fileListener);
         openFolder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,
@@ -128,6 +134,7 @@ public class MainWindow extends  JFrame{
         fileOpen.add(openFile);
 
         JMenuItem fileSave = new JMenuItem("Save");
+        fileSave.setIcon(new ImageIcon("icon\\save.png"));
         fileSave.addActionListener(fileListener);
         fileSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
@@ -143,11 +150,13 @@ public class MainWindow extends  JFrame{
                 ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK));
 
         JMenuItem fileCloseTab = new JMenuItem("Close tab");
+        fileCloseTab.setIcon(new ImageIcon("icon\\close_file.png"));
         fileCloseTab.addActionListener(fileListener);
         fileCloseTab.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
                 ActionEvent.CTRL_MASK));
 
         JMenuItem fileCloseAllTab = new JMenuItem("Close all tab");
+        fileCloseAllTab.setIcon(new ImageIcon("icon\\close_all.png"));
         fileCloseAllTab.addActionListener(fileListener);
         fileCloseAllTab.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
                 ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK));
@@ -184,26 +193,31 @@ public class MainWindow extends  JFrame{
         //Menu Edit
         JMenu menuEdit = new JMenu("Edit");
         JMenuItem editUndo = new JMenuItem("Undo");
+        editUndo.setIcon(new ImageIcon("icon\\undo.png"));
         editUndo.addActionListener(editListener);
         editUndo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         JMenuItem editRedo = new JMenuItem("Redo");
+        editRedo.setIcon(new ImageIcon("icon\\redo.png"));
         editRedo.addActionListener(editListener);
         editRedo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         JMenuItem editCut = new JMenuItem("Cut");
+        editCut.setIcon(new ImageIcon("icon\\cut.png"));
         editCut.addActionListener(editListener);
         editCut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         JMenuItem editCopy = new JMenuItem("Copy");
+        editCopy.setIcon(new ImageIcon("icon\\copy.png"));
         editCopy.addActionListener(editListener);
         editCopy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         JMenuItem editPaste = new JMenuItem("Paste");
+        editPaste.setIcon(new ImageIcon("icon\\paste.png"));
         editPaste.addActionListener(editListener);
         editPaste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
@@ -228,6 +242,7 @@ public class MainWindow extends  JFrame{
         //Menu Search
         JMenu menuSearch = new JMenu("Search");
         JMenuItem searchFind = new JMenuItem("Find");
+        searchFind.setIcon(new ImageIcon("icon\\find.png"));
         searchFind.addActionListener(searchListener);
         searchFind.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
@@ -240,6 +255,7 @@ public class MainWindow extends  JFrame{
                 ActionEvent.SHIFT_MASK));
 
         JMenuItem searchReplace = new JMenuItem("Replace");
+        searchReplace.setIcon(new ImageIcon("icon\\replace.png"));
         searchReplace.addActionListener(searchListener);
         searchReplace.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
