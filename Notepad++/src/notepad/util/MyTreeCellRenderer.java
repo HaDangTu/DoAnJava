@@ -59,14 +59,14 @@ public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
         return this;
     }
 
-    public File getFile(Object value){
+    private File getFile(Object value){
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
         String path = buildFilePath(node);
         File file = new File(filePath + path);
         return file;
     }
 
-    public String buildFilePath(DefaultMutableTreeNode node){
+    private String buildFilePath(DefaultMutableTreeNode node){
         String path = "";
         Object[] objects = node.getUserObjectPath();
         for (int i = 1 ; i < objects.length; i++)
@@ -74,7 +74,7 @@ public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
         return path;
     }
 
-    public void setIconForFile(Object value, boolean expanded){
+    private void setIconForFile(Object value, boolean expanded){
         CategoryOfFile category = new CategoryOfFile();
         File file = getFile(value);
         if (file.isDirectory()){

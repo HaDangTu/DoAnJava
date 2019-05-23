@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+@Deprecated
 public class DialogListener implements WindowListener {
 
     private RSyntaxTextArea textArea;
@@ -24,7 +25,7 @@ public class DialogListener implements WindowListener {
     }
     @Override
     public void windowOpened(WindowEvent e) {
-        textArea.setCaretPosition(0);
+        //textArea.setCaretPosition(0);
     }
 
     @Override

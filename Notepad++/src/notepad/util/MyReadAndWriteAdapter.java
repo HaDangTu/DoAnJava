@@ -16,6 +16,12 @@ public class MyReadAndWriteAdapter {
         this.textArea = textArea;
     }
 
+    /**
+     * Read file
+     * @param filePath directory of file
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void read(String filePath) throws FileNotFoundException, IOException {
         File file = new File(filePath);
         if (!file.isDirectory() && file.exists()) {
@@ -25,6 +31,11 @@ public class MyReadAndWriteAdapter {
         }
     }
 
+    /**
+     * Write file
+     * @param filePath directory of file
+     * @throws IOException
+     */
     public void write(String filePath) throws IOException{
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));
         textArea.write(bufferedWriter);

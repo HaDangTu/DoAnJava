@@ -10,6 +10,7 @@ public class Main {
             @Override
             public void run() {
                 MainWindow mainWindow = new MainWindow();
+                mainWindow.getEditorWindow().requestFocusInWindow();
                 mainWindow.setVisible(true);
             }
         });

@@ -60,6 +60,11 @@ public class FindButtonListener implements ActionListener {
 
         String command = e.getActionCommand();
 
+        /**
+         * Check some condition
+         * - field Find is not empty
+         * - textArea is not empty
+         */
         if (fieldFind.getText().isEmpty())
             return;
 
@@ -69,28 +74,44 @@ public class FindButtonListener implements ActionListener {
             return;
         }
 
+        int pos = -1;
+        /**
+         * wholeWord check box can be null in some solution because we have two constructor for this class
+         * one of them doesn't have parameter wholeWord check box.
+         * Check box wholeWord = null can cause exception
+         */
+        if (wholeWord != null)
+            pos = SearchEngine.getNextMatchPos(fieldFind.getText(), textArea.getText(), true,
+                matchCase.isSelected(), wholeWord.isSelected());
+        else
+            pos = SearchEngine.getNextMatchPos(fieldFind.getText(), textArea.getText(), true,
+                    matchCase.isSelected(), false);
+
         searchContext.setSearchFor(fieldFind.getText());
         searchContext.setMatchCase(matchCase.isSelected());
         searchContext.setSearchForward(command.equalsIgnoreCase("Find Next"));
         searchContext.setMarkAll(highLight);
+
         if (wholeWord != null)
             searchContext.setWholeWord(wholeWord.isSelected());
+        else searchContext.setWholeWord(false);
+
         if (regex != null)
             searchContext.setRegularExpression(regex.isSelected());
+        else searchContext.setRegularExpression(false);
 
-        int found = SearchEngine.find(textArea, searchContext).getCount();
+        boolean found = SearchEngine.find(textArea, searchContext).wasFound();
 
-        if (lbResult != null) {
-            if (found > 1)
-                lbResult.setText(found + "match");
+        if (!found) {
+            /**
+             * if pos < 0 => string that you want to find is not exist in
+             * textArea.getText()
+             */
+            if (pos >= 0)
+                textArea.setCaretPosition(pos);
             else
-                lbResult.setText(found + "matches");
-        }
-
-        if (found == 0) {
-            JOptionPane.showMessageDialog(parent, "Text not found", "Result",
+                JOptionPane.showMessageDialog(parent, "Text not found", "Result",
                     JOptionPane.INFORMATION_MESSAGE);
-            textArea.setCaretPosition(0);
         }
     }
 }

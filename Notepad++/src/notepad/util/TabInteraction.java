@@ -23,17 +23,20 @@ public class TabInteraction {
         this.editorWindow = editorWindow;
         this.tabUI = null;
     }
-    /*
-        close any tab when click on close tab button
+
+    /**
+     * close any tab when user click of close button of tab
+     * @param fileChooser: Show dialog to save file if necessary
      */
     public void closeTab(JFileChooser fileChooser){
         int index = editorWindow.indexOfTab(tabUI.getLabel());
         closeTabAt(fileChooser, index);
     }
 
-    /*
-        close tab at
-        @index: position of tab
+    /**
+     * close tab at position is indicated by user
+     * @param fileChooser: Show dialog to save file if necessary
+     * @param index  position of tab
      */
     public void closeTabAt(JFileChooser fileChooser, int index){
         TextEditor textEditor = editorWindow.getTextEditor(index);
@@ -59,8 +62,9 @@ public class TabInteraction {
         }
     }
 
-    /*
-        close all tab
+    /**
+     * close all tab which is opening
+     * @param fileChooser: Show dialog to save file if necessary
      */
     public void closeAllTab(JFileChooser fileChooser){
         int tabCount = editorWindow.getTabCount();
@@ -68,8 +72,9 @@ public class TabInteraction {
             closeTabAt(fileChooser, 0);
     }
 
-    /*
-        close all tab except selected tab
+    /**
+     * close all tab except selected tab
+     * @param fileChooser: Show dialog to save file if necessary
      */
     public void closeAllButThis(JFileChooser fileChooser){
         int i;
@@ -85,8 +90,9 @@ public class TabInteraction {
         }
     }
 
-    /*
-        close right tab of selected tab
+    /**
+     * close right tab of selected tab
+     * @param fileChooser Show dialog to save file if necessary
      */
     public void closeRightTab(JFileChooser fileChooser){
         int index = editorWindow.getSelectedIndex() + 1;
@@ -94,8 +100,9 @@ public class TabInteraction {
             closeTabAt(fileChooser, index);
     }
 
-    /*
-        close left tab of selected tab
+    /**
+     * close left tab of selected tab
+     * @param fileChooser Show dialog to save file if necessary
      */
     public void closeLeftTab(JFileChooser fileChooser){
         int index = editorWindow.getSelectedIndex() - 1;

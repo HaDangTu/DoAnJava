@@ -1,5 +1,11 @@
 package notepad.ui;
-import notepad.listener.*;
+import notepad.listener.MenuFileActionListener;
+import notepad.listener.MenuEditActionListener;
+import notepad.listener.MenuLanguageActionListener;
+import notepad.listener.MenuSearchActionListener;
+import notepad.listener.TreeMouseListener;
+import notepad.listener.FindButtonListener;
+import notepad.listener.FindDocumentListener;
 
 import javax.swing.JMenuBar;
 import javax.swing.JFrame;
@@ -103,7 +109,7 @@ public class MainWindow extends  JFrame{
         //-------------------------------------------------------------------------------------
 
         panel.add(splitPane,BorderLayout.CENTER);
-        panel.add(panelIncrementalSearch, BorderLayout.SOUTH);
+        panel.add(panelIncrementalSearch, BorderLayout.NORTH);
 
         this.setJMenuBar(mainMenu);
         this.setTitle("Notepad++");
@@ -323,6 +329,8 @@ public class MainWindow extends  JFrame{
                 ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK));
 
         JMenuItem searchGoto = new JMenuItem("Go to...");
+        searchGoto.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G,
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
         searchGoto.addActionListener(searchListener);
 
         JMenuItem searchMark = new JMenuItem("Mark...");
@@ -416,16 +424,17 @@ public class MainWindow extends  JFrame{
     private void createIncrementalSearchPanel(){
         JButton buttonClose = new JButton(new ImageIcon("icon\\close.png"));
         buttonClose.setSize(10, 10);
+        buttonClose.setOpaque(false);
         buttonClose.setPreferredSize(new Dimension(16, 16));
         buttonClose.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelIncrementalSearch.setEnabled(false);
+                panelIncrementalSearch.setVisible(false);
             }
         });
 
-        JButton buttonFindNext = new JButton("Find next");
-        JButton buttonFindPrevious = new JButton("Find previous");
+        JButton buttonFindNext = new JButton("Find Next");
+        JButton buttonFindPrevious = new JButton("Find Previous");
 
         JLabel labelFind = new JLabel("Find what: ");
         JLabel labelResult = new JLabel();
@@ -435,6 +444,8 @@ public class MainWindow extends  JFrame{
 
         JTextField fieldFind = new JTextField();
         fieldFind.setPreferredSize(new Dimension(180, 20));
+        fieldFind.getDocument().addDocumentListener(new FindDocumentListener(chbHighlightAll, chbMatchCase, labelResult,
+                editorWindow));
 
         FindButtonListener listener = new FindButtonListener(chbMatchCase, editorWindow, fieldFind, null,
                 labelResult, chbHighlightAll.isSelected());
@@ -455,4 +466,6 @@ public class MainWindow extends  JFrame{
     public void setVisiblePanelSearchIncremental(boolean visible){
         panelIncrementalSearch.setVisible(visible);
     }
+
+    public EditorWindow getEditorWindow() {return editorWindow;}
 }
