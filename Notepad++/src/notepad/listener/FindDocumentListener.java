@@ -97,7 +97,7 @@ public class FindDocumentListener implements DocumentListener {
      * @param regex text you want to find
      * @param searchIn document you want to find your text
      * @param matchCase distinguish between lower and upper case
-     * @return sum of match what you find
+     * @return count match of what you find
      */
     public int getMatch(String regex, String searchIn, boolean matchCase){
         int numMatch = 0;

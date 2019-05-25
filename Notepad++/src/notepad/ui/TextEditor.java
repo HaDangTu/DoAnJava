@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
 import notepad.listener.DocumentUndoableEditListener;
-import notepad.listener.MyDocumentListener;
+import notepad.listener.EditorDocumentListener;
 import javax.swing.undo.UndoManager;
 
 import notepad.listener.TextAreaMouseClickListener;
@@ -31,7 +31,7 @@ public class TextEditor extends JPanel{
         fileType = CategoryOfFile.NORMAL_TEXT_FILE;
 
         textArea.setCodeFoldingEnabled(true);
-        textArea.getDocument().addDocumentListener(new MyDocumentListener(this));
+        textArea.getDocument().addDocumentListener(new EditorDocumentListener(this));
 
         undoableEditListener = new DocumentUndoableEditListener();
         textArea.getDocument().addUndoableEditListener(undoableEditListener);
@@ -53,7 +53,7 @@ public class TextEditor extends JPanel{
 
         textArea.setCodeFoldingEnabled(true); //set code folding
 
-        textArea.getDocument().addDocumentListener(new MyDocumentListener(this));
+        textArea.getDocument().addDocumentListener(new EditorDocumentListener(this));
         textArea.addMouseListener(new TextAreaMouseClickListener(textArea));
 
         //Undo and redo listener

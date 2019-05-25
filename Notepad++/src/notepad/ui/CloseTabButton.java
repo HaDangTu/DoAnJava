@@ -11,8 +11,8 @@ public class CloseTabButton  extends JButton{
         setSize(icon.getIconWidth(), icon.getIconHeight());
         setBorder(BorderFactory.createEtchedBorder());
         setBorderPainted(false);
-        setFocusPainted(false);
-        setOpaque(false);
+        setFocusPainted(true);
+        setOpaque(true);
         setContentAreaFilled(false);
     }
 }

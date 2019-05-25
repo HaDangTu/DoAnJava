@@ -3,10 +3,13 @@ package notepad.util;
 import notepad.ui.EditorWindow;
 import notepad.ui.MainWindow;
 import notepad.ui.TextEditor;
+import notepad.ui.MyTree;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
-import javax.swing.*;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class OpenAndSaveFile {
@@ -14,12 +17,71 @@ public class OpenAndSaveFile {
     private JFileChooser fileChooser;
     private EditorWindow editorWindow;
     private MainWindow parentFrame;
+    private MyTree tree;
 
+    /**
+     * Use for save file
+     */
     public OpenAndSaveFile(JFileChooser fileChooser, EditorWindow editorWindow, MainWindow parentFrame){
         this.fileChooser = fileChooser;
         this.editorWindow = editorWindow;
         this.parentFrame = parentFrame;
     }
+
+    /**
+     * Use for open file and folder
+     */
+    public OpenAndSaveFile(JFileChooser fileChooser, EditorWindow editorWindow, MyTree tree, MainWindow parentFrame){
+        this.fileChooser = fileChooser;
+        this.editorWindow = editorWindow;
+        this.parentFrame = parentFrame;
+        this.tree = tree;
+    }
+
+    public void openDirectory(){
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnValue = fileChooser.showOpenDialog(parentFrame);
+        if (returnValue == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            tree.setFilePath(file.getAbsolutePath());
+            tree.setRootWithFilePath(tree.getFilePath());
+            tree.createTree(file, tree.getRoot());
+            tree.setRoot(tree.getRoot());
+        }
+    }
+
+    public void openFile(){
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int returnValue = fileChooser.showOpenDialog(parentFrame);
+        if (returnValue == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+
+            editorWindow.addTabEditor(file.getName());
+            int index = editorWindow.getTabCount() - 1;
+            editorWindow.setFilePathForTab(file.getAbsolutePath(), index);
+            TextEditor textEditor = editorWindow.getTextEditor(index);
+            RSyntaxTextArea textArea = textEditor.getTextArea();
+
+            CategoryOfFile categoryOfFile = new CategoryOfFile();
+            String extension = categoryOfFile.getExtensionOfFile(file.getName());
+            categoryOfFile.ChangeStyleEditorForFile(extension, editorWindow);
+
+            MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);
+            try{
+                adapter.read(file.getAbsolutePath());
+                textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = true
+            }
+            catch(FileNotFoundException fe){
+                System.err.println(fe.getMessage());
+            }
+            catch(IOException ioe){
+                System.err.println(ioe.getMessage());
+            }
+
+            editorWindow.setSelectedIndex(index);
+        }
+    }
+
     public void saveFile(TextEditor textEditor, int index){
         if (textEditor.getIsChanged()) {
             if (!textEditor.getFilePath().equalsIgnoreCase("")) {

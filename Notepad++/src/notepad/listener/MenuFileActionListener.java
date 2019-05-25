@@ -6,7 +6,7 @@ import notepad.util.OpenAndSaveFile;
 import notepad.util.TabInteraction;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
-import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
@@ -89,46 +89,12 @@ public class MenuFileActionListener extends MenuMainWindowListener {
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Open directory")){
-            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            int returnValue = fileChooser.showOpenDialog(parentFrame);
-            if (returnValue == JFileChooser.APPROVE_OPTION){
-                File file = fileChooser.getSelectedFile();
-                tree.setFilePath(file.getAbsolutePath());
-                tree.setRootWithFilePath(tree.getFilePath());
-                tree.createTree(file, tree.getRoot());
-                tree.setRoot(tree.getRoot());
-            }
+            OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, parentFrame);
+            openAndSaveFile.openFile();
         }
         else if (command.equalsIgnoreCase("Open file")){
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            int returnValue = fileChooser.showOpenDialog(parentFrame);
-            if (returnValue == JFileChooser.APPROVE_OPTION){
-                File file = fileChooser.getSelectedFile();
-
-                editorWindow.addTabEditor(file.getName());
-                int index = editorWindow.getTabCount() - 1;
-                editorWindow.setFilePathForTab(file.getAbsolutePath(), index);
-                TextEditor textEditor = editorWindow.getTextEditor(index);
-                RSyntaxTextArea textArea = textEditor.getTextArea();
-
-                CategoryOfFile categoryOfFile = new CategoryOfFile();
-                String extension = categoryOfFile.getExtensionOfFile(file.getName());
-                categoryOfFile.ChangeStyleEditorForFile(extension, editorWindow);
-
-                MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);
-                try{
-                    adapter.read(file.getAbsolutePath());
-                    textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = true
-                }
-                catch(FileNotFoundException fe){
-                    System.err.println(fe.getMessage());
-                }
-                catch(IOException ioe){
-                    System.err.println(ioe.getMessage());
-                }
-
-                editorWindow.setSelectedIndex(index);
-            }
+            OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, parentFrame);
+            openAndSaveFile.openDirectory();
         }
         else if (command.equalsIgnoreCase("Save")){
            int index = editorWindow.getSelectedIndex();
@@ -159,5 +125,9 @@ public class MenuFileActionListener extends MenuMainWindowListener {
         else if (command.equalsIgnoreCase("Exit")){
             parentFrame.dispose();
         }
+    }
+
+    public JFileChooser getFileChooser(){
+        return fileChooser;
     }
 }
