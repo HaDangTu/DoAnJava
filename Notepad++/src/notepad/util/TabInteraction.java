@@ -2,6 +2,8 @@ package notepad.util;
 import notepad.ui.EditorWindow;
 import notepad.ui.TabUI;
 import notepad.ui.TextEditor;
+import notepad.util.MyComparator;
+
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -60,6 +62,12 @@ public class TabInteraction {
             else if (result == 1)
                 editorWindow.removeTabAt(index);
         }
+
+        // Add tab when number of tab equal zero
+        if (editorWindow.getTabCount() == 0)
+            editorWindow.addTabEditor();
+
+        editorWindow.getDeletedTab().sort(new MyComparator());
     }
 
     /**

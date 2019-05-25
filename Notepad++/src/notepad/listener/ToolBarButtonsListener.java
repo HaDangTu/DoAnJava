@@ -44,8 +44,12 @@ public class ToolBarButtonsListener implements ActionListener {
 
         SearchDialog dialog = new SearchDialog(parentFrame, editorWindow);
 
-        if (command.equalsIgnoreCase("New"))
+        if (command.equalsIgnoreCase("New")) {
             editorWindow.addTabEditor();
+            int pos = editorWindow.getTabCount() - 1;
+            editorWindow.setSelectedIndex(pos);
+            editorWindow.getTextEditor(pos).getTextArea().requestFocusInWindow();
+        }
         else if (command.equalsIgnoreCase("Open file")){
             openAndSaveFile.openFile();
         }
@@ -54,9 +58,11 @@ public class ToolBarButtonsListener implements ActionListener {
         }
         else if (command.equalsIgnoreCase("Save file")){
             openAndSaveFile.saveFile(textEditor, index);
+            parentFrame.setButtonSaveEnabled(false);
         }
         else if (command.equalsIgnoreCase("Save all")){
             openAndSaveFile.saveAllFile();
+            parentFrame.setButtonSaveAllEnabled(false);
         }
         else if (command.equalsIgnoreCase("Close file")){
             tabInteraction.closeTabAt(fileChooser, index);

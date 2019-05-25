@@ -1,18 +1,17 @@
 package notepad.listener;
-import notepad.ui.*;
-import notepad.util.MyReadAndWriteAdapter;
-import notepad.util.CategoryOfFile;
+import notepad.ui.EditorWindow;
+import notepad.ui.MainWindow;
+import notepad.ui.MyTree;
+import notepad.ui.NewFileDialog;
+import notepad.ui.TextEditor;
+
 import notepad.util.OpenAndSaveFile;
 import notepad.util.TabInteraction;
 
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
-import java.io.FileNotFoundException;
 
 public class MenuFileActionListener extends MenuMainWindowListener {
     private JFileChooser fileChooser;
@@ -37,6 +36,9 @@ public class MenuFileActionListener extends MenuMainWindowListener {
         //System.out.println(command);
         if (command.equalsIgnoreCase("New file")){
             editorWindow.addTabEditor();
+            int pos = editorWindow.getTabCount() - 1;
+            editorWindow.setSelectedIndex(pos);
+            editorWindow.getTextEditor(pos).getTextArea().requestFocusInWindow();
         }
         else if (command.equalsIgnoreCase("C file")){
             String[] kind = {"Header file", "Class file"};

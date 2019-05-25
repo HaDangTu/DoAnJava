@@ -4,6 +4,7 @@ import notepad.listener.CloseTabButtonListener;
 
 import javax.swing.JTabbedPane;
 import java.util.ArrayList;
+
 public class EditorWindow extends JTabbedPane {
 
     private ArrayList<Integer> deletedTab;
@@ -61,19 +62,23 @@ public class EditorWindow extends JTabbedPane {
         textEditor.setEditingStyle(keyStyle);
     }
 
-    /*
-        add element in deleted tab
+    /**
+     * add element at the end of deletedTab
+     * @param element value
      */
     public void addDeletedTab(int element){
         deletedTab.add(element);
     }
-    /*
-        get length of array list deletedTab
-    */
+
+    /**
+     * Get length of deleted tab
+     * @return size of deleted tab array
+     */
     public int getDeletedTabLength(){
         return deletedTab.size();
     }
 
+    public ArrayList<Integer> getDeletedTab(){return deletedTab;}
     /*
         get first element of array list deletedTab
      */
@@ -101,6 +106,8 @@ public class EditorWindow extends JTabbedPane {
     public void setTitleForTab(String nameOfTab, int index){
         TabUI tabUI = new TabUI();
         tabUI.setLabel(nameOfTab);
+        tabUI.setListener(new CloseTabButtonListener(this, tabUI));
+        setTitleAt(index, nameOfTab);
         setTabComponentAt(index, tabUI);
     }
 
@@ -108,17 +115,20 @@ public class EditorWindow extends JTabbedPane {
         TabUI tabUI = (TabUI) getTabComponentAt(index);
         return tabUI.getLabel();
     }
-    /*
-        Get tab
+
+    /**
+     * Get tab at index
+     * @param index location of tab to get
+     * @return a tab at specify location
      */
     public TextEditor getTextEditor(int index){
         return (TextEditor) this.getComponentAt(index);
     }
 
-    /*
-        Check if tab exists or not
-        @filePath: filePath of tab
-        return position of tab
+    /**
+     * Check if tab exists or not
+     * @param filePath directory of file
+     * @return position of file if file is exist
      */
     public int isExist(String filePath){
         TextEditor[] textEditors = new TextEditor[getTabCount()];

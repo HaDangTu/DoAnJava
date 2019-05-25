@@ -7,6 +7,7 @@ import notepad.listener.TreeMouseListener;
 import notepad.listener.FindButtonListener;
 import notepad.listener.FindDocumentListener;
 import notepad.listener.ToolBarButtonsListener;
+import notepad.listener.WindowFocusListener;
 
 import javax.swing.*;
 
@@ -43,6 +44,7 @@ public class MainWindow extends  JFrame{
     private JSplitPane splitPane;
 
     private JButton buttonSave;
+    private JButton buttonSaveAll;
     private JButton buttonUndo;
     private JButton buttonRedo;
     private JButton buttonCut;
@@ -111,7 +113,8 @@ public class MainWindow extends  JFrame{
 
         //Init tool bar
         toolBar.setRollover(true);
-        toolBar.setFloatable(false);
+        toolBar.setFloatable(true);
+        //toolBar.setRequestFocusEnabled(false);
         initToolBar();
         //-------------------------------------------------------------------------------------
         panel.add(toolBar, BorderLayout.PAGE_START);
@@ -122,7 +125,8 @@ public class MainWindow extends  JFrame{
         this.setTitle("Notepad++");
         this.setSize(1000, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(panel);
+        this.getContentPane().add(panel);
+        this.addWindowFocusListener(new WindowFocusListener(editorWindow));
     }
 
     private void initMenuFile(){
@@ -480,61 +484,77 @@ public class MainWindow extends  JFrame{
         JButton buttonNewFile = new JButton(new ImageIcon("icon\\new.png"));
         buttonNewFile.addActionListener(listener);
         buttonNewFile.setActionCommand("New");
+        buttonNewFile.setToolTipText("New");
 
         JButton buttonOpen = new JButton(new ImageIcon("icon\\open.png"));
         buttonOpen.setActionCommand("Open file");
+        buttonOpen.setToolTipText("Open");
         buttonOpen.addActionListener(listener);
 
         buttonSave = new JButton(new ImageIcon("icon\\save.png"));
         buttonSave.addActionListener(listener);
         buttonSave.setActionCommand("Save file");
+        buttonSave.setToolTipText("Save");
+        buttonSave.setEnabled(false);
 
-        JButton buttonSaveAll = new JButton(new ImageIcon("icon\\save_all.png"));
+        buttonSaveAll = new JButton(new ImageIcon("icon\\save_all.png"));
         buttonSaveAll.addActionListener(listener);
         buttonSaveAll.setActionCommand("Save all");
+        buttonSaveAll.setToolTipText("Save all");
+        buttonSaveAll.setEnabled(false);
 
         JButton buttonClose = new JButton(new ImageIcon("icon\\close_file.png"));
         buttonClose.addActionListener(listener);
         buttonClose.setActionCommand("Close file");
+        buttonClose.setToolTipText("Close file");
 
         JButton buttonCloseAll = new JButton(new ImageIcon("icon\\close_all.png"));
         buttonCloseAll.addActionListener(listener);
         buttonCloseAll.setActionCommand("Close all");
+        buttonCloseAll.setToolTipText("Close all");
 
         //JButton buttonPrint = new JButton(new ImageIcon("icon\\print.png"));
         JButton buttonOpenTree = new JButton(new ImageIcon("icon\\directory.png"));
         buttonOpenTree.addActionListener(listener);
         buttonOpenTree.setActionCommand("Open workspace");
+        buttonOpenTree.setToolTipText("Open workspace");
 
         buttonCut = new JButton(new ImageIcon("icon\\cut.png"));
         buttonCut.addActionListener(listener);
         buttonCut.setActionCommand("Cut");
+        buttonCut.setToolTipText("Cut");
 
         buttonCopy = new JButton(new ImageIcon("icon\\copy.png"));
         buttonCopy.addActionListener(listener);;
         buttonCopy.setActionCommand("Copy");
+        buttonCopy.setToolTipText("Copy");
 
         buttonPaste = new JButton(new ImageIcon("icon\\paste.png"));
         buttonPaste.addActionListener(listener);
         buttonPaste.setActionCommand("Paste");
+        buttonPaste.setToolTipText("Paste");
 
         buttonUndo = new JButton(new ImageIcon("icon\\undo.png"));
         buttonUndo.addActionListener(listener);
         buttonUndo.setActionCommand("Undo");
+        buttonUndo.setToolTipText("Undo");
         buttonUndo.setEnabled(false);
 
         buttonRedo = new JButton(new ImageIcon("icon\\redo.png"));
         buttonRedo.addActionListener(listener);
         buttonRedo.setActionCommand("Redo");
+        buttonRedo.setToolTipText("Redo");
         buttonRedo.setEnabled(false);
 
         JButton buttonFind = new JButton(new ImageIcon("icon\\find.png"));
         buttonFind.addActionListener(listener);
         buttonFind.setActionCommand("Find");
+        buttonFind.setToolTipText("Find");
 
         JButton buttonReplace = new JButton(new ImageIcon("icon\\replace.png"));
         buttonReplace.addActionListener(listener);
         buttonReplace.setActionCommand("Replace");
+        buttonReplace.setToolTipText("Replace");
 
         toolBar.add(buttonNewFile);
         toolBar.add(buttonOpen);
@@ -556,7 +576,6 @@ public class MainWindow extends  JFrame{
 
         toolBar.add(buttonFind);
         toolBar.add(buttonReplace);
-
     }
 
     public void setVisiblePanelSearchIncremental(boolean visible){
@@ -577,5 +596,6 @@ public class MainWindow extends  JFrame{
         buttonSave.setEnabled(enabled);
     }
 
+    public void setButtonSaveAllEnabled (boolean enabled){buttonSaveAll.setEnabled(enabled);}
 
 }
