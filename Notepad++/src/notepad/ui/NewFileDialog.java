@@ -19,12 +19,12 @@ public class NewFileDialog extends JDialog{
     protected JLabel labelName;
     protected JLabel labelKind;
     protected JOptionPane optionPane;
-    private EditorWindow editorWindow;
+    //private EditorWindow editorWindow;
     private String[] buttonsName = {"Create file", "Cancel"};
 
     public NewFileDialog(JFrame frame, String[] kind, EditorWindow editorWindow){
         this.frame = frame;
-        this.editorWindow = editorWindow;
+        //this.editorWindow = editorWindow;
         textFieldName = new JTextField();
         textFieldName.requestFocusInWindow();
         textFieldName.setText(CategoryOfFile.NORMAL_TEXT_FILE);
@@ -51,7 +51,7 @@ public class NewFileDialog extends JDialog{
 
     public NewFileDialog(JFrame frame, EditorWindow editorWindow){
         this.frame = frame;
-        this.editorWindow = editorWindow;
+        //this.editorWindow = editorWindow;
         textFieldName = new JTextField();
         textFieldName.requestFocusInWindow();
         labelName = new JLabel("Name: ");
@@ -76,6 +76,9 @@ public class NewFileDialog extends JDialog{
         setVisible(true);
     }
 
+    /**
+     * @return Name of new file you want to create
+     */
     public String getName(){
         return textFieldName.getText();
     }

@@ -8,6 +8,7 @@ import notepad.ui.TreePopupMenu;
 import notepad.util.TreeInteraction;
 
 import javax.swing.SwingUtilities;
+import javax.swing.JFrame;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -20,10 +21,10 @@ public class TreeMouseListener implements MouseListener {
     private TreePopupMenu popupMenu;
     private TreeInteraction treeInteraction;
 
-    public TreeMouseListener(MyTree tree, EditorWindow editorWindow){
+    public TreeMouseListener(MyTree tree, EditorWindow editorWindow, JFrame parentFrame){
         this.tree = tree;
         this.editorWindow = editorWindow;
-        popupMenu = new TreePopupMenu();
+        popupMenu = new TreePopupMenu(editorWindow, tree, parentFrame);
         treeInteraction = new TreeInteraction();
     }
 

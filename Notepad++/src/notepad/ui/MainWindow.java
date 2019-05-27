@@ -75,7 +75,7 @@ public class MainWindow extends  JFrame{
         panel = new JPanel(new BorderLayout());
 
         treeScrollPane = new JScrollPane(myTree);
-        treeMouseListener = new TreeMouseListener(myTree, editorWindow);
+        treeMouseListener = new TreeMouseListener(myTree, editorWindow, this);
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScrollPane, editorWindow);
         myTree.addMouseListener(treeMouseListener);

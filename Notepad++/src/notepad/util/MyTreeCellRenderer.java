@@ -1,7 +1,6 @@
 package notepad.util;
 
 import notepad.ui.MyTree;
-import notepad.util.FilePath;
 
 import javax.swing.JComponent;
 import javax.swing.JTree;
@@ -62,7 +61,7 @@ public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
 
     private File getFile(Object value){
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
-        String path = FilePath.buildFilePath(node);
+        String path = BuildingFilePath.buildFilePath(node);
         File file = new File(location + path);
         return file;
     }

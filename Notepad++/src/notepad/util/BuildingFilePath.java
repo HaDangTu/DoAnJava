@@ -3,7 +3,7 @@ package notepad.util;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-public class FilePath {
+public class BuildingFilePath {
 
     public static String buildFilePath(TreePath treePath){
         String path = "";
