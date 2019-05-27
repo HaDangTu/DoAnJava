@@ -59,6 +59,8 @@ public class ToolBarButtonsListener implements ActionListener {
         else if (command.equalsIgnoreCase("Save file")){
             openAndSaveFile.saveFile(textEditor, index);
             parentFrame.setButtonSaveEnabled(false);
+            if (editorWindow.isSavedAll())
+                parentFrame.setButtonSaveAllEnabled(false);
         }
         else if (command.equalsIgnoreCase("Save all")){
             openAndSaveFile.saveAllFile();

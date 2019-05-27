@@ -98,17 +98,14 @@ public class EditorWindow extends JTabbedPane {
         Set name of Tab
      */
     public void setTitleForTab(String nameOfTab){
-        TabUI tabUI = new TabUI();
-        tabUI.setLabel(nameOfTab);
-        setTabComponentAt(getTabCount() - 1, tabUI);
+        int index = getTabCount() - 1;
+        setTitleForTab(nameOfTab, index);
     }
 
     public void setTitleForTab(String nameOfTab, int index){
-        TabUI tabUI = new TabUI();
+        TabUI tabUI = (TabUI) getTabComponentAt(index);
         tabUI.setLabel(nameOfTab);
-        tabUI.setListener(new CloseTabButtonListener(this, tabUI));
         setTitleAt(index, nameOfTab);
-        setTabComponentAt(index, tabUI);
     }
 
     public String getTitleOfTab(int index){
@@ -160,5 +157,15 @@ public class EditorWindow extends JTabbedPane {
     public String getFilePathOfTab(int index) {
         TextEditor textEditor = getTextEditor(index);
         return textEditor.getFilePath();
+    }
+
+    public boolean isSavedAll(){
+        TextEditor[] textEditors = new TextEditor[getTabCount()];
+        for (int j = 0; j < textEditors.length; j++) {
+            textEditors[j] = getTextEditor(j);
+            if (textEditors[j].getIsChanged())
+                return false;
+        }
+        return true;
     }
 }
