@@ -1,62 +1,51 @@
 package notepad.listener;
 
-import notepad.ui.TextEditor;
-import notepad.util.CategoryOfFile;
 import notepad.ui.EditorWindow;
 import notepad.ui.MyTree;
-import notepad.util.MyReadAndWriteAdapter;
-import org.fife.ui.rsyntaxtextarea.*;
-import javax.swing.tree.TreePath;
+import notepad.ui.TreePopupMenu;
+
+
+import notepad.util.TreeInteraction;
+
+import javax.swing.SwingUtilities;
+
 import java.io.IOException;
 import java.io.FileNotFoundException;
-import java.io.File;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class TreeMouseListener implements MouseListener {
     private EditorWindow editorWindow;
     private MyTree tree;
+    private TreePopupMenu popupMenu;
+    private TreeInteraction treeInteraction;
 
     public TreeMouseListener(MyTree tree, EditorWindow editorWindow){
         this.tree = tree;
         this.editorWindow = editorWindow;
+        popupMenu = new TreePopupMenu();
+        treeInteraction = new TreeInteraction();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getClickCount() == 2){
-            TreePath treePath = tree.getSelectionPath();
-            String location = createPathName(treePath);
-            String filePath = tree.getFilePath() + "\\" + location;
-
-            int result = editorWindow.isExist(filePath);
-            if (result < 0) {
-                File file = new File(filePath);
-                if (!file.isDirectory()) {
-                    editorWindow.addTabEditor(file.getName());
-                    int index = editorWindow.getTabCount() - 1;
-                    editorWindow.setFilePathForTab(filePath, index);
-
-                    CategoryOfFile category = new CategoryOfFile();
-                    String extension = category.getExtensionOfFile(file.getName());
-                    category.ChangeStyleEditorForFile(extension, editorWindow);
-
-                    RSyntaxTextArea textArea = editorWindow.getTextEditor(editorWindow.getTabCount() - 1).getTextArea();
-                    MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);
-                    try {
-                        adapter.read(filePath);
-                        TextEditor textEditor = editorWindow.getTextEditor(index);
-                        textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = tru
-                        editorWindow.setSelectedIndex(index);
-                    } catch (FileNotFoundException fe) {
-                        System.err.println(fe.getMessage());
-                    } catch (IOException ioe) {
-                        System.err.println(ioe.getMessage());
-                    }
-                }
+        if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2){
+            try{
+                treeInteraction.openFile(editorWindow, tree);
             }
-            else
-                editorWindow.setSelectedIndex(result);
+            catch (FileNotFoundException fe){
+                System.err.println(fe.getMessage());
+            }
+            catch (IOException ioe){
+                System.err.println(ioe.getMessage());
+            }
+        }
+        else if (SwingUtilities.isRightMouseButton(e)){
+            int row = tree.getRowForLocation(e.getX(), e.getY());
+            if (row >= 0){
+                tree.setSelectionRow(row);
+                popupMenu.show(tree, e.getX(), e.getY());
+            }
         }
     }
 
@@ -79,14 +68,5 @@ public class TreeMouseListener implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
 
-    }
-
-    public String createPathName(TreePath treePath){
-        String path = "";
-        Object[] objects = treePath.getPath();
-        for (int i = 1; i < objects.length; i++){
-            path = path.concat(objects[i].toString() + "\\");
-        }
-        return path;
     }
 }

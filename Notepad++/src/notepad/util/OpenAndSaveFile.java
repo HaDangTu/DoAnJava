@@ -43,8 +43,8 @@ public class OpenAndSaveFile {
         int returnValue = fileChooser.showOpenDialog(parentFrame);
         if (returnValue == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
-            tree.setFilePath(file.getAbsolutePath());
-            tree.setRootWithFilePath(tree.getFilePath());
+            tree.setLocation1(file.getAbsolutePath());
+            tree.setRootWithFilePath(tree.getLocation1());
             tree.createTree(file, tree.getRoot());
             tree.setRoot(tree.getRoot());
         }

@@ -1,6 +1,7 @@
 package notepad.util;
 
 import notepad.ui.MyTree;
+import notepad.util.FilePath;
 
 import javax.swing.JComponent;
 import javax.swing.JTree;
@@ -10,7 +11,7 @@ import javax.swing.ImageIcon;
 import java.io.File;
 public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
 
-    private String filePath;
+    private String location;
     private ImageIcon folderIcon;
     private ImageIcon javaFileIcon;
     private ImageIcon cFileIcon;
@@ -54,24 +55,16 @@ public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
                                                   boolean hasFocus) {
         super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
         MyTree mytree = (MyTree) tree;
-        filePath = mytree.getFilePath();
+        location = mytree.getLocation1();
         setIconForFile(value, expanded);
         return this;
     }
 
     private File getFile(Object value){
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
-        String path = buildFilePath(node);
-        File file = new File(filePath + path);
+        String path = FilePath.buildFilePath(node);
+        File file = new File(location + path);
         return file;
-    }
-
-    private String buildFilePath(DefaultMutableTreeNode node){
-        String path = "";
-        Object[] objects = node.getUserObjectPath();
-        for (int i = 1 ; i < objects.length; i++)
-            path = path.concat("\\" + objects[i].toString());
-        return path;
     }
 
     private void setIconForFile(Object value, boolean expanded){

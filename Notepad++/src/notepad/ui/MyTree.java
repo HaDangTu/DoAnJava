@@ -7,7 +7,7 @@ import javax.swing.tree.DefaultTreeModel;
 import java.io.File;
 
 public class MyTree extends JTree {
-    private String filePath;
+    private String location1;
     private DefaultMutableTreeNode root;
 
     public MyTree(DefaultMutableTreeNode root){
@@ -29,8 +29,8 @@ public class MyTree extends JTree {
         }
     }
 
-    public void setFilePath(String filePath){
-        this.filePath = filePath;
+    public void setLocation1(String location1){
+        this.location1 = location1;
     }
 
     public void setRootWithFilePath(String filePath){
@@ -44,8 +44,12 @@ public class MyTree extends JTree {
         treeModel.setRoot(root);
     }
 
-    public String getFilePath(){
-        return filePath;
+    /**
+     * Get location of root
+     * @return location
+     */
+    public String getLocation1(){
+        return location1;
     }
 
     public DefaultMutableTreeNode getRoot (){

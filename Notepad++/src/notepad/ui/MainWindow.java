@@ -4,21 +4,26 @@ import notepad.listener.MenuEditActionListener;
 import notepad.listener.MenuLanguageActionListener;
 import notepad.listener.MenuSearchActionListener;
 import notepad.listener.TreeMouseListener;
-import notepad.listener.FindButtonListener;
-import notepad.listener.FindDocumentListener;
-import notepad.listener.ToolBarButtonsListener;
 import notepad.listener.WindowFocusListener;
 
-import javax.swing.*;
+import javax.swing.JMenuBar;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
+import javax.swing.ImageIcon;
+import javax.swing.KeyStroke;
+
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.ComponentOrientation;
 
 import java.lang.Exception;
 
@@ -31,25 +36,18 @@ public class MainWindow extends  JFrame{
     private TreeMouseListener treeMouseListener;
 
     private JMenuBar mainMenu;
-    private JToolBar toolBar;
+    private ToolBar toolBar;
 
     private EditorWindow editorWindow;
 
     private MyTree myTree;
 
     private JPanel panel;
-    private JPanel panelIncrementalSearch;
+    //private JPanel panelIncrementalSearch;
+    private SearchBar searchBar;
 
     private JScrollPane treeScrollPane;
     private JSplitPane splitPane;
-
-    private JButton buttonSave;
-    private JButton buttonSaveAll;
-    private JButton buttonUndo;
-    private JButton buttonRedo;
-    private JButton buttonCut;
-    private JButton buttonCopy;
-    private JButton buttonPaste;
 
     public MainWindow(){
         try{
@@ -64,7 +62,6 @@ public class MainWindow extends  JFrame{
 
     private void loadComponent() {
         mainMenu = new JMenuBar();
-        toolBar = new JToolBar();
 
         editorWindow = new EditorWindow();
 
@@ -76,14 +73,12 @@ public class MainWindow extends  JFrame{
         searchListener = new MenuSearchActionListener(editorWindow, this);
 
         panel = new JPanel(new BorderLayout());
-        panelIncrementalSearch = new JPanel(new FlowLayout());
 
         treeScrollPane = new JScrollPane(myTree);
         treeMouseListener = new TreeMouseListener(myTree, editorWindow);
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScrollPane, editorWindow);
         myTree.addMouseListener(treeMouseListener);
-
 
         //Menu File
         initMenuFile();
@@ -106,20 +101,15 @@ public class MainWindow extends  JFrame{
         //-------------------------------------------------------------------------------------
 
         //Init search incremental
-        panelIncrementalSearch.setVisible(false);
-        panelIncrementalSearch.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        initIncrementalSearchPanel();
+        searchBar = new SearchBar(editorWindow);
         //-------------------------------------------------------------------------------------
 
         //Init tool bar
-        toolBar.setRollover(true);
-        toolBar.setFloatable(true);
-        //toolBar.setRequestFocusEnabled(false);
-        initToolBar();
+        toolBar = new ToolBar(fileListener.getFileChooser(), editorWindow, myTree, this);
         //-------------------------------------------------------------------------------------
         panel.add(toolBar, BorderLayout.PAGE_START);
         panel.add(splitPane,BorderLayout.CENTER);
-        panel.add(panelIncrementalSearch, BorderLayout.SOUTH);
+        panel.add(searchBar, BorderLayout.SOUTH);
 
         this.setJMenuBar(mainMenu);
         this.setTitle("Notepad++");
@@ -434,168 +424,26 @@ public class MainWindow extends  JFrame{
         editorWindow.setMinimumSize(minimumSize);
     }
 
-    private void initIncrementalSearchPanel(){
-        JButton buttonClose = new JButton(new ImageIcon("icon\\close.png"));
-        buttonClose.setSize(10, 10);
-        buttonClose.setOpaque(false);
-        buttonClose.setPreferredSize(new Dimension(16, 16));
-        buttonClose.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panelIncrementalSearch.setVisible(false);
-            }
-        });
-
-        JButton buttonFindNext = new JButton("Find Next");
-        JButton buttonFindPrevious = new JButton("Find Previous");
-
-        JLabel labelFind = new JLabel("Find what: ");
-        JLabel labelResult = new JLabel();
-
-        JCheckBox chbMatchCase = new JCheckBox("Match case");
-        JCheckBox chbHighlightAll = new JCheckBox("Highlight all");
-
-        JTextField fieldFind = new JTextField();
-        fieldFind.setPreferredSize(new Dimension(180, 20));
-        fieldFind.getDocument().addDocumentListener(new FindDocumentListener(chbHighlightAll, chbMatchCase, labelResult,
-                editorWindow));
-
-        FindButtonListener listener = new FindButtonListener(chbMatchCase, editorWindow, fieldFind, null,
-                labelResult, chbHighlightAll.isSelected());
-
-        buttonFindNext.addActionListener(listener);
-        buttonFindPrevious.addActionListener(listener);
-
-        panelIncrementalSearch.add(buttonClose);
-        panelIncrementalSearch.add(labelFind);
-        panelIncrementalSearch.add(fieldFind);
-        panelIncrementalSearch.add(buttonFindNext);
-        panelIncrementalSearch.add(buttonFindPrevious);
-        panelIncrementalSearch.add(chbHighlightAll);
-        panelIncrementalSearch.add(chbMatchCase);
-        panelIncrementalSearch.add(labelResult);
-    }
-
-    private void initToolBar(){
-
-        ToolBarButtonsListener listener = new ToolBarButtonsListener(fileListener.getFileChooser(), editorWindow,
-                myTree, this);
-
-        JButton buttonNewFile = new JButton(new ImageIcon("icon\\new.png"));
-        buttonNewFile.addActionListener(listener);
-        buttonNewFile.setActionCommand("New");
-        buttonNewFile.setToolTipText("New");
-
-        JButton buttonOpen = new JButton(new ImageIcon("icon\\open.png"));
-        buttonOpen.setActionCommand("Open file");
-        buttonOpen.setToolTipText("Open");
-        buttonOpen.addActionListener(listener);
-
-        buttonSave = new JButton(new ImageIcon("icon\\save.png"));
-        buttonSave.addActionListener(listener);
-        buttonSave.setActionCommand("Save file");
-        buttonSave.setToolTipText("Save");
-        buttonSave.setEnabled(false);
-
-        buttonSaveAll = new JButton(new ImageIcon("icon\\save_all.png"));
-        buttonSaveAll.addActionListener(listener);
-        buttonSaveAll.setActionCommand("Save all");
-        buttonSaveAll.setToolTipText("Save all");
-        buttonSaveAll.setEnabled(false);
-
-        JButton buttonClose = new JButton(new ImageIcon("icon\\close_file.png"));
-        buttonClose.addActionListener(listener);
-        buttonClose.setActionCommand("Close file");
-        buttonClose.setToolTipText("Close file");
-
-        JButton buttonCloseAll = new JButton(new ImageIcon("icon\\close_all.png"));
-        buttonCloseAll.addActionListener(listener);
-        buttonCloseAll.setActionCommand("Close all");
-        buttonCloseAll.setToolTipText("Close all");
-
-        //JButton buttonPrint = new JButton(new ImageIcon("icon\\print.png"));
-        JButton buttonOpenTree = new JButton(new ImageIcon("icon\\directory.png"));
-        buttonOpenTree.addActionListener(listener);
-        buttonOpenTree.setActionCommand("Open workspace");
-        buttonOpenTree.setToolTipText("Open workspace");
-
-        buttonCut = new JButton(new ImageIcon("icon\\cut.png"));
-        buttonCut.addActionListener(listener);
-        buttonCut.setActionCommand("Cut");
-        buttonCut.setToolTipText("Cut");
-
-        buttonCopy = new JButton(new ImageIcon("icon\\copy.png"));
-        buttonCopy.addActionListener(listener);;
-        buttonCopy.setActionCommand("Copy");
-        buttonCopy.setToolTipText("Copy");
-
-        buttonPaste = new JButton(new ImageIcon("icon\\paste.png"));
-        buttonPaste.addActionListener(listener);
-        buttonPaste.setActionCommand("Paste");
-        buttonPaste.setToolTipText("Paste");
-
-        buttonUndo = new JButton(new ImageIcon("icon\\undo.png"));
-        buttonUndo.addActionListener(listener);
-        buttonUndo.setActionCommand("Undo");
-        buttonUndo.setToolTipText("Undo");
-        buttonUndo.setEnabled(false);
-
-        buttonRedo = new JButton(new ImageIcon("icon\\redo.png"));
-        buttonRedo.addActionListener(listener);
-        buttonRedo.setActionCommand("Redo");
-        buttonRedo.setToolTipText("Redo");
-        buttonRedo.setEnabled(false);
-
-        JButton buttonFind = new JButton(new ImageIcon("icon\\find.png"));
-        buttonFind.addActionListener(listener);
-        buttonFind.setActionCommand("Find");
-        buttonFind.setToolTipText("Find");
-
-        JButton buttonReplace = new JButton(new ImageIcon("icon\\replace.png"));
-        buttonReplace.addActionListener(listener);
-        buttonReplace.setActionCommand("Replace");
-        buttonReplace.setToolTipText("Replace");
-
-        toolBar.add(buttonNewFile);
-        toolBar.add(buttonOpen);
-        toolBar.add(buttonOpenTree);
-        toolBar.add(buttonSave);
-        toolBar.add(buttonSaveAll);
-        toolBar.add(buttonClose);
-        toolBar.add(buttonCloseAll);
-        toolBar.addSeparator();
-
-        toolBar.add(buttonCut);
-        toolBar.add(buttonCopy);
-        toolBar.add(buttonPaste);
-        toolBar.addSeparator();
-
-        toolBar.add(buttonUndo);
-        toolBar.add(buttonRedo);
-        toolBar.addSeparator();
-
-        toolBar.add(buttonFind);
-        toolBar.add(buttonReplace);
-    }
-
     public void setVisiblePanelSearchIncremental(boolean visible){
-        panelIncrementalSearch.setVisible(visible);
+        searchBar.setVisible(visible);
     }
 
     public EditorWindow getEditorWindow() {return editorWindow;}
 
     public void setButtonUndoEnabled(boolean enabled){
-        buttonUndo.setEnabled(enabled);
+        toolBar.setButtonUndoEnabled(enabled);
     }
 
     public void setButtonRedoEnabled(boolean enabled){
-        buttonRedo.setEnabled(enabled);
+        toolBar.setButtonRedoEnabled(enabled);
     }
 
     public void setButtonSaveEnabled(boolean enabled){
-        buttonSave.setEnabled(enabled);
+        toolBar.setButtonSaveEnabled(enabled);
     }
 
-    public void setButtonSaveAllEnabled (boolean enabled){buttonSaveAll.setEnabled(enabled);}
+    public void setButtonSaveAllEnabled (boolean enabled){
+        toolBar.setButtonSaveAllEnabled(enabled);
+    }
 
 }
