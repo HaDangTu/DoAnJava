@@ -55,4 +55,11 @@ public class MyTree extends JTree {
     public DefaultMutableTreeNode getRoot (){
         return root;
     }
+
+    public void reloadTree(){
+        File rootFile = new File(location1);
+        DefaultMutableTreeNode root1 = new DefaultMutableTreeNode();
+        createTree(rootFile, root1);
+        setRoot(root1);
+    }
 }

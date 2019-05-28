@@ -12,14 +12,11 @@ import javax.swing.tree.TreePath;
 import notepad.util.BuildingFilePath;
 import notepad.util.TreeInteraction;
 
-import java.awt.datatransfer.Clipboard;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.io.IOException;
 
-import java.awt.datatransfer.StringSelection;
-import java.awt.Toolkit;
 
 /**
  * TODO test new file and new folder
@@ -73,15 +70,19 @@ public class TreePopupMenuListener implements ActionListener {
                 System.err.println(ioe.getMessage());
             }
         }
+        else if (command.equalsIgnoreCase("Copy")){
+            treeInteraction.copyFile(tree);
+        }
         else if (command.equalsIgnoreCase("Copy Path")){
-            String location = tree.getLocation1();
-            TreePath treePath = tree.getSelectionPath();
-            String path = BuildingFilePath.buildFilePath(treePath);
-            String fullPath = location + path;
-
-            StringSelection stringSelection = new StringSelection(fullPath);
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
+            treeInteraction.copyPath(tree);
+        }
+        else if (command.equalsIgnoreCase("Paste")){
+            try {
+                treeInteraction.paste(tree);
+            }
+            catch (IOException ioe){
+                System.err.println(ioe.getMessage());
+            }
         }
         else if (command.equalsIgnoreCase("Delete")){
             int result = JOptionPane.showConfirmDialog(parentFrame,

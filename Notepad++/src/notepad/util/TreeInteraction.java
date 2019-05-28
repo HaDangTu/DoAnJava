@@ -9,11 +9,18 @@ import javax.swing.tree.DefaultTreeModel;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
+import java.awt.datatransfer.*;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.File;
 
+import java.awt.Toolkit;
+
+import org.apache.commons.io.FileUtils;
+
 public class TreeInteraction {
+    private TreePath srcTreePath;
+    private boolean isCopy;
 
     public void openFile(EditorWindow editorWindow, MyTree tree) throws FileNotFoundException, IOException{
         TreePath treePath = tree.getSelectionPath();
@@ -134,5 +141,54 @@ public class TreeInteraction {
             return true;
         }
         else return false;
+    }
+
+    public void copyPath (MyTree tree){
+        String location = tree.getLocation1();
+        TreePath treePath = tree.getSelectionPath();
+        String path = BuildingFilePath.buildFilePath(treePath);
+        String fullPath = location + path;
+
+        StringSelection stringSelection = new StringSelection(fullPath);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+    }
+
+    public void copyFile(MyTree tree){
+        srcTreePath = tree.getSelectionPath();
+    }
+
+    public void paste(MyTree tree) throws IOException{
+        String location = tree.getLocation1();
+
+        String srcFilePath = location + BuildingFilePath.buildFilePath(srcTreePath);
+        File srcFile = new File(srcFilePath);
+
+        String destFilePath = location + BuildingFilePath.buildFilePath(tree.getSelectionPath());
+        File destFile = new File(destFilePath);
+
+        if (!destFile.isFile()) {
+            destFilePath = location + BuildingFilePath.buildFilePath(tree.getSelectionPath()) +
+                    "\\" + srcFile.getName();
+            destFile = new File(destFilePath);
+        }
+        else return;
+
+        if (!destFile.isFile()){
+            if (srcFile.isDirectory())
+                FileUtils.copyDirectory(srcFile, destFile);
+            else
+                FileUtils.copyFile(srcFile, destFile);
+
+            tree.reloadTree();
+        }
+    }
+
+    public void setCopy(boolean isCopy){
+        this.isCopy = isCopy;
+    }
+
+    public boolean getCopy() {
+        return this.isCopy;
     }
 }
