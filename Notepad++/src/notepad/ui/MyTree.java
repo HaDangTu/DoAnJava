@@ -12,7 +12,9 @@ public class MyTree extends JTree {
 
     public MyTree(DefaultMutableTreeNode root){
         super(root);
-        setCellRenderer(new MyTreeCellRenderer());
+        MyTreeCellRenderer renderer = new MyTreeCellRenderer();
+        setCellRenderer(renderer);
+        setEditable(true);
     }
 
     public void createTree(File file, DefaultMutableTreeNode root){
@@ -33,14 +35,15 @@ public class MyTree extends JTree {
         this.location1 = location1;
     }
 
-    public void setRootWithFilePath(String filePath){
-        File file = new File(filePath);
-        this.root = new DefaultMutableTreeNode(file.getName());
-        setRoot(this.root);
+    public void setRootWithFile(File file){
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode(file.getName());
+        setLocation1(file.getAbsolutePath());
+        createTree(file, root);
+        setRoot(root);
     }
 
     public void setRoot(DefaultMutableTreeNode root){
-        DefaultTreeModel treeModel = (DefaultTreeModel) this.getModel();
+        DefaultTreeModel treeModel = (DefaultTreeModel) getModel();
         treeModel.setRoot(root);
     }
 

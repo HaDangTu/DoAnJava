@@ -7,9 +7,8 @@ import notepad.ui.NewFolderDialog;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.tree.TreePath;
+import javax.swing.tree.DefaultTreeCellEditor;
 
-import notepad.util.BuildingFilePath;
 import notepad.util.TreeInteraction;
 
 import java.awt.event.ActionEvent;
@@ -37,6 +36,7 @@ public class TreePopupMenuListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
+
         if (command.equalsIgnoreCase("New file")){
             final String[] kind = {"Normal text", "C file", "C++ file", "C# file", "PHP file",
                     "Python file", "Java file", "JavaScript file", "JSON file"};
@@ -86,6 +86,10 @@ public class TreePopupMenuListener implements ActionListener {
             catch (IOException ioe){
                 System.err.println(ioe.getMessage());
             }
+        }
+        else if (command.equalsIgnoreCase("Rename")){
+            DefaultTreeCellEditor cellEditor = (DefaultTreeCellEditor) tree.getCellEditor();
+            cellEditor.actionPerformed(e);
         }
         else if (command.equalsIgnoreCase("Delete")){
             int result = JOptionPane.showConfirmDialog(parentFrame,

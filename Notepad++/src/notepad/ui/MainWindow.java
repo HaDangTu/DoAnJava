@@ -3,7 +3,6 @@ import notepad.listener.MenuFileActionListener;
 import notepad.listener.MenuEditActionListener;
 import notepad.listener.MenuLanguageActionListener;
 import notepad.listener.MenuSearchActionListener;
-import notepad.listener.TreeMouseListener;
 import notepad.listener.WindowFocusListener;
 
 import javax.swing.JMenuBar;
@@ -11,13 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
 import javax.swing.SwingUtilities;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
-
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -33,20 +30,19 @@ public class MainWindow extends  JFrame{
     private MenuFileActionListener fileListener;
     private MenuEditActionListener editListener;
     private MenuSearchActionListener searchListener;
-    private TreeMouseListener treeMouseListener;
+
 
     private JMenuBar mainMenu;
     private ToolBar toolBar;
 
-    private EditorWindow editorWindow;
-
-    private MyTree myTree;
+    //private EditorWindow editorWindow;
+    EditorView editorView;
+    private TreeView treeView;
 
     private JPanel panel;
-    //private JPanel panelIncrementalSearch;
+
     private SearchBar searchBar;
 
-    private JScrollPane treeScrollPane;
     private JSplitPane splitPane;
 
     public MainWindow(){
@@ -63,50 +59,30 @@ public class MainWindow extends  JFrame{
     private void loadComponent() {
         mainMenu = new JMenuBar();
 
-        editorWindow = new EditorWindow();
-
-        myTree = new MyTree(null);
+        editorView = new EditorView();
+        EditorWindow editorWindow = editorView.getEditorWindow();
+        treeView = new TreeView(editorWindow, this);
 
         langListener = new MenuLanguageActionListener(editorWindow);
-        fileListener = new MenuFileActionListener(editorWindow, myTree, this);
+        fileListener = new MenuFileActionListener(editorWindow, treeView.getTree(), this);
         editListener = new MenuEditActionListener(editorWindow);
         searchListener = new MenuSearchActionListener(editorWindow, this);
 
         panel = new JPanel(new BorderLayout());
 
-        treeScrollPane = new JScrollPane(myTree);
-        treeMouseListener = new TreeMouseListener(myTree, editorWindow, this);
 
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeScrollPane, editorWindow);
-        myTree.addMouseListener(treeMouseListener);
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeView, editorView);
 
-        //Menu File
         initMenuFile();
-        //-------------------------------------------------------------------------------------
-
-        //Menu Edit
         initMenuEdit();
-        //-------------------------------------------------------------------------------------
-
-        //Menu Search
         initMenuSearch();
-        //-------------------------------------------------------------------------------------
-
-        //Menu Language
         initMenuLanguage();
-        //-------------------------------------------------------------------------------------
-
-        //Innit split pane
         initSplitPane();
-        //-------------------------------------------------------------------------------------
 
-        //Init search incremental
         searchBar = new SearchBar(editorWindow);
-        //-------------------------------------------------------------------------------------
 
-        //Init tool bar
-        toolBar = new ToolBar(fileListener.getFileChooser(), editorWindow, myTree, this);
-        //-------------------------------------------------------------------------------------
+        toolBar = new ToolBar(fileListener.getFileChooser(), editorWindow, treeView.getTree(), this);
+
         panel.add(toolBar, BorderLayout.PAGE_START);
         panel.add(splitPane,BorderLayout.CENTER);
         panel.add(searchBar, BorderLayout.SOUTH);
@@ -420,15 +396,15 @@ public class MainWindow extends  JFrame{
         splitPane.setDividerLocation(150);
         splitPane.setResizeWeight(0.2);
         Dimension minimumSize = new Dimension(150, 600);
-        treeScrollPane.setMinimumSize(minimumSize);
-        editorWindow.setMinimumSize(minimumSize);
+        treeView.setMinimumSize(minimumSize);
+        editorView.setMinimumSize(minimumSize);
     }
 
     public void setVisiblePanelSearchIncremental(boolean visible){
         searchBar.setVisible(visible);
     }
 
-    public EditorWindow getEditorWindow() {return editorWindow;}
+    public EditorWindow getEditorWindow() {return editorView.getEditorWindow();}
 
     public void setButtonUndoEnabled(boolean enabled){
         toolBar.setButtonUndoEnabled(enabled);

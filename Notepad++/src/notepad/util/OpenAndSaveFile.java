@@ -4,10 +4,12 @@ import notepad.ui.EditorWindow;
 import notepad.ui.MainWindow;
 import notepad.ui.TextEditor;
 import notepad.ui.MyTree;
+
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -43,10 +45,7 @@ public class OpenAndSaveFile {
         int returnValue = fileChooser.showOpenDialog(parentFrame);
         if (returnValue == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
-            tree.setLocation1(file.getAbsolutePath());
-            tree.setRootWithFilePath(tree.getLocation1());
-            tree.createTree(file, tree.getRoot());
-            tree.setRoot(tree.getRoot());
+            tree.setRootWithFile(file);
         }
     }
 
