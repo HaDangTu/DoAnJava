@@ -120,18 +120,17 @@ public class TreeInteraction {
 
     public boolean deleteFileOrFolder(MyTree tree){
         TreePath treePath = tree.getSelectionPath();
+        return deleteFileOrFolder(tree, treePath);
+    }
+
+    private boolean deleteFileOrFolder(MyTree tree, TreePath treePath){
         String path = BuildingFilePath.buildFilePath(treePath);
         String location = tree.getLocation1();
         String fullPath = location + path;
 
         File file = new File(fullPath);
 
-        if (file.isDirectory()){
-            File[] files = file.listFiles();
-            if (files.length > 0)
-                for(File f: files)
-                    f.delete();
-        }
+        deleteFile(file);
 
         if (file.delete()) {
             DefaultMutableTreeNode deleteNode = (DefaultMutableTreeNode) treePath.getLastPathComponent();
@@ -156,6 +155,12 @@ public class TreeInteraction {
 
     public void copyFile(MyTree tree){
         srcTreePath = tree.getSelectionPath();
+        isCopy = true; //copy file
+    }
+
+    public void cutFile(MyTree tree){
+        copyFile(tree);
+        isCopy = false; //cut file
     }
 
     public void paste(MyTree tree) throws IOException{
@@ -164,7 +169,8 @@ public class TreeInteraction {
         String srcFilePath = location + BuildingFilePath.buildFilePath(srcTreePath);
         File srcFile = new File(srcFilePath);
 
-        String destFilePath = location + BuildingFilePath.buildFilePath(tree.getSelectionPath());
+        TreePath destTreePath = tree.getSelectionPath();
+        String destFilePath = location + BuildingFilePath.buildFilePath(destTreePath);
         File destFile = new File(destFilePath);
 
         if (!destFile.isFile()) {
@@ -175,12 +181,25 @@ public class TreeInteraction {
         else return;
 
         if (!destFile.isFile()){
-            if (srcFile.isDirectory())
+            DefaultMutableTreeNode childNode;
+            if (srcFile.isDirectory()) {
                 FileUtils.copyDirectory(srcFile, destFile);
-            else
+                childNode = new DefaultMutableTreeNode(srcFile.getName());
+                tree.createTree(destFile, childNode); //tao cay thu muc cua folder duoc copy or cut
+            }
+            else {
                 FileUtils.copyFile(srcFile, destFile);
+                childNode = new DefaultMutableTreeNode(srcFile.getName());
+            }
 
-            tree.reloadTree();
+            DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) destTreePath.getLastPathComponent();
+
+            DefaultTreeModel treeModel = (DefaultTreeModel) tree.getModel();
+            treeModel.insertNodeInto(childNode, parentNode, parentNode.getChildCount());
+
+            if (!isCopy){ //cut paste
+                deleteFileOrFolder(tree, srcTreePath);
+            }
         }
     }
 
@@ -190,5 +209,14 @@ public class TreeInteraction {
 
     public boolean getCopy() {
         return this.isCopy;
+    }
+
+    public void deleteFile(File file){
+        File[] files = file.listFiles();
+        for (File f : files){
+            if (f.isDirectory())
+                deleteFile(f);
+            f.delete();
+        }
     }
 }

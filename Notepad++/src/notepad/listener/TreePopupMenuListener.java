@@ -70,6 +70,9 @@ public class TreePopupMenuListener implements ActionListener {
                 System.err.println(ioe.getMessage());
             }
         }
+        else if (command.equalsIgnoreCase("Cut")){
+            treeInteraction.cutFile(tree);
+        }
         else if (command.equalsIgnoreCase("Copy")){
             treeInteraction.copyFile(tree);
         }

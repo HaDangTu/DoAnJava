@@ -30,20 +30,17 @@ public class TreeMouseListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2){
-            try{
-                treeInteraction.openFile(editorWindow, tree);
-            }
-            catch (FileNotFoundException fe){
-                System.err.println(fe.getMessage());
-            }
-            catch (IOException ioe){
-                System.err.println(ioe.getMessage());
-            }
-        }
-        else if (SwingUtilities.isRightMouseButton(e)){
-            int row = tree.getRowForLocation(e.getX(), e.getY());
-            if (row >= 0){
+        int row = tree.getRowForLocation(e.getX(), e.getY());
+        if (row >= 0) {
+            if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
+                try {
+                    treeInteraction.openFile(editorWindow, tree);
+                } catch (FileNotFoundException fe) {
+                    System.err.println(fe.getMessage());
+                } catch (IOException ioe) {
+                    System.err.println(ioe.getMessage());
+                }
+            } else if (SwingUtilities.isRightMouseButton(e)) {
                 tree.setSelectionRow(row);
                 popupMenu.show(tree, e.getX(), e.getY());
             }
