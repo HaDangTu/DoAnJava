@@ -5,6 +5,8 @@ import notepad.listener.MenuLanguageActionListener;
 import notepad.listener.MenuSearchActionListener;
 import notepad.listener.WindowFocusListener;
 
+import notepad.util.StatusBarTimer;
+
 import javax.swing.JMenuBar;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -35,15 +37,15 @@ public class MainWindow extends  JFrame{
     private JMenuBar mainMenu;
     private ToolBar toolBar;
 
-    //private EditorWindow editorWindow;
-    EditorView editorView;
+    private EditorView editorView;
     private TreeView treeView;
+    private SearchStatusBar searchStatusBar;
 
     private JPanel panel;
 
-    private SearchBar searchBar;
-
     private JSplitPane splitPane;
+
+    private StatusBarTimer timer;
 
     public MainWindow(){
         try{
@@ -62,6 +64,7 @@ public class MainWindow extends  JFrame{
         editorView = new EditorView();
         EditorWindow editorWindow = editorView.getEditorWindow();
         treeView = new TreeView(editorWindow, this);
+        searchStatusBar = new SearchStatusBar(editorWindow);
 
         langListener = new MenuLanguageActionListener(editorWindow);
         fileListener = new MenuFileActionListener(editorWindow, treeView.getTree(), this);
@@ -79,13 +82,13 @@ public class MainWindow extends  JFrame{
         initMenuLanguage();
         initSplitPane();
 
-        searchBar = new SearchBar(editorWindow);
 
         toolBar = new ToolBar(fileListener.getFileChooser(), editorWindow, treeView.getTree(), this);
 
         panel.add(toolBar, BorderLayout.PAGE_START);
         panel.add(splitPane,BorderLayout.CENTER);
-        panel.add(searchBar, BorderLayout.SOUTH);
+        panel.add(searchStatusBar, BorderLayout.SOUTH);
+
 
         this.setJMenuBar(mainMenu);
         this.setTitle("Notepad++");
@@ -93,6 +96,8 @@ public class MainWindow extends  JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().add(panel);
         this.addWindowFocusListener(new WindowFocusListener(editorWindow));
+
+        timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
     }
 
     private void initMenuFile(){
@@ -393,15 +398,15 @@ public class MainWindow extends  JFrame{
     }
 
     private void initSplitPane(){
-        splitPane.setDividerLocation(150);
+        splitPane.setDividerLocation(200);
         splitPane.setResizeWeight(0.2);
-        Dimension minimumSize = new Dimension(150, 600);
+        Dimension minimumSize = new Dimension(200, 600);
         treeView.setMinimumSize(minimumSize);
         editorView.setMinimumSize(minimumSize);
     }
 
     public void setVisiblePanelSearchIncremental(boolean visible){
-        searchBar.setVisible(visible);
+        searchStatusBar.setSearchBarVisible(visible);
     }
 
     public EditorWindow getEditorWindow() {return editorView.getEditorWindow();}

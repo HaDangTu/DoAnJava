@@ -1,6 +1,7 @@
 package notepad.ui;
 
 import notepad.listener.CloseTabButtonListener;
+import notepad.util.CategoryOfFile;
 
 import javax.swing.JTabbedPane;
 import java.util.ArrayList;

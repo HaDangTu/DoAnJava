@@ -8,6 +8,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
+import javax.swing.border.EtchedBorder;
+import javax.swing.BorderFactory;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,7 +51,10 @@ public class SearchBar extends JPanel{
         buttonFindNext.addActionListener(listener);
         buttonFindPrevious.addActionListener(listener);
 
-        setLayout(new FlowLayout());
+        FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+        flowLayout.setVgap(0);
+        setLayout(flowLayout);
+
         add(buttonClose);
         add(labelFind);
         add(fieldFind);
@@ -58,7 +63,6 @@ public class SearchBar extends JPanel{
         add(chbHighlightAll);
         add(chbMatchCase);
         add(labelResult);
-
         setVisible(false);
     }
 }

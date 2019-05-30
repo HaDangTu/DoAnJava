@@ -146,4 +146,34 @@ public class CategoryOfFile {
     public String getExtensionOfFile(String fileName){
         return fileName.substring(fileName.lastIndexOf("."));
     }
+
+    public String CovertFileExtensionToFileType(String extension){
+        if (extension.equalsIgnoreCase(CategoryOfFile.C_FILE))
+            return "C source file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.C_HEADER_FILE))
+            return "C header source file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.CPLUSPLUS_FILE))
+            return "C++ source file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.CSHARP_FILE))
+            return "C# source file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.JAVA_FILE))
+            return "Java source file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.JAVASCRIPT_FILE))
+            return "Javascript file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.JSON_FILE))
+            return "JSON  file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.PHP_FILE))
+            return "PHP Hypertext Preprocessor file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.PYTHON_FILE))
+            return "Python file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.CSS_FILE))
+            return "Cascades Style Sheets file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.HTML_FILE))
+            return "Hyper Text Markup Language file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.SQL_FILE))
+            return "Structured Query Language file";
+        else if (extension.equalsIgnoreCase(CategoryOfFile.XML_FILE))
+            return "Extensible Markup Language file";
+        return "Normal text";
+    }
 }
