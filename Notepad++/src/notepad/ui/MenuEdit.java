@@ -11,9 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.Toolkit;
 
-/**
- * TODO: coding logic for delete menu item
- */
+
 class MenuEdit extends JMenu{
     private JMenuItem editUndo;
     private JMenuItem editRedo;
@@ -30,13 +28,16 @@ class MenuEdit extends JMenu{
 
     public MenuEdit(EditorWindow editorWindow){
         super("Edit");
+        editListener = new MenuEditActionListener(editorWindow);
         editUndo = new JMenuItem("Undo");
+        editUndo.setEnabled(false);
         editUndo.setIcon(new ImageIcon("icon\\undo.png"));
         editUndo.addActionListener(editListener);
         editUndo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         editRedo = new JMenuItem("Redo");
+        editRedo.setEnabled(false);
         editRedo.setIcon(new ImageIcon("icon\\redo.png"));
         editRedo.addActionListener(editListener);
         editRedo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y,
@@ -61,6 +62,7 @@ class MenuEdit extends JMenu{
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         editDelete = new JMenuItem("Delete");
+        editDelete.addActionListener(editListener);
 
         editSelectAll = new JMenuItem("Select All");
         editSelectAll.addActionListener(editListener);

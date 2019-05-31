@@ -102,11 +102,22 @@ public class MenuFileActionListener extends MenuMainWindowListener {
            int index = editorWindow.getSelectedIndex();
            TextEditor textEditor = editorWindow.getTextEditor(index);
            openAndSaveFile.saveFile(textEditor, index);
+
+           parentFrame.setMenuItemSaveEnabled(false);
+           parentFrame.setButtonSaveEnabled(false);
+           if (editorWindow.isSavedAll()){
+               parentFrame.setButtonSaveAllEnabled(false);
+               parentFrame.setMenuItemSaveAllEnabled(false);
+           }
         }
         else if (command.equalsIgnoreCase("Save As...")){
             int index = editorWindow.getSelectedIndex();
             TextEditor textEditor = editorWindow.getTextEditor(index);
             openAndSaveFile.saveAsFile(textEditor, index);
+            parentFrame.setMenuItemSaveEnabled(false);
+            parentFrame.setButtonSaveEnabled(false);
+            parentFrame.setButtonSaveAllEnabled(false);
+            parentFrame.setMenuItemSaveAllEnabled(false);
         }
         else if (command.equalsIgnoreCase("Save All")){
             openAndSaveFile.saveAllFile();

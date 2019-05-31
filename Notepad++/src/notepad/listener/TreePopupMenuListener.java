@@ -16,10 +16,6 @@ import java.awt.event.ActionListener;
 
 import java.io.IOException;
 
-
-/**
- * TODO test new file and new folder
- */
 public class TreePopupMenuListener implements ActionListener {
     private EditorWindow editorWindow;
     private JFrame parentFrame;

@@ -59,12 +59,18 @@ public class ToolBarButtonsListener implements ActionListener {
         else if (command.equalsIgnoreCase("Save file")){
             openAndSaveFile.saveFile(textEditor, index);
             parentFrame.setButtonSaveEnabled(false);
-            if (editorWindow.isSavedAll())
+            parentFrame.setMenuItemSaveEnabled(false);
+            if (editorWindow.isSavedAll()) {
                 parentFrame.setButtonSaveAllEnabled(false);
+                parentFrame.setMenuItemSaveAllEnabled(false);
+            }
         }
         else if (command.equalsIgnoreCase("Save all")){
             openAndSaveFile.saveAllFile();
+            parentFrame.setButtonSaveEnabled(false);
+            parentFrame.setMenuItemSaveEnabled(false);
             parentFrame.setButtonSaveAllEnabled(false);
+            parentFrame.setMenuItemSaveAllEnabled(false);
         }
         else if (command.equalsIgnoreCase("Close file")){
             tabInteraction.closeTabAt(fileChooser, index);
@@ -86,23 +92,34 @@ public class ToolBarButtonsListener implements ActionListener {
             if (undoManager.canUndo()) {
                 undoManager.undo();
 
-                if (undoManager.canRedo())
+                if (undoManager.canRedo()) {
                     parentFrame.setButtonRedoEnabled(true);
-                else
+                    parentFrame.setMenuItemRedoEnabled(true);
+                }
+                else {
                     parentFrame.setButtonRedoEnabled(false);
+                    parentFrame.setMenuItemRedoEnabled(false);
+                }
             }
-            else parentFrame.setButtonUndoEnabled(false);
+            else {
+                parentFrame.setButtonUndoEnabled(false);
+                parentFrame.setMenuItemUndoEnabled(false);
+            }
         }
         else if (command.equalsIgnoreCase("Redo")){
             UndoManager undoManager = textEditor.getUndoManger();
             if (undoManager.canRedo()){
                 undoManager.redo();
 
-                if (undoManager.canUndo())
+                if (undoManager.canUndo()) {
                     parentFrame.setButtonUndoEnabled(true);
+                    parentFrame.setMenuItemUndoEnabled(true);
+                }
             }
-            else
+            else {
                 parentFrame.setButtonRedoEnabled(false);
+                parentFrame.setMenuItemRedoEnabled(false);
+            }
         }
         else if (command.equalsIgnoreCase("Find")){
             dialog.showDialog();

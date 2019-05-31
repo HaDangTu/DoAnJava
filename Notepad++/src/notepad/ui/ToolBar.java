@@ -6,9 +6,6 @@ import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
 
-/**
- * TODO: set button cut copy paste disabled when no text is select/ no content copy in clipboard
- */
 public class ToolBar extends JToolBar{
 
     private JButton buttonSave;

@@ -23,4 +23,20 @@ public class MainMenu  extends JMenuBar{
     public void setSelectedItem(String extension){
         menuLanguage.setSelectedItem(extension);
     }
+
+    public void setMenuSaveEnabled(boolean enabled){
+        menuFile.setMenuItemSaveEnabled(enabled);
+    }
+
+    public void setMenuSaveAllEnabled(boolean enabled){
+        menuFile.setMenuItemSaveAllEnabled(enabled);
+    }
+
+    public void setMenuUndoEnabled(boolean enabled) {
+        menuEdit.setMenuItemUndoEnabled(enabled);
+    }
+
+    public void setMenuRedoEnabled(boolean enabled){
+        menuEdit.setMenuItemRedoEnabled(enabled);
+    }
 }

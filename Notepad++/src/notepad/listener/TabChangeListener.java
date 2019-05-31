@@ -1,23 +1,46 @@
 package notepad.listener;
-import notepad.ui.MainMenu;
+import notepad.ui.MainWindow;
 import notepad.ui.EditorWindow;
+import notepad.ui.TextEditor;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class TabChangeListener implements ChangeListener {
 
-    private MainMenu mainMenu;
+    private MainWindow mainWindow;
     private EditorWindow editorWindow;
 
-    public TabChangeListener(MainMenu mainMenu, EditorWindow editorWindow){
-        this.mainMenu = mainMenu;
+    public TabChangeListener(MainWindow mainWindow, EditorWindow editorWindow){
+        this.mainWindow = mainWindow;
         this.editorWindow = editorWindow;
     }
 
     @Override
     public void stateChanged(ChangeEvent e) {
         int index = editorWindow.getSelectedIndex();
-        mainMenu.setSelectedItem(editorWindow.getFileTypeOfTab(index));
+        TextEditor textEditor = editorWindow.getTextEditor(index);
+        mainWindow.setSelectedLangItem(editorWindow.getFileTypeOfTab(index));
+
+        mainWindow.setButtonUndoEnabled(textEditor.getTextArea().canUndo());
+        mainWindow.setButtonSaveEnabled(textEditor.getTextArea().canRedo());
+        mainWindow.setMenuItemRedoEnabled(textEditor.getTextArea().canRedo());
+        mainWindow.setMenuItemUndoEnabled(textEditor.getTextArea().canUndo());
+
+        if (textEditor.getIsChanged()) {
+            mainWindow.setMenuItemSaveEnabled(true);
+            mainWindow.setMenuItemSaveAllEnabled(true);
+            mainWindow.setButtonSaveAllEnabled(true);
+            mainWindow.setButtonSaveEnabled(true);
+        }
+        else {
+            mainWindow.setMenuItemSaveEnabled(false);
+            mainWindow.setButtonSaveEnabled(false);
+            if (!editorWindow.isSavedAll()) {
+                mainWindow.setMenuItemSaveAllEnabled(true);
+                mainWindow.setButtonSaveAllEnabled(true);
+            }
+
+        }
     }
 }

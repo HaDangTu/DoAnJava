@@ -5,6 +5,8 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 import javax.swing.BorderFactory;
 import javax.swing.border.EtchedBorder;
 
@@ -26,7 +28,6 @@ public class StatusBar  extends JPanel{
         lineColumnSelect = new JLabel();
         lineColumnSelect.setPreferredSize(new Dimension(200,15));
 
-
         int index = editorWindow.getSelectedIndex();
         TextEditor textEditor = editorWindow.getTextEditor(index);
 
@@ -34,15 +35,26 @@ public class StatusBar  extends JPanel{
         setLengthAndLine(textEditor.getTextArea());
         setLineColumnSelect(textEditor.getTextArea());
 
-        FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-        flowLayout.setHgap(0);
-        flowLayout.setVgap(0);
-        setLayout(flowLayout);
+        Dimension dimenSeparator = new Dimension(1, 15);
+        JSeparator separator1 = new JSeparator(SwingConstants.VERTICAL);
+        separator1.setPreferredSize(dimenSeparator);
+        JSeparator separator2 = new JSeparator(SwingConstants.VERTICAL);
+        separator2.setPreferredSize(dimenSeparator);
+
+        add(fileType);
+        add(separator1);
+        add(lengthAndLine);
+        add(separator2);
+        add(lineColumnSelect);
+
+        FlowLayout layout = new FlowLayout(FlowLayout.LEFT);
+        layout.setHgap(0);
+        layout.setVgap(0);
+        setLayout(layout);
+
         setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         setPreferredSize(new Dimension(1000, 18));
-        add(fileType);
-        add(lengthAndLine);
-        add(lineColumnSelect);
+
     }
 
     public void setFileType(TextEditor textEditor){

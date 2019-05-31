@@ -125,6 +125,7 @@ class MenuFile extends JMenu {
 
     private void createSaveItems(){
         fileSave = new JMenuItem("Save");
+        fileSave.setEnabled(false);
         fileSave.setIcon(new ImageIcon("icon\\save.png"));
         fileSave.addActionListener(fileListener);
         fileSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
@@ -137,6 +138,7 @@ class MenuFile extends JMenu {
                 ActionEvent.CTRL_MASK + ActionEvent.ALT_MASK));
 
         fileSaveAll = new JMenuItem("Save All");
+        fileSaveAll.setEnabled(false);
         fileSaveAll.setIcon(new ImageIcon("icon\\save_all.png"));
         fileSaveAll.addActionListener(fileListener);
         fileSaveAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,

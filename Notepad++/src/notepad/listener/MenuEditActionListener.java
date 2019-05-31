@@ -43,7 +43,11 @@ public class MenuEditActionListener extends MenuMainWindowListener{
             textArea.paste();
         }
         else if (command.equalsIgnoreCase("Delete")){
+            int start = textArea.getSelectionStart();
+            int end = textArea.getSelectionEnd();
 
+            if (Math.abs(end - start) > 0)
+                textArea.setText(textArea.getText().replace(textArea.getSelectedText(), ""));
         }
         else if (command.equalsIgnoreCase("Select All")){
             textArea.selectAll();
