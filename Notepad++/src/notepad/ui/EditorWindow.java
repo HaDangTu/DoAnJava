@@ -4,6 +4,8 @@ import notepad.listener.CloseTabButtonListener;
 import notepad.util.CategoryOfFile;
 
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.util.ArrayList;
 
 public class EditorWindow extends JTabbedPane {
@@ -14,6 +16,12 @@ public class EditorWindow extends JTabbedPane {
         deletedTab = new ArrayList<>();
         loadComponent();
         setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+        addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                System.out.println(e.toString());
+            }
+        });
     }
 
     private void loadComponent(){

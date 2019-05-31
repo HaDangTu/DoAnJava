@@ -92,11 +92,11 @@ public class MenuFileActionListener extends MenuMainWindowListener {
         }
         else if (command.equalsIgnoreCase("Open directory")){
             OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, parentFrame);
-            openAndSaveFile.openFile();
+            openAndSaveFile.openDirectory();
         }
         else if (command.equalsIgnoreCase("Open file")){
             OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, parentFrame);
-            openAndSaveFile.openDirectory();
+            openAndSaveFile.openFile();
         }
         else if (command.equalsIgnoreCase("Save")){
            int index = editorWindow.getSelectedIndex();

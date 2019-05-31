@@ -1,10 +1,12 @@
 package notepad.ui;
 
 import notepad.listener.MenuLanguageActionListener;
+import notepad.util.CategoryOfFile;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.ButtonGroup;
+
 
 class MenuLanguage extends JMenu{
     private JMenu menuC;
@@ -14,10 +16,25 @@ class MenuLanguage extends JMenu{
     private JMenu menuS;
     private JMenu menuX;
 
+
     private ButtonGroup buttonGroup;
 
     private MenuLanguageActionListener langListener;
-    
+
+    private JCheckBoxMenuItem languageC;
+    private JCheckBoxMenuItem languageCplusplus;
+    private JCheckBoxMenuItem languageCSharp;
+    private JCheckBoxMenuItem languageCSS;
+    private JCheckBoxMenuItem languageJava;
+    private JCheckBoxMenuItem languageJavaScript;
+    private JCheckBoxMenuItem languageJson;
+    private JCheckBoxMenuItem languagePython;
+    private JCheckBoxMenuItem languagePhp;
+    private JCheckBoxMenuItem languageHTML;
+    private JCheckBoxMenuItem languageSQL;
+    private JCheckBoxMenuItem languageXML;
+    private final JCheckBoxMenuItem normalText;
+
     public MenuLanguage (EditorWindow editorWindow){
         super("Language");
         langListener = new MenuLanguageActionListener(editorWindow);
@@ -30,29 +47,29 @@ class MenuLanguage extends JMenu{
         createMenuS();
         createMenuX();
 
-        JCheckBoxMenuItem normalText = new JCheckBoxMenuItem("Normal text");
+        normalText = new JCheckBoxMenuItem("Normal text");
         normalText.setSelected(true);
         normalText.addActionListener(langListener);
         buttonGroup.add(normalText);
 
         add(menuC);
         add(normalText);
+        add(menuH);
         add(menuJ);
         add(menuP);
-        add(menuH);
         add(menuS);
         add(menuX);
     }
     
     private void createMenuC(){
         menuC = new JMenu("C");
-        JCheckBoxMenuItem languageC = new JCheckBoxMenuItem("C");
+        languageC = new JCheckBoxMenuItem("C");
         languageC.addActionListener(langListener);
-        JCheckBoxMenuItem languageCplusplus = new JCheckBoxMenuItem("C++");
+        languageCplusplus = new JCheckBoxMenuItem("C++");
         languageCplusplus.addActionListener(langListener);
-        JCheckBoxMenuItem languageCSharp = new JCheckBoxMenuItem("C#");
+        languageCSharp = new JCheckBoxMenuItem("C#");
         languageCSharp.addActionListener(langListener);
-        JCheckBoxMenuItem languageCSS = new JCheckBoxMenuItem("CSS");
+        languageCSS = new JCheckBoxMenuItem("CSS");
         languageCSS.addActionListener(langListener);
 
         buttonGroup.add(languageC);
@@ -68,11 +85,11 @@ class MenuLanguage extends JMenu{
 
     private void createMenuJ(){
         menuJ = new JMenu("J");
-        JCheckBoxMenuItem languageJava = new JCheckBoxMenuItem("Java");
+        languageJava = new JCheckBoxMenuItem("Java");
         languageJava.addActionListener(langListener);
-        JCheckBoxMenuItem languageJavaScript = new JCheckBoxMenuItem("Java Script");
+        languageJavaScript = new JCheckBoxMenuItem("Java Script");
         languageJavaScript.addActionListener(langListener);
-        JCheckBoxMenuItem languageJson = new JCheckBoxMenuItem("JSON");
+        languageJson = new JCheckBoxMenuItem("JSON");
         languageJavaScript.addActionListener(langListener);
 
         buttonGroup.add(languageJava);
@@ -86,9 +103,9 @@ class MenuLanguage extends JMenu{
     
     private void createMenuP(){
         menuP = new JMenu("P");
-        JCheckBoxMenuItem languagePython= new JCheckBoxMenuItem("Python");
+        languagePython = new JCheckBoxMenuItem("Python");
         languagePython.addActionListener(langListener);
-        JCheckBoxMenuItem languagePhp = new JCheckBoxMenuItem("PHP");
+        languagePhp = new JCheckBoxMenuItem("PHP");
         languagePhp.addActionListener(langListener);
 
         buttonGroup.add(languagePhp);
@@ -100,7 +117,7 @@ class MenuLanguage extends JMenu{
     
     private void createMenuH(){
         menuH = new JMenu("H");
-        JCheckBoxMenuItem languageHTML = new JCheckBoxMenuItem("HTML");
+        languageHTML = new JCheckBoxMenuItem("HTML");
         languageHTML.addActionListener(langListener);
 
         buttonGroup.add(languageHTML);
@@ -110,7 +127,7 @@ class MenuLanguage extends JMenu{
     
     private void createMenuS(){
         menuS = new JMenu("S");
-        JCheckBoxMenuItem languageSQL = new JCheckBoxMenuItem("SQL");
+        languageSQL = new JCheckBoxMenuItem("SQL");
         languageSQL.addActionListener(langListener);
 
         buttonGroup.add(languageSQL);
@@ -120,11 +137,41 @@ class MenuLanguage extends JMenu{
     
     private void createMenuX(){
         menuX = new JMenu("X");
-        JCheckBoxMenuItem languageXML = new JCheckBoxMenuItem("XML");
+        languageXML = new JCheckBoxMenuItem("XML");
         languageXML.addActionListener(langListener);
 
         buttonGroup.add(languageXML);
 
         menuX.add(languageXML);
+    }
+
+    public void setSelectedItem(String extension){
+        CategoryOfFile category = new CategoryOfFile();
+        if (category.detectNormalTextFile(extension))
+            normalText.setSelected(true);
+        else if(category.detectCFile(extension))
+            languageC.setSelected(true);
+        else if(category.detectCplusplusFile(extension))
+            languageCplusplus.setSelected(true);
+        else if(category.detectCSharpFile(extension))
+            languageCSharp.setSelected(true);
+        else if(category.detectCSSFile(extension))
+            languageCSS.setSelected(true);
+        else if(category.detectHTMLFile(extension))
+            languageHTML.setSelected(true);
+        else if(category.detectJavaFile(extension))
+            languageJava.setSelected(true);
+        else if(category.detectJavaScriptFile(extension))
+            languageJavaScript.setSelected(true);
+        else if(category.detectJsonFile(extension))
+            languageJson.setSelected(true);
+        else if(category.detectPHPFile(extension))
+            languagePhp.setSelected(true);
+        else if(category.detectPythonFile(extension))
+            languagePython.setSelected(true);
+        else if(category.detectSQLFile(extension))
+            languageSQL.setSelected(true);
+        else if(category.detectXMLFile(extension))
+            languageXML.setSelected(true);
     }
 }

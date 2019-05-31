@@ -1,39 +1,22 @@
 package notepad.ui;
-import notepad.listener.MenuFileActionListener;
-import notepad.listener.MenuEditActionListener;
-import notepad.listener.MenuLanguageActionListener;
-import notepad.listener.MenuSearchActionListener;
 import notepad.listener.WindowFocusListener;
+import notepad.listener.TabChangeListener;
 
 import notepad.util.StatusBarTimer;
 
-import javax.swing.JMenuBar;
 import javax.swing.JFrame;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
 import javax.swing.SwingUtilities;
-import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
 import javax.swing.JFileChooser;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
 
 import java.lang.Exception;
 
 public class MainWindow extends  JFrame{
-
-    private MenuLanguageActionListener langListener;
-    private MenuEditActionListener editListener;
-    private MenuSearchActionListener searchListener;
-
-
     private MainMenu mainMenu;
     private ToolBar toolBar;
 
@@ -66,13 +49,9 @@ public class MainWindow extends  JFrame{
         searchStatusBar = new SearchStatusBar(editorWindow);
 
         mainMenu = new MainMenu(editorWindow, treeView.getTree(), this);
-
-        langListener = new MenuLanguageActionListener(editorWindow);
-        editListener = new MenuEditActionListener(editorWindow);
-        searchListener = new MenuSearchActionListener(editorWindow, this);
+        editorWindow.addChangeListener(new TabChangeListener(mainMenu, editorWindow));
 
         panel = new JPanel(new BorderLayout());
-
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeView, editorView);
 

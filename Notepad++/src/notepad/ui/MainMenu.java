@@ -19,4 +19,8 @@ public class MainMenu  extends JMenuBar{
         add(menuSearch);
         add(menuLanguage);
     }
+
+    public void setSelectedItem(String extension){
+        menuLanguage.setSelectedItem(extension);
+    }
 }
