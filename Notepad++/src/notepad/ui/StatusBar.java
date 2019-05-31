@@ -46,7 +46,6 @@ public class StatusBar  extends JPanel{
     }
 
     public void setFileType(TextEditor textEditor){
-        System.out.println(textEditor.getFileType());
         CategoryOfFile category = new CategoryOfFile();
         fileType.setText("   " + category.CovertFileExtensionToFileType(textEditor.getFileType()));
     }

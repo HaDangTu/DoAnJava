@@ -65,7 +65,6 @@ public class MenuLanguageActionListener  extends MenuMainWindowListener {
 
     public void resetFileType(String fileType){
         int index = editorWindow.getSelectedIndex();
-        TextEditor textEditor = editorWindow.getTextEditor(index);
-        textEditor.setFileType(fileType);
+        editorWindow.setFileTypeForTab(fileType, index);
     }
 }

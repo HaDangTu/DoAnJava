@@ -18,7 +18,7 @@ public class StatusBarTimer  extends  Timer{
         this.statusBar = statusBar;
         this.editorWindow = editorWindow;
 
-        this.schedule(new StatusBarTask(), 800, 800);
+        this.schedule(new StatusBarTask(), 800, 500);
     }
 
     public class StatusBarTask extends TimerTask{

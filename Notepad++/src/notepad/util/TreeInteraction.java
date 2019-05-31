@@ -39,7 +39,8 @@ public class TreeInteraction {
 
                 CategoryOfFile category = new CategoryOfFile();
                 String extension = category.getExtensionOfFile(file.getName());
-                category.ChangeStyleEditorForFile(extension, editorWindow);
+                String fileType = category.ChangeStyleEditorForFile(extension, editorWindow);
+                editorWindow.setFileTypeForTab(fileType, index);
 
                 RSyntaxTextArea textArea = editorWindow.getTextEditor(index).getTextArea();
 
