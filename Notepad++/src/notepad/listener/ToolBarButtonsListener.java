@@ -11,7 +11,6 @@ import notepad.util.TabInteraction;
 import javax.swing.JFileChooser;
 import javax.swing.undo.UndoManager;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -49,6 +48,7 @@ public class ToolBarButtonsListener implements ActionListener {
             int pos = editorWindow.getTabCount() - 1;
             editorWindow.setSelectedIndex(pos);
             editorWindow.getTextEditor(pos).getTextArea().requestFocusInWindow();
+            parentFrame.addItem(editorWindow.getTitleOfTab(pos));
         }
         else if (command.equalsIgnoreCase("Open file")){
             openAndSaveFile.openFile();

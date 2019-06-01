@@ -49,6 +49,7 @@ public class MainWindow extends  JFrame{
         searchStatusBar = new SearchStatusBar(editorWindow);
 
         mainMenu = new MainMenu(editorWindow, treeView.getTree(), this);
+
         editorWindow.addChangeListener(new TabChangeListener(this, editorWindow));
 
         panel = new JPanel(new BorderLayout());
@@ -107,6 +108,7 @@ public class MainWindow extends  JFrame{
     public void setMenuItemSaveEnabled(boolean enabled){
         mainMenu.setMenuSaveEnabled(enabled);
     }
+
     public void setMenuItemSaveAllEnabled(boolean enabled){
         mainMenu.setMenuSaveAllEnabled(enabled);
     }
@@ -121,5 +123,17 @@ public class MainWindow extends  JFrame{
 
     public void setMenuItemRedoEnabled(boolean enabled){
         mainMenu.setMenuRedoEnabled(enabled);
+    }
+
+    public void addItem(String windowName){
+        mainMenu.addItem(windowName);
+    }
+
+    public void setSelectedWindowItem(int index){
+        mainMenu.setSelectedItem(index);
+    }
+
+    public void removeItem(int index){
+        mainMenu.removeItem(index);
     }
 }

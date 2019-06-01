@@ -2,7 +2,7 @@ package notepad.util;
 import notepad.ui.EditorWindow;
 import notepad.ui.TabUI;
 import notepad.ui.TextEditor;
-import notepad.util.MyComparator;
+import notepad.ui.MainWindow;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -63,11 +63,16 @@ public class TabInteraction {
                 editorWindow.removeTabAt(index);
         }
 
+        MainWindow mainWindow = (MainWindow) editorWindow.getRootPane().getParent();
         // Add tab when number of tab equal zero
-        if (editorWindow.getTabCount() == 0)
+        if (editorWindow.getTabCount() == 0) {
             editorWindow.addTabEditor();
+            mainWindow.addItem(editorWindow.getTitleOfTab(0));
+        }
 
         editorWindow.getDeletedTab().sort(new MyComparator());
+
+        mainWindow.removeItem(index);
     }
 
     /**

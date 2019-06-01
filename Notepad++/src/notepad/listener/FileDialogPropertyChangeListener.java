@@ -2,19 +2,23 @@ package notepad.listener;
 
 import notepad.ui.EditorWindow;
 import notepad.ui.NewFileDialog;
+import notepad.ui.MainWindow;
+
 import notepad.util.CategoryOfFile;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class FileDialogPropertyChangeListener implements PropertyChangeListener {
     private EditorWindow editorWindow;
     private NewFileDialog dialog;
-
+    private MainWindow frame;
     public FileDialogPropertyChangeListener(EditorWindow editorWindow, NewFileDialog dialog){
         this.editorWindow = editorWindow;
         this.dialog = dialog;
+        this.frame = (MainWindow) this.editorWindow.getRootPane().getParent();
     }
 
 
@@ -36,6 +40,7 @@ public class FileDialogPropertyChangeListener implements PropertyChangeListener 
 
                 editorWindow.setSelectedIndex(index);
                 editorWindow.setFileTypeForTab(fileType, index);
+                ((MainWindow) frame).addItem(editorWindow.getTitleOfTab(index));
                 dialog.setVisible(false);
             }
         }

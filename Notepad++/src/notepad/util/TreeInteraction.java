@@ -2,6 +2,7 @@ package notepad.util;
 import notepad.ui.MyTree;
 import notepad.ui.EditorWindow;
 import notepad.ui.TextEditor;
+import notepad.ui.MainWindow;
 
 import javax.swing.tree.TreePath;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -49,6 +50,9 @@ public class TreeInteraction {
                 TextEditor textEditor = editorWindow.getTextEditor(index);
                 textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = tru
                 editorWindow.setSelectedIndex(index);
+
+                MainWindow  mainWindow = (MainWindow) editorWindow.getRootPane().getParent();
+                mainWindow.addItem(editorWindow.getTitleOfTab(index));
             }
         }
         else

@@ -2,19 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be4116da-6dcb-4f28-950b-d328dde3f60f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/notepad/listener/MenuWindowActionListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/notepad/ui/MenuWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/listener/EditorDocumentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/EditorDocumentListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/listener/MenuEditActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/MenuEditActionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/FileDialogPropertyChangeListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/FileDialogPropertyChangeListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/MenuFileActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/MenuFileActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/TextAreaMouseClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/TextAreaMouseClickListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/ToolBarButtonsListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/ToolBarButtonsListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/EditorWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/EditorWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/EditorWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/MainWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/TreeInteraction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/TreeInteraction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/listener/MenuFileActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/MenuFileActionListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/listener/TabChangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/TabChangeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/listener/TextAreaMouseClickListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/TextAreaMouseClickListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/listener/ToolBarButtonsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/ToolBarButtonsListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/listener/TreePopupMenuListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/TreePopupMenuListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/ui/EditorWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/EditorWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/ui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/ui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/ui/MenuEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/MenuEdit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/ui/MenuFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/MenuFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/ui/StatusBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/StatusBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/ui/ToolBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/ToolBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/util/StatusBarTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/util/StatusBarTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/util/TabInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/util/TabInteraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/util/TreeInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/util/TreeInteraction.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,21 +41,55 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/notepad/ui/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="117" column="41" lean-forward="true" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="41" />
+            <state relative-caret-position="502">
+              <caret line="137" column="5" lean-forward="true" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initSplitPane#0;class#MainWindow#0" />
-                <element signature="e#3224#3225#0" expanded="true" />
-                <element signature="e#3269#3270#0" expanded="true" />
-                <element signature="e#3333#3334#0" expanded="true" />
-                <element signature="e#3385#3386#0" expanded="true" />
-                <element signature="e#3445#3446#0" expanded="true" />
-                <element signature="e#3487#3488#0" expanded="true" />
-                <element signature="e#3556#3557#0" expanded="true" />
-                <element signature="e#3601#3602#0" expanded="true" />
-                <element signature="e#3671#3672#0" expanded="true" />
-                <element signature="e#3723#3724#0" expanded="true" />
+                <element signature="e#3759#3760#0" expanded="true" />
+                <element signature="e#3803#3804#0" expanded="true" />
+                <element signature="e#3853#3854#0" expanded="true" />
+                <element signature="e#3876#3877#0" expanded="true" />
+                <element signature="e#3938#3939#0" expanded="true" />
+                <element signature="e#3975#3976#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/notepad/util/TabInteraction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1122">
+              <caret line="66" column="48" lean-forward="true" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/notepad/util/StatusBarTimer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/notepad/ui/EditorWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="122" column="33" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3278#3279#0" expanded="true" />
+                <element signature="e#3340#3341#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,48 +98,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/notepad/ui/MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+            <state relative-caret-position="502">
+              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
               <folding>
-                <element signature="e#781#782#0" expanded="true" />
-                <element signature="e#837#838#0" expanded="true" />
-                <element signature="e#1012#1013#0" expanded="true" />
-                <element signature="e#1061#1062#0" expanded="true" />
-                <element signature="e#1126#1127#0" expanded="true" />
-                <element signature="e#1177#1178#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/notepad/ui/MenuEdit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="35" column="69" lean-forward="true" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/notepad/listener/EditorDocumentListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/notepad/listener/ToolBarButtonsListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="116" column="17" lean-forward="true" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1362#1363#0" expanded="true" />
+                <element signature="e#1408#1409#0" expanded="true" />
+                <element signature="e#1457#1458#0" expanded="true" />
+                <element signature="e#1476#1477#0" expanded="true" />
+                <element signature="e#1587#1588#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,8 +114,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/notepad/listener/TabChangeListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="27" column="78" lean-forward="true" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+            <state relative-caret-position="277">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/notepad/listener/MenuWindowActionListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#305#306#0" expanded="true" />
+                <element signature="e#352#353#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/notepad/ui/MenuWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,25 +180,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/notepad/listener/FindDocumentListener.java" />
-        <option value="$PROJECT_DIR$/src/notepad/listener/ButtonNewToolBarListener.java" />
-        <option value="$PROJECT_DIR$/src/notepad/listener/ButtoToolBarListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/ButtonToolBarListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/CloseTabButton.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/MyDocumentListener.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/MyComparator.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/WindowFocusListener.java" />
-        <option value="$PROJECT_DIR$/src/notepad/util/TabInteraction.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/CloseTabButtonListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/FilePath.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/TreePopupMenu.java" />
-        <option value="$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java" />
-        <option value="$PROJECT_DIR$/src/notepad/ui/NewFileDialog.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/NewFolderDialog.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/NewFolderDialogPropertyChangeListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/BuildingFilePath.java" />
-        <option value="$PROJECT_DIR$/src/notepad/listener/TreeMouseListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/TreeCellEditor.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/MyTreeCellRenderer.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/MyTreeCellEditor.java" />
@@ -175,26 +204,33 @@
         <option value="$PROJECT_DIR$/src/notepad/ui/SearchBar.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/SearchStatusBar.java" />
         <option value="$PROJECT_DIR$/src/notepad/util/CategoryOfFile.java" />
-        <option value="$PROJECT_DIR$/src/notepad/util/TreeInteraction.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/MenuLanguageActionListener.java" />
-        <option value="$PROJECT_DIR$/src/notepad/util/StatusBarTimer.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/MenuNew.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/MenuSearch.java" />
-        <option value="$PROJECT_DIR$/src/notepad/ui/EditorWindow.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/MenuLanguage.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/testSeparotr.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/StatusBar.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/MenuEditActionListener.java" />
-        <option value="$PROJECT_DIR$/src/notepad/listener/MenuFileActionListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/MenuFile.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/ToolBar.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/TreePopupMenuListener.java" />
-        <option value="$PROJECT_DIR$/src/notepad/ui/MainMenu.java" />
-        <option value="$PROJECT_DIR$/src/notepad/ui/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/notepad/listener/TabChangeListener.java" />
         <option value="$PROJECT_DIR$/src/notepad/ui/MenuEdit.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/EditorDocumentListener.java" />
+        <option value="$PROJECT_DIR$/src/notepad/listener/TextAreaMouseClickListener.java" />
+        <option value="$PROJECT_DIR$/src/notepad/ui/EditorWindow.java" />
+        <option value="$PROJECT_DIR$/src/notepad/listener/MenuFileActionListener.java" />
+        <option value="$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java" />
+        <option value="$PROJECT_DIR$/src/notepad/ui/NewFileDialog.java" />
         <option value="$PROJECT_DIR$/src/notepad/listener/ToolBarButtonsListener.java" />
+        <option value="$PROJECT_DIR$/src/notepad/listener/MenuWindowActionListener.java" />
+        <option value="$PROJECT_DIR$/src/notepad/listener/TreeMouseListener.java" />
+        <option value="$PROJECT_DIR$/src/notepad/util/TreeInteraction.java" />
+        <option value="$PROJECT_DIR$/src/notepad/ui/MainMenu.java" />
+        <option value="$PROJECT_DIR$/src/notepad/ui/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/notepad/ui/MenuWindow.java" />
+        <option value="$PROJECT_DIR$/src/notepad/util/StatusBarTimer.java" />
+        <option value="$PROJECT_DIR$/src/notepad/listener/TabChangeListener.java" />
+        <option value="$PROJECT_DIR$/src/notepad/util/TabInteraction.java" />
       </list>
     </option>
   </component>
@@ -324,7 +360,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3804841" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30030257" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -399,93 +435,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/TabUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/CloseTabButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/util/TabInteraction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1008">
-          <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/java/io/FileSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="154" column="28" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="1023" column="25" selection-start-line="1023" selection-start-column="25" selection-end-line="1023" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/NewFolderDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1058#1059#0" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
-            <element signature="e#1172#1173#0" expanded="true" />
-            <element signature="e#1278#1279#0" expanded="true" />
-            <element signature="e#1320#1321#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/NewFileDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-447">
-          <caret line="46" column="35" lean-forward="true" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/NewFolderDialogPropertyChangeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/util/MyComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -497,16 +446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/TreeMouseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="13" lean-forward="true" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -565,18 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/EditorView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
-            <element signature="e#290#291#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/listener/TreeCellEditorListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -595,23 +522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/TextEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/ButtonGoListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -653,33 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/util/TreeInteraction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addNewFile#0;class#TreeInteraction#0" />
-            <element signature="method#addNewFolder#0;class#TreeInteraction#0" />
-            <element signature="method#deleteFileOrFolder#0;class#TreeInteraction#0" />
-            <element signature="method#deleteFileOrFolder#1;class#TreeInteraction#0" />
-            <element signature="method#copyPath#0;class#TreeInteraction#0" />
-            <element signature="method#copyFile#0;class#TreeInteraction#0" />
-            <element signature="method#cutFile#0;class#TreeInteraction#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/util/StatusBarTimer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/ui/SearchStatusBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -717,13 +600,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/testSeparotr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/ui/testSeparotr.java" />
     <entry file="file://$PROJECT_DIR$/src/notepad/ui/StatusBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
@@ -765,16 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/EditorWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="166" column="53" lean-forward="true" selection-start-line="166" selection-start-column="53" selection-end-line="166" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/ui/ToolBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -808,66 +675,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/MenuFileActionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="117" column="52" lean-forward="true" selection-start-line="117" selection-start-column="52" selection-end-line="117" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="117" column="41" lean-forward="true" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initSplitPane#0;class#MainWindow#0" />
-            <element signature="e#3224#3225#0" expanded="true" />
-            <element signature="e#3269#3270#0" expanded="true" />
-            <element signature="e#3333#3334#0" expanded="true" />
-            <element signature="e#3385#3386#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3487#3488#0" expanded="true" />
-            <element signature="e#3556#3557#0" expanded="true" />
-            <element signature="e#3601#3602#0" expanded="true" />
-            <element signature="e#3671#3672#0" expanded="true" />
-            <element signature="e#3723#3724#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/listener/TabChangeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="27" column="78" lean-forward="true" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/notepad/ui/MainMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
-          <folding>
-            <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#1012#1013#0" expanded="true" />
-            <element signature="e#1061#1062#0" expanded="true" />
-            <element signature="e#1126#1127#0" expanded="true" />
-            <element signature="e#1177#1178#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/ui/MenuEdit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="35" column="69" lean-forward="true" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/TextAreaMouseClickListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/DocumentUndoableEditListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/WindowFocusListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/ButtonGoListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/ui/EditorView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -876,15 +725,184 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/listener/EditorDocumentListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
+        <state relative-caret-position="164">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/ui/TextEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/ui/NewFileDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="65" column="100" selection-start-line="65" selection-start-column="100" selection-end-line="65" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="20" column="78" selection-start-line="20" selection-start-column="78" selection-end-line="20" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/MenuFileActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="129" column="57" lean-forward="true" selection-start-line="129" selection-start-column="57" selection-end-line="129" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/util/TreeInteraction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="58" column="50" lean-forward="true" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#addNewFile#0;class#TreeInteraction#0" />
+            <element signature="method#addNewFolder#0;class#TreeInteraction#0" />
+            <element signature="method#deleteFileOrFolder#0;class#TreeInteraction#0" />
+            <element signature="method#deleteFileOrFolder#1;class#TreeInteraction#0" />
+            <element signature="method#copyPath#0;class#TreeInteraction#0" />
+            <element signature="method#copyFile#0;class#TreeInteraction#0" />
+            <element signature="method#cutFile#0;class#TreeInteraction#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/TreeMouseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="31" column="44" lean-forward="true" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/java/util/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="373" column="22" selection-start-line="373" selection-start-column="22" selection-end-line="373" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/notepad/listener/ToolBarButtonsListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="116" column="17" lean-forward="true" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
+        <state relative-caret-position="242">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/ui/MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <element signature="e#1362#1363#0" expanded="true" />
+            <element signature="e#1408#1409#0" expanded="true" />
+            <element signature="e#1457#1458#0" expanded="true" />
+            <element signature="e#1476#1477#0" expanded="true" />
+            <element signature="e#1587#1588#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/ui/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="137" column="5" lean-forward="true" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initSplitPane#0;class#MainWindow#0" />
+            <element signature="e#3759#3760#0" expanded="true" />
+            <element signature="e#3803#3804#0" expanded="true" />
+            <element signature="e#3853#3854#0" expanded="true" />
+            <element signature="e#3876#3877#0" expanded="true" />
+            <element signature="e#3938#3939#0" expanded="true" />
+            <element signature="e#3975#3976#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/ui/MenuWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/ui/EditorWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="122" column="33" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3278#3279#0" expanded="true" />
+            <element signature="e#3340#3341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/MenuWindowActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/util/StatusBarTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/listener/TabChangeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/notepad/util/TabInteraction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="48" lean-forward="true" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

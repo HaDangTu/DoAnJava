@@ -39,6 +39,7 @@ public class MenuFileActionListener extends MenuMainWindowListener {
             int pos = editorWindow.getTabCount() - 1;
             editorWindow.setSelectedIndex(pos);
             editorWindow.getTextEditor(pos).getTextArea().requestFocusInWindow();
+            parentFrame.addItem(editorWindow.getTitleOfTab(pos));
         }
         else if (command.equalsIgnoreCase("C file")){
             String[] kind = {"Header file", "Class file"};

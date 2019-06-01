@@ -4,7 +4,7 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+@Deprecated
 public class TextAreaMouseClickListener implements MouseListener {
     private RSyntaxTextArea textArea;
 

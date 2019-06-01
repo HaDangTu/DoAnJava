@@ -25,13 +25,15 @@ public class StatusBarTimer  extends  Timer{
 
         @Override
         public void run() {
-            int index = editorWindow.getSelectedIndex();
-            TextEditor textEditor = editorWindow.getTextEditor(index);
-            RSyntaxTextArea textArea = textEditor.getTextArea();
+            if (editorWindow.getTabCount() > 0) {
+                int index = editorWindow.getSelectedIndex();
+                TextEditor textEditor = editorWindow.getTextEditor(index);
+                RSyntaxTextArea textArea = textEditor.getTextArea();
 
-            statusBar.setFileType(textEditor);
-            statusBar.setLengthAndLine(textArea);
-            statusBar.setLineColumnSelect(textArea);
+                statusBar.setFileType(textEditor);
+                statusBar.setLengthAndLine(textArea);
+                statusBar.setLineColumnSelect(textArea);
+            }
         }
     }
 }

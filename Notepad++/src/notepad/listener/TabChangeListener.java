@@ -18,29 +18,32 @@ public class TabChangeListener implements ChangeListener {
 
     @Override
     public void stateChanged(ChangeEvent e) {
-        int index = editorWindow.getSelectedIndex();
-        TextEditor textEditor = editorWindow.getTextEditor(index);
-        mainWindow.setSelectedLangItem(editorWindow.getFileTypeOfTab(index));
+        if (editorWindow.getTabCount() > 0) {
+            int index = editorWindow.getSelectedIndex();
+            TextEditor textEditor = editorWindow.getTextEditor(index);
+            mainWindow.setSelectedLangItem(editorWindow.getFileTypeOfTab(index));
 
-        mainWindow.setButtonUndoEnabled(textEditor.getTextArea().canUndo());
-        mainWindow.setButtonSaveEnabled(textEditor.getTextArea().canRedo());
-        mainWindow.setMenuItemRedoEnabled(textEditor.getTextArea().canRedo());
-        mainWindow.setMenuItemUndoEnabled(textEditor.getTextArea().canUndo());
+            mainWindow.setSelectedWindowItem(index);
 
-        if (textEditor.getIsChanged()) {
-            mainWindow.setMenuItemSaveEnabled(true);
-            mainWindow.setMenuItemSaveAllEnabled(true);
-            mainWindow.setButtonSaveAllEnabled(true);
-            mainWindow.setButtonSaveEnabled(true);
-        }
-        else {
-            mainWindow.setMenuItemSaveEnabled(false);
-            mainWindow.setButtonSaveEnabled(false);
-            if (!editorWindow.isSavedAll()) {
+            mainWindow.setButtonUndoEnabled(textEditor.getTextArea().canUndo());
+            mainWindow.setButtonSaveEnabled(textEditor.getTextArea().canRedo());
+            mainWindow.setMenuItemRedoEnabled(textEditor.getTextArea().canRedo());
+            mainWindow.setMenuItemUndoEnabled(textEditor.getTextArea().canUndo());
+
+            if (textEditor.getIsChanged()) {
+                mainWindow.setMenuItemSaveEnabled(true);
                 mainWindow.setMenuItemSaveAllEnabled(true);
                 mainWindow.setButtonSaveAllEnabled(true);
-            }
+                mainWindow.setButtonSaveEnabled(true);
+            } else {
+                mainWindow.setMenuItemSaveEnabled(false);
+                mainWindow.setButtonSaveEnabled(false);
+                if (!editorWindow.isSavedAll()) {
+                    mainWindow.setMenuItemSaveAllEnabled(true);
+                    mainWindow.setButtonSaveAllEnabled(true);
+                }
 
+            }
         }
     }
 }
