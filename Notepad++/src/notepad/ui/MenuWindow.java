@@ -4,8 +4,7 @@ import notepad.listener.MenuWindowActionListener;
 import javax.swing.JMenu;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.ButtonGroup;
-import javax.swing.AbstractButton;
-import javax.swing.ButtonModel;
+import javax.swing.AbstractButton;;
 
 import java.util.Enumeration;
 
@@ -49,6 +48,10 @@ public class MenuWindow extends JMenu{
         buttonGroup.add(checkBoxMenuItem);
     }
 
+    /**
+     * remove item when tab is close
+     * @param index position of tab
+     */
     public void removeItem(int index){
         Enumeration<AbstractButton> buttons = buttonGroup.getElements();
         int i = 0;
@@ -58,6 +61,7 @@ public class MenuWindow extends JMenu{
             checkBox = (JCheckBoxMenuItem) buttons.nextElement();
             if (i == index) {
                 buttonGroup.remove(checkBox);
+                renameWindow();
                 return;
             }
             else
@@ -78,6 +82,18 @@ public class MenuWindow extends JMenu{
             }
             else
                 i++;
+        }
+    }
+
+    private void renameWindow(){
+        Enumeration<AbstractButton> buttons = buttonGroup.getElements();
+        int i = 1;
+        while (buttons.hasMoreElements()){
+            JCheckBoxMenuItem checkBox = (JCheckBoxMenuItem) buttons.nextElement();
+            String name = checkBox.getText();
+            name = i + name.substring(name.lastIndexOf(":"));
+            checkBox.setText(name);
+            i++;
         }
     }
 }

@@ -6,7 +6,9 @@ import notepad.util.CategoryOfFile;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.ButtonGroup;
+import javax.swing.AbstractButton;
 
+import java.util.Enumeration;
 
 class MenuLanguage extends JMenu{
     private JMenu menuC;
@@ -16,24 +18,10 @@ class MenuLanguage extends JMenu{
     private JMenu menuS;
     private JMenu menuX;
 
-
     private ButtonGroup buttonGroup;
 
     private MenuLanguageActionListener langListener;
 
-    private JCheckBoxMenuItem languageC;
-    private JCheckBoxMenuItem languageCplusplus;
-    private JCheckBoxMenuItem languageCSharp;
-    private JCheckBoxMenuItem languageCSS;
-    private JCheckBoxMenuItem languageJava;
-    private JCheckBoxMenuItem languageJavaScript;
-    private JCheckBoxMenuItem languageJson;
-    private JCheckBoxMenuItem languagePython;
-    private JCheckBoxMenuItem languagePhp;
-    private JCheckBoxMenuItem languageHTML;
-    private JCheckBoxMenuItem languageSQL;
-    private JCheckBoxMenuItem languageXML;
-    private final JCheckBoxMenuItem normalText;
 
     public MenuLanguage (EditorWindow editorWindow){
         super("Language");
@@ -47,7 +35,8 @@ class MenuLanguage extends JMenu{
         createMenuS();
         createMenuX();
 
-        normalText = new JCheckBoxMenuItem("Normal text");
+        JCheckBoxMenuItem normalText = new JCheckBoxMenuItem("Normal text");
+        normalText.setActionCommand(CategoryOfFile.NORMAL_TEXT_FILE);
         normalText.setSelected(true);
         normalText.addActionListener(langListener);
         buttonGroup.add(normalText);
@@ -63,14 +52,21 @@ class MenuLanguage extends JMenu{
     
     private void createMenuC(){
         menuC = new JMenu("C");
-        languageC = new JCheckBoxMenuItem("C");
+        JCheckBoxMenuItem languageC = new JCheckBoxMenuItem("C");
         languageC.addActionListener(langListener);
-        languageCplusplus = new JCheckBoxMenuItem("C++");
+        languageC.setActionCommand(CategoryOfFile.C_FILE);
+
+        JCheckBoxMenuItem languageCplusplus = new JCheckBoxMenuItem("C++");
         languageCplusplus.addActionListener(langListener);
-        languageCSharp = new JCheckBoxMenuItem("C#");
+        languageCplusplus.setActionCommand(CategoryOfFile.CPLUSPLUS_FILE);
+
+        JCheckBoxMenuItem languageCSharp = new JCheckBoxMenuItem("C#");
         languageCSharp.addActionListener(langListener);
-        languageCSS = new JCheckBoxMenuItem("CSS");
+        languageCSharp.setActionCommand(CategoryOfFile.CSHARP_FILE);
+
+        JCheckBoxMenuItem languageCSS = new JCheckBoxMenuItem("CSS");
         languageCSS.addActionListener(langListener);
+        languageCSS.setActionCommand(CategoryOfFile.CSS_FILE);
 
         buttonGroup.add(languageC);
         buttonGroup.add(languageCplusplus);
@@ -85,12 +81,17 @@ class MenuLanguage extends JMenu{
 
     private void createMenuJ(){
         menuJ = new JMenu("J");
-        languageJava = new JCheckBoxMenuItem("Java");
+        JCheckBoxMenuItem languageJava = new JCheckBoxMenuItem("Java");
         languageJava.addActionListener(langListener);
-        languageJavaScript = new JCheckBoxMenuItem("Java Script");
+        languageJava.setActionCommand(CategoryOfFile.JAVA_FILE);
+
+        JCheckBoxMenuItem languageJavaScript = new JCheckBoxMenuItem("Java Script");
         languageJavaScript.addActionListener(langListener);
-        languageJson = new JCheckBoxMenuItem("JSON");
-        languageJavaScript.addActionListener(langListener);
+        languageJavaScript.setActionCommand(CategoryOfFile.JAVASCRIPT_FILE);
+
+        JCheckBoxMenuItem languageJson = new JCheckBoxMenuItem("JSON");
+        languageJson.addActionListener(langListener);
+        languageJson.setActionCommand(CategoryOfFile.JSON_FILE);
 
         buttonGroup.add(languageJava);
         buttonGroup.add(languageJavaScript);
@@ -103,10 +104,13 @@ class MenuLanguage extends JMenu{
     
     private void createMenuP(){
         menuP = new JMenu("P");
-        languagePython = new JCheckBoxMenuItem("Python");
+        JCheckBoxMenuItem languagePython = new JCheckBoxMenuItem("Python");
         languagePython.addActionListener(langListener);
-        languagePhp = new JCheckBoxMenuItem("PHP");
+        languagePython.setActionCommand(CategoryOfFile.PYTHON_FILE);
+
+        JCheckBoxMenuItem languagePhp = new JCheckBoxMenuItem("PHP");
         languagePhp.addActionListener(langListener);
+        languagePhp.setActionCommand(CategoryOfFile.PYTHON_FILE);
 
         buttonGroup.add(languagePhp);
         buttonGroup.add(languagePython);
@@ -117,8 +121,9 @@ class MenuLanguage extends JMenu{
     
     private void createMenuH(){
         menuH = new JMenu("H");
-        languageHTML = new JCheckBoxMenuItem("HTML");
+        JCheckBoxMenuItem languageHTML = new JCheckBoxMenuItem("HTML");
         languageHTML.addActionListener(langListener);
+        languageHTML.setActionCommand(CategoryOfFile.HTML_FILE);
 
         buttonGroup.add(languageHTML);
 
@@ -127,8 +132,9 @@ class MenuLanguage extends JMenu{
     
     private void createMenuS(){
         menuS = new JMenu("S");
-        languageSQL = new JCheckBoxMenuItem("SQL");
+        JCheckBoxMenuItem languageSQL = new JCheckBoxMenuItem("SQL");
         languageSQL.addActionListener(langListener);
+        languageSQL.setActionCommand(CategoryOfFile.SQL_FILE);
 
         buttonGroup.add(languageSQL);
 
@@ -137,8 +143,9 @@ class MenuLanguage extends JMenu{
     
     private void createMenuX(){
         menuX = new JMenu("X");
-        languageXML = new JCheckBoxMenuItem("XML");
+        JCheckBoxMenuItem languageXML = new JCheckBoxMenuItem("XML");
         languageXML.addActionListener(langListener);
+        languageXML.setActionCommand(CategoryOfFile.XML_FILE);
 
         buttonGroup.add(languageXML);
 
@@ -146,32 +153,13 @@ class MenuLanguage extends JMenu{
     }
 
     public void setSelectedItem(String extension){
-        CategoryOfFile category = new CategoryOfFile();
-        if (category.detectNormalTextFile(extension))
-            normalText.setSelected(true);
-        else if(category.detectCFile(extension))
-            languageC.setSelected(true);
-        else if(category.detectCplusplusFile(extension))
-            languageCplusplus.setSelected(true);
-        else if(category.detectCSharpFile(extension))
-            languageCSharp.setSelected(true);
-        else if(category.detectCSSFile(extension))
-            languageCSS.setSelected(true);
-        else if(category.detectHTMLFile(extension))
-            languageHTML.setSelected(true);
-        else if(category.detectJavaFile(extension))
-            languageJava.setSelected(true);
-        else if(category.detectJavaScriptFile(extension))
-            languageJavaScript.setSelected(true);
-        else if(category.detectJsonFile(extension))
-            languageJson.setSelected(true);
-        else if(category.detectPHPFile(extension))
-            languagePhp.setSelected(true);
-        else if(category.detectPythonFile(extension))
-            languagePython.setSelected(true);
-        else if(category.detectSQLFile(extension))
-            languageSQL.setSelected(true);
-        else if(category.detectXMLFile(extension))
-            languageXML.setSelected(true);
+        Enumeration<AbstractButton> buttons = buttonGroup.getElements();
+        while(buttons.hasMoreElements()){
+            JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) buttons.nextElement();
+            if (menuItem.getActionCommand().equalsIgnoreCase(extension)){
+                menuItem.setSelected(true);
+                return;
+            }
+        }
     }
 }

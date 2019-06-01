@@ -13,51 +13,51 @@ public class MenuLanguageActionListener  extends MenuMainWindowListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-        if (command.equalsIgnoreCase("C")){
+        if (command.equalsIgnoreCase(CategoryOfFile.C_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_C);
             resetFileType(CategoryOfFile.C_FILE);
         }
-        else if (command.equalsIgnoreCase("C++")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.CPLUSPLUS_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS);
             resetFileType(CategoryOfFile.CPLUSPLUS_FILE);
         }
-        else if (command.equalsIgnoreCase("C#")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.CSHARP_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_CSHARP);
             resetFileType(CategoryOfFile.CSHARP_FILE);
         }
-        else if (command.equalsIgnoreCase("CSS")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.CSS_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_CSS);
             resetFileType(CategoryOfFile.CSS_FILE);
         }
-        else if (command.equalsIgnoreCase("Normal text")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.NORMAL_TEXT_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
             resetFileType(CategoryOfFile.NORMAL_TEXT_FILE);
         }
-        else if (command.equalsIgnoreCase("PHP")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.PHP_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_PHP);
             resetFileType(CategoryOfFile.PHP_FILE);
         }
-        else if (command.equalsIgnoreCase("Python")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.PYTHON_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_PYTHON);
             resetFileType(CategoryOfFile.PYTHON_FILE);
         }
-        else if (command.equalsIgnoreCase("Java")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.JAVA_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
             resetFileType(CategoryOfFile.JAVA_FILE);
         }
-        else if (command.equalsIgnoreCase("Java Script")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.JAVASCRIPT_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_JAVASCRIPT);
             resetFileType(CategoryOfFile.JAVASCRIPT_FILE);
         }
-        else if (command.equalsIgnoreCase("JSON")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.JSON_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_JSON);
             resetFileType(CategoryOfFile.JSON_FILE);
         }
-        else if (command.equalsIgnoreCase("HTML")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.HTML_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_HTML);
             resetFileType(CategoryOfFile.HTML_FILE);
         }
-        else if (command.equalsIgnoreCase("XML")){
+        else if (command.equalsIgnoreCase(CategoryOfFile.XML_FILE)){
             editorWindow.setEditorStyle(SyntaxConstants.SYNTAX_STYLE_XML);
             resetFileType(CategoryOfFile.XML_FILE);
         }
