@@ -24,4 +24,8 @@ public class SearchStatusBar extends JPanel {
     public StatusBar getStatusBar(){
         return statusBar;
     }
+
+    public void setStatusBarVisible(boolean visible){
+        statusBar.setVisible(visible);
+    }
 }

@@ -8,10 +8,12 @@ import java.util.ArrayList;
 public class EditorWindow extends JTabbedPane {
 
     private ArrayList<Integer> deletedTab;
+    private boolean isWrapWord;
 
     public EditorWindow(){
         super();
         deletedTab = new ArrayList<>();
+        isWrapWord = false;
         loadComponent();
         setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
@@ -19,6 +21,7 @@ public class EditorWindow extends JTabbedPane {
     private void loadComponent(){
         int number = getTabCount() + 1;
         TextEditor textEditor = new TextEditor(number);
+        textEditor.getTextArea().setLineWrap(isWrapWord);
         TabUI ui = new TabUI();
 
         if (deletedTab.size() <= 0) {
@@ -40,6 +43,7 @@ public class EditorWindow extends JTabbedPane {
 
     public void addTabEditor(String title){
         TextEditor textEditor = new TextEditor();
+        textEditor.getTextArea().setLineWrap(isWrapWord);
         TabUI tabUI = new TabUI();
 
         addTab(title, textEditor);
@@ -80,29 +84,21 @@ public class EditorWindow extends JTabbedPane {
     }
 
     public ArrayList<Integer> getDeletedTab(){return deletedTab;}
-    /*
-        get first element of array list deletedTab
-     */
-    public int getTabNumber(){
-        return deletedTab.get(0);
-    }
 
-    /*
-        Remove element of array list deletedTab
-        @index: position of element need remove
-     */
-    public void removeDeletedTab(int index){
-        deletedTab.remove(index);
-    }
-
-    /*
-        Set name of Tab
+    /**
+     * Set name of Tab at last tab
+     * @param nameOfTab name of tab
      */
     public void setTitleForTab(String nameOfTab){
         int index = getTabCount() - 1;
         setTitleForTab(nameOfTab, index);
     }
 
+    /**
+     * Set name of Tab at specify tab
+     * @param nameOfTab name of tab
+     * @param index position of tab
+     */
     public void setTitleForTab(String nameOfTab, int index){
         TabUI tabUI = (TabUI) getTabComponentAt(index);
         tabUI.setLabel(nameOfTab);
@@ -129,14 +125,11 @@ public class EditorWindow extends JTabbedPane {
      * @return position of file if file is exist
      */
     public int isExist(String filePath){
-        TextEditor[] textEditors = new TextEditor[getTabCount()];
-        for (int j = 0; j < textEditors.length; j++)
-            textEditors[j] = getTextEditor(j);
+        TextEditor[] textEditors = getAllTextEditor();
 
-        for (int i = 0; i < textEditors.length; i++){
+        for (int i = 0; i < textEditors.length; i++)
             if (textEditors[i].getFilePath().equalsIgnoreCase(filePath))
                 return i;
-        }
         return -1;
     }
 
@@ -150,23 +143,54 @@ public class EditorWindow extends JTabbedPane {
         textEditor.setFileType(fileType);
     }
 
+    public TextEditor[] getAllTextEditor(){
+        TextEditor[] textEditors= new TextEditor[getTabCount()];
+        int i;
+        for (i = 0; i < textEditors.length; i++)
+            textEditors[i] = getTextEditor(i);
+        return textEditors;
+    }
+    /**
+     * get file type of tab
+     * @param index position of tab
+     * @return .c, .txt, .cpp, .java...
+     */
     public String getFileTypeOfTab(int index){
         TextEditor textEditor = getTextEditor(index);
         return textEditor.getFileType();
     }
 
+    /**
+     * get directory of file
+     * @param index position of tab
+     * @return directory, ex: "C\User\Desktop..."
+     */
     public String getFilePathOfTab(int index) {
         TextEditor textEditor = getTextEditor(index);
         return textEditor.getFilePath();
     }
 
+    /**
+     * Check all tab is saved or not
+     * @return true if all tab is saved, false if one or more tab is not saved
+     */
     public boolean isSavedAll(){
-        TextEditor[] textEditors = new TextEditor[getTabCount()];
-        for (int j = 0; j < textEditors.length; j++) {
-            textEditors[j] = getTextEditor(j);
-            if (textEditors[j].getIsChanged())
+        TextEditor[] textEditors = getAllTextEditor();
+        for (TextEditor textEditor: textEditors){
+            if (!textEditor.getIsChanged())
                 return false;
         }
         return true;
+    }
+
+    /**
+     * Set or remove word wrap in all tab when checkbox word wrap in menu View is checked
+     * @param flag true if set word wrap , false if remove word wrap
+     */
+    public void setWordWrapAllTab(boolean flag){
+        isWrapWord = flag;
+        TextEditor[] textEditors = getAllTextEditor();
+        for (TextEditor textEditor : textEditors)
+            textEditor.getTextArea().setLineWrap(flag);
     }
 }

@@ -8,6 +8,7 @@ public class MainMenu  extends JMenuBar{
     private MenuSearch menuSearch ;
     private MenuLanguage menuLanguage;
     private MenuWindow menuWindow;
+    private MenuView menuView;
 
     public MainMenu (EditorWindow editorWindow, MyTree tree, MainWindow parentFrame){
         menuFile = new MenuFile(editorWindow, tree, parentFrame);
@@ -15,9 +16,11 @@ public class MainMenu  extends JMenuBar{
         menuSearch = new MenuSearch(editorWindow, parentFrame);
         menuLanguage = new MenuLanguage(editorWindow);
         menuWindow = new MenuWindow(editorWindow);
+        menuView = new MenuView(editorWindow, parentFrame);
 
         add(menuFile);
         add(menuEdit);
+        add(menuView);
         add(menuSearch);
         add(menuLanguage);
         add(menuWindow);
@@ -53,5 +56,13 @@ public class MainMenu  extends JMenuBar{
 
     public void removeItem(int index) {
         menuWindow.removeItem(index);
+    }
+
+    public void setSelectedWordWrap(boolean isSelected){
+        menuView.setSelectedWordWrap(isSelected);
+    }
+
+    public void setSelectedWorkspace(boolean isSelected){
+        menuView.setSelectedWorkspace(isSelected);
     }
 }

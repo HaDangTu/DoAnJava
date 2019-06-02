@@ -31,6 +31,7 @@ public class MainWindow extends  JFrame{
     private StatusBarTimer timer;
 
     public MainWindow(){
+        super();
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             SwingUtilities.updateComponentTreeUI(this);
@@ -42,7 +43,6 @@ public class MainWindow extends  JFrame{
     }
 
     private void loadComponent() {
-
         editorView = new EditorView();
         EditorWindow editorWindow = editorView.getEditorWindow();
         treeView = new TreeView(editorWindow, this);
@@ -57,7 +57,6 @@ public class MainWindow extends  JFrame{
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeView, editorView);
 
         initSplitPane();
-
 
         toolBar = new ToolBar(new JFileChooser(), editorWindow, treeView.getTree(), this);
 
@@ -135,5 +134,21 @@ public class MainWindow extends  JFrame{
 
     public void removeItem(int index){
         mainMenu.removeItem(index);
+    }
+
+    public void setTooBarVisible(boolean visible){
+        toolBar.setVisible(visible);
+    }
+
+    public void setWorkspaceVisible(boolean visible){
+        treeView.setVisible(visible);
+    }
+
+    public void setStatusBarVisible(boolean visible){
+        searchStatusBar.setVisible(visible);
+    }
+
+    public void setSelectedWorkspace (boolean isSelected) {
+        mainMenu.setSelectedWorkspace(isSelected);
     }
 }
