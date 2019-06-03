@@ -177,7 +177,7 @@ public class EditorWindow extends JTabbedPane {
     public boolean isSavedAll(){
         TextEditor[] textEditors = getAllTextEditor();
         for (TextEditor textEditor: textEditors){
-            if (!textEditor.getIsChanged())
+            if (textEditor.getIsChanged())
                 return false;
         }
         return true;

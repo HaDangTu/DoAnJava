@@ -152,4 +152,8 @@ public class MainWindow extends  JFrame{
     public void setSelectedWorkspace (boolean isSelected) {
         mainMenu.setSelectedWorkspace(isSelected);
     }
+
+    public void resetSlitPane(){
+        setWorkspaceVisible(true);
+    }
 }

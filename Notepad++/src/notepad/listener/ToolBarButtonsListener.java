@@ -7,9 +7,10 @@ import notepad.ui.SearchDialog;
 
 import notepad.util.OpenAndSaveFile;
 import notepad.util.TabInteraction;
+import notepad.util.UndoAndRedo;
 
 import javax.swing.JFileChooser;
-import javax.swing.undo.UndoManager;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,6 +42,7 @@ public class ToolBarButtonsListener implements ActionListener {
         RSyntaxTextArea textArea = textEditor.getTextArea();
         OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, parentFrame);
 
+        UndoAndRedo undoAndRedo = new UndoAndRedo(textEditor);
         SearchDialog dialog = new SearchDialog(parentFrame, editorWindow);
 
         if (command.equalsIgnoreCase("New")) {
@@ -88,38 +90,10 @@ public class ToolBarButtonsListener implements ActionListener {
             textArea.paste();
         }
         else if (command.equalsIgnoreCase("Undo")){
-            UndoManager undoManager = textEditor.getUndoManger();
-            if (undoManager.canUndo()) {
-                undoManager.undo();
-
-                if (undoManager.canRedo()) {
-                    parentFrame.setButtonRedoEnabled(true);
-                    parentFrame.setMenuItemRedoEnabled(true);
-                }
-                else {
-                    parentFrame.setButtonRedoEnabled(false);
-                    parentFrame.setMenuItemRedoEnabled(false);
-                }
-            }
-            else {
-                parentFrame.setButtonUndoEnabled(false);
-                parentFrame.setMenuItemUndoEnabled(false);
-            }
+            undoAndRedo.undoAction();
         }
         else if (command.equalsIgnoreCase("Redo")){
-            UndoManager undoManager = textEditor.getUndoManger();
-            if (undoManager.canRedo()){
-                undoManager.redo();
-
-                if (undoManager.canUndo()) {
-                    parentFrame.setButtonUndoEnabled(true);
-                    parentFrame.setMenuItemUndoEnabled(true);
-                }
-            }
-            else {
-                parentFrame.setButtonRedoEnabled(false);
-                parentFrame.setMenuItemRedoEnabled(false);
-            }
+            undoAndRedo.redoAction();
         }
         else if (command.equalsIgnoreCase("Find")){
             dialog.showDialog();

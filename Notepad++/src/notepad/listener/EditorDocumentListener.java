@@ -2,9 +2,11 @@ package notepad.listener;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.undo.UndoManager;
 
 import notepad.ui.TextEditor;
 import notepad.ui.MainWindow;
+import notepad.ui.TextEditorPopupMenu;
 
 public class EditorDocumentListener implements DocumentListener {
     private TextEditor editor;
@@ -15,29 +17,36 @@ public class EditorDocumentListener implements DocumentListener {
     @Override
     public void insertUpdate(DocumentEvent e) {
         MainWindow mainWindow = (MainWindow) editor.getRootPane().getParent();
-        if(!editor.getIsChanged()){
+        TextEditorPopupMenu popupMenu = (TextEditorPopupMenu) editor.getTextArea().getPopupMenu();
+
+        if(!editor.getIsChanged() && !editor.getIsOpened()){
             editor.setIsChanged(true);
-            mainWindow.setButtonUndoEnabled(true);
-            mainWindow.setMenuItemUndoEnabled(true);
             mainWindow.setButtonSaveEnabled(true);
             mainWindow.setButtonSaveAllEnabled(true);
             mainWindow.setMenuItemSaveEnabled(true);
             mainWindow.setMenuItemSaveAllEnabled(true);
+
+            mainWindow.setButtonUndoEnabled(true);
+            mainWindow.setMenuItemUndoEnabled(true);
+            popupMenu.setUndoEnabled(true);
         }
     }
 
     @Override
     public void removeUpdate(DocumentEvent e) {
         MainWindow mainWindow = (MainWindow) editor.getRootPane().getParent();
+        TextEditorPopupMenu popupMenu = (TextEditorPopupMenu) editor.getTextArea().getPopupMenu();
 
-        if(!editor.getIsChanged()){
+        if(!editor.getIsChanged() && !editor.getIsOpened()){
             editor.setIsChanged(true);
-            mainWindow.setButtonUndoEnabled(true);
-            mainWindow.setMenuItemUndoEnabled(true);
             mainWindow.setButtonSaveEnabled(true);
             mainWindow.setButtonSaveAllEnabled(true);
             mainWindow.setMenuItemSaveEnabled(true);
             mainWindow.setMenuItemSaveAllEnabled(true);
+
+            mainWindow.setButtonUndoEnabled(true);
+            mainWindow.setMenuItemUndoEnabled(true);
+            popupMenu.setUndoEnabled(true);
         }
     }
 

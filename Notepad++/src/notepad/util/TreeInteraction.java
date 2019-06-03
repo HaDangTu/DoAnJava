@@ -42,13 +42,14 @@ public class TreeInteraction {
                 String extension = category.getExtensionOfFile(file.getName());
                 String fileType = category.ChangeStyleEditorForFile(extension, editorWindow);
                 editorWindow.setFileTypeForTab(fileType, index);
-
-                RSyntaxTextArea textArea = editorWindow.getTextEditor(index).getTextArea();
+                TextEditor textEditor = editorWindow.getTextEditor(index);
+                RSyntaxTextArea textArea = textEditor.getTextArea();
 
                 MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);
+                textEditor.setIsOpened(true); //see comment at function openFile() in file OpenAndSaveFile.java
                 adapter.read(filePath);
-                TextEditor textEditor = editorWindow.getTextEditor(index);
-                textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = tru
+                textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = true
+                textEditor.setIsOpened(false);
                 editorWindow.setSelectedIndex(index);
 
                 MainWindow  mainWindow = (MainWindow) editorWindow.getRootPane().getParent();

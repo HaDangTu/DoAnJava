@@ -46,6 +46,7 @@ public class OpenAndSaveFile {
         if (returnValue == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
             tree.setRootWithFile(file);
+            parentFrame.resetSlitPane();
         }
     }
 
@@ -61,14 +62,23 @@ public class OpenAndSaveFile {
             TextEditor textEditor = editorWindow.getTextEditor(index);
             RSyntaxTextArea textArea = textEditor.getTextArea();
 
+
             CategoryOfFile categoryOfFile = new CategoryOfFile();
             String extension = categoryOfFile.getExtensionOfFile(file.getName());
             categoryOfFile.ChangeStyleEditorForFile(extension, editorWindow);
 
             MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);
             try{
+                /*
+                 * set isOpened = true để tránh undo manager gọi hàm addEdit
+                 */
+                textEditor.setIsOpened(true);
                 adapter.read(file.getAbsolutePath());
                 textEditor.setIsChanged(false); //set isChanged = false vi trong qua trinh doc file de hien thi tren textarea se lam bien isChanged = true
+                textEditor.setIsOpened(false);
+                /*
+                 * set isOpened = false để undo manager gọi hàm addEdit
+                 */
             }
             catch(FileNotFoundException fe){
                 System.err.println(fe.getMessage());
@@ -78,6 +88,7 @@ public class OpenAndSaveFile {
             }
 
             editorWindow.setSelectedIndex(index);
+            parentFrame.addItem(editorWindow.getTitleOfTab(index));
         }
     }
 

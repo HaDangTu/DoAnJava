@@ -6,6 +6,8 @@ import notepad.ui.TextEditor;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import javax.swing.undo.UndoManager;
+
 public class TabChangeListener implements ChangeListener {
 
     private MainWindow mainWindow;
@@ -25,10 +27,13 @@ public class TabChangeListener implements ChangeListener {
 
             mainWindow.setSelectedWindowItem(index);
 
-            mainWindow.setButtonUndoEnabled(textEditor.getTextArea().canUndo());
-            mainWindow.setButtonSaveEnabled(textEditor.getTextArea().canRedo());
-            mainWindow.setMenuItemRedoEnabled(textEditor.getTextArea().canRedo());
-            mainWindow.setMenuItemUndoEnabled(textEditor.getTextArea().canUndo());
+            UndoManager undoManager = textEditor.getUndoManager();
+
+            mainWindow.setButtonUndoEnabled(undoManager.canUndo());
+            mainWindow.setButtonRedoEnabled(undoManager.canRedo());
+
+            mainWindow.setMenuItemRedoEnabled(undoManager.canRedo());
+            mainWindow.setMenuItemUndoEnabled(undoManager.canUndo());
 
             if (textEditor.getIsChanged()) {
                 mainWindow.setMenuItemSaveEnabled(true);
@@ -38,6 +43,9 @@ public class TabChangeListener implements ChangeListener {
             } else {
                 mainWindow.setMenuItemSaveEnabled(false);
                 mainWindow.setButtonSaveEnabled(false);
+
+                mainWindow.setMenuItemSaveAllEnabled(false);
+                mainWindow.setButtonSaveAllEnabled(false);
                 if (!editorWindow.isSavedAll()) {
                     mainWindow.setMenuItemSaveAllEnabled(true);
                     mainWindow.setButtonSaveAllEnabled(true);

@@ -1,23 +1,32 @@
 package notepad.ui;
 
-import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
 
 import notepad.listener.DocumentUndoableEditListener;
 import notepad.listener.EditorDocumentListener;
-import javax.swing.undo.UndoManager;
-
 import notepad.listener.TextAreaMouseClickListener;
+
+import javax.swing.undo.UndoManager;
+import javax.swing.JPanel;
+
+
 import notepad.util.CategoryOfFile;
-import org.fife.ui.rsyntaxtextarea.*;
-import org.fife.ui.rtextarea.*;
+
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 public class TextEditor extends JPanel{
 
     private RSyntaxTextArea textArea;
+
     private String filePath;
     private String fileType;
+
     private boolean isChanged;
+    private boolean isOpened;
+
     private DocumentUndoableEditListener undoableEditListener;
     private int numberOfTab;
 
@@ -32,14 +41,22 @@ public class TextEditor extends JPanel{
         fileType = CategoryOfFile.NORMAL_TEXT_FILE;
 
         textArea.setCodeFoldingEnabled(true);
-        textArea.getDocument().addDocumentListener(new EditorDocumentListener(this));
 
-        undoableEditListener = new DocumentUndoableEditListener();
+        //Undo and redo listener
+        undoableEditListener = new DocumentUndoableEditListener(this);
         textArea.getDocument().addUndoableEditListener(undoableEditListener);
+
+        textArea.getDocument().addDocumentListener(new EditorDocumentListener(this));
+        textArea.addMouseListener(new TextAreaMouseClickListener(textArea));
+
+        TextEditorPopupMenu textEditorPopupMenu = new TextEditorPopupMenu(this);
+        textArea.setPopupMenu(textEditorPopupMenu);
 
         RTextScrollPane scrollPane = new RTextScrollPane(textArea); //tạo scroll bar cho text area
         add(scrollPane);
         isChanged = false;
+        isOpened = false;
+
     }
 
     public TextEditor(int numberOfTab){
@@ -55,16 +72,22 @@ public class TextEditor extends JPanel{
 
         textArea.setCodeFoldingEnabled(true); //set code folding
 
+        //Undo and redo listener
+        undoableEditListener = new DocumentUndoableEditListener(this);
+        textArea.getDocument().addUndoableEditListener(undoableEditListener);
+
         textArea.getDocument().addDocumentListener(new EditorDocumentListener(this));
         textArea.addMouseListener(new TextAreaMouseClickListener(textArea));
 
-        //Undo and redo listener
-        undoableEditListener = new DocumentUndoableEditListener();
-        textArea.getDocument().addUndoableEditListener(undoableEditListener);
+        TextEditorPopupMenu textEditorPopupMenu = new TextEditorPopupMenu(this);
+        textArea.setPopupMenu(textEditorPopupMenu);
 
         RTextScrollPane scrollPane = new RTextScrollPane(textArea); //tạo scroll bar cho text area
         add(scrollPane);
         isChanged = false;
+        isOpened = false;
+
+
     }
 
 
@@ -92,12 +115,28 @@ public class TextEditor extends JPanel{
         this.isChanged  = isChanged;
     }
 
+    /**
+     *
+     * @return true if text editor is modified, false if text editor if not modified
+     */
     public boolean getIsChanged(){
         return this.isChanged;
     }
 
-    public UndoManager getUndoManger(){
-        return undoableEditListener.getUndoManger();
+
+    public void setIsOpened(boolean isOpened){
+        this.isOpened = isOpened;
+    }
+    /**
+     *
+     * @return true if text editor is changed by reading data from a file on disk
+     */
+    public boolean getIsOpened(){
+        return this.isOpened;
+    }
+
+    public UndoManager getUndoManager(){
+        return undoableEditListener.getUndoManager();
     }
 
     public int getNumberOfTab() {

@@ -35,7 +35,7 @@ public class MenuWindow extends JMenu{
         String itemName = editorWindow.getSelectedIndex() + 1 + ": " + windowName;
         JCheckBoxMenuItem checkBoxMenuItem = new JCheckBoxMenuItem(itemName);
 
-        /**
+        /*
          * Edit action command of check box
          */
         Integer actionCommand = editorWindow.getSelectedIndex();
@@ -57,6 +57,11 @@ public class MenuWindow extends JMenu{
         int i = 0;
         JCheckBoxMenuItem checkBox;
         remove(index);
+        if (index == editorWindow.getTabCount())
+            setSelectedItem(index - 1);
+        else
+            setSelectedItem(index + 1);
+
         while (buttons.hasMoreElements()){
             checkBox = (JCheckBoxMenuItem) buttons.nextElement();
             if (i == index) {
@@ -87,12 +92,13 @@ public class MenuWindow extends JMenu{
 
     private void renameWindow(){
         Enumeration<AbstractButton> buttons = buttonGroup.getElements();
-        int i = 1;
+        int i = 0;
         while (buttons.hasMoreElements()){
             JCheckBoxMenuItem checkBox = (JCheckBoxMenuItem) buttons.nextElement();
             String name = checkBox.getText();
-            name = i + name.substring(name.lastIndexOf(":"));
+            name = (i + 1) + name.substring(name.lastIndexOf(":"));
             checkBox.setText(name);
+            checkBox.setActionCommand(((Integer)i).toString());
             i++;
         }
     }

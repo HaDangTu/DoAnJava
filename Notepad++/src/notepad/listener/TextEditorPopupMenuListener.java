@@ -1,32 +1,34 @@
 package notepad.listener;
 
-import notepad.ui.EditorWindow;
 import notepad.ui.TextEditor;
+import notepad.ui.TextEditorPopupMenu;
 
 import notepad.util.UndoAndRedo;
 
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MenuEditActionListener extends MenuMainWindowListener{
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
-    public MenuEditActionListener(EditorWindow editorWindow) {
-        super(editorWindow);
+public class TextEditorPopupMenuListener implements ActionListener {
+    private TextEditor textEditor;
+    private TextEditorPopupMenu popupMenu;
+
+    public TextEditorPopupMenuListener(TextEditor textEditor, TextEditorPopupMenu popupMenu){
+        this.textEditor = textEditor;
+        this.popupMenu = popupMenu;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-
-        int index = editorWindow.getSelectedIndex();
-        TextEditor textEditor = editorWindow.getTextEditor(index);
         RSyntaxTextArea textArea = textEditor.getTextArea();
-
         UndoAndRedo undoAndRedo = new UndoAndRedo(textEditor);
+
         if (command.equalsIgnoreCase("Undo")){
             undoAndRedo.undoAction();
         }
-        else if (command.equalsIgnoreCase("Redo")){
+        else if (command.equalsIgnoreCase("Redo")) {
             undoAndRedo.redoAction();
         }
         else if (command.equalsIgnoreCase("Cut")){
@@ -45,7 +47,7 @@ public class MenuEditActionListener extends MenuMainWindowListener{
             if (Math.abs(end - start) > 0)
                 textArea.setText(textArea.getText().replace(textArea.getSelectedText(), ""));
         }
-        else if (command.equalsIgnoreCase("Select All")){
+        else if (command.equalsIgnoreCase("Select all")){
             textArea.selectAll();
         }
     }

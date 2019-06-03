@@ -1,23 +1,31 @@
 package notepad.listener;
 
+import notepad.ui.TextEditor;
+
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.undo.UndoManager;
 
 public class DocumentUndoableEditListener implements UndoableEditListener {
 
-    private UndoManager undoManger;
+    private UndoManager undoManager;
+    private TextEditor textEditor;
 
-    public DocumentUndoableEditListener(){
-        undoManger = new UndoManager();
+    public DocumentUndoableEditListener(TextEditor textEditor){
+        this.textEditor = textEditor;
+        undoManager = new UndoManager();
     }
 
     @Override
     public void undoableEditHappened(UndoableEditEvent e) {
-        undoManger.addEdit(e.getEdit());
+        /*
+         * chỉ addEdit khi dữ liệu do user nhập trên text editor, không phải đọc từ file lên
+         */
+        if (!textEditor.getIsOpened())
+            undoManager.addEdit(e.getEdit());
     }
 
-    public UndoManager getUndoManger(){
-        return undoManger;
+    public UndoManager getUndoManager(){
+        return undoManager;
     }
 }
