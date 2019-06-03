@@ -15,7 +15,7 @@ public class NewFolderDialog extends JDialog{
     private JTextField fieldName;
     private String[] buttonsName = {"Create folder", "Cancel"};
 
-    public NewFolderDialog(JFrame parentFrame, MyTree tree, TreeInteraction treeInteraction){
+    public NewFolderDialog(JFrame parentFrame, Tree tree, TreeInteraction treeInteraction){
         label = new JLabel("New folder name: ");
         fieldName = new JTextField();
 

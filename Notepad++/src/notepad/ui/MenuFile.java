@@ -28,7 +28,7 @@ class MenuFile extends JMenu {
     private JMenuItem fileExit;
     private MenuFileActionListener fileListener;
 
-    public MenuFile (EditorWindow editorWindow, MyTree tree, MainWindow parentFrame){
+    public MenuFile (EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
         super("File");
         fileListener = new MenuFileActionListener(editorWindow, tree, parentFrame);
         createMenuFile();

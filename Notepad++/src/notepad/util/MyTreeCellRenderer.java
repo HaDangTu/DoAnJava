@@ -1,6 +1,6 @@
 package notepad.util;
 
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 
 import javax.swing.JComponent;
 import javax.swing.JTree;
@@ -53,7 +53,7 @@ public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
                                                   int row,
                                                   boolean hasFocus) {
         super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
-        MyTree mytree = (MyTree) tree;
+        Tree mytree = (Tree) tree;
         location = mytree.getLocation1();
         setIconForFile(value, expanded);
         return this;

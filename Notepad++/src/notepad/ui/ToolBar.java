@@ -16,9 +16,9 @@ public class ToolBar extends JToolBar{
     private JButton buttonCopy;
     private JButton buttonPaste;
 
-    public ToolBar(JFileChooser fileChooser, EditorWindow editorWindow, MyTree myTree, MainWindow parentFrame){
+    public ToolBar(JFileChooser fileChooser, EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
         ToolBarButtonsListener listener = new ToolBarButtonsListener(fileChooser, editorWindow,
-                myTree, parentFrame);
+                tree, parentFrame);
 
         JButton buttonNewFile = new JButton(new ImageIcon("icon\\new.png"));
         buttonNewFile.addActionListener(listener);

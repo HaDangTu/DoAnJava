@@ -11,6 +11,7 @@ public class EditorView extends JPanel{
     private EditorWindow editorWindow;
 
     public EditorView(){
+        super();
         editorWindow = new EditorWindow();
 
         Border border = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);

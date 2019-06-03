@@ -1,5 +1,5 @@
 package notepad.ui;
-import com.company.Main;
+
 import notepad.listener.TreeCellEditorListener;
 import notepad.listener.TreeMouseListener;
 
@@ -13,16 +13,18 @@ import javax.swing.BorderFactory;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 
 public class TreeView extends JPanel{
-    private MyTree tree;
+    private Tree tree;
     private JScrollPane scrollPane;
     private CloseTreeViewPanel treeViewPanel;
 
     private TreeMouseListener mouseListener;
 
     public TreeView(EditorWindow editorWindow, JFrame parentFrame){
-        tree = new MyTree(null);
+        super();
+        tree = new Tree(null);
         scrollPane = new JScrollPane(tree);
         treeViewPanel = new CloseTreeViewPanel();
 
@@ -48,7 +50,7 @@ public class TreeView extends JPanel{
         setVisible(false);
     }
 
-    public MyTree getTree(){
+    public Tree getTree(){
         return tree;
     }
 }

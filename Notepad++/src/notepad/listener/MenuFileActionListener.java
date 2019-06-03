@@ -1,7 +1,7 @@
 package notepad.listener;
 import notepad.ui.EditorWindow;
 import notepad.ui.MainWindow;
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 import notepad.ui.NewFileDialog;
 import notepad.ui.TextEditor;
 
@@ -16,11 +16,11 @@ import java.awt.event.ActionEvent;
 public class MenuFileActionListener extends MenuMainWindowListener {
     private JFileChooser fileChooser;
     private MainWindow parentFrame;
-    private MyTree tree;
+    private Tree tree;
     private OpenAndSaveFile openAndSaveFile;
     private TabInteraction tabInteraction;
 
-    public MenuFileActionListener(EditorWindow editorWindow, MyTree tree, MainWindow parentFrame){
+    public MenuFileActionListener(EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
         super(editorWindow);
         fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         this.tree = tree;

@@ -15,6 +15,7 @@ public class CloseTreeViewPanel extends JPanel{
     private JLabel label;
 
     public CloseTreeViewPanel(){
+        super();
         closeButton = new JButton(new ImageIcon("icon\\close.png"));
         closeButton.setPreferredSize(new Dimension(16, 16));
         label = new JLabel("Workspace");

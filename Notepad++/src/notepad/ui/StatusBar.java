@@ -19,6 +19,7 @@ public class StatusBar  extends JPanel{
     private JLabel lineColumnSelect;
 
     public StatusBar(EditorWindow editorWindow){
+        super();
         fileType = new JLabel();
         fileType.setPreferredSize(new Dimension(400, 15));
 

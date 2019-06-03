@@ -1,6 +1,4 @@
 package notepad.ui;
-import notepad.ui.EditorWindow;
-import notepad.ui.MyTree;
 import notepad.listener.TreePopupMenuListener;
 
 import javax.swing.JPopupMenu;
@@ -9,7 +7,7 @@ import javax.swing.JMenu;
 import javax.swing.JFrame;
 
 public class TreePopupMenu extends JPopupMenu{
-    public TreePopupMenu(EditorWindow editorWindow, MyTree tree, JFrame parentFrame){
+    public TreePopupMenu(EditorWindow editorWindow, Tree tree, JFrame parentFrame){
         TreePopupMenuListener listener = new TreePopupMenuListener(editorWindow, tree, parentFrame);
 
         JMenu menuNew = new JMenu("New");

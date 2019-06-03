@@ -1,5 +1,5 @@
 package notepad.util;
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 import notepad.ui.EditorWindow;
 import notepad.ui.TextEditor;
 import notepad.ui.MainWindow;
@@ -23,7 +23,7 @@ public class TreeInteraction {
     private TreePath srcTreePath;
     private boolean isCopy;
 
-    public void openFile(EditorWindow editorWindow, MyTree tree) throws FileNotFoundException, IOException{
+    public void openFile(EditorWindow editorWindow, Tree tree) throws FileNotFoundException, IOException{
         TreePath treePath = tree.getSelectionPath();
         String directory = BuildingFilePath.buildFilePath(treePath);
         String filePath = tree.getLocation1() + "\\" + directory;
@@ -59,7 +59,7 @@ public class TreeInteraction {
             editorWindow.setSelectedIndex(result);
     }
 
-    public boolean addNewFile(MyTree tree, String newFileName) throws IOException{
+    public boolean addNewFile(Tree tree, String newFileName) throws IOException{
         newFileName = "\\" + newFileName;
         TreePath treePath = tree.getSelectionPath();
         String filePath = BuildingFilePath.buildFilePath(treePath);
@@ -90,7 +90,7 @@ public class TreeInteraction {
         return true;
     }
 
-    public boolean addNewFolder(MyTree tree, String newFolderName){
+    public boolean addNewFolder(Tree tree, String newFolderName){
         newFolderName = "\\" + newFolderName;
         TreePath treePath = tree.getSelectionPath();
         String filePath = BuildingFilePath.buildFilePath(treePath);
@@ -123,12 +123,12 @@ public class TreeInteraction {
         return true;
     }
 
-    public boolean deleteFileOrFolder(MyTree tree){
+    public boolean deleteFileOrFolder(Tree tree){
         TreePath treePath = tree.getSelectionPath();
         return deleteFileOrFolder(tree, treePath);
     }
 
-    private boolean deleteFileOrFolder(MyTree tree, TreePath treePath){
+    private boolean deleteFileOrFolder(Tree tree, TreePath treePath){
         String path = BuildingFilePath.buildFilePath(treePath);
         String location = tree.getLocation1();
         String fullPath = location + path;
@@ -147,7 +147,7 @@ public class TreeInteraction {
         else return false;
     }
 
-    public void copyPath (MyTree tree){
+    public void copyPath (Tree tree){
         String location = tree.getLocation1();
         TreePath treePath = tree.getSelectionPath();
         String path = BuildingFilePath.buildFilePath(treePath);
@@ -158,17 +158,17 @@ public class TreeInteraction {
         clipboard.setContents(stringSelection, null);
     }
 
-    public void copyFile(MyTree tree){
+    public void copyFile(Tree tree){
         srcTreePath = tree.getSelectionPath();
         isCopy = true; //copy file
     }
 
-    public void cutFile(MyTree tree){
+    public void cutFile(Tree tree){
         copyFile(tree);
         isCopy = false; //cut file
     }
 
-    public void paste(MyTree tree) throws IOException{
+    public void paste(Tree tree) throws IOException{
         String location = tree.getLocation1();
 
         String srcFilePath = location + BuildingFilePath.buildFilePath(srcTreePath);

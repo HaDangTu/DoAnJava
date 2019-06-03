@@ -1,7 +1,7 @@
 package notepad.listener;
 
 import notepad.ui.NewFolderDialog;
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 import notepad.util.TreeInteraction;
 
 import javax.swing.JOptionPane;
@@ -15,9 +15,9 @@ public class NewFolderDialogPropertyChangeListener implements PropertyChangeList
     private JDialog dialog;
     private JFrame parentFrame;
     private TreeInteraction treeInteraction;
-    private MyTree tree;
+    private Tree tree;
 
-    public NewFolderDialogPropertyChangeListener(JDialog dialog, JFrame parentFrame, MyTree tree,
+    public NewFolderDialogPropertyChangeListener(JDialog dialog, JFrame parentFrame, Tree tree,
                                                  TreeInteraction treeInteraction){
         this.dialog = dialog;
         this.parentFrame = parentFrame;

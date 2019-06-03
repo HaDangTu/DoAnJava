@@ -3,7 +3,7 @@ package notepad.util;
 import notepad.ui.EditorWindow;
 import notepad.ui.MainWindow;
 import notepad.ui.TextEditor;
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
@@ -19,7 +19,7 @@ public class OpenAndSaveFile {
     private JFileChooser fileChooser;
     private EditorWindow editorWindow;
     private MainWindow parentFrame;
-    private MyTree tree;
+    private Tree tree;
 
     /**
      * Use for save file
@@ -33,7 +33,7 @@ public class OpenAndSaveFile {
     /**
      * Use for open file and folder
      */
-    public OpenAndSaveFile(JFileChooser fileChooser, EditorWindow editorWindow, MyTree tree, MainWindow parentFrame){
+    public OpenAndSaveFile(JFileChooser fileChooser, EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
         this.fileChooser = fileChooser;
         this.editorWindow = editorWindow;
         this.parentFrame = parentFrame;

@@ -6,11 +6,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.io.File;
 
-public class MyTree extends JTree {
+public class Tree extends JTree {
     private String location1;
     private DefaultMutableTreeNode root;
 
-    public MyTree(DefaultMutableTreeNode root){
+    public Tree(DefaultMutableTreeNode root){
         super(root);
         MyTreeCellRenderer renderer = new MyTreeCellRenderer();
         setCellRenderer(renderer);

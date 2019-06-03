@@ -23,6 +23,7 @@ public class SearchDialog extends JDialog{
     private ReplaceButtonListener replaceListener;
 
     public SearchDialog(JFrame frame, EditorWindow editorWindow){
+        super();
         tabbedPane = new JTabbedPane();
         panel = new JPanel(new BorderLayout());
 

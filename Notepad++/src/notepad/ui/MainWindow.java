@@ -62,13 +62,13 @@ public class MainWindow extends  JFrame{
 
         panel.add(toolBar, BorderLayout.PAGE_START);
         panel.add(splitPane,BorderLayout.CENTER);
-        panel.add(searchStatusBar, BorderLayout.SOUTH);
+        panel.add(searchStatusBar, BorderLayout.PAGE_END);
 
         this.setJMenuBar(mainMenu);
         this.setTitle("Notepad++");
         this.setSize(1000, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.getContentPane().add(panel);
+        this.add(panel);
         this.addWindowFocusListener(new WindowFocusListener(editorWindow));
 
         timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
@@ -76,7 +76,7 @@ public class MainWindow extends  JFrame{
 
     private void initSplitPane(){
         splitPane.setDividerLocation(200);
-        splitPane.setResizeWeight(0.2);
+        splitPane.setResizeWeight(0.1);
         Dimension minimumSize = new Dimension(200, 600);
         treeView.setMinimumSize(minimumSize);
         editorView.setMinimumSize(minimumSize);
@@ -141,6 +141,7 @@ public class MainWindow extends  JFrame{
     }
 
     public void setWorkspaceVisible(boolean visible){
+        splitPane.resetToPreferredSizes();
         treeView.setVisible(visible);
     }
 

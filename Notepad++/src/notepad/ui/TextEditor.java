@@ -22,6 +22,7 @@ public class TextEditor extends JPanel{
     private int numberOfTab;
 
     public TextEditor(){
+        super();
         this.numberOfTab = -1;
         filePath = "";
         setLayout(new BorderLayout());
@@ -42,6 +43,7 @@ public class TextEditor extends JPanel{
     }
 
     public TextEditor(int numberOfTab){
+        super();
         this.numberOfTab = numberOfTab;
         filePath = "";
         setLayout(new BorderLayout());

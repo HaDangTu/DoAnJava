@@ -10,7 +10,7 @@ public class MainMenu  extends JMenuBar{
     private MenuWindow menuWindow;
     private MenuView menuView;
 
-    public MainMenu (EditorWindow editorWindow, MyTree tree, MainWindow parentFrame){
+    public MainMenu (EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
         menuFile = new MenuFile(editorWindow, tree, parentFrame);
         menuEdit = new MenuEdit(editorWindow);
         menuSearch = new MenuSearch(editorWindow, parentFrame);

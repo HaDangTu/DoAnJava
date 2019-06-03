@@ -20,6 +20,7 @@ import java.awt.Dimension;
 public class SearchBar extends JPanel{
 
     public SearchBar(EditorWindow editorWindow){
+        super();
         JButton buttonClose = new JButton(new ImageIcon("icon\\close.png"));
         buttonClose.setSize(10, 10);
         buttonClose.setOpaque(false);

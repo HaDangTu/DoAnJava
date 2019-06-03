@@ -13,9 +13,10 @@ public class TabUI extends JPanel {
     private ImageIcon icon;
 
     public TabUI (){
-
+        super();
         //setLayout
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
+        flowLayout.setVgap(0);
         setLayout(flowLayout);
         setOpaque(false);
 

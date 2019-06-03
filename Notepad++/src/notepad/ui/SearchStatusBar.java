@@ -9,6 +9,7 @@ public class SearchStatusBar extends JPanel {
     private StatusBar statusBar;
 
     public SearchStatusBar(EditorWindow editorWindow){
+        super();
         searchBar = new SearchBar(editorWindow);
         statusBar = new StatusBar(editorWindow);
 

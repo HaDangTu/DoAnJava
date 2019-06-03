@@ -23,6 +23,7 @@ public class NewFileDialog extends JDialog{
     private String[] buttonsName = {"Create file", "Cancel"};
 
     public NewFileDialog(JFrame frame, String[] kind, EditorWindow editorWindow){
+        super();
         this.frame = frame;
         //this.editorWindow = editorWindow;
         textFieldName = new JTextField();
@@ -50,6 +51,7 @@ public class NewFileDialog extends JDialog{
     }
 
     public NewFileDialog(JFrame frame, EditorWindow editorWindow){
+        super();
         this.frame = frame;
         //this.editorWindow = editorWindow;
         textFieldName = new JTextField();

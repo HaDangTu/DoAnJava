@@ -1,7 +1,5 @@
 package notepad.ui;
 
-import com.company.Main;
-
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import java.awt.event.ActionEvent;

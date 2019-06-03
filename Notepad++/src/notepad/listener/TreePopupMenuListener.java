@@ -2,7 +2,7 @@ package notepad.listener;
 
 import notepad.ui.EditorWindow;
 import notepad.ui.NewFileDialog;
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 import notepad.ui.NewFolderDialog;
 
 import javax.swing.JFrame;
@@ -19,10 +19,10 @@ import java.io.IOException;
 public class TreePopupMenuListener implements ActionListener {
     private EditorWindow editorWindow;
     private JFrame parentFrame;
-    private MyTree tree;
+    private Tree tree;
     private TreeInteraction treeInteraction;
 
-    public TreePopupMenuListener(EditorWindow editorWindow, MyTree tree, JFrame parentFrame){
+    public TreePopupMenuListener(EditorWindow editorWindow, Tree tree, JFrame parentFrame){
         this.editorWindow = editorWindow;
         this.parentFrame = parentFrame;
         this.tree = tree;

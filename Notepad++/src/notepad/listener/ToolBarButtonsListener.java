@@ -1,6 +1,6 @@
 package notepad.listener;
 import notepad.ui.EditorWindow;
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 import notepad.ui.MainWindow;
 import notepad.ui.TextEditor;
 import notepad.ui.SearchDialog;
@@ -19,12 +19,12 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 public class ToolBarButtonsListener implements ActionListener {
     private EditorWindow editorWindow;
     private JFileChooser fileChooser;
-    private MyTree tree;
+    private Tree tree;
     private MainWindow parentFrame;
 
     private TabInteraction tabInteraction;
     public ToolBarButtonsListener(JFileChooser fileChooser, EditorWindow editorWindow,
-                                  MyTree tree, MainWindow parentFrame){
+                                  Tree tree, MainWindow parentFrame){
 
         this.editorWindow = editorWindow;
         this.fileChooser = fileChooser;

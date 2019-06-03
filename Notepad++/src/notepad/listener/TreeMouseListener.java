@@ -1,7 +1,7 @@
 package notepad.listener;
 
 import notepad.ui.EditorWindow;
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 import notepad.ui.TreePopupMenu;
 
 
@@ -17,11 +17,11 @@ import java.awt.event.MouseListener;
 
 public class TreeMouseListener implements MouseListener {
     private EditorWindow editorWindow;
-    private MyTree tree;
+    private Tree tree;
     private TreePopupMenu popupMenu;
     private TreeInteraction treeInteraction;
 
-    public TreeMouseListener(MyTree tree, EditorWindow editorWindow, JFrame parentFrame){
+    public TreeMouseListener(Tree tree, EditorWindow editorWindow, JFrame parentFrame){
         this.tree = tree;
         this.editorWindow = editorWindow;
         popupMenu = new TreePopupMenu(editorWindow, tree, parentFrame);

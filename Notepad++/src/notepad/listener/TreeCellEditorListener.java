@@ -1,6 +1,6 @@
 package notepad.listener;
 
-import notepad.ui.MyTree;
+import notepad.ui.Tree;
 import notepad.util.BuildingFilePath;
 
 import javax.swing.tree.TreePath;
@@ -12,9 +12,9 @@ import java.io.File;
 
 public class TreeCellEditorListener implements CellEditorListener {
 
-    private MyTree tree;
+    private Tree tree;
 
-    public TreeCellEditorListener(MyTree tree){
+    public TreeCellEditorListener(Tree tree){
         this.tree = tree;
     }
 
