@@ -3,6 +3,7 @@ import notepad.listener.WindowFocusListener;
 import notepad.listener.TabChangeListener;
 
 import notepad.util.StatusBarTimer;
+import notepad.util.ImageManager;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,6 +14,7 @@ import javax.swing.JFileChooser;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Color;
 
 import java.lang.Exception;
 
@@ -30,16 +32,23 @@ public class MainWindow extends  JFrame{
 
     private StatusBarTimer timer;
 
+    protected ImageManager imageManager;
+
     public MainWindow(){
         super();
+        imageManager = new ImageManager();
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             SwingUtilities.updateComponentTreeUI(this);
+
+            loadComponent();
+
+            this.pack();
+            this.setVisible(true);
         }
         catch (Exception ex){
-            System.out.println(ex.getMessage());
+            System.err.println(ex.getMessage());
         }
-        loadComponent();
     }
 
     private void loadComponent() {
@@ -52,7 +61,9 @@ public class MainWindow extends  JFrame{
 
         editorWindow.addChangeListener(new TabChangeListener(this, editorWindow));
 
-        panel = new JPanel(new BorderLayout());
+        BorderLayout layout =  new BorderLayout();
+        panel = new JPanel();
+        panel.setLayout(layout);
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeView, editorView);
 
@@ -60,26 +71,31 @@ public class MainWindow extends  JFrame{
 
         toolBar = new ToolBar(new JFileChooser(), editorWindow, treeView.getTree(), this);
 
-        panel.add(toolBar, BorderLayout.PAGE_START);
         panel.add(splitPane,BorderLayout.CENTER);
+        panel.add(toolBar, BorderLayout.PAGE_START);
         panel.add(searchStatusBar, BorderLayout.PAGE_END);
 
+        timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
+
         this.setJMenuBar(mainMenu);
-        this.setTitle("Notepad++");
-        this.setSize(1000, 600);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(panel);
+        this.getContentPane().add(panel);
         this.addWindowFocusListener(new WindowFocusListener(editorWindow));
 
-        timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
+        this.setPreferredSize(new Dimension(1000, 600));
+        this.setMaximumSize(new Dimension(1366, 600));
+        this.setMinimumSize(new Dimension(600, 600));
+        this.setTitle("Notepad++");
+        this.getContentPane().setBackground(Color.LIGHT_GRAY);
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void initSplitPane(){
         splitPane.setDividerLocation(200);
-        splitPane.setResizeWeight(0.1);
+        splitPane.setResizeWeight(0);
         Dimension minimumSize = new Dimension(200, 600);
-        treeView.setMinimumSize(minimumSize);
-        editorView.setMinimumSize(minimumSize);
+        splitPane.getLeftComponent().setMinimumSize(minimumSize);
+        splitPane.getRightComponent().setMinimumSize(minimumSize);
     }
 
     public void setVisiblePanelSearchIncremental(boolean visible){
@@ -154,6 +170,11 @@ public class MainWindow extends  JFrame{
     }
 
     public void resetSlitPane(){
+        setSelectedWorkspace(true);
         setWorkspaceVisible(true);
+    }
+
+    public ImageManager getImageManager(){
+        return this.imageManager;
     }
 }

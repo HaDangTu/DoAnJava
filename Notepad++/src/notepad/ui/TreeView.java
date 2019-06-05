@@ -43,8 +43,9 @@ public class TreeView extends JPanel{
         });
 
         Border border = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(0,0));
         setBorder(border);
+        //setPreferredSize(new Dimension(200,600));
         add(scrollPane, BorderLayout.CENTER);
         add(treeViewPanel, BorderLayout.NORTH);
         setVisible(false);

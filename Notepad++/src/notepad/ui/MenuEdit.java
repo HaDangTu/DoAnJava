@@ -3,16 +3,15 @@ package notepad.ui;
 import notepad.listener.MenuEditActionListener;
 
 import javax.swing.JMenuItem;
-import javax.swing.JMenu;
-import javax.swing.ImageIcon;
+
 import javax.swing.KeyStroke;
 
-import java.awt.event.ActionEvent;
+
 import java.awt.event.KeyEvent;
 import java.awt.Toolkit;
 
 
-class MenuEdit extends JMenu{
+class MenuEdit extends Menu{
     private JMenuItem editUndo;
     private JMenuItem editRedo;
 
@@ -26,37 +25,38 @@ class MenuEdit extends JMenu{
 
     private MenuEditActionListener editListener;
 
-    public MenuEdit(EditorWindow editorWindow){
-        super("Edit");
+    public MenuEdit(EditorWindow editorWindow, MainWindow parentFrame){
+        super("Edit", parentFrame);
         editListener = new MenuEditActionListener(editorWindow);
+
         editUndo = new JMenuItem("Undo");
         editUndo.setEnabled(false);
-        editUndo.setIcon(new ImageIcon("icon\\undo.png"));
+        editUndo.setIcon(imageManager.get("undo"));
         editUndo.addActionListener(editListener);
         editUndo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         editRedo = new JMenuItem("Redo");
         editRedo.setEnabled(false);
-        editRedo.setIcon(new ImageIcon("icon\\redo.png"));
+        editRedo.setIcon(imageManager.get("redo"));
         editRedo.addActionListener(editListener);
         editRedo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         editCut = new JMenuItem("Cut");
-        editCut.setIcon(new ImageIcon("icon\\cut.png"));
+        editCut.setIcon(imageManager.get("cut"));
         editCut.addActionListener(editListener);
         editCut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         editCopy = new JMenuItem("Copy");
-        editCopy.setIcon(new ImageIcon("icon\\copy.png"));
+        editCopy.setIcon(imageManager.get("copy"));
         editCopy.addActionListener(editListener);
         editCopy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         editPaste = new JMenuItem("Paste");
-        editPaste.setIcon(new ImageIcon("icon\\paste.png"));
+        editPaste.setIcon(imageManager.get("paste"));
         editPaste.addActionListener(editListener);
         editPaste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));

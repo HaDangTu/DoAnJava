@@ -6,12 +6,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.Toolkit;
 
-class MenuFile extends JMenu {
+class MenuFile extends Menu {
     private JMenu fileNew;
     private JMenu fileOpen;
 
@@ -29,8 +28,9 @@ class MenuFile extends JMenu {
     private MenuFileActionListener fileListener;
 
     public MenuFile (EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
-        super("File");
+        super("File", parentFrame);
         fileListener = new MenuFileActionListener(editorWindow, tree, parentFrame);
+
         createMenuFile();
         createMenuOpen();
         createSaveItems();
@@ -126,20 +126,20 @@ class MenuFile extends JMenu {
     private void createSaveItems(){
         fileSave = new JMenuItem("Save");
         fileSave.setEnabled(false);
-        fileSave.setIcon(new ImageIcon("icon\\save.png"));
+        fileSave.setIcon(imageManager.get("save"));
         fileSave.addActionListener(fileListener);
         fileSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
         fileSaveAs = new JMenuItem("Save As...");
-        fileSaveAs.setIcon(new ImageIcon("icon\\save_as.png"));
+        fileSaveAs.setIcon(imageManager.get("save_as"));
         fileSaveAs.addActionListener(fileListener);
         fileSaveAs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
                 ActionEvent.CTRL_MASK + ActionEvent.ALT_MASK));
 
         fileSaveAll = new JMenuItem("Save All");
         fileSaveAll.setEnabled(false);
-        fileSaveAll.setIcon(new ImageIcon("icon\\save_all.png"));
+        fileSaveAll.setIcon(imageManager.get("save_all"));
         fileSaveAll.addActionListener(fileListener);
         fileSaveAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
                 ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK));
@@ -147,13 +147,13 @@ class MenuFile extends JMenu {
 
     private void createCloseTabAndExitItems(){
         fileCloseTab = new JMenuItem("Close tab");
-        fileCloseTab.setIcon(new ImageIcon("icon\\close_file.png"));
+        fileCloseTab.setIcon(imageManager.get("close_file"));
         fileCloseTab.addActionListener(fileListener);
         fileCloseTab.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
                 ActionEvent.CTRL_MASK));
 
         fileCloseAllTab = new JMenuItem("Close all tab");
-        fileCloseAllTab.setIcon(new ImageIcon("icon\\close_all.png"));
+        fileCloseAllTab.setIcon(imageManager.get("close_all"));
         fileCloseAllTab.addActionListener(fileListener);
         fileCloseAllTab.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
                 ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK));

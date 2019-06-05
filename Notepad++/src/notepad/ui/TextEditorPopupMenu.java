@@ -1,13 +1,11 @@
 package notepad.ui;
 
 import notepad.listener.TextEditorPopupMenuListener;
+import notepad.util.ImageManager;
 
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
 
-/**
- * TODO: add code thêm item vào menu window khi mở file
- */
 public class TextEditorPopupMenu  extends JPopupMenu{
     private JMenuItem undo;
     private JMenuItem redo;
@@ -26,21 +24,27 @@ public class TextEditorPopupMenu  extends JPopupMenu{
 
         listener = new TextEditorPopupMenuListener(textEditor, this);
 
+
         undo = new JMenuItem("Undo");
+//        undo.setIcon(imageManager.get("undo"));
         undo.setEnabled(false);
         undo.addActionListener(listener);
 
         redo = new JMenuItem("Redo");
         redo.setEnabled(false);
+//        redo.setIcon(imageManager.get("redo"));
         redo.addActionListener(listener);
 
         cut = new JMenuItem("Cut");
+//        cut.setIcon(imageManager.get("cut"));
         cut.addActionListener(listener);
 
         copy = new JMenuItem("Copy");
+//        copy.setIcon(imageManager.get("copy"));
         copy.addActionListener(listener);
 
         paste = new JMenuItem("Paste");
+//        paste.setIcon(imageManager.get("paste"));
         paste.addActionListener(listener);
 
         delete = new JMenuItem("Delete");

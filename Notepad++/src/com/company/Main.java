@@ -2,6 +2,7 @@ package com.company;
 import notepad.ui.MainWindow;
 
 import javax.swing.SwingUtilities;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -10,7 +11,6 @@ public class Main {
             @Override
             public void run() {
                 MainWindow mainWindow = new MainWindow();
-                mainWindow.setVisible(true);
             }
         });
     }

@@ -4,7 +4,7 @@ import notepad.listener.MenuWindowActionListener;
 import javax.swing.JMenu;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.ButtonGroup;
-import javax.swing.AbstractButton;;
+import javax.swing.AbstractButton;
 
 import java.util.Enumeration;
 

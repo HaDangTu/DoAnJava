@@ -1,6 +1,8 @@
 package notepad.ui;
 import notepad.listener.ToolBarButtonsListener;
 
+import notepad.util.ImageManager;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
@@ -16,81 +18,86 @@ public class ToolBar extends JToolBar{
     private JButton buttonCopy;
     private JButton buttonPaste;
 
+    private ImageManager imageManager;
+
     public ToolBar(JFileChooser fileChooser, EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
+        super();
         ToolBarButtonsListener listener = new ToolBarButtonsListener(fileChooser, editorWindow,
                 tree, parentFrame);
 
-        JButton buttonNewFile = new JButton(new ImageIcon("icon\\new.png"));
+        imageManager = parentFrame.getImageManager();
+
+        JButton buttonNewFile = new JButton(imageManager.get("new"));
         buttonNewFile.addActionListener(listener);
         buttonNewFile.setActionCommand("New");
         buttonNewFile.setToolTipText("New");
 
-        JButton buttonOpen = new JButton(new ImageIcon("icon\\open.png"));
+        JButton buttonOpen = new JButton(imageManager.get("open"));
         buttonOpen.setActionCommand("Open file");
         buttonOpen.setToolTipText("Open");
         buttonOpen.addActionListener(listener);
 
-        buttonSave = new JButton(new ImageIcon("icon\\save.png"));
+        buttonSave = new JButton(imageManager.get("save.png"));
         buttonSave.addActionListener(listener);
         buttonSave.setActionCommand("Save file");
         buttonSave.setToolTipText("Save");
         buttonSave.setEnabled(false);
 
-        buttonSaveAll = new JButton(new ImageIcon("icon\\save_all.png"));
+        buttonSaveAll = new JButton(imageManager.get("save_all"));
         buttonSaveAll.addActionListener(listener);
         buttonSaveAll.setActionCommand("Save all");
         buttonSaveAll.setToolTipText("Save all");
         buttonSaveAll.setEnabled(false);
 
-        JButton buttonClose = new JButton(new ImageIcon("icon\\close_file.png"));
+        JButton buttonClose = new JButton(imageManager.get("close_file"));
         buttonClose.addActionListener(listener);
         buttonClose.setActionCommand("Close file");
         buttonClose.setToolTipText("Close file");
 
-        JButton buttonCloseAll = new JButton(new ImageIcon("icon\\close_all.png"));
+        JButton buttonCloseAll = new JButton(imageManager.get("close_all"));
         buttonCloseAll.addActionListener(listener);
         buttonCloseAll.setActionCommand("Close all");
         buttonCloseAll.setToolTipText("Close all");
 
         //JButton buttonPrint = new JButton(new ImageIcon("icon\\print.png"));
-        JButton buttonOpenTree = new JButton(new ImageIcon("icon\\directory.png"));
+        JButton buttonOpenTree = new JButton(imageManager.get("directory"));
         buttonOpenTree.addActionListener(listener);
         buttonOpenTree.setActionCommand("Open workspace");
         buttonOpenTree.setToolTipText("Open workspace");
 
-        buttonCut = new JButton(new ImageIcon("icon\\cut.png"));
+        buttonCut = new JButton(imageManager.get("cut"));
         buttonCut.addActionListener(listener);
         buttonCut.setActionCommand("Cut");
         buttonCut.setToolTipText("Cut");
 
-        buttonCopy = new JButton(new ImageIcon("icon\\copy.png"));
+        buttonCopy = new JButton(imageManager.get("copy"));
         buttonCopy.addActionListener(listener);;
         buttonCopy.setActionCommand("Copy");
         buttonCopy.setToolTipText("Copy");
 
-        buttonPaste = new JButton(new ImageIcon("icon\\paste.png"));
+        buttonPaste = new JButton(imageManager.get("paste"));
         buttonPaste.addActionListener(listener);
         buttonPaste.setActionCommand("Paste");
         buttonPaste.setToolTipText("Paste");
 
-        buttonUndo = new JButton(new ImageIcon("icon\\undo.png"));
+        buttonUndo = new JButton(imageManager.get("undo"));
         buttonUndo.addActionListener(listener);
         buttonUndo.setActionCommand("Undo");
         buttonUndo.setToolTipText("Undo");
         buttonUndo.setEnabled(false);
 
-        buttonRedo = new JButton(new ImageIcon("icon\\redo.png"));
+        buttonRedo = new JButton(imageManager.get("redo"));
         buttonRedo.addActionListener(listener);
         buttonRedo.setActionCommand("Redo");
         buttonRedo.setToolTipText("Redo");
         buttonRedo.setEnabled(false);
 
-        JButton buttonFind = new JButton(new ImageIcon("icon\\find.png"));
+        JButton buttonFind = new JButton(imageManager.get("find"));
         buttonFind.addActionListener(listener);
         buttonFind.setActionCommand("Find");
         buttonFind.setToolTipText("Find");
 
-        JButton buttonReplace = new JButton(new ImageIcon("icon\\replace.png"));
+        JButton buttonReplace = new JButton(imageManager.get("replace"));
         buttonReplace.addActionListener(listener);
         buttonReplace.setActionCommand("Replace");
         buttonReplace.setToolTipText("Replace");

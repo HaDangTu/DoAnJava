@@ -3,7 +3,6 @@ package notepad.ui;
 import notepad.listener.MenuSearchActionListener;
 
 import javax.swing.JMenuItem;
-import javax.swing.JMenu;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
@@ -11,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.Toolkit;
 
-class MenuSearch extends JMenu{
+class MenuSearch extends Menu{
     private JMenuItem searchFind;
     private JMenuItem searchFindNext;
     private JMenuItem searchFindPrevious;
@@ -23,7 +22,7 @@ class MenuSearch extends JMenu{
     private MenuSearchActionListener searchListener;
 
     public MenuSearch(EditorWindow editorWindow, MainWindow parentFrame){
-        super("Search");
+        super("Search", parentFrame);
         searchListener = new MenuSearchActionListener(editorWindow, parentFrame);
 
         createSearchMenu();
@@ -40,7 +39,7 @@ class MenuSearch extends JMenu{
 
     private void createSearchMenu(){
         searchFind = new JMenuItem("Find");
-        searchFind.setIcon(new ImageIcon("icon\\find.png"));
+        searchFind.setIcon(imageManager.get("find"));
         searchFind.addActionListener(searchListener);
         searchFind.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
@@ -55,7 +54,7 @@ class MenuSearch extends JMenu{
                 ActionEvent.SHIFT_MASK));
 
         searchReplace = new JMenuItem("Replace");
-        searchReplace.setIcon(new ImageIcon("icon\\replace.png"));
+        searchReplace.setIcon(imageManager.get("replace"));
         searchReplace.addActionListener(searchListener);
         searchReplace.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R,
                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
