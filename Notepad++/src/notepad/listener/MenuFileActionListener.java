@@ -7,11 +7,13 @@ import notepad.ui.TextEditor;
 
 import notepad.util.OpenAndSaveFile;
 import notepad.util.TabInteraction;
-
+import notepad.util.PrintText;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
+
 import java.awt.event.ActionEvent;
+import java.awt.print.PrinterException;
 
 public class MenuFileActionListener extends MenuMainWindowListener {
     private JFileChooser fileChooser;
@@ -19,6 +21,7 @@ public class MenuFileActionListener extends MenuMainWindowListener {
     private Tree tree;
     private OpenAndSaveFile openAndSaveFile;
     private TabInteraction tabInteraction;
+    private PrintText printText;
 
     public MenuFileActionListener(EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
         super(editorWindow);
@@ -28,12 +31,14 @@ public class MenuFileActionListener extends MenuMainWindowListener {
 
         openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, parentFrame);
         tabInteraction = new TabInteraction(editorWindow);
+        printText = new PrintText(editorWindow);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         //System.out.println(command);
+
         if (command.equalsIgnoreCase("New file")){
             editorWindow.addTabEditor();
             int pos = editorWindow.getTabCount() - 1;
@@ -128,6 +133,26 @@ public class MenuFileActionListener extends MenuMainWindowListener {
             parentFrame.setButtonSaveEnabled(false);
             parentFrame.setButtonSaveAllEnabled(false);
             parentFrame.setMenuItemSaveAllEnabled(false);
+        }
+        else if (command.equalsIgnoreCase("Page setup")){
+            printText.pageSetup();
+        }
+        else if (command.equalsIgnoreCase("Print now")){
+
+            try{
+                printText.printNow();
+            }
+            catch (PrinterException pe){
+                System.err.println(pe.getMessage());
+            }
+        }
+        else if (command.equalsIgnoreCase("Print...")){
+            try {
+                printText.print();
+            }
+            catch (PrinterException pe){
+                System.err.println(pe);
+            }
         }
         else if (command.equalsIgnoreCase("Close tab")){
             int index = editorWindow.getSelectedIndex();

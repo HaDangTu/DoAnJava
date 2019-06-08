@@ -24,6 +24,10 @@ class MenuFile extends Menu {
     private JMenuItem fileCloseRightTab;
     private JMenuItem fileCloseLeftTab;
 
+    private JMenuItem pageSetup;
+    private JMenuItem printNow;
+    private JMenuItem print;
+
     private JMenuItem fileExit;
     private MenuFileActionListener fileListener;
 
@@ -35,6 +39,7 @@ class MenuFile extends Menu {
         createMenuOpen();
         createSaveItems();
         createCloseTabAndExitItems();
+        createPrintAndPageSetup();
 
         add(fileNew);
         add(fileOpen);
@@ -42,6 +47,10 @@ class MenuFile extends Menu {
         add(fileSave);
         add(fileSaveAs);
         add(fileSaveAll);
+        addSeparator();
+        add(pageSetup);
+        add(print);
+        add(printNow);
         addSeparator();
         add(fileCloseTab);
         add(fileCloseAllTab);
@@ -170,6 +179,20 @@ class MenuFile extends Menu {
         fileExit = new JMenuItem("Exit");
         fileExit.addActionListener(fileListener);
         fileExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
+    }
+
+    private void createPrintAndPageSetup(){
+        pageSetup = new JMenuItem("Page setup");
+        pageSetup.addActionListener(fileListener);
+
+        printNow = new JMenuItem("Print now");
+        printNow.addActionListener(fileListener);
+
+        print = new JMenuItem("Print...");
+        print.addActionListener(fileListener);
+        print.setIcon(imageManager.get("print"));
+        print.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P,
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
     }
 
     public void setMenuItemSaveEnabled(boolean enabled){
