@@ -75,7 +75,6 @@ public class MainWindow extends  JFrame{
         panel.add(toolBar, BorderLayout.PAGE_START);
         panel.add(searchStatusBar, BorderLayout.PAGE_END);
 
-        timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
 
         this.setJMenuBar(mainMenu);
         this.getContentPane().add(panel);
@@ -88,6 +87,8 @@ public class MainWindow extends  JFrame{
         this.getContentPane().setBackground(Color.LIGHT_GRAY);
         this.setBackground(Color.LIGHT_GRAY);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
     }
 
     private void initSplitPane(){

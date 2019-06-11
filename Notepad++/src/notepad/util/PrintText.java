@@ -59,37 +59,37 @@ public class PrintText {
 
         printerJob.print();
     }
-}
 
-class NotepadPrintable implements  Printable{
+    class NotepadPrintable implements  Printable{
 
-    private RSyntaxTextArea textArea;
-    private int[] pageBreak;
+        private RSyntaxTextArea textArea;
+        private int[] pageBreak;
 
-    public NotepadPrintable(RSyntaxTextArea textArea){
-        this.textArea = textArea;
-    }
-
-    private void initPageBreak(PageFormat pageFormat) {
-        if (pageBreak == null){
-            int linesPerPage = (int) pageFormat.getImageableHeight() / textArea.getLineHeight();
-            int numBreaks = (textArea.getLineCount() - 1) / linesPerPage;
-
-            pageBreak = new int[numBreaks];
-            for (int i = 0; i < numBreaks; i++)
-                pageBreak[i] = (i + 1) * linesPerPage;
+        public NotepadPrintable(RSyntaxTextArea textArea){
+            this.textArea = textArea;
         }
-    }
-    @Override
-    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
 
-        initPageBreak(pageFormat);
-        if (pageIndex > pageBreak.length)
-            return NO_SUCH_PAGE;
+        private void initPageBreak(PageFormat pageFormat) {
+            if (pageBreak == null){
+                int linesPerPage = (int) pageFormat.getImageableHeight() / textArea.getLineHeight();
+                int numBreaks = (textArea.getLineCount() - 1) / linesPerPage;
 
-        RPrintUtilities.printDocumentMonospacedWordWrap(graphics, textArea.getDocument(), 10,
-                pageIndex, pageFormat, textArea.getTabSize());
+                pageBreak = new int[numBreaks];
+                for (int i = 0; i < numBreaks; i++)
+                    pageBreak[i] = (i + 1) * linesPerPage;
+            }
+        }
+        @Override
+        public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
 
-        return PAGE_EXISTS;
+            initPageBreak(pageFormat);
+            if (pageIndex > pageBreak.length)
+                return NO_SUCH_PAGE;
+
+            RPrintUtilities.printDocumentMonospacedWordWrap(graphics, textArea.getDocument(), 10,
+                    pageIndex, pageFormat, textArea.getTabSize());
+
+            return PAGE_EXISTS;
+        }
     }
 }
