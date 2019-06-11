@@ -11,38 +11,10 @@ import java.io.File;
 public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
 
     private String location;
-    private ImageIcon folderIcon;
-    private ImageIcon javaFileIcon;
-    private ImageIcon cFileIcon;
-    private ImageIcon cplusplusFileIcon;
-    private ImageIcon csharpFileIcon;
-    private ImageIcon cssFileIcon;
-    private ImageIcon phpFileIcon;
-    private ImageIcon pythonFileIcon;
-    private ImageIcon javascripFileIcon;
-    private ImageIcon jsonFileIcon;
-    private ImageIcon htmlFileIcon;
-    private ImageIcon sqlFileIcon;
-    private ImageIcon xmlFileIcon;
-    private ImageIcon normalTextFileIcon;
-    private ImageIcon closeFolderIcon;
+    ImageManager imageManager ;
 
     public MyTreeCellRenderer(){
-        folderIcon = new ImageIcon("icon\\folder.png");
-        cFileIcon = new ImageIcon("icon\\c.png");
-        cplusplusFileIcon = new ImageIcon("icon\\cplusplus.png");
-        csharpFileIcon = new ImageIcon("icon\\csharp.png");
-        cssFileIcon = new ImageIcon("icon\\css.png");
-        phpFileIcon = new ImageIcon("icon\\php.png");
-        pythonFileIcon = new ImageIcon("icon\\python.png");
-        javaFileIcon = new ImageIcon("icon\\java.png");
-        javascripFileIcon = new ImageIcon("icon\\javascript.png");
-        jsonFileIcon = new ImageIcon("icon\\json.png");
-        htmlFileIcon = new ImageIcon("icon\\html.png");
-        sqlFileIcon = new ImageIcon("icon\\sql.png");
-        xmlFileIcon = new ImageIcon("icon\\xml.png");
-        normalTextFileIcon = new ImageIcon("icon\\normal_text.png");
-        closeFolderIcon = new ImageIcon("icon\\close_folder.png");
+        imageManager = ImageManager.getInstance();
     }
     @Override
     public JComponent getTreeCellRendererComponent(JTree tree,
@@ -71,35 +43,51 @@ public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
         File file = getFile(value);
         if (file.isDirectory()){
             if (expanded)
-                setIcon(folderIcon);
-            else setIcon(closeFolderIcon);
+                setIcon(imageManager.get("folder"));
+            else setIcon(imageManager.get("close_folder"));
         }
         else {
             String extension = category.getExtensionOfFile(file.getName());
             if (category.detectCFile(extension))
-                setIcon(cFileIcon);
+                setIcon(imageManager.get("c"));
             else if (category.detectCplusplusFile(extension))
-                setIcon(cplusplusFileIcon);
+                setIcon(imageManager.get("cplusplus"));
             else if (category.detectCSharpFile(extension))
-                setIcon(csharpFileIcon);
+                setIcon(imageManager.get("csharp"));
+            else if (category.detectCSSFile(extension))
+                setIcon(imageManager.get("css"));
+            else if (category.detectCSVFile(extension))
+                setIcon(imageManager.get("csv"));
             else if (category.detectPHPFile(extension))
-                setIcon(phpFileIcon);
+                setIcon(imageManager.get("php"));
             else if (category.detectPythonFile(extension))
-                setIcon(pythonFileIcon);
+                setIcon(imageManager.get("python"));
+            else if (category.detectPerlFile(extension))
+                setIcon(imageManager.get("perl"));
             else if (category.detectJavaFile(extension))
-                setIcon(javaFileIcon);
+                setIcon(imageManager.get("java"));
             else if (category.detectJavaScriptFile(extension))
-                setIcon(javascripFileIcon);
+                setIcon(imageManager.get("javascript"));
             else if (category.detectJsonFile(extension))
-                setIcon(jsonFileIcon);
+                setIcon(imageManager.get("json"));
+            else if (category.detectJSPFile(extension))
+                setIcon(imageManager.get("jsp"));
+            else if (category.detectRubyFile(extension))
+                setIcon(imageManager.get("ruby"));
+            else if (category.detectVisualBasicFile(extension))
+                setIcon(imageManager.get("visual-basic"));
             else if (category.detectNormalTextFile(extension))
-                setIcon(normalTextFileIcon);
+                setIcon(imageManager.get("normal"));
             else if (category.detectHTMLFile(extension))
-                setIcon(htmlFileIcon);
+                setIcon(imageManager.get("html"));
+            else if (category.detectTypeScriptFile(extension))
+                setIcon(imageManager.get("typescript"));
             else if (category.detectSQLFile(extension))
-                setIcon(sqlFileIcon);
+                setIcon(imageManager.get("sql"));
             else if (category.detectXMLFile(extension))
-                setIcon(xmlFileIcon);
+                setIcon(imageManager.get("xml"));
+            else
+                setIcon(imageManager.get("other_file"));
         }
     }
 }
