@@ -11,6 +11,7 @@ class MenuView extends JMenu{
     private JCheckBoxMenuItem workspace;
     private JCheckBoxMenuItem statusBar;
     private JCheckBoxMenuItem toolBar;
+    private JCheckBoxMenuItem lineNumber;
 
     private MainWindow mainWindow;
     private EditorWindow editorWindow;
@@ -25,11 +26,13 @@ class MenuView extends JMenu{
         createWorkspace();
         createStatusBar();
         createToolBar();
+        createLineNumber();
 
         add(wordWrap);
         add(workspace);
         add(statusBar);
         add(toolBar);
+        add(lineNumber);
     }
 
     private void createWordWrap(){
@@ -74,6 +77,13 @@ class MenuView extends JMenu{
         });
     }
 
+    private void createLineNumber(){
+        lineNumber = new JCheckBoxMenuItem("Line number");
+        lineNumber.setSelected(true);
+        lineNumber.addActionListener((ActionEvent e)->{
+            editorWindow.setLineNumberEnabledAllTab(lineNumber.isSelected());
+        });
+    }
     public void setSelectedWordWrap(boolean isSelected){
         wordWrap.setSelected(isSelected);
     }

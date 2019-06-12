@@ -37,7 +37,7 @@ public class ToolBar extends JToolBar{
         buttonOpen.setToolTipText("Open");
         buttonOpen.addActionListener(listener);
 
-        buttonSave = new JButton(imageManager.get("save.png"));
+        buttonSave = new JButton(imageManager.get("save"));
         buttonSave.addActionListener(listener);
         buttonSave.setActionCommand("Save file");
         buttonSave.setToolTipText("Save");

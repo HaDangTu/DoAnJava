@@ -9,11 +9,11 @@ import javax.swing.JOptionPane;
 
 public class TabInteraction {
     private EditorWindow editorWindow;
-    private TabUI tabUI;
 
-    /*
-        @tabUI: should be not null
+    /**
+     * using to get label of tab when user click on close button of any tab which is not selected tab
      */
+    private TabUI tabUI;
 
     public TabInteraction( EditorWindow editorWindow,  TabUI tabUI){
         this.editorWindow = editorWindow;

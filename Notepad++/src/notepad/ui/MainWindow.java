@@ -1,4 +1,5 @@
 package notepad.ui;
+import notepad.listener.EditorWindowMouseListener;
 import notepad.listener.WindowFocusListener;
 import notepad.listener.TabChangeListener;
 
@@ -61,6 +62,7 @@ public class MainWindow extends  JFrame{
 
         editorWindow.addChangeListener(new TabChangeListener(this, editorWindow));
 
+
         BorderLayout layout =  new BorderLayout();
         panel = new JPanel();
         panel.setLayout(layout);
@@ -88,6 +90,7 @@ public class MainWindow extends  JFrame{
         this.setBackground(Color.LIGHT_GRAY);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        editorWindow.addMouseListener(new EditorWindowMouseListener(editorWindow));
         timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
     }
 

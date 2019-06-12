@@ -1,19 +1,24 @@
 package notepad.ui;
 
 import notepad.listener.CloseTabButtonListener;
+import notepad.listener.EditorWindowMouseListener;
 
 import javax.swing.JTabbedPane;
+import javax.swing.plaf.metal.MetalTabbedPaneUI;
+import javax.swing.plaf.multi.MultiButtonUI;
 import java.util.ArrayList;
 
 public class EditorWindow extends JTabbedPane {
 
     private ArrayList<Integer> deletedTab;
     private boolean isWrapWord;
+    private boolean isHideLineNumber;
 
     public EditorWindow(){
         super();
         deletedTab = new ArrayList<>();
         isWrapWord = false;
+        isHideLineNumber = true;
         loadComponent();
         setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
@@ -22,6 +27,7 @@ public class EditorWindow extends JTabbedPane {
         int number = getTabCount() + 1;
         TextEditor textEditor = new TextEditor(number);
         textEditor.getTextArea().setLineWrap(isWrapWord);
+        textEditor.setLineNumberEnabled(isHideLineNumber);
         TabUI ui = new TabUI();
 
         if (deletedTab.size() <= 0) {
@@ -44,6 +50,7 @@ public class EditorWindow extends JTabbedPane {
     public void addTabEditor(String title){
         TextEditor textEditor = new TextEditor();
         textEditor.getTextArea().setLineWrap(isWrapWord);
+        textEditor.setLineNumberEnabled(isHideLineNumber);
         TabUI tabUI = new TabUI();
 
         addTab(title, textEditor);
@@ -192,5 +199,12 @@ public class EditorWindow extends JTabbedPane {
         TextEditor[] textEditors = getAllTextEditor();
         for (TextEditor textEditor : textEditors)
             textEditor.getTextArea().setLineWrap(flag);
+    }
+
+    public void setLineNumberEnabledAllTab(boolean enabled){
+        isHideLineNumber = enabled;
+        TextEditor[] textEditors = getAllTextEditor();
+        for (TextEditor textEditor : textEditors)
+            textEditor.setLineNumberEnabled(enabled);
     }
 }

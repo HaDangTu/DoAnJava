@@ -29,6 +29,7 @@ public class TextEditor extends JPanel{
 
     private DocumentUndoableEditListener undoableEditListener;
     private int numberOfTab;
+    private RTextScrollPane scrollPane;
 
     public TextEditor(){
         super();
@@ -52,7 +53,8 @@ public class TextEditor extends JPanel{
         TextEditorPopupMenu textEditorPopupMenu = new TextEditorPopupMenu(this);
         textArea.setPopupMenu(textEditorPopupMenu);
 
-        RTextScrollPane scrollPane = new RTextScrollPane(textArea); //tạo scroll bar cho text area
+        scrollPane = new RTextScrollPane(textArea); //tạo scroll bar cho text area
+
         add(scrollPane);
         isChanged = false;
         isOpened = false;
@@ -82,7 +84,7 @@ public class TextEditor extends JPanel{
         TextEditorPopupMenu textEditorPopupMenu = new TextEditorPopupMenu(this);
         textArea.setPopupMenu(textEditorPopupMenu);
 
-        RTextScrollPane scrollPane = new RTextScrollPane(textArea); //tạo scroll bar cho text area
+        scrollPane = new RTextScrollPane(textArea); //tạo scroll bar cho text area
         add(scrollPane);
         isChanged = false;
         isOpened = false;
@@ -145,5 +147,9 @@ public class TextEditor extends JPanel{
 
     public void setNumberOfTab(int numberOfTab){
        this.numberOfTab = numberOfTab;
+    }
+
+    public void setLineNumberEnabled(boolean enabled){
+        scrollPane.setLineNumbersEnabled(enabled);
     }
 }
