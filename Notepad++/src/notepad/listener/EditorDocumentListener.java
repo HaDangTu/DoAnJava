@@ -2,7 +2,8 @@ package notepad.listener;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.undo.UndoManager;
+
+import notepad.util.MyAutoCompletion;
 
 import notepad.ui.TextEditor;
 import notepad.ui.MainWindow;
@@ -29,6 +30,14 @@ public class EditorDocumentListener implements DocumentListener {
             mainWindow.setButtonUndoEnabled(true);
             mainWindow.setMenuItemUndoEnabled(true);
             popupMenu.setUndoEnabled(true);
+        }
+
+        MyAutoCompletion autoCompletion = editor.getAutoCompletion();
+        if (autoCompletion != null){
+            if (!autoCompletion.getFlag())
+                autoCompletion.doCompletion();
+            else
+                autoCompletion.setFlag(false);
         }
     }
 

@@ -207,4 +207,20 @@ public class EditorWindow extends JTabbedPane {
         for (TextEditor textEditor : textEditors)
             textEditor.setLineNumberEnabled(enabled);
     }
+
+    /**
+     * set style, filetype, auto complete for tab
+     * @param keyStyle JAVA, C#, PHP,...
+     * @param fileType .java, .c, .php, .cpp,...
+     * @param isAutoComplete true if text editor has auto complete code
+     */
+    public void setStyleForTab(String keyStyle, String fileType, boolean isAutoComplete){
+        int index = getSelectedIndex();
+        setEditorStyle(keyStyle);
+        setFileTypeForTab(fileType, index);
+        if (isAutoComplete){
+            TextEditor textEditor = getTextEditor(index);
+            textEditor.setAutoComplete();
+        }
+    }
 }

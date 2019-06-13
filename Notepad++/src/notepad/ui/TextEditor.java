@@ -10,12 +10,18 @@ import notepad.listener.TextAreaMouseClickListener;
 import javax.swing.undo.UndoManager;
 import javax.swing.JPanel;
 
-
+import notepad.util.LangManager;
+import notepad.util.MyAutoCompletion;
 import notepad.util.CategoryOfFile;
 
+import org.fife.ui.autocomplete.DefaultCompletionProvider;
+//import org.fife.ui.autocomplete.LanguageAwareCompletionProvider;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rtextarea.RTextScrollPane;
+import org.fife.ui.autocomplete.CompletionProvider;
+
+import java.io.IOException;
 
 public class TextEditor extends JPanel{
 
@@ -30,6 +36,8 @@ public class TextEditor extends JPanel{
     private DocumentUndoableEditListener undoableEditListener;
     private int numberOfTab;
     private RTextScrollPane scrollPane;
+
+    private MyAutoCompletion autoCompletion;
 
     public TextEditor(){
         super();
@@ -151,5 +159,33 @@ public class TextEditor extends JPanel{
 
     public void setLineNumberEnabled(boolean enabled){
         scrollPane.setLineNumbersEnabled(enabled);
+    }
+
+    /**
+     * set auto complete for text editor
+     */
+    public void setAutoComplete(){
+        try {
+            CompletionProvider provider = createProvider();
+            autoCompletion = new MyAutoCompletion(provider);
+            autoCompletion.install(textArea);
+        }
+        catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    public MyAutoCompletion getAutoCompletion(){
+        return autoCompletion;
+    }
+
+    private CompletionProvider createProvider() throws IOException{
+        LangManager manager = LangManager.getInstance();
+        DefaultCompletionProvider provider = new DefaultCompletionProvider();
+
+        provider.loadFromXML(manager.get(fileType));
+
+//        LanguageAwareCompletionProvider langProvider = new LanguageAwareCompletionProvider(provider);
+        return provider;
     }
 }
