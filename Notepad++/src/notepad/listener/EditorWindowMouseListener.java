@@ -3,8 +3,6 @@ package notepad.listener;
 import notepad.ui.EditorWindow;
 import notepad.ui.EditorWindowPopupMenu;
 
-import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.SwingUtilities;
@@ -25,10 +23,12 @@ public class EditorWindowMouseListener implements MouseListener{
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        int index = editorWindow.getUI().tabForCoordinate(editorWindow, e.getX(), e.getY());
-        if (index > -1){
-            popupMenu.show(editorWindow, e.getX(), e.getY());
-            editorWindow.setSelectedIndex(index);
+        if (SwingUtilities.isRightMouseButton(e)) {
+            int index = editorWindow.getUI().tabForCoordinate(editorWindow, e.getX(), e.getY());
+            if (index > -1) {
+                popupMenu.show(editorWindow, e.getX(), e.getY());
+                editorWindow.setSelectedIndex(index);
+            }
         }
     }
 

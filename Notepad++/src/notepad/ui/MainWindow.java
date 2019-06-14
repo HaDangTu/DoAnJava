@@ -1,5 +1,6 @@
 package notepad.ui;
 import notepad.listener.EditorWindowMouseListener;
+import notepad.listener.MainWindowListener;
 import notepad.listener.WindowFocusListener;
 import notepad.listener.TabChangeListener;
 
@@ -92,6 +93,7 @@ public class MainWindow extends  JFrame{
 
         editorWindow.addMouseListener(new EditorWindowMouseListener(editorWindow));
         timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
+        addWindowListener(new MainWindowListener(editorWindow));
     }
 
     private void initSplitPane(){

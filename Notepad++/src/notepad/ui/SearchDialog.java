@@ -41,7 +41,6 @@ public class SearchDialog extends JDialog{
         panel.add(tabbedPane, BorderLayout.CENTER);
         add(panel);
         setSize(500, 160);
-        //addWindowListener(new DialogListener(editorWindow, findListener));
         setResizable(false);
         setTitle("Find and Replace");
         setLocationRelativeTo(frame);
