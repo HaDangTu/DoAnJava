@@ -49,7 +49,7 @@ public class TabInteraction {
         }
         else{
             int result = JOptionPane.showConfirmDialog(null,
-                    "Do you want to save change of file?",
+                    "Do you want to save change of file " + editorWindow.getTitleOfTab(index) + "?",
                     "Save file",
                     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null);
             if (result == 0){

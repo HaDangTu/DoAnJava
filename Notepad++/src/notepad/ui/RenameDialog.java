@@ -43,6 +43,9 @@ public class RenameDialog extends JDialog{
         layout = new GroupLayout(panel);
         panel.setLayout(layout);
 
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
         layout.setHorizontalGroup(
                 layout.createSequentialGroup()
                         .addComponent(labelRename)
@@ -67,7 +70,7 @@ public class RenameDialog extends JDialog{
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(panel, BorderLayout.CENTER);
         setTitle("Rename");
-        setPreferredSize(new Dimension(300, 90));
+        setPreferredSize(new Dimension(300, 105));
         setModal(true);
         setResizable(false);
         setLocationRelativeTo(editorWindow.getRootPane().getParent());

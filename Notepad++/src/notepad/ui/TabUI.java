@@ -17,6 +17,7 @@ public class TabUI extends JPanel {
         //setLayout
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
         flowLayout.setVgap(0);
+        flowLayout.setHgap(0);
         setLayout(flowLayout);
         setOpaque(false);
 
