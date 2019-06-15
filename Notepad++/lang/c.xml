@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE api SYSTEM "CompletionXml.dtd">
 
-<!--
-   c.xml - API specification for the C Standard Library.
-           Used by RSyntaxTextArea to provide code completion.
-
-   Author:         Robert Futrell
-   Version:        0.1
-
-   This file was generated from: C:/dev/rsta/RSTALanguageSupport/data/c/c.txt
-   on date: 2012-04-29 00:07:38
-
--->
 <api language="C">
 
 	<environment paramStartChar="(" paramEndChar=")" paramSeparator=", " terminal=";"/>

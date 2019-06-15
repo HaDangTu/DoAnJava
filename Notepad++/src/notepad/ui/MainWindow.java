@@ -89,7 +89,7 @@ public class MainWindow extends  JFrame{
         this.setTitle("Notepad++");
         this.getContentPane().setBackground(Color.LIGHT_GRAY);
         this.setBackground(Color.LIGHT_GRAY);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         editorWindow.addMouseListener(new EditorWindowMouseListener(editorWindow));
         timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);

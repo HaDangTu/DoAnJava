@@ -25,6 +25,9 @@ public class LangManager  extends Dictionary{
         langAutoComplete.put(CategoryOfFile.JSP_FILE, new File("lang\\jsp.xml"));
         langAutoComplete.put(CategoryOfFile.PERL_FILE, new File("lang\\perl5.xml"));
         langAutoComplete.put(CategoryOfFile.PHP_FILE, new File("lang\\php.xml"));
+        langAutoComplete.put(CategoryOfFile.LESS_FILE, new File("lang\\less_functions.xml"));
+        langAutoComplete.put(CategoryOfFile.CPLUSPLUS_FILE, new File("lang\\cplusplus.xml"));
+        langAutoComplete.put(CategoryOfFile.LUA_FILE, new File("lang\\lua.xml"));
     }
 
     /**

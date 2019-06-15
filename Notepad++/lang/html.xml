@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE api SYSTEM "CompletionXml.dtd">
 
-<!--
 
-   html.xml - API specification for HTML 5.
-              Used by RSyntaxTextArea to provide code completion.
-
-   Author:         Robert Futrell
-   Version:        0.1
-
-   This file was generated from: D:\dev\rsta\RSTALanguageSupport\data\html\create_html_xml.pl
-   on date: 2014-05-04 01:22:19
-
-
- -->
 <api language="HTML">
 <!--
 	<environment paramStartChar="(" paramEndChar=")" paramSeparator=", " terminal=";" />

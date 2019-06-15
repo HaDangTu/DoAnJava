@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE api SYSTEM "CompletionXml.dtd">
+
+
+<api language="C">
+
+	<environment paramStartChar="(" paramEndChar=")" paramSeparator=", " terminal=";"/>
+
+	<keywords>
+
+
+<keyword name="luaL_addchar" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B">
+			<desc> </desc>
+		</param>
+		<param type="char" name="c"/>
+	</params>
+	<desc>Adds the byte c to the buffer B (see luaL_Buffer).</desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="luaL_addlstring" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*s">
+			<desc> </desc>
+		</param>
+		<param type="size_t" name="l"/>
+	</params>
+	<desc>Adds the string pointed to by s with length l to the buffer B (see luaL_Buffer). The string can contain embedded zeros.</desc>
+</keyword>
+<keyword name="luaL_addsize" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B">
+			<desc> </desc>
+		</param>
+		<param type="size_t" name="n"/>
+	</params>
+	<desc>Adds to the buffer B (see luaL_Buffer) a string of length n previously copied to the buffer area (see luaL_prepbuffer).</desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="luaL_addstring" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*s"/>
+	</params>
+	<desc>Adds the zero-terminated string pointed to by s to the buffer B (see luaL_Buffer).</desc>
+</keyword>
+<keyword name="luaL_addvalue" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B"/>
+	</params>
+	<desc>Adds the value at the top of the stack to the buffer B (see luaL_Buffer). Pops the value. This is the only function on string buffers that can (and must) be called with an extra element on the stack, which is the value to be added to the buffer.</desc>
+</keyword>
+<keyword name="luaL_argcheck" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="cond"/>
+		<param type="int" name="arg"/>
+		<param type="const char" name="*extramsg"/>
+	</params>
+	<desc>Checks whether cond is true. If it is not, raises an error with a standard message (see luaL_argerror).</desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="luaL_argerror" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="arg">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*extramsg"/>
+	</params>
+	<desc>Raises an error reporting a problem with argument arg of the C function that called it, using a standard message that includes extramsg as a comment: bad argument #arg to 'funcname' (extramsg).This function never returns.</desc>
+</keyword>
+<keyword name="luaL_buffinit" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="luaL_Buffer" name="*B"/>
+	</params>
+	<desc>Initializes a buffer B. This function does not allocate any space; the buffer must be declared as a variable (see luaL_Buffer).</desc>
+</keyword>
+<keyword name="luaL_buffinitsize" type="function" returnType="char *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="luaL_Buffer" name="*B">
+			<desc> </desc>
+		</param>
+		<param type="size_t" name="sz"/>
+	</params>
+	<desc>Equivalent to the sequence luaL_buffinit, luaL_prepbuffsize.</desc>
+</keyword>
+<keyword name="luaL_callmeta" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="obj">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*e"/>
+	</params>
+	<desc>Calls a metamethod. If the object at index obj has a metatable and this metatable has a field e, this function calls this field passing the object as its only argument. In this case this function returns true and pushes onto the stack the value returned by the call. If there is no metatable or no metamethod, this function returns false (without pushing any value on the stack).</desc>
+</keyword>
+<keyword name="luaL_checkany" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="arg"/>
+	</params>
+	<desc>Checks whether the function has an argument of any type (including nil) at position arg.</desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="luaL_checkinteger" type="function" returnType="lua_Integer" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="arg"/>
+	</params>
+	<desc>Checks whether the function argument arg is an integer (or can be converted to an integer) and returns this integer cast to a lua_Integer.</desc>
+</keyword>
+<keyword name="luaL_checklstring" type="function" returnType="const char *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="arg">
+			<desc> </desc>
+		</param>
+		<param type="size_t" name="*l"/>
+	</params>
+	<desc>Checks whether the function argument arg is a string and returns this string; if l is not NULL fills *l with the string's length. This function uses lua_tolstring to get its result, so all conversions and caveats of that function apply here.</desc>
+</keyword>
+<keyword name="luaL_checknumber" type="function" returnType="lua_Number" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="arg"/>
+	</params>
+	<desc>Checks whether the function argument arg is a number and returns this number.</desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="luaL_checkstack" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="sz"/>
+		<param type="const char" name="*msg"/>
+	</params>
+	<desc>Grows the stack size to top + sz elements, raising an error if the stack cannot grow to that size. msg is an additional text to go into the error message (or NULL for no additional text).</desc>
+</keyword>
+<keyword name="luaL_checkstring" type="function" returnType="const char *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="arg"/>
+	</params>
+	<desc>Checks whether the function argument arg is a string and returns this string. This function uses lua_tolstring to get its result, so all conversions and caveats of that function apply here.</desc>
+</keyword>
+<keyword name="luaL_checktype" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="arg"/>
+		<param type="int" name="t"/>
+	</params>
+	<desc>Checks whether the function argument arg has type t. See lua_type for the encoding of types for t.</desc>
+</keyword>
+<keyword name="luaL_checkudata" type="function" returnType="void *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="arg">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*tname"/>
+	</params>
+	<desc>Checks whether the function argument arg is a userdata of the type tname (see luaL_newmetatable) and returns the userdata address (see lua_touserdata).</desc>
+</keyword>
+<keyword name="luaL_checkversion" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+	</params>
+	<desc>Checks whether the core running the call, the core that created the Lua state, and the code making the call are all using the same version of Lua. Also checks whether the core running the call and the core that created the Lua state are using the same address space.</desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="luaL_dofile" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="const char" name="*filename"/>
+	</params>
+	<desc>Loads and runs the given file. It is defined as the following macro: (luaL_loadfile(L, filename) || lua_pcall(L, 0, LUA_MULTRET, 0)) It returns false if there are no errors or true in case of errors.</desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="luaL_dostring" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*str"/>
+	</params>
+	<desc>Loads and runs the given string. It is defined as the following macro:(luaL_loadstring(L, str) || lua_pcall(L, 0, LUA_MULTRET, 0)). It returns false if there are no errors or true in case of errors.</desc>
+</keyword>
+<keyword name="luaL_error" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*fmt"/>
+		<param name="..."/>
+	</params>
+	<desc>Raises an error. The error message format is given by fmt plus any extra arguments, following the same rules of lua_pushfstring. It also adds at the beginning of the message the file name and the line number where the error occurred, if this information is available. This function never returns, but it is an idiom to use it in C functions as return luaL_error(args).</desc>
+</keyword>
+<keyword name="luaL_execresult" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="stat"/>
+	</params>
+	<desc>This function produces the return values for process-related functions in the standard library (os.execute and io.close).</desc>
+</keyword>
+<keyword name="luaL_fileresult" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="stat">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*fname"/>
+	</params>
+	<desc>This function produces the return values for file-related functions in the standard library (io.open, os.rename, file:seek, etc.).</desc>
+</keyword>
+<keyword name="luaL_getmetafield" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="obj">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*e"/>
+	</params>
+	<desc>Pushes onto the stack the field e from the metatable of the object at index obj and returns the type of the pushed value. If the object does not have a metatable, or if the metatable does not have this field, pushes nothing and returns LUA_TNIL.</desc>
+</keyword>
+<keyword name="luaL_getmetatable" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*tname"/>
+	</params>
+	<desc>Pushes onto the stack the metatable associated with name tname in the registry (see luaL_newmetatable) (nil if there is no metatable associated with that name). Returns the type of the pushed value.</desc>
+</keyword>
+<keyword name="luaL_getsubtable" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="idx">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*fname"/>
+	</params>
+	<desc>Ensures that the value t[fname], where t is the value at index idx, is a table, and pushes that table onto the stack. Returns true if it finds a previous table there and false if it creates a new table.</desc>
+</keyword>
+<keyword name="luaL_gsub" type="function" returnType="const char *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc>                      </desc>
+		</param>
+		<param type="const char" name="*s"/>
+		<param type="const char" name="*p"/>
+		<param type="const char" name="*r"/>
+	</params>
+	<desc>Creates a copy of string s by replacing any occurrence of the string p with the string r. Pushes the resulting string on the stack and returns it.</desc>
+</keyword>
+<keyword name="luaL_len" type="function" returnType="lua_Integer" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="index"/>
+	</params>
+	<desc>Returns the "length" of the value at the given index as a number; it is equivalent to the '#' operator in Lua (see §3.4.7). Raises an error if the result of the operation is not an integer. (This case only can happen through metamethods.)</desc>
+</keyword>
+<keyword name="luaL_loadbuffer" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="const char" name="*buff"/>
+		<param type="size_t" name="sz"/>
+		<param type="const char" name="*name"/>
+	</params>
+	<desc>Equivalent to luaL_loadbufferx with mode equal to NULL.</desc>
+</keyword>
+<keyword name="luaL_loadbufferx" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="const char" name="*buff"/>
+		<param type="size_t" name="sz"/>
+		<param type="const char" name="*name"/>
+		<param type="const char" name="*mode"/>
+	</params>
+	<desc>Loads a buffer as a Lua chunk. This function uses lua_load to load the chunk in the buffer pointed to by buff with size sz. This function returns the same results as lua_load. name is the chunk name, used for debug information and error messages. The string mode works as in function lua_load.</desc>
+</keyword>
+<keyword name="luaL_loadfile" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*filename"/>
+	</params>
+	<desc>Equivalent to luaL_loadfilex with mode equal to NULL.</desc>
+</keyword>
+<keyword name="luaL_loadfilex" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*filename"/>
+		<param type="const char" name="*mode"/>
+	</params>
+	<desc>Loads a file as a Lua chunk. This function uses lua_load to load the chunk in the file named filename. If filename is NULL, then it loads from the standard input. The first line in the file is ignored if it starts with a #. The string mode works as in function lua_load. This function returns the same results as lua_load, but it has an extra error code LUA_ERRFILE for file-related errors (e.g., it cannot open or read the file). As lua_load, this function only loads the chunk; it does not run it.</desc>
+</keyword>
+<keyword name="luaL_loadstring" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="const char" name="*s"/>
+	</params>
+	<desc>Loads a string as a Lua chunk. This function uses lua_load to load the chunk in the zero-terminated string s. This function returns the same results as lua_load. Also as lua_load, this function only loads the chunk; it does not run it.</desc>
+</keyword>
+<keyword name="luaL_newmetatable" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*tname"/>
+	</params>
+	<desc>If the registry already has the key tname, returns 0. Otherwise, creates a new table to be used as a metatable for userdata, adds to this new table the pair __name = tname, adds to the registry the pair [tname] = new table, and returns 1. (The entry __name is used by some error-reporting functions.) In both cases pushes onto the stack the final value associated with tname in the registry.</desc>
+</keyword>
+<keyword name="luaL_newstate" type="function" returnType="lua_State *" definedIn="">
+	<desc>Creates a new Lua state. It calls lua_newstate with an allocator based on the standard C realloc function and then sets a panic function (see §4.6) that prints an error message to the standard error output in case of fatal errors. Returns the new state, or NULL if there is a memory allocation error.</desc>
+</keyword>
+<keyword name="luaL_openlibs" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+	</params>
+	<desc>Opens all standard Lua libraries into the given state.</desc>
+</keyword>
+<keyword name="luaL_optinteger" type="function" returnType="lua_Integer" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="arg"/>
+		<param type="lua_Integer" name="d"/>
+	</params>
+	<desc>If the function argument arg is an integer (or convertible to an integer), returns this integer. If this argument is absent or is nil, returns d. Otherwise, raises an error.</desc>
+</keyword>
+<keyword name="luaL_optlstring" type="function" returnType="const char *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="arg"/>
+		<param type="const char" name="*d"/>
+		<param type="size_t" name="*l"/>
+	</params>
+	<desc>If the function argument arg is a string, returns this string. If this argument is absent or is nil, returns d. Otherwise, raises an error. If l is not NULL, fills the position *l with the result's length. If the result is NULL (only possible when returning d and d == NULL), its length is considered zero. This function uses lua_tolstring to get its result, so all conversions and caveats of that function apply here.</desc>
+</keyword>
+<keyword name="luaL_optnumber" type="function" returnType="lua_Number" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="arg">
+			<desc> </desc>
+		</param>
+		<param type="lua_Number" name="d"/>
+	</params>
+	<desc>If the function argument arg is a number, returns this number. If this argument is absent or is nil, returns d. Otherwise, raises an error.</desc>
+</keyword>
+<keyword name="luaL_optstring" type="function" returnType="const char *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L"/>
+		<param type="int" name="arg"/>
+		<param type="const char" name="*d"/>
+	</params>
+	<desc>If the function argument arg is a string, returns this string. If this argument is absent or is nil, returns d. Otherwise, raises an error.</desc>
+</keyword>
+<keyword name="luaL_prepbuffer" type="function" returnType="char *" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B"/>
+	</params>
+	<desc>Equivalent to luaL_prepbuffsize with the predefined size LUAL_BUFFERSIZE.</desc>
+</keyword>
+<keyword name="luaL_prepbuffsize" type="function" returnType="char *" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B">
+			<desc> </desc>
+		</param>
+		<param type="size_t" name="sz"/>
+	</params>
+	<desc>Returns an address to a space of size sz where you can copy a string to be added to buffer B (see luaL_Buffer). After copying the string into this space you must call luaL_addsize with the size of the string to actually add it to the buffer.</desc>
+</keyword>
+<keyword name="luaL_pushresult" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B"/>
+	</params>
+	<desc>Finishes the use of buffer B leaving the final string on the top of the stack.</desc>
+</keyword>
+<keyword name="luaL_pushresultsize" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="luaL_Buffer" name="*B">
+			<desc> </desc>
+		</param>
+		<param type="size_t" name="sz"/>
+	</params>
+	<desc>Equivalent to the sequence luaL_addsize, luaL_pushresult.</desc>
+</keyword>
+<keyword name="luaL_ref" type="function" returnType="int" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="t"/>
+	</params>
+	<desc>Creates and returns a reference, in the table at index t, for the object at the top of the stack (and pops the object). A reference is a unique integer key. As long as you do not manually add integer keys into table t, luaL_ref ensures the uniqueness of the key it returns. You can retrieve an object referred by reference r by calling lua_rawgeti(L, t, r). Function luaL_unref frees a reference and its associated object. If the object at the top of the stack is nil, luaL_ref returns the constant LUA_REFNIL. The constant LUA_NOREF is guaranteed to be different from any reference returned by luaL_ref.</desc>
+</keyword>
+<keyword name="luaL_requiref" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*modname">
+			<desc>   </desc>
+		</param>
+		<param type="lua_CFunction" name="openf">
+			<desc> </desc>
+		</param>
+		<param type="int" name="glb"/>
+	</params>
+	<desc>If modname is not already present in package.loaded, calls function openf with string modname as an argument and sets the call result in package.loaded[modname], as if that function has been called through require. If glb is true, also stores the module into global modname.  Leaves a copy of the module on the stack.</desc>
+</keyword>
+<keyword name="luaL_setfuncs" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const luaL_Reg" name="*l">
+			<desc> </desc>
+		</param>
+		<param type="int" name="nup"/>
+	</params>
+	<desc>Registers all functions in the array l (see luaL_Reg) into the table on the top of the stack (below optional upvalues, see next). When nup is not zero, all functions are created sharing nup upvalues, which must be previously pushed on the stack on top of the library table. These values are popped from the stack after the registration.</desc>
+</keyword>
+<keyword name="luaL_setmetatable" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*tname"/>
+	</params>
+	<desc>Sets the metatable of the object at the top of the stack as the metatable associated with name tname in the registry (see luaL_newmetatable).</desc>
+</keyword>
+<keyword name="luaL_testudata" type="function" returnType="void *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="arg">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*tname"/>
+	</params>
+	<desc>This function works like luaL_checkudata, except that, when the test fails, it returns NULL instead of raising an error.</desc>
+</keyword>
+<keyword name="luaL_tolstring" type="function" returnType="const char *" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="idx">
+			<desc> </desc>
+		</param>
+		<param type="size_t" name="*len"/>
+	</params>
+	<desc>Converts any Lua value at the given index to a C string in a reasonable format. The resulting string is pushed onto the stack and also returned by the function. If len is not NULL, the function also sets *len with the string length. If the value has a metatable with a __tostring field, then luaL_tolstring calls the corresponding metamethod with the value as argument, and uses the result of the call as its result.</desc>
+</keyword>
+<keyword name="luaL_traceback" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="lua_State" name="*L1"/>
+		<param type="const char" name="*msg"/>
+		<param type="int" name="level"/>
+	</params>
+	<desc>Creates and pushes a traceback of the stack L1. If msg is not NULL it is appended at the beginning of the traceback. The level parameter tells at which level to start the traceback.</desc>
+</keyword>
+<keyword name="luaL_typename" type="function" returnType="const char *" definedIn="">
+	<params>
+		<param type="lua_State *L, int" name="index"/>
+	</params>
+	<desc>Returns the name of the type of the value at the given index.</desc>
+</keyword>
+<keyword name="luaL_unref" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="t">
+			<desc> </desc>
+		</param>
+		<param type="int" name="ref"/>
+	</params>
+	<desc>Releases reference ref from the table at index t (see luaL_ref). The entry is removed from the table, so that the referred object can be collected. The reference ref is also freed to be used again. If ref is LUA_NOREF or LUA_REFNIL, luaL_unref does nothing.</desc>
+</keyword>
+<keyword name="luaL_where" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="lvl"/>
+	</params>
+	<desc>Pushes onto the stack a string identifying the current position of the control at level lvl in the call stack. Typically this string has the following format: chunkname:currentline. Level 0 is the running function, level 1 is the function that called the running function, etc. This function is used to build a prefix for error messages.</desc>
+</keyword>
+<keyword name="luaL_where" type="function" returnType="void" definedIn="">
+	<params>
+		<param type="lua_State" name="*L">
+			<desc> </desc>
+		</param>
+		<param type="int" name="lvl"/>
+	</params>
+	<desc>Pushes onto the stack a string identifying the current position of the control at level lvl in the call stack. Typically this string has the following format: chunkname:currentline. Level 0 is the running function, level 1 is the function that called the running function, etc. This function is used to build a prefix for error messages.</desc>
+</keyword>
+	</keywords>
+
+</api>

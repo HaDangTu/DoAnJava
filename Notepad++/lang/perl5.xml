@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE api SYSTEM "CompletionXml.dtd">
 
-<!--
-   perl5.xml - API specification for the Perl 5.
-       Used by RSyntaxTextArea to provide code completion.
 
-   Author:         Robert Futrell
-   Version:        0.1
-
-   This file was generated from: C:/dev/rsta/RSTALanguageSupport/data/perl\perl5.txt
-   on date: 2012-04-29 00:17:32
-
--->
 <api language="Perl">
 
 <environment paramStartChar="(" paramEndChar=")" paramSeparator=", " terminal=";"/>

@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE api SYSTEM "CompletionXml.dtd">
+
+
+<api language="C">
+
+	<environment paramStartChar="(" paramEndChar=")" paramSeparator=", " terminal=";"/>
+
+	<keywords>
+
+
+<keyword name="_Exit" type="function" returnType="void" definedIn="cstdlib">
+	<params>
+		<param type="int" name="exit_code"/>
+	</params>
+	<desc>causes normal program termination without cleaning up </desc>
+</keyword>
+<keyword name="abort" type="function" returnType="void" definedIn="cstdlib">
+	<desc><![CDATA[causes abnormal program termination (without cleaning up) <br>
+]]></desc>
+</keyword>
+<keyword name="abs" type="function" returnType="int" definedIn="cstdlib">
+	<params>
+		<param type="int" name="n"/>
+	</params>
+	<desc>computes absolute value of an integral value (|x|) </desc>
+</keyword>
+<keyword name="acos" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>arc-cosine of x</desc>
+</keyword>
+<keyword name="aligned_alloc" type="function" returnType="void *" definedIn="cstdlib">
+	<params>
+		<param type="std::size_t" name="alignment"/>
+		<param type="std::size_t" name="size"/>
+	</params>
+	<desc>allocates aligned memory </desc>
+</keyword>
+<keyword name="asctime" type="function" returnType="char*" definedIn="ctime">
+	<params>
+		<param type="const std::tm*" name="time_ptr"/>
+	</params>
+	<desc><![CDATA[converts a tm object to a textual representation <br>
+ ]]></desc>
+</keyword>
+<keyword name="asin" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>arc-sine of x</desc>
+</keyword>
+<keyword name="assign" type="function" returnType="void" definedIn="vector">
+	<params>
+		<param type="InputIterator" name="first">
+			<desc> </desc>
+		</param>
+		<param type="InputIterator" name="last"/>
+	</params>
+	<desc>Assign vector content </desc>
+</keyword>
+<keyword name="assign" type="function" returnType="void" definedIn="vector">
+	<params>
+		<param type="size_type" name="n"/>
+		<param type="const value_type&" name="val"/>
+	</params>
+	<desc>Assign vector content </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="at" type="function" returnType="reference" definedIn="array">
+	<params>
+		<param type="size_type" name="n"/>
+	</params>
+	<desc>Access element </desc>
+</keyword>
+<keyword name="at_quick_exit" type="function" returnType="int" definedIn="cstdlib">
+	<desc>registers a function to be called on quick_exit invocation </desc>
+</keyword>
+<keyword name="atan" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>arc-tangent of x</desc>
+</keyword>
+<keyword name="atan2" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="y"/>
+		<param type="double" name="x"/>
+	</params>
+	<desc>arc-tangent of y/x</desc>
+</keyword>
+<keyword name="atexit" type="function" returnType="int" definedIn="cstdlib">
+	<desc>registers a function to be called on std::exit() invocation </desc>
+</keyword>
+<keyword name="atof" type="function" returnType="double" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*str"/>
+	</params>
+	<desc>converts a byte string to a floating point value </desc>
+</keyword>
+<keyword name="atoi" type="function" returnType="int" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*str"/>
+	</params>
+	<desc>converts a byte string to an integer value </desc>
+</keyword>
+<keyword name="atol" type="function" returnType="long" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*str"/>
+	</params>
+	<desc>converts a byte string to an integer value </desc>
+</keyword>
+<keyword name="atoll" type="function" returnType="long" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*str"/>
+	</params>
+	<desc>converts a byte string to an integer value </desc>
+</keyword>
+<keyword name="back" type="function" returnType="reference" definedIn="array">
+	<desc>Access last element  </desc>
+</keyword>
+<keyword name="begin" type="function" returnType="iterator" definedIn="array">
+	<desc>Return iterator to beginning  </desc>
+</keyword>
+<keyword name="bsearch" type="function" returnType="void*" definedIn="cstdlib">
+	<params>
+		<param type="const void*" name="key"/>
+		<param type="const void*" name="ptr"/>
+		<param type="std::size_t" name="count"/>
+		<param type="std::size_t" name="size"/>
+		<param type="/*compare-pred*/*" name="comp"/>
+	</params>
+	<desc>searches an array for an element of unspecified type </desc>
+</keyword>
+<keyword name="calloc" type="function" returnType="void *" definedIn="cstdlib">
+	<params>
+		<param type="std::size_t" name="num"/>
+		<param type="std::size_t" name="size"/>
+	</params>
+	<desc>allocates and zeroes memory </desc>
+</keyword>
+<keyword name="cbegin" type="function" returnType="const_iterator" definedIn="array">
+	<desc>Return const_iterator to beginning  </desc>
+</keyword>
+<keyword name="ceil" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>smallest integer not less than x</desc>
+</keyword>
+<keyword name="cend" type="function" returnType="const_iterator" definedIn="array">
+	<desc>Return const_iterator to end  </desc>
+</keyword>
+<keyword name="clear" type="function" returnType="void" definedIn="vector">
+	<desc>Clear content  </desc>
+</keyword>
+<keyword name="clock" type="function" returnType="std::clock_t" definedIn="ctime">
+	<desc>returns raw processor clock time since the program is started </desc>
+</keyword>
+<keyword name="CLOCKS_PER_SEC" type="constant" definedIn="ctime">
+	<desc>number of processor clock ticks per second </desc>
+</keyword>
+<keyword name="cos" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>cosine of x</desc>
+</keyword>
+<keyword name="cosh" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>hyperbolic cosine of x</desc>
+</keyword>
+<keyword name="crbegin" type="function" returnType="const_reverse_iterator" definedIn="array">
+	<desc>Return const_reverse_iterator to reverse beginning  </desc>
+</keyword>
+<keyword name="crend" type="function" returnType="const_reverse_iterator" definedIn="array">
+	<desc>Return const_reverse_iterator to reverse end  </desc>
+</keyword>
+<keyword name="ctime" type="function" returnType="char*" definedIn="ctime">
+	<params>
+		<param type="const std::time_t*" name="time"/>
+	</params>
+	<desc>converts a time_t object to a textual representation </desc>
+</keyword>
+<keyword name="data" type="function" returnType="value_type* " definedIn="array">
+	<desc>Get pointer to data  </desc>
+</keyword>
+<keyword name="difftime" type="function" returnType="double" definedIn="ctime">
+	<params>
+		<param type="std::time_t" name="time_end">
+			<desc> </desc>
+		</param>
+		<param type="std::time_t" name="time_beg"/>
+	</params>
+	<desc>computes the difference between times </desc>
+</keyword>
+<keyword name="div" type="function" returnType="std::div_t" definedIn="cstdlib">
+	<params>
+		<param type="int" name="x"/>
+		<param type="int" name="y"/>
+	</params>
+	<desc>computes quotient and remainder of integer division </desc>
+</keyword>
+<keyword name="emplace" type="function" returnType="iterator" definedIn="vector">
+	<params>
+		<param type="const_iterator" name="position"/>
+		<param type="Args&&..." name="args"/>
+	</params>
+	<desc>Construct and insert element </desc>
+</keyword>
+<keyword name="emplace_back" type="function" returnType="void" definedIn="vector">
+	<params>
+		<param type="Args&&..." name="args"/>
+	</params>
+	<desc>Construct and insert element at the end  </desc>
+</keyword>
+<keyword name="emplace_back" type="function" returnType="void" definedIn="vector">
+	<params>
+		<param type="Args&&..." name="args"/>
+	</params>
+	<desc>Construct and insert element at the end  </desc>
+</keyword>
+<keyword name="empty" type="function" returnType="bool" definedIn="array">
+	<desc>Test whether array is empty </desc>
+</keyword>
+<keyword name="end" type="function" returnType="iterator" definedIn="array">
+	<desc>Return iterator to end  </desc>
+</keyword>
+<keyword name="erase" type="function" returnType="iterator" definedIn="vector">
+	<params>
+		<param type="iterator" name="first"/>
+		<param type="iterator" name="last"/>
+	</params>
+	<desc>Erase elements  </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="erase" type="function" returnType="iterator" definedIn="vector">
+	<params>
+		<param type="iterator" name="position"/>
+	</params>
+	<desc>Erase elements  </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="exit" type="function" returnType="void" definedIn="cstdlib">
+	<params>
+		<param type="int" name="exit_code"/>
+	</params>
+	<desc>causes normal program termination with cleaning up </desc>
+</keyword>
+<keyword name="EXIT_FAILURE" type="constant" definedIn="cstdlib">
+	<desc>indicates program execution execution status </desc>
+</keyword>
+<keyword name="EXIT_SUCCESS" type="constant" definedIn="cstdlib">
+	<desc>indicates program execution execution status </desc>
+</keyword>
+<keyword name="exp" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>exponential of x</desc>
+</keyword>
+<keyword name="fabs" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>absolute value of x</desc>
+</keyword>
+<keyword name="fill" type="function" returnType="void" definedIn="array">
+	<params>
+		<param type="const value_type&" name="val"/>
+	</params>
+	<desc>Fill array with value  </desc>
+</keyword>
+<keyword name="floor" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>largest integer not greater than x</desc>
+</keyword>
+<keyword name="fmod" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+		<param type="double" name="y"/>
+	</params>
+	<desc>if y non-zero, floating-point remainder of x/y, with same sign as x; if y zero, result is implementation-defined</desc>
+</keyword>
+<keyword name="free" type="function" returnType="void " definedIn="cstdlib">
+	<params>
+		<param type="void*" name="ptr"/>
+	</params>
+	<desc>deallocates previously allocated memory </desc>
+</keyword>
+<keyword name="frexp" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+		<param type="int*" name="exp"/>
+	</params>
+	<desc>if x non-zero, returns value, with absolute value in interval [1/2, 1), and assigns to *exp integer such that product of return value and 2 raised to the power *exp equals x; if x zero, both return value and *exp are zero</desc>
+</keyword>
+<keyword name="front" type="function" returnType="reference" definedIn="array">
+	<desc>Access first element  </desc>
+</keyword>
+<keyword name="get_id" type="function" returnType="std::thread::id" definedIn="thread">
+	<desc>returns the thread id of the current thread </desc>
+</keyword>
+<keyword name="getenv" type="function" returnType="char *" definedIn="cstdlib">
+	<params>
+		<param type="const char*" name="env_var">
+			<desc>;</desc>
+		</param>
+	</params>
+	<desc>access to the list of environment variables </desc>
+</keyword>
+<keyword name="gmtime" type="function" returnType="std::tm*" definedIn="ctime">
+	<params>
+		<param type="const std::time_t*" name="time"/>
+	</params>
+	<desc>converts time since epoch to calendar time expressed as Universal Coordinated Time </desc>
+</keyword>
+<keyword name="HUGE_VAL" type="constant" definedIn="cmath">
+	<desc>magnitude returned (with correct sign) on overflow error</desc>
+</keyword>
+<keyword name="insert" type="function" returnType="void" definedIn="vector">
+	<params>
+		<param type="iterator" name="position"/>
+		<param type="InputIterator" name="first"/>
+		<param type="InputIterator" name="last"/>
+	</params>
+	<desc>Insert elements </desc>
+</keyword>
+<keyword name="insert" type="function" returnType="void" definedIn="vector">
+	<params>
+		<param type="iterator" name="position"/>
+		<param type="size_type" name="n"/>
+		<param type="const value_type&" name="val"/>
+	</params>
+	<desc>Insert elements </desc>
+</keyword>
+<keyword name="isalnum" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is alphanumeric </desc>
+</keyword>
+<keyword name="isalpha" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is alphabetic </desc>
+</keyword>
+<keyword name="isblank" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is a blank character </desc>
+</keyword>
+<keyword name="iscntrl" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is a control character </desc>
+</keyword>
+<keyword name="isdigit" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is a digit </desc>
+</keyword>
+<keyword name="isgraph" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is a graphical character </desc>
+</keyword>
+<keyword name="islower" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is lowercase </desc>
+</keyword>
+<keyword name="isprint" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is a printing character </desc>
+</keyword>
+<keyword name="ispunct" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is a punctuation character </desc>
+</keyword>
+<keyword name="isspace" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is a space character </desc>
+</keyword>
+<keyword name="isupper" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is an uppercase character </desc>
+</keyword>
+<keyword name="isxdigit" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>checks if a character is a hexadecimal character </desc>
+</keyword>
+<keyword name="labs" type="function" returnType="long" definedIn="cstdlib">
+	<params>
+		<param type="long" name="n"/>
+	</params>
+	<desc>computes absolute value of an integral value (|x|) </desc>
+</keyword>
+<keyword name="ldexp" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+		<param type="int" name="n"/>
+	</params>
+	<desc>x times 2 to the power n</desc>
+</keyword>
+<keyword name="ldiv" type="function" returnType="std::ldiv_t" definedIn="cstdlib">
+	<params>
+		<param type="long" name="x"/>
+		<param type="long" name="y"/>
+	</params>
+	<desc>computes quotient and remainder of integer division </desc>
+</keyword>
+<keyword name="llabs" type="function" returnType="long long" definedIn="cstdlib">
+	<params>
+		<param type="long long" name="n"/>
+	</params>
+	<desc>computes absolute value of an integral value (|x|) </desc>
+</keyword>
+<keyword name="lldiv" type="function" returnType="std::lldiv_t" definedIn="cstdlib">
+	<params>
+		<param type="long long" name="x"/>
+		<param type="long long" name="y"/>
+	</params>
+	<desc>computes quotient and remainder of integer division </desc>
+</keyword>
+<keyword name="localtime" type="function" returnType="std::tm*" definedIn="ctime">
+	<params>
+		<param type="const std::time_t" name="*time"/>
+	</params>
+	<desc>converts time since epoch to calendar time expressed as local time </desc>
+</keyword>
+<keyword name="log" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>natural logarithm of x</desc>
+</keyword>
+<keyword name="log10" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>base-10 logarithm of x</desc>
+</keyword>
+<keyword name="malloc" type="function" returnType="void *" definedIn="cstdlib">
+	<params>
+		<param type="std::size_t" name="size"/>
+	</params>
+	<desc>allocates memory </desc>
+</keyword>
+<keyword name="max_size" type="function" returnType="constexpr size_type" definedIn="array">
+	<desc>Return maximum size </desc>
+</keyword>
+<keyword name="MB_CUR_MAX" type="constant" definedIn="cstdlib">
+	<desc>maximum number of bytes in a multibyte character with the current locale </desc>
+</keyword>
+<keyword name="mblen" type="function" returnType="int" definedIn="cstdlib">
+	<params>
+		<param type="const char*" name="s"/>
+		<param type="std::size_t" name="n"/>
+	</params>
+	<desc>returns the number of bytes in the next multibyte character </desc>
+</keyword>
+<keyword name="mbstowcs" type="function" returnType="std::size_t" definedIn="cstdlib">
+	<params>
+		<param type="wchar_t*" name="dst"/>
+		<param type="const char*" name="src"/>
+	</params>
+	<desc><![CDATA[std::size_t len|<br>
+converts a narrow multibyte character string to wide string ]]></desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="mbtowc" type="function" returnType="int" definedIn="cstdlib">
+	<params>
+		<param type="wchar_t*" name="pwc"/>
+		<param type="const char*" name="s">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t" name="n"/>
+	</params>
+	<desc>converts the next multibyte character to wide character </desc>
+</keyword>
+<keyword name="mktime" type="function" returnType="std::time_t" definedIn="ctime">
+	<params>
+		<param type="std::tm*" name="time"/>
+	</params>
+	<desc>converts calendar time to time since epoch </desc>
+</keyword>
+<keyword name="modf" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+		<param type="double*" name="ip"/>
+	</params>
+	<desc>returns fractional part and assigns to *ip integral part of x, both with same sign as x</desc>
+</keyword>
+<keyword name="NULL" type="constant" definedIn="cstdlib">
+	<desc><![CDATA[implementation-defined null pointer constant <br>
+]]></desc>
+</keyword>
+<keyword name="NULL" type="constant" definedIn="ctime">
+	<desc>implementation-defined null pointer constant </desc>
+</keyword>
+<keyword name="pop_back" type="function" returnType="void" definedIn="vector">
+	<desc>Delete last element  </desc>
+</keyword>
+<keyword name="pow" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+		<param type="double" name="y"/>
+	</params>
+	<desc>x raised to power y</desc>
+</keyword>
+<keyword name="push_back" type="function" returnType="void" definedIn="vector">
+	<params>
+		<param type="const value_type&" name="val"/>
+	</params>
+	<desc>Add element at the end  </desc>
+</keyword>
+<keyword name="qsort" type="function" returnType="void" definedIn="cstdlib">
+	<params>
+		<param type="void" name="*ptr"/>
+		<param type="std::size_t" name="count">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t" name="size"/>
+		<param type="/*compare-pred*/*" name="comp"/>
+	</params>
+	<desc>sorts a range of elements with unspecified type </desc>
+</keyword>
+<keyword name="quick_exit" type="function" returnType="void" definedIn="cstdlib">
+	<params>
+		<param type="int" name="exit_code"/>
+	</params>
+	<desc>causes quick program termination without completely cleaning up </desc>
+</keyword>
+<keyword name="raise" type="function" returnType="int" definedIn="ctime">
+	<params>
+		<param type="int" name="sig"/>
+	</params>
+	<desc>runs the signal handler for particular signal </desc>
+</keyword>
+<keyword name="rand" type="function" returnType="int" definedIn="cstdlib">
+	<desc>generates a pseudo-random number </desc>
+</keyword>
+<keyword name="RAND_MAX" type="constant" definedIn="cstdlib">
+	<desc>maximum possible value generated by std::rand </desc>
+</keyword>
+<keyword name="rbegin" type="function" returnType="reverse_iterator" definedIn="array">
+	<desc>Return reverse iterator to reverse beginning </desc>
+</keyword>
+<keyword name="realloc" type="function" returnType="void *" definedIn="cstdlib">
+	<params>
+		<param type="void*" name="ptr"/>
+		<param type="std::size_t" name="new_size"/>
+	</params>
+	<desc>expands previously allocated memory block </desc>
+</keyword>
+<keyword name="rend" type="function" returnType="reverse_iterator" definedIn="array">
+	<desc>Return reverse iterator to reverse end  </desc>
+</keyword>
+<keyword name="SIG_DFL" type="constant" definedIn="ctime">
+	<desc>defines signal handling strategies </desc>
+</keyword>
+<keyword name="SIG_ERR" type="constant" definedIn="ctime">
+	<desc>return value of signal specifying that an error was encountered </desc>
+</keyword>
+<keyword name="SIG_IGN" type="constant" definedIn="ctime">
+	<desc><![CDATA[defines signal handling strategies <br>
+ ]]></desc>
+</keyword>
+<keyword name="SIGABRT" type="constant" definedIn="ctime">
+	<desc>defines signal types</desc>
+</keyword>
+<keyword name="SIGFPE" type="constant" definedIn="ctime">
+	<desc>defines signal types </desc>
+</keyword>
+<keyword name="SIGILL" type="constant" definedIn="ctime">
+	<desc>defines signal types </desc>
+</keyword>
+<keyword name="SIGINT" type="constant" definedIn="ctime">
+	<desc>defines signal types </desc>
+</keyword>
+<keyword name="signal" type="function" returnType="/*signal-handler*/*" definedIn="ctime">
+	<params>
+		<param type="int" name="sig"/>
+		<param type="/*signal-handler*/*" name="handler"/>
+	</params>
+	<desc>sets a signal handler for particular signal </desc>
+</keyword>
+<keyword name="SIGSEGV" type="constant" definedIn="ctime">
+	<desc>defines signal types </desc>
+</keyword>
+<keyword name="SIGTERM" type="constant" definedIn="ctime">
+	<desc>defines signal types </desc>
+</keyword>
+<keyword name="sin" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>sine of x</desc>
+</keyword>
+<keyword name="sinh" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>hyperbolic sine of x</desc>
+</keyword>
+<keyword name="size" type="function" returnType="constexpr size_type" definedIn="array">
+	<desc>Return size </desc>
+</keyword>
+<keyword name="sleep_for" type="function" returnType="void " definedIn="thread">
+	<params>
+		<param type="const std::chrono::duration<Rep, Period>&" name="sleep_duration">
+			<desc>	</desc>
+		</param>
+	</params>
+	<desc>stops the execution of the current thread for a specified time duration </desc>
+</keyword>
+<keyword name="sleep_until" type="function" returnType="void" definedIn="thread">
+	<params>
+		<param type="const std::chrono::time_point<Clock,Duration>&" name="sleep_time"/>
+	</params>
+	<desc>stops the execution of the current thread until a specified time point</desc>
+</keyword>
+<keyword name="sqrt" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>square root of x</desc>
+</keyword>
+<keyword name="srand" type="function" returnType="void" definedIn="cstdlib">
+	<params>
+		<param type="unsigned" name="seed"/>
+	</params>
+	<desc>seeds pseudo-random number generator </desc>
+</keyword>
+<keyword name="stod" type="function" returnType="double" definedIn="cstring">
+	<params>
+		<param type="const std::string&" name="str">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t* pos =" name="0"/>
+	</params>
+	<desc>converts a string to a floating point value </desc>
+</keyword>
+<keyword name="stof" type="function" returnType="float" definedIn="cstring">
+	<params>
+		<param type="const std::string&" name="str">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t* pos =" name="0"/>
+	</params>
+	<desc>converts a string to a floating point value </desc>
+</keyword>
+<keyword name="stoi" type="function" returnType="int" definedIn="cstring">
+	<params>
+		<param type="const std::string&" name="str"/>
+		<param type="std::size_t* pos =" name="0"/>
+		<param type="int base =" name="10"/>
+	</params>
+	<desc>converts a string to a signed integer </desc>
+</keyword>
+<keyword name="stol" type="function" returnType="long" definedIn="cstring">
+	<params>
+		<param type="const std::string&" name="str">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t* pos =" name="0">
+			<desc> </desc>
+		</param>
+		<param type="int base =" name="10"/>
+	</params>
+	<desc>converts a string to a signed integer </desc>
+</keyword>
+<keyword name="stold" type="function" returnType="long double" definedIn="cstring">
+	<params>
+		<param type="const std::string&" name="str"/>
+		<param type="std::size_t* pos =" name="0"/>
+	</params>
+	<desc>converts a string to a floating point value </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="stoll" type="function" returnType="long long" definedIn="cstring">
+	<params>
+		<param type="const std::string&" name="str">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t* pos =" name="0"/>
+		<param type="int base =" name="10"/>
+	</params>
+	<desc>converts a string to a signed integer </desc>
+</keyword>
+<keyword name="stoul" type="function" returnType="unsigned long" definedIn="cstring">
+	<params>
+		<param type="const std::string&" name="str">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t* pos =" name="0"/>
+		<param type="int base =" name="10"/>
+	</params>
+	<desc>converts a string to an unsigned integer</desc>
+</keyword>
+<keyword name="stoull" type="function" returnType="unsigned long long" definedIn="cstring">
+	<params>
+		<param type="const std::string&" name="str"/>
+		<param type="std::size_t* pos =" name="0"/>
+		<param type="int base =" name="10"/>
+	</params>
+	<desc>converts a string to an unsigned integer </desc>
+</keyword>
+<keyword name="strcat" type="function" returnType="char *" definedIn="cstring">
+	<params>
+		<param type="char" name="*dest">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*src"/>
+	</params>
+	<desc>concatenates two strings </desc>
+</keyword>
+<keyword name="strchr" type="function" returnType="char*" definedIn="cstring">
+	<params>
+		<param type="char*" name="str">
+			<desc> </desc>
+		</param>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>finds the first occurrence of a character </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="strcmp" type="function" returnType="int" definedIn="cstring">
+	<params>
+		<param type="const char" name="*lhs">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*rhs"/>
+	</params>
+	<desc>compares two strings </desc>
+</keyword>
+<keyword name="strcoll" type="function" returnType="int" definedIn="cstring">
+	<params>
+		<param type="const char" name="*lhs">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*rhs"/>
+	</params>
+	<desc>compares two strings in accordance to the current locale </desc>
+</keyword>
+<keyword name="strcpy" type="function" returnType="char*" definedIn="cstring">
+	<params>
+		<param type="char*" name="dest">
+			<desc> </desc>
+		</param>
+		<param type="const char*" name="src"/>
+	</params>
+	<desc>copies one string to another </desc>
+</keyword>
+<keyword name="strcspn" type="function" returnType="std::size_t" definedIn="cstring">
+	<params>
+		<param type="char*" name="dest">
+			<desc> </desc>
+		</param>
+		<param type="const char*" name="src"/>
+	</params>
+	<desc>returns the length of the maximum initial segment that consists of only the characters not found in another byte string </desc>
+</keyword>
+<keyword name="strftime" type="function" returnType="std::size_t" definedIn="ctime">
+	<params>
+		<param type="char* str, std::size_t" name="count"/>
+		<param type="const char*" name="format"/>
+		<param type="const std::tm*" name="time"/>
+	</params>
+	<desc>converts a tm object to custom textual representation </desc>
+</keyword>
+<keyword name="strlen" type="function" returnType="std::size_t" definedIn="cstring">
+	<params>
+		<param type="const char*" name="str"/>
+	</params>
+	<desc>returns the length of a given string </desc>
+</keyword>
+<keyword name="strncat" type="function" returnType="char *" definedIn="cstring">
+	<params>
+		<param type="char" name="*dest"/>
+		<param type="const char" name="*src">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t" name="count"/>
+	</params>
+	<desc>concatenates a certain amount of characters of two strings </desc>
+</keyword>
+<keyword name="strncmp" type="function" returnType="int" definedIn="cstring">
+	<params>
+		<param type="const char*" name="lhs"/>
+		<param type="const char*" name="rhs">
+			<desc> </desc>
+		</param>
+		<param type="size_t" name="count"/>
+	</params>
+	<desc>compares a certain number of characters from two strings </desc>
+</keyword>
+<keyword name="strncpy" type="function" returnType="char *" definedIn="cstring">
+	<params>
+		<param type="char" name="*dest">
+			<desc> </desc>
+		</param>
+		<param type="const char" name="*src">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t" name="count"/>
+	</params>
+	<desc>copies a certain amount of characters from one string to another </desc>
+</keyword>
+<keyword name="strpbrk" type="function" returnType="char*" definedIn="cstring">
+	<params>
+		<param type="char*" name="dest">
+			<desc> </desc>
+		</param>
+		<param type="const char*" name="breakset"/>
+	</params>
+	<desc>finds the first location of any character from a set of separators </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="strrchr" type="function" returnType="char*" definedIn="cstring">
+	<params>
+		<param type="char*" name="str">
+			<desc> </desc>
+		</param>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>finds the last occurrence of a character </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="strspn" type="function" returnType="std::size_t" definedIn="cstring">
+	<params>
+		<param type="char*" name="dest">
+			<desc> </desc>
+		</param>
+		<param type="const char*" name="src"/>
+	</params>
+	<desc>returns the length of the maximum initial segment that consists of only the characters found in another byte string </desc>
+</keyword>
+<keyword name="strstr" type="function" returnType="char*" definedIn="cstring">
+	<params>
+		<param type="char*" name="str"/>
+		<param type="const char*" name="target"/>
+	</params>
+	<desc>finds the first occurrence of a substring of characters </desc>
+</keyword>
+<keyword name="strtod" type="function" returnType="double" definedIn="cstdlib">
+	<params>
+		<param type="const char*" name="str"/>
+		<param type="char**" name="str_end"/>
+	</params>
+	<desc>converts a byte string to a floating point value </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="strtof" type="function" returnType="float" definedIn="cstdlib">
+	<params>
+		<param type="const char*" name="str"/>
+		<param type="char**" name="str_end"/>
+	</params>
+	<desc>converts a byte string to a floating point value </desc>
+</keyword>
+<keyword name="strtok" type="function" returnType="char*" definedIn="cstring">
+	<params>
+		<param type="char*" name="str"/>
+		<param type="const char*" name="delim"/>
+	</params>
+	<desc>finds the next token in a byte string </desc>
+</keyword>
+<keyword name="strtol" type="function" returnType="long" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*str"/>
+		<param type="char **str_end, int" name="base"/>
+	</params>
+	<desc>converts a byte string to an integer value</desc>
+</keyword>
+<keyword name="strtold" type="function" returnType="double long" definedIn="cstdlib">
+	<params>
+		<param type="const char*" name="str"/>
+		<param type="char**" name="str_end"/>
+	</params>
+	<desc>converts a byte string to a floating point value </desc>
+</keyword>
+<keyword name="strtoll" type="function" returnType="long long" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*str"/>
+		<param type="char **str_end, int" name="base"/>
+	</params>
+	<desc>converts a byte string to an integer value </desc>
+</keyword>
+<keyword name="strtoul" type="function" returnType="unsigned long" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*str"/>
+		<param type="char" name="**str_end"/>
+		<param type="int" name="base"/>
+	</params>
+	<desc>converts a byte string to an integer value </desc>
+</keyword>
+<keyword name="strtoull" type="function" returnType="unsigned long long" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*str"/>
+		<param type="char" name="**str_end"/>
+	</params>
+	<desc>converts a byte string to an unsigned integer value </desc>
+</keyword>
+<keyword name="strxfrm" type="function" returnType="std::size_t" definedIn="cstring">
+	<params>
+		<param type="char*" name="dest">
+			<desc> </desc>
+		</param>
+		<param type="const char*" name="src"/>
+		<param type="std::size_t" name="count"/>
+	</params>
+	<desc>transform a string so that strcmp would produce the same result as strcoll </desc>
+</keyword>
+<keyword name="swap" type="function" returnType="void" definedIn="array">
+	<params>
+		<param type="array&" name="x"/>
+	</params>
+	<desc>Swap content  </desc>
+</keyword>
+<keyword name="swap" type="function" returnType="void" definedIn="vector">
+	<params>
+		<param type="vector&" name="x"/>
+	</params>
+	<desc>Swap content  </desc>
+</keyword>
+<keyword name="system" type="function" returnType="int" definedIn="cstdlib">
+	<params>
+		<param type="const char" name="*command"/>
+	</params>
+	<desc>calls the host environment's command processor </desc>
+</keyword>
+<keyword name="tan" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>tangent of x</desc>
+</keyword>
+<keyword name="tanh" type="function" returnType="double" definedIn="cmath">
+	<params>
+		<param type="double" name="x"/>
+	</params>
+	<desc>hyperbolic tangent of x</desc>
+</keyword>
+<keyword name="time" type="function" returnType="std::time_t" definedIn="ctime">
+	<params>
+		<param type="std::time_t*" name="arg"/>
+	</params>
+	<desc>returns the current time of the system as time since epoch </desc>
+</keyword>
+<keyword name="timespec_get" type="function" returnType="int" definedIn="ctime">
+	<params>
+		<param type="std::timespec*" name="ts"/>
+		<param type="ts, int" name="base"/>
+	</params>
+	<desc>returns the calendar time based on a given time base </desc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="double" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="float" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="int" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="long double" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+	<returnValDesc></returnValDesc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="long long" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="long" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="unsigned long long" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="unsigned long" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+</keyword>
+<keyword name="to_string" type="function" returnType="std::string" definedIn="cstring">
+	<params>
+		<param type="unsigned" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to string </desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="double" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring</desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="float" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring</desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="int" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring </desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="long double" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring</desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="long long" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring</desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="long" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring</desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="unsigned long long" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring</desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="unsigned long" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring</desc>
+</keyword>
+<keyword name="to_wstring" type="function" returnType="std::wstring" definedIn="cstring">
+	<params>
+		<param type="unsigned" name="value"/>
+	</params>
+	<desc>converts an integral or floating point value to wstring</desc>
+</keyword>
+<keyword name="tolower" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>converts a character to lowercase </desc>
+</keyword>
+<keyword name="toupper" type="function" returnType="int" definedIn="cctype">
+	<params>
+		<param type="int" name="ch"/>
+	</params>
+	<desc>converts a character to uppercase </desc>
+</keyword>
+<keyword name="wcsftime" type="function" returnType="std::size_t" definedIn="ctime">
+	<params>
+		<param type="wchar_t*" name="str">
+			<desc> </desc>
+		</param>
+		<param type="std::size_t" name="count">
+			<desc> </desc>
+		</param>
+		<param type="const wchar_t*" name="format"/>
+		<param type="const std::tm*" name="time"/>
+	</params>
+	<desc>converts a tm object to custom wide string textual representation </desc>
+</keyword>
+<keyword name="wcstombs" type="function" returnType="std::size_t" definedIn="cstdlib">
+	<params>
+		<param type="char*" name="dst"/>
+		<param type="const wchar_t*" name="src"/>
+		<param type="std::size_t" name="len"/>
+	</params>
+	<desc>converts a wide string to narrow multibyte character string </desc>
+</keyword>
+<keyword name="wctomb" type="function" returnType="int" definedIn="cstdlib">
+	<params>
+		<param type="char" name="*s"/>
+		<param type="wchar_t" name="wc"/>
+	</params>
+	<desc>converts a wide character to its multibyte representation </desc>
+</keyword>
+<keyword name="yield" type="function" returnType="void" definedIn="thread">
+	<desc>suggests that the implementation reschedule execution of threads </desc>
+</keyword>
+	</keywords>
+
+</api>

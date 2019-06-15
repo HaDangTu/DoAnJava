@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE api SYSTEM "CompletionXml.dtd">
 
-<!--
 
-   jsp.xml - API specification for standard JSP tags.
-             Used by RSyntaxTextArea to provide code completion.
-
-   Author:         Robert Futrell
-   Version:        0.1
-
-   This file was generated from: C:/dev/rsta/RSTALanguageSupport/data/jsp/create_jsp_xml.pl
-   on date: 2012-04-29 00:11:55
-
-
- -->
 <api language="JSP">
 <!--
 	<environment paramStartChar="(" paramEndChar=")" paramSeparator=", " terminal=";" />

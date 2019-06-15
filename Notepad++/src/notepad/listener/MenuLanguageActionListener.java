@@ -20,7 +20,7 @@ public class MenuLanguageActionListener extends MenuMainWindowListener {
         }
         else if (command.equalsIgnoreCase(CategoryOfFile.CPLUSPLUS_FILE)){
             editorWindow.setStyleForTab(SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS,
-                    CategoryOfFile.CPLUSPLUS_FILE, false);
+                    CategoryOfFile.CPLUSPLUS_FILE, true);
         }
         else if (command.equalsIgnoreCase(CategoryOfFile.CSHARP_FILE)){
             editorWindow.setStyleForTab(SyntaxConstants.SYNTAX_STYLE_CSHARP,
@@ -112,7 +112,7 @@ public class MenuLanguageActionListener extends MenuMainWindowListener {
         }
         else if (command.equalsIgnoreCase(CategoryOfFile.LESS_FILE)) {
             editorWindow.setStyleForTab(SyntaxConstants.SYNTAX_STYLE_LESS,
-                    CategoryOfFile.LESS_FILE, false);
+                    CategoryOfFile.LESS_FILE, true);
         }
         else if (command.equalsIgnoreCase(CategoryOfFile.LISP_FILE)) {
             editorWindow.setStyleForTab(SyntaxConstants.SYNTAX_STYLE_LISP,
@@ -120,7 +120,7 @@ public class MenuLanguageActionListener extends MenuMainWindowListener {
         }
         else if (command.equalsIgnoreCase(CategoryOfFile.LUA_FILE)) {
             editorWindow.setStyleForTab(SyntaxConstants.SYNTAX_STYLE_LUA,
-                    CategoryOfFile.LUA_FILE, false);
+                    CategoryOfFile.LUA_FILE, true);
         }
         else if (command.equalsIgnoreCase(CategoryOfFile.PERL_FILE)) {
             editorWindow.setStyleForTab(SyntaxConstants.SYNTAX_STYLE_PERL,
