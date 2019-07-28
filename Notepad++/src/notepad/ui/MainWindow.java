@@ -17,6 +17,7 @@ import javax.swing.JFileChooser;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 import java.lang.Exception;
 
@@ -94,6 +95,7 @@ public class MainWindow extends  JFrame{
         editorWindow.addMouseListener(new EditorWindowMouseListener(editorWindow));
         timer = new StatusBarTimer(searchStatusBar.getStatusBar(), editorWindow);
         addWindowListener(new MainWindowListener(editorWindow));
+        setIconImage(Toolkit.getDefaultToolkit().getImage("icon\\coding.png"));
     }
 
     private void initSplitPane(){
