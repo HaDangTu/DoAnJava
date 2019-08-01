@@ -16,11 +16,11 @@ import javax.swing.JRadioButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ReplaceButtonListener implements ActionListener {
+public class ReplaceButtonListener extends BaseListener {
     private JCheckBox matchCase;
     private JCheckBox wholeWord;
 
-    private EditorWindow editorWindow;
+//    private EditorWindow editorWindow;
 
     private JTextField findContent;
     private JTextField replaceContent;
@@ -31,10 +31,9 @@ public class ReplaceButtonListener implements ActionListener {
 
     public ReplaceButtonListener (JCheckBox matchCase, JCheckBox wholeWord, EditorWindow editorWindow,
                                   JTextField findContent, JTextField replaceContent, JRadioButton regex, JDialog parent){
+        super(editorWindow, null);
         this.matchCase = matchCase;
         this.wholeWord = wholeWord;
-
-        this.editorWindow = editorWindow;
 
         this.findContent = findContent;
         this.replaceContent = replaceContent;

@@ -1,12 +1,16 @@
 package notepad.listener;
 
 import notepad.ui.EditorWindow;
-import java.awt.event.ActionListener;
+import notepad.ui.MainWindow;
 
-public abstract class MenuMainWindowListener implements ActionListener {
 
-    protected EditorWindow editorWindow;
+public abstract class MenuMainWindowListener extends BaseListener {
+
+    public MenuMainWindowListener(EditorWindow editorWindow, MainWindow parentFrame){
+        super(editorWindow, parentFrame);
+    }
+
     public MenuMainWindowListener(EditorWindow editorWindow){
-        this.editorWindow = editorWindow;
+        super(editorWindow, null);
     }
 }

@@ -8,19 +8,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JDialog;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class ButtonGoListener implements ActionListener {
-    private EditorWindow editorWindow;
+public class ButtonGoListener extends BaseListener {
     private int maxLine;
     private JTextField fieldGo;
     private JDialog parent;
+
     public ButtonGoListener (EditorWindow editorWindow,  int maxLine, JTextField fieldGo, JDialog parent){
-        this.editorWindow = editorWindow;
+        super(editorWindow, null);
         this.fieldGo = fieldGo;
         this.maxLine = maxLine;
         this.parent = parent;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         int index = editorWindow.getSelectedIndex();
@@ -43,7 +43,7 @@ public class ButtonGoListener implements ActionListener {
             parent.dispose();
 
         }catch (Exception except){
-            JOptionPane.showMessageDialog(null, except.getMessage());
+            JOptionPane.showMessageDialog(parent, except.getMessage());
         }
     }
 }

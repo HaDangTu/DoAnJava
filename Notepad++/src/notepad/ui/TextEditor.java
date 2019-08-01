@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 
 import notepad.listener.DocumentUndoableEditListener;
 import notepad.listener.EditorDocumentListener;
-import notepad.listener.TextAreaMouseClickListener;
 
 import javax.swing.undo.UndoManager;
 import javax.swing.JPanel;
@@ -56,7 +55,6 @@ public class TextEditor extends JPanel{
         textArea.getDocument().addUndoableEditListener(undoableEditListener);
 
         textArea.getDocument().addDocumentListener(new EditorDocumentListener(this));
-        textArea.addMouseListener(new TextAreaMouseClickListener(textArea));
 
         TextEditorPopupMenu textEditorPopupMenu = new TextEditorPopupMenu(this);
         textArea.setPopupMenu(textEditorPopupMenu);
@@ -87,7 +85,7 @@ public class TextEditor extends JPanel{
         textArea.getDocument().addUndoableEditListener(undoableEditListener);
 
         textArea.getDocument().addDocumentListener(new EditorDocumentListener(this));
-        textArea.addMouseListener(new TextAreaMouseClickListener(textArea));
+//        textArea.addMouseListener(new TextAreaMouseClickListener(textArea));
 
         TextEditorPopupMenu textEditorPopupMenu = new TextEditorPopupMenu(this);
         textArea.setPopupMenu(textEditorPopupMenu);

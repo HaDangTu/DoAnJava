@@ -17,17 +17,16 @@ import java.awt.print.PrinterException;
 
 public class MenuFileActionListener extends MenuMainWindowListener {
     private JFileChooser fileChooser;
-    private MainWindow parentFrame;
+//    private MainWindow parentFrame;
     private Tree tree;
     private OpenAndSaveFile openAndSaveFile;
     private TabInteraction tabInteraction;
     private PrintText printText;
 
     public MenuFileActionListener(EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
-        super(editorWindow);
+        super(editorWindow, parentFrame);
         fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         this.tree = tree;
-        this.parentFrame = parentFrame;
 
         openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, parentFrame);
         tabInteraction = new TabInteraction(editorWindow);

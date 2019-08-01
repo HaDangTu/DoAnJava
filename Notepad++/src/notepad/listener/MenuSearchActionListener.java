@@ -10,17 +10,14 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rtextarea.SearchContext;
 import org.fife.ui.rtextarea.SearchEngine;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionEvent;
 
 public class MenuSearchActionListener extends MenuMainWindowListener {
 
-    private JFrame parentFrame;
-    public MenuSearchActionListener(EditorWindow editorWindow, JFrame frame) {
-        super(editorWindow);
-        this.parentFrame = frame;
+    public MenuSearchActionListener(EditorWindow editorWindow, MainWindow parentFrame) {
+        super(editorWindow, parentFrame);
     }
 
     @Override

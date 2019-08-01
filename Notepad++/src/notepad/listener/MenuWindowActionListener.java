@@ -2,13 +2,11 @@ package notepad.listener;
 import notepad.ui.EditorWindow;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class MenuWindowActionListener implements ActionListener {
-    private EditorWindow editorWindow;
+public class MenuWindowActionListener extends MenuMainWindowListener {
 
     public MenuWindowActionListener(EditorWindow editorWindow){
-        this.editorWindow = editorWindow;
+        super(editorWindow);
     }
 
     @Override

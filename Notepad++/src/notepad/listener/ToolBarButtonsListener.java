@@ -17,20 +17,17 @@ import java.awt.event.ActionListener;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
-public class ToolBarButtonsListener implements ActionListener {
-    private EditorWindow editorWindow;
+public class ToolBarButtonsListener extends BaseListener {
+
     private JFileChooser fileChooser;
     private Tree tree;
-    private MainWindow parentFrame;
 
     private TabInteraction tabInteraction;
     public ToolBarButtonsListener(JFileChooser fileChooser, EditorWindow editorWindow,
                                   Tree tree, MainWindow parentFrame){
-
-        this.editorWindow = editorWindow;
+        super(editorWindow, parentFrame);
         this.fileChooser = fileChooser;
         this.tree = tree;
-        this.parentFrame = parentFrame;
         tabInteraction = new TabInteraction(editorWindow);
     }
 

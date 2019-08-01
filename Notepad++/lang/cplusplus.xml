@@ -63,7 +63,7 @@
 <keyword name="assign" type="function" returnType="void" definedIn="vector">
 	<params>
 		<param type="size_type" name="n"/>
-		<param type="const value_type&" name="val"/>
+		<param type="const value_type*" name="val"/>
 	</params>
 	<desc>Assign vector content </desc>
 	<returnValDesc></returnValDesc>
@@ -207,19 +207,19 @@
 <keyword name="emplace" type="function" returnType="iterator" definedIn="vector">
 	<params>
 		<param type="const_iterator" name="position"/>
-		<param type="Args&&..." name="args"/>
+		<param type="Args**..." name="args"/>
 	</params>
 	<desc>Construct and insert element </desc>
 </keyword>
 <keyword name="emplace_back" type="function" returnType="void" definedIn="vector">
 	<params>
-		<param type="Args&&..." name="args"/>
+		<param type="Args**..." name="args"/>
 	</params>
 	<desc>Construct and insert element at the end  </desc>
 </keyword>
 <keyword name="emplace_back" type="function" returnType="void" definedIn="vector">
 	<params>
-		<param type="Args&&..." name="args"/>
+		<param type="Args**..." name="args"/>
 	</params>
 	<desc>Construct and insert element at the end  </desc>
 </keyword>
@@ -270,7 +270,7 @@
 </keyword>
 <keyword name="fill" type="function" returnType="void" definedIn="array">
 	<params>
-		<param type="const value_type&" name="val"/>
+		<param type="const value_type*" name="val"/>
 	</params>
 	<desc>Fill array with value  </desc>
 </keyword>
@@ -335,7 +335,7 @@
 	<params>
 		<param type="iterator" name="position"/>
 		<param type="size_type" name="n"/>
-		<param type="const value_type&" name="val"/>
+		<param type="const value_type*" name="val"/>
 	</params>
 	<desc>Insert elements </desc>
 </keyword>
@@ -532,7 +532,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="push_back" type="function" returnType="void" definedIn="vector">
 	<params>
-		<param type="const value_type&" name="val"/>
+		<param type="const value_type*" name="val"/>
 	</params>
 	<desc>Add element at the end  </desc>
 </keyword>
@@ -630,7 +630,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="sleep_for" type="function" returnType="void " definedIn="thread">
 	<params>
-		<param type="const std::chrono::duration<Rep, Period>&" name="sleep_duration">
+		<param type="const std::chrono::duration(Rep, Period)*" name="sleep_duration">
 			<desc>	</desc>
 		</param>
 	</params>
@@ -638,7 +638,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="sleep_until" type="function" returnType="void" definedIn="thread">
 	<params>
-		<param type="const std::chrono::time_point<Clock,Duration>&" name="sleep_time"/>
+		<param type="const std::chrono::time_point(Clock,Duration)*" name="sleep_time"/>
 	</params>
 	<desc>stops the execution of the current thread until a specified time point</desc>
 </keyword>
@@ -656,7 +656,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="stod" type="function" returnType="double" definedIn="cstring">
 	<params>
-		<param type="const std::string&" name="str">
+		<param type="const std::string*" name="str">
 			<desc> </desc>
 		</param>
 		<param type="std::size_t* pos =" name="0"/>
@@ -665,7 +665,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="stof" type="function" returnType="float" definedIn="cstring">
 	<params>
-		<param type="const std::string&" name="str">
+		<param type="const std::string*" name="str">
 			<desc> </desc>
 		</param>
 		<param type="std::size_t* pos =" name="0"/>
@@ -674,7 +674,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="stoi" type="function" returnType="int" definedIn="cstring">
 	<params>
-		<param type="const std::string&" name="str"/>
+		<param type="const std::string*" name="str"/>
 		<param type="std::size_t* pos =" name="0"/>
 		<param type="int base =" name="10"/>
 	</params>
@@ -682,7 +682,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="stol" type="function" returnType="long" definedIn="cstring">
 	<params>
-		<param type="const std::string&" name="str">
+		<param type="const std::string*" name="str">
 			<desc> </desc>
 		</param>
 		<param type="std::size_t* pos =" name="0">
@@ -694,7 +694,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="stold" type="function" returnType="long double" definedIn="cstring">
 	<params>
-		<param type="const std::string&" name="str"/>
+		<param type="const std::string*" name="str"/>
 		<param type="std::size_t* pos =" name="0"/>
 	</params>
 	<desc>converts a string to a floating point value </desc>
@@ -702,7 +702,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="stoll" type="function" returnType="long long" definedIn="cstring">
 	<params>
-		<param type="const std::string&" name="str">
+		<param type="const std::string*" name="str">
 			<desc> </desc>
 		</param>
 		<param type="std::size_t* pos =" name="0"/>
@@ -712,7 +712,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="stoul" type="function" returnType="unsigned long" definedIn="cstring">
 	<params>
-		<param type="const std::string&" name="str">
+		<param type="const std::string*" name="str">
 			<desc> </desc>
 		</param>
 		<param type="std::size_t* pos =" name="0"/>
@@ -722,7 +722,7 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="stoull" type="function" returnType="unsigned long long" definedIn="cstring">
 	<params>
-		<param type="const std::string&" name="str"/>
+		<param type="const std::string*" name="str"/>
 		<param type="std::size_t* pos =" name="0"/>
 		<param type="int base =" name="10"/>
 	</params>
@@ -935,13 +935,13 @@ converts a narrow multibyte character string to wide string ]]></desc>
 </keyword>
 <keyword name="swap" type="function" returnType="void" definedIn="array">
 	<params>
-		<param type="array&" name="x"/>
+		<param type="array*" name="x"/>
 	</params>
 	<desc>Swap content  </desc>
 </keyword>
 <keyword name="swap" type="function" returnType="void" definedIn="vector">
 	<params>
-		<param type="vector&" name="x"/>
+		<param type="vector*" name="x"/>
 	</params>
 	<desc>Swap content  </desc>
 </keyword>

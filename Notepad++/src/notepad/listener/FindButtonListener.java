@@ -15,11 +15,10 @@ import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FindButtonListener implements ActionListener {
+public class FindButtonListener extends BaseListener {
 
     private JCheckBox matchCase;
     private JCheckBox wholeWord;
-    private EditorWindow editorWindow;
     private JTextField fieldFind;
     private JDialog parent;
     private SearchContext searchContext;
@@ -29,9 +28,10 @@ public class FindButtonListener implements ActionListener {
 
     public FindButtonListener(JCheckBox matchCase, JCheckBox wholeWord, EditorWindow editorWindow,
                               JTextField fieldFind, JRadioButton regex, JDialog parent){
+        super(editorWindow, null);
         this.matchCase = matchCase;
         this.wholeWord = wholeWord;
-        this.editorWindow = editorWindow;
+
         this.fieldFind = fieldFind;
         this.parent = parent;
         searchContext = new SearchContext();
