@@ -13,9 +13,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class FindButtonListener extends BaseListener {
+public class FindButtonActionListener extends BaseActionListener {
 
     private JCheckBox matchCase;
     private JCheckBox wholeWord;
@@ -26,8 +25,8 @@ public class FindButtonListener extends BaseListener {
     private JLabel lbResult;
     private boolean highLight;
 
-    public FindButtonListener(JCheckBox matchCase, JCheckBox wholeWord, EditorWindow editorWindow,
-                              JTextField fieldFind, JRadioButton regex, JDialog parent){
+    public FindButtonActionListener(JCheckBox matchCase, JCheckBox wholeWord, EditorWindow editorWindow,
+                                    JTextField fieldFind, JRadioButton regex, JDialog parent){
         super(editorWindow, null);
         this.matchCase = matchCase;
         this.wholeWord = wholeWord;
@@ -40,8 +39,8 @@ public class FindButtonListener extends BaseListener {
         lbResult = null;
     }
 
-    public FindButtonListener(JCheckBox matchCase, EditorWindow editorWindow, JTextField fieldFind,
-                              JDialog parent, JLabel lbResult, boolean highLight){
+    public FindButtonActionListener(JCheckBox matchCase, EditorWindow editorWindow, JTextField fieldFind,
+                                    JDialog parent, JLabel lbResult, boolean highLight){
         this.matchCase = matchCase;
         this.wholeWord = null;
         this.highLight = highLight;

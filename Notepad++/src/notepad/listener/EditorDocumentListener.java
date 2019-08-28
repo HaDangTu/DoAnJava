@@ -1,7 +1,6 @@
 package notepad.listener;
 
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;;
 
 import notepad.util.MyAutoCompletion;
 
@@ -9,10 +8,11 @@ import notepad.ui.TextEditor;
 import notepad.ui.MainWindow;
 import notepad.ui.TextEditorPopupMenu;
 
-public class EditorDocumentListener implements DocumentListener {
+public class EditorDocumentListener extends BaseDocumentListener {
     private TextEditor editor;
 
     public EditorDocumentListener(TextEditor editor){
+        super();
         this.editor = editor;
     }
     @Override

@@ -1,11 +1,10 @@
 package notepad.ui;
-import notepad.listener.ToolBarButtonsListener;
+import notepad.listener.ToolBarButtonsActionListener;
 
 import notepad.util.ImageManager;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
 
 public class ToolBar extends JToolBar{
@@ -22,7 +21,7 @@ public class ToolBar extends JToolBar{
 
     public ToolBar(JFileChooser fileChooser, EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
         super();
-        ToolBarButtonsListener listener = new ToolBarButtonsListener(fileChooser, editorWindow,
+        ToolBarButtonsActionListener listener = new ToolBarButtonsActionListener(fileChooser, editorWindow,
                 tree, parentFrame);
 
         imageManager = parentFrame.getImageManager();

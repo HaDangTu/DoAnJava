@@ -1,6 +1,6 @@
 package notepad.ui;
 
-import notepad.listener.MenuFileActionListener;
+import notepad.listener.MenuFileActionActionListener;
 
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
@@ -29,11 +29,11 @@ class MenuFile extends Menu {
     private JMenuItem print;
 
     private JMenuItem fileExit;
-    private MenuFileActionListener fileListener;
+    private MenuFileActionActionListener fileListener;
 
     public MenuFile (EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
         super("File", parentFrame);
-        fileListener = new MenuFileActionListener(editorWindow, tree, parentFrame);
+        fileListener = new MenuFileActionActionListener(editorWindow, tree, parentFrame);
 
         createMenuFile();
         createMenuOpen();

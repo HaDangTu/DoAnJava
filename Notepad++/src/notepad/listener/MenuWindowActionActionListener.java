@@ -3,9 +3,9 @@ import notepad.ui.EditorWindow;
 
 import java.awt.event.ActionEvent;
 
-public class MenuWindowActionListener extends MenuMainWindowListener {
+public class MenuWindowActionActionListener extends MenuMainWindowActionListener {
 
-    public MenuWindowActionListener(EditorWindow editorWindow){
+    public MenuWindowActionActionListener(EditorWindow editorWindow){
         super(editorWindow);
     }
 

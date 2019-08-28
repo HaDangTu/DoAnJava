@@ -1,9 +1,8 @@
 package notepad.ui;
 
-import notepad.listener.MenuSearchActionListener;
+import notepad.listener.MenuSearchActionActionListener;
 
 import javax.swing.JMenuItem;
-import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
 import java.awt.event.ActionEvent;
@@ -19,11 +18,11 @@ class MenuSearch extends Menu{
     private JMenuItem searchGoto;
     private JMenuItem searchMark;
 
-    private MenuSearchActionListener searchListener;
+    private MenuSearchActionActionListener searchListener;
 
     public MenuSearch(EditorWindow editorWindow, MainWindow parentFrame){
         super("Search", parentFrame);
-        searchListener = new MenuSearchActionListener(editorWindow, parentFrame);
+        searchListener = new MenuSearchActionActionListener(editorWindow, parentFrame);
 
         createSearchMenu();
 

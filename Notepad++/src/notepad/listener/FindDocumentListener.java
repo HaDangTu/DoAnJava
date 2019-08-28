@@ -5,7 +5,7 @@ import notepad.ui.TextEditor;
 
 import org.fife.ui.rtextarea.SearchEngine;
 import org.fife.ui.rtextarea.SearchContext;
-import org.fife.ui.rtextarea.SearchResult;
+//import org.fife.ui.rtextarea.SearchResult;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,23 +13,22 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 
 import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+
 import javax.swing.text.BadLocationException;
 
-public class FindDocumentListener implements DocumentListener {
+public class FindDocumentListener extends BaseDocumentListener {
 
     private JCheckBox highlightAll;
     private JCheckBox matchCase;
     private JLabel resultLabel;
     private SearchContext searchContext;
-    private EditorWindow editorWindow;
 
     public FindDocumentListener(JCheckBox highlightAll, JCheckBox matchCase, JLabel resultLabel, EditorWindow editorWindow){
+        super(editorWindow);
         this.highlightAll = highlightAll;
         this.matchCase = matchCase;
         this.resultLabel = resultLabel;
         searchContext = new SearchContext();
-        this.editorWindow = editorWindow;
     }
 
     @Override

@@ -14,43 +14,43 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionEvent;
 
-public class MenuSearchActionListener extends MenuMainWindowListener {
+public class MenuSearchActionActionListener extends MenuMainWindowActionListener {
 
-    public MenuSearchActionListener(EditorWindow editorWindow, MainWindow parentFrame) {
-        super(editorWindow, parentFrame);
+    public MenuSearchActionActionListener(EditorWindow editorWindow, MainWindow mainWindow) {
+        super(editorWindow, mainWindow);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if (command.equalsIgnoreCase("Find")) {
-            SearchDialog dialog = new SearchDialog(parentFrame, editorWindow);
+            SearchDialog dialog = new SearchDialog(mainWindow, editorWindow);
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Find Next")){
             if (!search(true)){
-                JOptionPane.showMessageDialog(parentFrame, "No text found");
+                JOptionPane.showMessageDialog(mainWindow, "No text found");
             }
         }
         else if (command.equalsIgnoreCase("Find Previous")){
             if (!search(false)){
-                JOptionPane.showMessageDialog(parentFrame, "No text found");
+                JOptionPane.showMessageDialog(mainWindow, "No text found");
             }
         }
         else if (command.equalsIgnoreCase("Replace")){
-            SearchDialog dialog = new SearchDialog(parentFrame, editorWindow);
+            SearchDialog dialog = new SearchDialog(mainWindow, editorWindow);
             dialog.setSelectedTab(1);
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Incremental Search")){
-            ((MainWindow) parentFrame).setVisiblePanelSearchIncremental(true);
+            ((MainWindow) mainWindow).setVisiblePanelSearchIncremental(true);
         }
         else if (command.equalsIgnoreCase("Go to...")){
-            GoToDialog dialog = new GoToDialog(editorWindow, parentFrame);
+            GoToDialog dialog = new GoToDialog(editorWindow, mainWindow);
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Mark...")){
-            SearchDialog dialog = new SearchDialog(parentFrame, editorWindow);
+            SearchDialog dialog = new SearchDialog(mainWindow, editorWindow);
             dialog.setSelectedTab(2);
             dialog.showDialog();
         }

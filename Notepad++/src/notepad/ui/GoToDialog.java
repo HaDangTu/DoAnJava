@@ -1,6 +1,6 @@
 package notepad.ui;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
-import notepad.listener.ButtonGoListener;
+import notepad.listener.ButtonGoActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -41,7 +41,7 @@ public class GoToDialog extends JDialog{
         minValue.setText(min.toString());
         maxValue.setText(max.toString());
 
-        buttonGo.addActionListener(new ButtonGoListener(editorWindow, max, fieldGo, this));
+        buttonGo.addActionListener(new ButtonGoActionListener(editorWindow, max, fieldGo, this));
         JPanel panel = new JPanel();
         GroupLayout layout = new GroupLayout(panel);
         panel.setLayout(layout);

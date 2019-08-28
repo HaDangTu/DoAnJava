@@ -4,21 +4,20 @@ import notepad.ui.EditorWindow;
 import notepad.ui.EditorWindowPopupMenu;
 
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.SwingUtilities;
 
-public class EditorWindowMouseListener implements MouseListener{
-    private EditorWindow editorWindow;
+public class EditorWindowMouseListener extends BaseMouseListener{
     private EditorWindowPopupMenu popupMenu;
 
     public EditorWindowMouseListener(EditorWindow editorWindow){
-        this.editorWindow = editorWindow;
+        super(editorWindow);
         this.popupMenu = new EditorWindowPopupMenu(editorWindow);
     }
     /**
      * Invoked when the mouse button has been clicked (pressed
      * and released) on a component.
-     *
+     * if right click on tab then show popup menu
+     * and select tab is clicked
      * @param e the event to be processed
      */
     @Override

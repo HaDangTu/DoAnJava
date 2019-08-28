@@ -11,12 +11,11 @@ import javax.swing.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class FileDialogPropertyChangeListener implements PropertyChangeListener {
-    private EditorWindow editorWindow;
+public class FileDialogPropertyChangeListener extends BaseListener implements PropertyChangeListener {
     private NewFileDialog dialog;
     private MainWindow frame;
     public FileDialogPropertyChangeListener(EditorWindow editorWindow, NewFileDialog dialog){
-        this.editorWindow = editorWindow;
+        super(editorWindow);
         this.dialog = dialog;
         this.frame = (MainWindow) this.editorWindow.getRootPane().getParent();
     }

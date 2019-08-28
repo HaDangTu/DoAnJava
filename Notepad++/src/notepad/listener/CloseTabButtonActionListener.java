@@ -6,13 +6,12 @@ import notepad.ui.EditorWindow;
 import notepad.util.TabInteraction;
 import javax.swing.JFileChooser;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class CloseTabButtonListener extends BaseListener {
+public class CloseTabButtonActionListener extends BaseActionListener {
 
     private TabInteraction tabInteraction;
 
-    public CloseTabButtonListener(EditorWindow editorWindow, TabUI tabUI){
+    public CloseTabButtonActionListener(EditorWindow editorWindow, TabUI tabUI){
         super(editorWindow, null);
         tabInteraction = new TabInteraction(editorWindow, tabUI);
     }

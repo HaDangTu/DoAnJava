@@ -19,8 +19,8 @@ import notepad.listener.*;
 public class SearchDialog extends JDialog{
     private JTabbedPane tabbedPane;
     private JPanel panel;
-    private FindButtonListener findListener;
-    private ReplaceButtonListener replaceListener;
+    private FindButtonActionListener findListener;
+    private ReplaceButtonActionListener replaceListener;
 
     public SearchDialog(JFrame frame, EditorWindow editorWindow){
         super();
@@ -70,7 +70,7 @@ public class SearchDialog extends JDialog{
 
         JTextField fieldFind = new JTextField();
 
-        findListener = new FindButtonListener(checkMatchCase, checkWholeWord, editorWindow,
+        findListener = new FindButtonActionListener(checkMatchCase, checkWholeWord, editorWindow,
                 fieldFind, radioRegex,this);
         JButton buttonFindNext = new JButton("Find Next");
         buttonFindNext.addActionListener(findListener);
@@ -136,11 +136,11 @@ public class SearchDialog extends JDialog{
         JCheckBox checkMatchCaseReplace = new JCheckBox("Match Case");
         JCheckBox checkWholeWordReplace  = new JCheckBox("Whole word");
 
-        replaceListener = new ReplaceButtonListener(checkMatchCaseReplace, checkWholeWordReplace, editorWindow,
+        replaceListener = new ReplaceButtonActionListener(checkMatchCaseReplace, checkWholeWordReplace, editorWindow,
                 fieldFindReplace, fieldReplace, radioRegex,this);
 
         JButton buttonFindReplace = new JButton("Find Next");
-        buttonFindReplace.addActionListener(new FindButtonListener(checkMatchCaseReplace, checkWholeWordReplace,
+        buttonFindReplace.addActionListener(new FindButtonActionListener(checkMatchCaseReplace, checkWholeWordReplace,
                 editorWindow, fieldFindReplace, radioRegex, this));
 
         JButton buttonReplace = new JButton("Replace");
@@ -209,10 +209,10 @@ public class SearchDialog extends JDialog{
 
         JRadioButton radioNormal = new JRadioButton("Normal");
         radioNormal.setSelected(true);
-        radioNormal.addActionListener(new RadioMarkRegexListener(matchWholeWord));
+        radioNormal.addActionListener(new RadioMarkRegexActionListener(matchWholeWord));
 
         JRadioButton radioRegex = new JRadioButton("Regular expression");
-        radioRegex.addActionListener(new RadioMarkRegexListener(matchWholeWord));
+        radioRegex.addActionListener(new RadioMarkRegexActionListener(matchWholeWord));
         btGroup.add(radioNormal);
         btGroup.add(radioRegex);
         //----------------------------------------------------------------

@@ -5,8 +5,8 @@ import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
 import java.awt.event.ActionEvent;
 
-public class MenuLanguageActionListener extends MenuMainWindowListener {
-    public MenuLanguageActionListener(EditorWindow editorWindow){
+public class MenuLanguageActionActionListener extends MenuMainWindowActionListener {
+    public MenuLanguageActionActionListener(EditorWindow editorWindow){
         super(editorWindow);
     }
 

@@ -12,18 +12,16 @@ import javax.swing.tree.DefaultTreeCellEditor;
 import notepad.util.TreeInteraction;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import java.io.IOException;
 
-public class TreePopupMenuListener implements ActionListener {
-    private EditorWindow editorWindow;
+public class TreePopupMenuListener extends BaseActionListener {
     private JFrame parentFrame;
     private Tree tree;
     private TreeInteraction treeInteraction;
 
     public TreePopupMenuListener(EditorWindow editorWindow, Tree tree, JFrame parentFrame){
-        this.editorWindow = editorWindow;
+        super(editorWindow);
         this.parentFrame = parentFrame;
         this.tree = tree;
         treeInteraction = new TreeInteraction();

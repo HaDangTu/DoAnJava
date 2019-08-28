@@ -1,7 +1,7 @@
 package notepad.listener;
 
 import notepad.ui.TextEditor;
-import notepad.ui.TextEditorPopupMenu;
+//import notepad.ui.TextEditorPopupMenu;
 
 import notepad.util.UndoAndRedo;
 
@@ -10,13 +10,13 @@ import java.awt.event.ActionListener;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
-public class TextEditorPopupMenuListener implements ActionListener {
+public class TextEditorPopupMenuListener extends BaseActionListener {
     private TextEditor textEditor;
-    private TextEditorPopupMenu popupMenu;
+//    private TextEditorPopupMenu popupMenu;
 
-    public TextEditorPopupMenuListener(TextEditor textEditor, TextEditorPopupMenu popupMenu){
+    public TextEditorPopupMenuListener(TextEditor textEditor){
         this.textEditor = textEditor;
-        this.popupMenu = popupMenu;
+//        this.popupMenu = popupMenu;
     }
 
     @Override

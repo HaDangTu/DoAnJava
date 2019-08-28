@@ -8,9 +8,9 @@ import notepad.util.UndoAndRedo;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import java.awt.event.ActionEvent;
 
-public class MenuEditActionListener extends MenuMainWindowListener{
+public class MenuEditActionActionListener extends MenuMainWindowActionListener {
 
-    public MenuEditActionListener(EditorWindow editorWindow) {
+    public MenuEditActionActionListener(EditorWindow editorWindow) {
         super(editorWindow);
     }
 

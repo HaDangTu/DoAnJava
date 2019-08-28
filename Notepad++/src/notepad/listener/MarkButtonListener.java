@@ -12,8 +12,7 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rtextarea.SearchContext;
 import org.fife.ui.rtextarea.SearchEngine;
 
-public class MarkButtonListener implements ActionListener {
-    private EditorWindow editorWindow;
+public class MarkButtonListener extends BaseActionListener {
     private JDialog parent;
     private JCheckBox chbMatchCase;
     private JCheckBox chbMatchWholeWord;
@@ -21,7 +20,7 @@ public class MarkButtonListener implements ActionListener {
 
     public MarkButtonListener(EditorWindow editorWindow, JDialog parent, JCheckBox matchCase, JCheckBox matchWholeWord,
                               JTextField fieldFind){
-        this.editorWindow = editorWindow;
+        super(editorWindow, null);
         this.parent = parent;
         this.chbMatchCase = matchCase;
         this.chbMatchWholeWord = matchWholeWord;

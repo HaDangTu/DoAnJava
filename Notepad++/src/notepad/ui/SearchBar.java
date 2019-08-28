@@ -1,5 +1,5 @@
 package notepad.ui;
-import notepad.listener.FindButtonListener;
+import notepad.listener.FindButtonActionListener;
 import notepad.listener.FindDocumentListener;
 
 import javax.swing.JTextField;
@@ -8,8 +8,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
-import javax.swing.border.EtchedBorder;
-import javax.swing.BorderFactory;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,7 +44,7 @@ public class SearchBar extends JPanel{
         fieldFind.getDocument().addDocumentListener(new FindDocumentListener(chbHighlightAll, chbMatchCase, labelResult,
                 editorWindow));
 
-        FindButtonListener listener = new FindButtonListener(chbMatchCase, editorWindow, fieldFind, null,
+        FindButtonActionListener listener = new FindButtonActionListener(chbMatchCase, editorWindow, fieldFind, null,
                 labelResult, chbHighlightAll.isSelected());
 
         buttonFindNext.addActionListener(listener);

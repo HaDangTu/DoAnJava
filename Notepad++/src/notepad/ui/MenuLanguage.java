@@ -1,6 +1,6 @@
 package notepad.ui;
 
-import notepad.listener.MenuLanguageActionListener;
+import notepad.listener.MenuLanguageActionActionListener;
 import notepad.util.CategoryOfFile;
 
 import javax.swing.*;
@@ -28,12 +28,12 @@ class MenuLanguage extends JMenu{
 
     private ButtonGroup buttonGroup;
 
-    private MenuLanguageActionListener langListener;
+    private MenuLanguageActionActionListener langListener;
 
 
     public MenuLanguage(EditorWindow editorWindow){
         super("Language");
-        langListener = new MenuLanguageActionListener(editorWindow);
+        langListener = new MenuLanguageActionActionListener(editorWindow);
         buttonGroup = new ButtonGroup();
 
         createMenuA();

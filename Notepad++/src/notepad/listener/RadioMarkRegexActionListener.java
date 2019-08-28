@@ -3,12 +3,11 @@ package notepad.listener;
 import javax.swing.JCheckBox;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class RadioMarkRegexListener extends BaseListener {
+public class RadioMarkRegexActionListener extends BaseActionListener {
     private JCheckBox chbWholeWord;
 
-    public RadioMarkRegexListener(JCheckBox chbWholeWord){
+    public RadioMarkRegexActionListener(JCheckBox chbWholeWord){
         super();
         this.chbWholeWord = chbWholeWord;
     }

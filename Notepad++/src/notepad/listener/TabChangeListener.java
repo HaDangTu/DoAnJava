@@ -8,14 +8,10 @@ import javax.swing.event.ChangeListener;
 
 import javax.swing.undo.UndoManager;
 
-public class TabChangeListener implements ChangeListener {
-
-    private MainWindow mainWindow;
-    private EditorWindow editorWindow;
+public class TabChangeListener extends BaseListener implements ChangeListener {
 
     public TabChangeListener(MainWindow mainWindow, EditorWindow editorWindow){
-        this.mainWindow = mainWindow;
-        this.editorWindow = editorWindow;
+        super(editorWindow, mainWindow);
     }
 
     @Override

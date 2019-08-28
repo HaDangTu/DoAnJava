@@ -13,17 +13,15 @@ import javax.swing.JFrame;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class TreeMouseListener implements MouseListener {
-    private EditorWindow editorWindow;
+public class TreeMouseListener extends BaseMouseListener {
     private Tree tree;
     private TreePopupMenu popupMenu;
     private TreeInteraction treeInteraction;
 
     public TreeMouseListener(Tree tree, EditorWindow editorWindow, JFrame parentFrame){
+        super(editorWindow);
         this.tree = tree;
-        this.editorWindow = editorWindow;
         popupMenu = new TreePopupMenu(editorWindow, tree, parentFrame);
         treeInteraction = new TreeInteraction();
     }

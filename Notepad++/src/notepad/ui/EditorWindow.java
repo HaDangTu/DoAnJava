@@ -1,11 +1,8 @@
 package notepad.ui;
 
-import notepad.listener.CloseTabButtonListener;
-import notepad.listener.EditorWindowMouseListener;
+import notepad.listener.CloseTabButtonActionListener;
 
 import javax.swing.JTabbedPane;
-import javax.swing.plaf.metal.MetalTabbedPaneUI;
-import javax.swing.plaf.multi.MultiButtonUI;
 import java.util.ArrayList;
 
 public class EditorWindow extends JTabbedPane {
@@ -39,7 +36,7 @@ public class EditorWindow extends JTabbedPane {
             ui.setLabel(getTitleAt(this.getTabCount() - 1));
             deletedTab.remove(0);
         }
-        ui.setListener(new CloseTabButtonListener(this, ui));
+        ui.setListener(new CloseTabButtonActionListener(this, ui));
         setTabComponentAt(getTabCount() - 1, ui);
     }
 
@@ -56,7 +53,7 @@ public class EditorWindow extends JTabbedPane {
         addTab(title, textEditor);
         int index = getTabCount() - 1;
         tabUI.setLabel(getTitleAt(index));
-        tabUI.setListener(new CloseTabButtonListener(this, tabUI));
+        tabUI.setListener(new CloseTabButtonActionListener(this, tabUI));
 
         setTabComponentAt(index, tabUI);
     }

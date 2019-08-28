@@ -22,7 +22,7 @@ public class TextEditorPopupMenu  extends JPopupMenu{
     public TextEditorPopupMenu(TextEditor textEditor){
         super();
 
-        listener = new TextEditorPopupMenuListener(textEditor, this);
+        listener = new TextEditorPopupMenuListener(textEditor);
 
 
         undo = new JMenuItem("Undo");

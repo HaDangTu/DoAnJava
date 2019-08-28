@@ -15,15 +15,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
 
-public class EditorWindowPopupMenuListener implements ActionListener {
+public class EditorWindowPopupMenuListener extends BaseActionListener{
     private TabInteraction tabInteraction;
-    private EditorWindow editorWindow;
     private JFileChooser fileChooser;
     private OpenAndSaveFile openAndSaveFile;
-    private MainWindow mainWindow;
 
     public EditorWindowPopupMenuListener(EditorWindow editorWindow){
-        this.editorWindow = editorWindow;
+        super(editorWindow);
         tabInteraction = new TabInteraction(editorWindow);
         fileChooser = new JFileChooser();
         mainWindow = (MainWindow) editorWindow.getRootPane().getParent();

@@ -1,5 +1,5 @@
 package notepad.ui;
-import notepad.listener.MenuWindowActionListener;
+import notepad.listener.MenuWindowActionActionListener;
 
 import javax.swing.JMenu;
 import javax.swing.JCheckBoxMenuItem;
@@ -14,7 +14,7 @@ public class MenuWindow extends JMenu{
 
     private EditorWindow editorWindow;
 
-    private MenuWindowActionListener windowListener;
+    private MenuWindowActionActionListener windowListener;
 
     public MenuWindow(EditorWindow editorWindow){
         super("Window");
@@ -22,7 +22,7 @@ public class MenuWindow extends JMenu{
 
         this.editorWindow = editorWindow;
 
-        windowListener = new MenuWindowActionListener(this.editorWindow);
+        windowListener = new MenuWindowActionActionListener(this.editorWindow);
         addItem("New 1");
     }
 

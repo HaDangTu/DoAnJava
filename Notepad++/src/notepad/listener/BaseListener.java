@@ -1,22 +1,30 @@
 package notepad.listener;
 
-import notepad.ui.EditorWindow;
 import notepad.ui.MainWindow;
+import notepad.ui.EditorWindow;
 
-import java.awt.event.ActionListener;
-
-public abstract class BaseListener implements ActionListener{
-
+public abstract class BaseListener {
+    
+    protected MainWindow mainWindow;
     protected EditorWindow editorWindow;
-    protected MainWindow parentFrame;
 
     public BaseListener(){
+        mainWindow = null;
         editorWindow = null;
-        parentFrame = null;
     }
 
-    public BaseListener(EditorWindow editorWindow, MainWindow parentFrame){
+    public BaseListener(EditorWindow editorWindow, MainWindow mainWindow){
+        this.mainWindow = mainWindow;
         this.editorWindow = editorWindow;
-        this.parentFrame = parentFrame;
+    }
+
+    public BaseListener(MainWindow mainWindow){
+        this.mainWindow = mainWindow;
+        this.editorWindow = null;
+    }
+
+    public BaseListener(EditorWindow editorWindow){
+        this.editorWindow = editorWindow;
+        this.mainWindow = null;
     }
 }

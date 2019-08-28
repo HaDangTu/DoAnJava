@@ -1,6 +1,6 @@
 package notepad.ui;
 
-import notepad.listener.CloseTabButtonListener;
+import notepad.listener.CloseTabButtonActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -38,7 +38,7 @@ public class TabUI extends JPanel {
 
     public String getLabel() {return label.getText();}
 
-    public void setListener(CloseTabButtonListener listener){
+    public void setListener(CloseTabButtonActionListener listener){
         button.addActionListener(listener);
     }
 

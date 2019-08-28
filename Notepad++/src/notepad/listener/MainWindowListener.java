@@ -14,11 +14,11 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 
-public class MainWindowListener implements WindowListener {
+public class MainWindowListener extends BaseListener implements WindowListener {
     private TabInteraction tabInteraction;
-    private EditorWindow editorWindow;
+
     public MainWindowListener(EditorWindow editorWindow){
-        this.editorWindow = editorWindow;
+        super(editorWindow);
         tabInteraction = new TabInteraction(editorWindow);
     }
     @Override

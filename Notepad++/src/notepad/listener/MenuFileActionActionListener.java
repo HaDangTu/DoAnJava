@@ -15,20 +15,20 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.print.PrinterException;
 
-public class MenuFileActionListener extends MenuMainWindowListener {
+public class MenuFileActionActionListener extends MenuMainWindowActionListener {
     private JFileChooser fileChooser;
-//    private MainWindow parentFrame;
+//    private MainWindow mainWindow;
     private Tree tree;
     private OpenAndSaveFile openAndSaveFile;
     private TabInteraction tabInteraction;
     private PrintText printText;
 
-    public MenuFileActionListener(EditorWindow editorWindow, Tree tree, MainWindow parentFrame){
-        super(editorWindow, parentFrame);
+    public MenuFileActionActionListener(EditorWindow editorWindow, Tree tree, MainWindow mainWindow){
+        super(editorWindow, mainWindow);
         fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         this.tree = tree;
 
-        openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, parentFrame);
+        openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, mainWindow);
         tabInteraction = new TabInteraction(editorWindow);
         printText = new PrintText(editorWindow);
     }
@@ -43,64 +43,64 @@ public class MenuFileActionListener extends MenuMainWindowListener {
             int pos = editorWindow.getTabCount() - 1;
             editorWindow.setSelectedIndex(pos);
             editorWindow.getTextEditor(pos).getTextArea().requestFocusInWindow();
-            parentFrame.addItem(editorWindow.getTitleOfTab(pos));
+            mainWindow.addItem(editorWindow.getTitleOfTab(pos));
         }
         else if (command.equalsIgnoreCase("C file")){
             String[] kind = {"Header file", "Class file"};
-            NewFileDialog dialog = new NewFileDialog(parentFrame, kind, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
             dialog.setItemListener(new NewCFileItemListener(dialog));
             dialog.setName(".h");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("C++ file")){
             String[] kind = {"Header file", "Class file"};
-            NewFileDialog dialog = new NewFileDialog(parentFrame, kind, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
             dialog.setItemListener(new NewCplusplusFileItemListener(dialog));
             dialog.setName(".h");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("C# file")){
-            NewFileDialog dialog = new NewFileDialog(parentFrame, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, editorWindow);
             dialog.setName(".cs");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("PHP file")){
-            NewFileDialog dialog = new NewFileDialog(parentFrame, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, editorWindow);
             dialog.setName(".php");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Python file")){
-            NewFileDialog dialog = new NewFileDialog(parentFrame, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, editorWindow);
             dialog.setName(".py");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Java file")){
-            NewFileDialog dialog = new NewFileDialog(parentFrame, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, editorWindow);
             dialog.setName(".java");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("JavaScript file")){
-            NewFileDialog dialog = new NewFileDialog(parentFrame, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, editorWindow);
             dialog.setName(".js");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("JSON file")){
-            NewFileDialog dialog = new NewFileDialog(parentFrame, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, editorWindow);
             dialog.setName(".json");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Other file")){
             final String[] kind = {"Normal text", "C file", "C++ file", "C# file", "PHP file",
                     "Python file", "Java file", "JavaScript file", "JSON file"};
-            NewFileDialog dialog = new NewFileDialog(parentFrame, kind, editorWindow);
+            NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Open directory")){
-            OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, parentFrame);
+            OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, mainWindow);
             openAndSaveFile.openDirectory();
         }
         else if (command.equalsIgnoreCase("Open file")){
-            OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, parentFrame);
+            OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, mainWindow);
             openAndSaveFile.openFile();
         }
         else if (command.equalsIgnoreCase("Save")){
@@ -108,30 +108,30 @@ public class MenuFileActionListener extends MenuMainWindowListener {
            TextEditor textEditor = editorWindow.getTextEditor(index);
            openAndSaveFile.saveFile(textEditor, index);
 
-           parentFrame.setMenuItemSaveEnabled(false);
-           parentFrame.setButtonSaveEnabled(false);
+           mainWindow.setMenuItemSaveEnabled(false);
+           mainWindow.setButtonSaveEnabled(false);
            if (editorWindow.isSavedAll()){
-               parentFrame.setButtonSaveAllEnabled(false);
-               parentFrame.setMenuItemSaveAllEnabled(false);
+               mainWindow.setButtonSaveAllEnabled(false);
+               mainWindow.setMenuItemSaveAllEnabled(false);
            }
         }
         else if (command.equalsIgnoreCase("Save As...")){
             int index = editorWindow.getSelectedIndex();
             TextEditor textEditor = editorWindow.getTextEditor(index);
             openAndSaveFile.saveAsFile(textEditor, index);
-            parentFrame.setMenuItemSaveEnabled(false);
-            parentFrame.setButtonSaveEnabled(false);
+            mainWindow.setMenuItemSaveEnabled(false);
+            mainWindow.setButtonSaveEnabled(false);
             if (editorWindow.isSavedAll()) {
-                parentFrame.setButtonSaveAllEnabled(false);
-                parentFrame.setMenuItemSaveAllEnabled(false);
+                mainWindow.setButtonSaveAllEnabled(false);
+                mainWindow.setMenuItemSaveAllEnabled(false);
             }
         }
         else if (command.equalsIgnoreCase("Save All")){
             openAndSaveFile.saveAllFile();
-            parentFrame.setMenuItemSaveEnabled(false);
-            parentFrame.setButtonSaveEnabled(false);
-            parentFrame.setButtonSaveAllEnabled(false);
-            parentFrame.setMenuItemSaveAllEnabled(false);
+            mainWindow.setMenuItemSaveEnabled(false);
+            mainWindow.setButtonSaveEnabled(false);
+            mainWindow.setButtonSaveAllEnabled(false);
+            mainWindow.setMenuItemSaveAllEnabled(false);
         }
         else if (command.equalsIgnoreCase("Page setup")){
             printText.pageSetup();
@@ -167,7 +167,7 @@ public class MenuFileActionListener extends MenuMainWindowListener {
         else if (command.equalsIgnoreCase("Close left tab..."))
             tabInteraction.closeLeftTab(fileChooser);
         else if (command.equalsIgnoreCase("Exit")){
-            parentFrame.dispose();
+            mainWindow.dispose();
         }
     }
 

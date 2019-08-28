@@ -10,13 +10,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class ReplaceButtonListener extends BaseListener {
+public class ReplaceButtonActionListener extends BaseActionListener {
     private JCheckBox matchCase;
     private JCheckBox wholeWord;
 
@@ -29,8 +27,8 @@ public class ReplaceButtonListener extends BaseListener {
 
     private JRadioButton regex;
 
-    public ReplaceButtonListener (JCheckBox matchCase, JCheckBox wholeWord, EditorWindow editorWindow,
-                                  JTextField findContent, JTextField replaceContent, JRadioButton regex, JDialog parent){
+    public ReplaceButtonActionListener(JCheckBox matchCase, JCheckBox wholeWord, EditorWindow editorWindow,
+                                       JTextField findContent, JTextField replaceContent, JRadioButton regex, JDialog parent){
         super(editorWindow, null);
         this.matchCase = matchCase;
         this.wholeWord = wholeWord;

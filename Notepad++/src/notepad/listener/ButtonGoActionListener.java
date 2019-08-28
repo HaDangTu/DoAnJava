@@ -9,12 +9,12 @@ import javax.swing.JDialog;
 
 import java.awt.event.ActionEvent;
 
-public class ButtonGoListener extends BaseListener {
+public class ButtonGoActionListener extends BaseActionListener {
     private int maxLine;
     private JTextField fieldGo;
     private JDialog parent;
 
-    public ButtonGoListener (EditorWindow editorWindow,  int maxLine, JTextField fieldGo, JDialog parent){
+    public ButtonGoActionListener(EditorWindow editorWindow, int maxLine, JTextField fieldGo, JDialog parent){
         super(editorWindow, null);
         this.fieldGo = fieldGo;
         this.maxLine = maxLine;

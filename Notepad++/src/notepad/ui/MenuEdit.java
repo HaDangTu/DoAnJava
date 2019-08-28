@@ -1,6 +1,6 @@
 package notepad.ui;
 
-import notepad.listener.MenuEditActionListener;
+import notepad.listener.MenuEditActionActionListener;
 
 import javax.swing.JMenuItem;
 
@@ -23,11 +23,11 @@ class MenuEdit extends Menu{
 
     private JMenuItem editSelectAll;
 
-    private MenuEditActionListener editListener;
+    private MenuEditActionActionListener editListener;
 
     public MenuEdit(EditorWindow editorWindow, MainWindow parentFrame){
         super("Edit", parentFrame);
-        editListener = new MenuEditActionListener(editorWindow);
+        editListener = new MenuEditActionActionListener(editorWindow);
 
         editUndo = new JMenuItem("Undo");
         editUndo.setEnabled(false);

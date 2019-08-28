@@ -13,19 +13,18 @@ import javax.swing.JFileChooser;
 
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
-public class ToolBarButtonsListener extends BaseListener {
+public class ToolBarButtonsActionListener extends BaseActionListener {
 
     private JFileChooser fileChooser;
     private Tree tree;
 
     private TabInteraction tabInteraction;
-    public ToolBarButtonsListener(JFileChooser fileChooser, EditorWindow editorWindow,
-                                  Tree tree, MainWindow parentFrame){
-        super(editorWindow, parentFrame);
+    public ToolBarButtonsActionListener(JFileChooser fileChooser, EditorWindow editorWindow,
+                                        Tree tree, MainWindow mainWindow){
+        super(editorWindow, mainWindow);
         this.fileChooser = fileChooser;
         this.tree = tree;
         tabInteraction = new TabInteraction(editorWindow);
@@ -37,17 +36,17 @@ public class ToolBarButtonsListener extends BaseListener {
         int index = editorWindow.getSelectedIndex();
         TextEditor textEditor = editorWindow.getTextEditor(index);
         RSyntaxTextArea textArea = textEditor.getTextArea();
-        OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, parentFrame);
+        OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, mainWindow);
 
         UndoAndRedo undoAndRedo = new UndoAndRedo(textEditor);
-        SearchDialog dialog = new SearchDialog(parentFrame, editorWindow);
+        SearchDialog dialog = new SearchDialog(mainWindow, editorWindow);
 
         if (command.equalsIgnoreCase("New")) {
             editorWindow.addTabEditor();
             int pos = editorWindow.getTabCount() - 1;
             editorWindow.setSelectedIndex(pos);
             editorWindow.getTextEditor(pos).getTextArea().requestFocusInWindow();
-            parentFrame.addItem(editorWindow.getTitleOfTab(pos));
+            mainWindow.addItem(editorWindow.getTitleOfTab(pos));
         }
         else if (command.equalsIgnoreCase("Open file")){
             openAndSaveFile.openFile();
@@ -57,19 +56,19 @@ public class ToolBarButtonsListener extends BaseListener {
         }
         else if (command.equalsIgnoreCase("Save file")){
             openAndSaveFile.saveFile(textEditor, index);
-            parentFrame.setButtonSaveEnabled(false);
-            parentFrame.setMenuItemSaveEnabled(false);
+            mainWindow.setButtonSaveEnabled(false);
+            mainWindow.setMenuItemSaveEnabled(false);
             if (editorWindow.isSavedAll()) {
-                parentFrame.setButtonSaveAllEnabled(false);
-                parentFrame.setMenuItemSaveAllEnabled(false);
+                mainWindow.setButtonSaveAllEnabled(false);
+                mainWindow.setMenuItemSaveAllEnabled(false);
             }
         }
         else if (command.equalsIgnoreCase("Save all")){
             openAndSaveFile.saveAllFile();
-            parentFrame.setButtonSaveEnabled(false);
-            parentFrame.setMenuItemSaveEnabled(false);
-            parentFrame.setButtonSaveAllEnabled(false);
-            parentFrame.setMenuItemSaveAllEnabled(false);
+            mainWindow.setButtonSaveEnabled(false);
+            mainWindow.setMenuItemSaveEnabled(false);
+            mainWindow.setButtonSaveAllEnabled(false);
+            mainWindow.setMenuItemSaveAllEnabled(false);
         }
         else if (command.equalsIgnoreCase("Close file")){
             tabInteraction.closeTabAt(fileChooser, index);
