@@ -5,6 +5,7 @@ import notepad.ui.Tree;
 import notepad.ui.NewFileDialog;
 import notepad.ui.TextEditor;
 
+import notepad.util.MyReadAndWriteAdapter;
 import notepad.util.OpenAndSaveFile;
 import notepad.util.PrintText;
 
@@ -13,6 +14,7 @@ import javax.swing.filechooser.FileSystemView;
 
 import java.awt.event.ActionEvent;
 import java.awt.print.PrinterException;
+import java.io.IOException;
 
 public class MenuFileActionActionListener extends MenuMainWindowActionListener {
     private JFileChooser fileChooser;
@@ -42,14 +44,14 @@ public class MenuFileActionActionListener extends MenuMainWindowActionListener {
             mainWindow.addItem(editorWindow.getTitleOfTab(pos));
         }
         else if (command.equalsIgnoreCase("C file")){
-            String[] kind = {"Header file", "Class file"};
+            String[] kind = {"Header file", "C file"};
             NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
             dialog.setItemListener(new NewCFileItemListener(dialog));
             dialog.setName(".h");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("C++ file")){
-            String[] kind = {"Header file", "Class file"};
+            String[] kind = {"Header file", "C++ file"};
             NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
             dialog.setItemListener(new NewCplusplusFileItemListener(dialog));
             dialog.setName(".h");
@@ -86,10 +88,15 @@ public class MenuFileActionActionListener extends MenuMainWindowActionListener {
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Other file")){
-            final String[] kind = {"Normal text", "C file", "C++ file", "C# file", "PHP file",
-                    "Python file", "Java file", "JavaScript file", "JSON file"};
-            NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
-            dialog.showDialog();
+            MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter();
+            try{
+                final String[] kind = adapter.readToStringArray("lang\\file_type.txt");
+                NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
+                dialog.showDialog();
+            }
+            catch (IOException ioe){
+                System.err.println(ioe.getMessage());
+            }
         }
         else if (command.equalsIgnoreCase("Open directory")){
             OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, tree, mainWindow);

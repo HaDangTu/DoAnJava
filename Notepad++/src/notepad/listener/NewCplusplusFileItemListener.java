@@ -10,10 +10,9 @@ public class NewCplusplusFileItemListener extends NewFileItemListener {
     @Override
     public void itemStateChanged(ItemEvent e){
         if (e.getStateChange() == ItemEvent.SELECTED){
-            if (e.getItem().equals("Header file"))
-                dialog.setName(CategoryOfFile.C_HEADER_FILE);
-            else
-                dialog.setName(CategoryOfFile.CPLUSPLUS_FILE);
+            String extension = hashtable.get(e.getItem().toString());
+            String name = dialog.getName().substring(0, dialog.getName().indexOf("."));
+            dialog.setName(name + extension);
         }
     }
 
