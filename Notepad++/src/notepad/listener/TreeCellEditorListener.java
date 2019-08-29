@@ -21,7 +21,7 @@ public class TreeCellEditorListener implements CellEditorListener {
     @Override
     public void editingStopped(ChangeEvent e) {
         TreePath srcTreePath = tree.getSelectionPath();
-        String location = tree.getLocation1();
+        String location = tree.getLocationOfNode();
 
         String oldFilePath = location + BuildingFilePath.buildFilePath(srcTreePath);
         String oldFileName = srcTreePath.getLastPathComponent().toString();

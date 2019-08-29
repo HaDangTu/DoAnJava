@@ -16,25 +16,31 @@ public class EditorWindow extends JTabbedPane {
     private ArrayList<Integer> deletedTab;
     private boolean isWrapWord;
     private boolean isHideLineNumber;
+    private int newTabNumber;
 
     public EditorWindow(){
         super();
         deletedTab = new ArrayList<>();
+
         isWrapWord = false;
         isHideLineNumber = true;
-        addTabEditor();
+        newTabNumber = 1;
+
+        addNewTab();
         setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
 
-    public void addTabEditor(){
-        int number = getTabCount() - 1;
-        TextEditor textEditor = new TextEditor(number);
+    /**
+     * add new tab
+     */
+    public void addNewTab(){
+        TextEditor textEditor = new TextEditor(newTabNumber);
         textEditor.getTextArea().setLineWrap(isWrapWord);
         textEditor.setLineNumberEnabled(isHideLineNumber);
         TabUI ui = new TabUI(this);
 
         if (deletedTab.size() <= 0) {
-            addTab("New " + 1, textEditor);
+            addTab("New " + newTabNumber, textEditor);
             ui.setLabel(getTitleAt(this.getTabCount() - 1));
         }
         else{
@@ -42,11 +48,16 @@ public class EditorWindow extends JTabbedPane {
             ui.setLabel(getTitleAt(this.getTabCount() - 1));
             deletedTab.remove(0);
         }
+        newTabNumber++;
         //ui.setListener(new CloseTabButtonActionListener(this, ui));
         setTabComponentAt(getTabCount() - 1, ui);
     }
 
-    public void addTabEditor(String title){
+    /**
+     * add new tab with title
+     * @param title title for tab
+     */
+    public void addNewTab(String title){
         TextEditor textEditor = new TextEditor();
         textEditor.getTextArea().setLineWrap(isWrapWord);
         textEditor.setLineNumberEnabled(isHideLineNumber);
@@ -60,9 +71,9 @@ public class EditorWindow extends JTabbedPane {
         setTabComponentAt(index, tabUI);
     }
 
-    /*
-        Set style for editor
-        @keyStyle: C, CPLUSPLUS, CSHARP, JAVA, JAVASCRIPT,...
+    /**
+     *  Set style for editor
+     * @keyStyle: C, CPLUSPLUS, CSHARP, JAVA, JAVASCRIPT,...
      */
     public void setEditorStyle(String keyStyle){
         TextEditor editor = (TextEditor) getComponentAt(getSelectedIndex());
@@ -128,7 +139,7 @@ public class EditorWindow extends JTabbedPane {
     /**
      * Check if tab exists or not
      * @param filePath directory of file
-     * @return position of file if file is exist
+     * @return tab position if file is exist
      */
     public int isExist(String filePath){
         TextEditor[] textEditors = getAllTextEditor();

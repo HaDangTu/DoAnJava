@@ -16,10 +16,8 @@ import java.awt.print.PrinterException;
 
 public class MenuFileActionActionListener extends MenuMainWindowActionListener {
     private JFileChooser fileChooser;
-//    private MainWindow mainWindow;
     private Tree tree;
     private OpenAndSaveFile openAndSaveFile;
-    //private TabInteraction tabInteraction;
     private PrintText printText;
 
     public MenuFileActionActionListener(EditorWindow editorWindow, Tree tree, MainWindow mainWindow){
@@ -37,7 +35,7 @@ public class MenuFileActionActionListener extends MenuMainWindowActionListener {
         //System.out.println(command);
 
         if (command.equalsIgnoreCase("New file")){
-            editorWindow.addTabEditor();
+            editorWindow.addNewTab();
             int pos = editorWindow.getTabCount() - 1;
             editorWindow.setSelectedIndex(pos);
             editorWindow.getTextEditor(pos).getTextArea().requestFocusInWindow();

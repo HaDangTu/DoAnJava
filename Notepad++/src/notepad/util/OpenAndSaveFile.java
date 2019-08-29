@@ -56,7 +56,7 @@ public class OpenAndSaveFile {
         if (returnValue == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
 
-            editorWindow.addTabEditor(file.getName());
+            editorWindow.addNewTab(file.getName());
             int index = editorWindow.getTabCount() - 1;
             editorWindow.setFilePathForTab(file.getAbsolutePath(), index);
             TextEditor textEditor = editorWindow.getTextEditor(index);

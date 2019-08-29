@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Notepad++:jar">
+    <output-path>E:/JavaProject/BuildFileNotepad</output-path>
+    <root id="archive" name="Notepad++.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="E:/JavaProject/BuildFileNotepad/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Notepad++" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../commons-io-2.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../autocomplete.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../rsyntaxtextarea-3.0.3.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$/icon" />
+    </root>
+  </artifact>
+</component>

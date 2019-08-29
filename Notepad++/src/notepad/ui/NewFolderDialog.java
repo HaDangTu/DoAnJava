@@ -1,6 +1,5 @@
 package notepad.ui;
 import notepad.listener.NewFolderDialogPropertyChangeListener;
-import notepad.util.TreeInteraction;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -15,7 +14,7 @@ public class NewFolderDialog extends JDialog{
     private JTextField fieldName;
     private String[] buttonsName = {"Create folder", "Cancel"};
 
-    public NewFolderDialog(JFrame parentFrame, Tree tree, TreeInteraction treeInteraction){
+    public NewFolderDialog(JFrame parentFrame, Tree tree){
         label = new JLabel("New folder name: ");
         fieldName = new JTextField();
 
@@ -25,7 +24,7 @@ public class NewFolderDialog extends JDialog{
                 JOptionPane.YES_NO_OPTION, null, buttonsName, buttonsName[0]);
 
         optionPane.addPropertyChangeListener(new NewFolderDialogPropertyChangeListener(this, parentFrame,
-                tree, treeInteraction));
+                tree));
         setContentPane(optionPane);
         setTitle("New folder");
         setLocationRelativeTo(parentFrame);

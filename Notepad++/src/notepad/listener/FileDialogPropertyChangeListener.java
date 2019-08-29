@@ -13,11 +13,10 @@ import java.beans.PropertyChangeListener;
 
 public class FileDialogPropertyChangeListener extends BaseListener implements PropertyChangeListener {
     private NewFileDialog dialog;
-    private MainWindow frame;
+
     public FileDialogPropertyChangeListener(EditorWindow editorWindow, NewFileDialog dialog){
-        super(editorWindow);
+        super(editorWindow, (MainWindow) editorWindow.getRootPane().getParent());
         this.dialog = dialog;
-        this.frame = (MainWindow) this.editorWindow.getRootPane().getParent();
     }
 
 
@@ -30,7 +29,7 @@ public class FileDialogPropertyChangeListener extends BaseListener implements Pr
                 JOptionPane.showMessageDialog(dialog, "Invalid name of file",
                         "Error", JOptionPane.ERROR_MESSAGE);
             else {
-                editorWindow.addTabEditor(dialog.getName());
+                editorWindow.addNewTab(dialog.getName());
                 int index = editorWindow.getTabCount() - 1;
 
                 CategoryOfFile category = new CategoryOfFile();
@@ -39,7 +38,7 @@ public class FileDialogPropertyChangeListener extends BaseListener implements Pr
 
                 editorWindow.setSelectedIndex(index);
                 editorWindow.setFileTypeForTab(fileType, index);
-                ((MainWindow) frame).addItem(editorWindow.getTitleOfTab(index));
+                mainWindow.addItem(editorWindow.getTitleOfTab(index));
                 dialog.setVisible(false);
             }
         }

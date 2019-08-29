@@ -2,7 +2,6 @@ package notepad.listener;
 
 import notepad.ui.NewFolderDialog;
 import notepad.ui.Tree;
-import notepad.util.TreeInteraction;
 
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
@@ -14,14 +13,12 @@ import java.beans.PropertyChangeListener;
 public class NewFolderDialogPropertyChangeListener implements PropertyChangeListener {
     private JDialog dialog;
     private JFrame parentFrame;
-    private TreeInteraction treeInteraction;
     private Tree tree;
 
-    public NewFolderDialogPropertyChangeListener(JDialog dialog, JFrame parentFrame, Tree tree,
-                                                 TreeInteraction treeInteraction){
+    public NewFolderDialogPropertyChangeListener(JDialog dialog, JFrame parentFrame, Tree tree){
         this.dialog = dialog;
         this.parentFrame = parentFrame;
-        this.treeInteraction = treeInteraction;
+        //this.treeInteraction = treeInteraction;
         this.tree = tree;
     }
     @Override
@@ -33,7 +30,7 @@ public class NewFolderDialogPropertyChangeListener implements PropertyChangeList
                 JOptionPane.showMessageDialog(parentFrame, "Folder name is null",
                         "Error", JOptionPane.ERROR_MESSAGE);
 
-            treeInteraction.addNewFolder(tree, ((NewFolderDialog) dialog).getFolderName());
+            tree.addNewFolder(((NewFolderDialog) dialog).getFolderName());
             dialog.setVisible(false);
         }
         else if (command.equalsIgnoreCase("Cancel"))

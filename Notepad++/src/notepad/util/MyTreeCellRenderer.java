@@ -6,7 +6,6 @@ import javax.swing.JComponent;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.ImageIcon;
 import java.io.File;
 public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
 
@@ -26,7 +25,7 @@ public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
                                                   boolean hasFocus) {
         super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
         Tree mytree = (Tree) tree;
-        location = mytree.getLocation1();
+        location = mytree.getLocationOfNode();
         setIconForFile(value, expanded);
         return this;
     }

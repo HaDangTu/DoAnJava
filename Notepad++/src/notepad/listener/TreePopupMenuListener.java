@@ -9,8 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultTreeCellEditor;
 
-import notepad.util.TreeInteraction;
-
 import java.awt.event.ActionEvent;
 
 import java.io.IOException;
@@ -18,13 +16,11 @@ import java.io.IOException;
 public class TreePopupMenuListener extends BaseActionListener {
     private JFrame parentFrame;
     private Tree tree;
-    private TreeInteraction treeInteraction;
 
     public TreePopupMenuListener(EditorWindow editorWindow, Tree tree, JFrame parentFrame){
         super(editorWindow);
         this.parentFrame = parentFrame;
         this.tree = tree;
-        treeInteraction = new TreeInteraction();
     }
 
     @Override
@@ -41,7 +37,7 @@ public class TreePopupMenuListener extends BaseActionListener {
             fileName = fileName.substring(0, fileName.indexOf("."));
             try {
                 if (!fileName.trim().equalsIgnoreCase("")) {
-                    boolean result = treeInteraction.addNewFile(tree, dialog.getName());
+                    boolean result = tree.addNewFile(dialog.getName());
                     if (!result)
                         JOptionPane.showMessageDialog(parentFrame, "Can't create file, because " +
                                         "your file already exists", "Error",
@@ -53,29 +49,29 @@ public class TreePopupMenuListener extends BaseActionListener {
             }
         }
         else if (command.equalsIgnoreCase("New folder")){
-            NewFolderDialog dialog = new NewFolderDialog(parentFrame, tree, treeInteraction);
+            NewFolderDialog dialog = new NewFolderDialog(parentFrame, tree);
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("Open")){
             try {
-                treeInteraction.openFile(editorWindow, tree);
+                tree.openFile(editorWindow);
             }
             catch (IOException ioe){
                 System.err.println(ioe.getMessage());
             }
         }
         else if (command.equalsIgnoreCase("Cut")){
-            treeInteraction.cutFile(tree);
+            tree.cutFile();
         }
         else if (command.equalsIgnoreCase("Copy")){
-            treeInteraction.copyFile(tree);
+            tree.copyFile();
         }
         else if (command.equalsIgnoreCase("Copy Path")){
-            treeInteraction.copyPath(tree);
+            tree.copyPath();
         }
         else if (command.equalsIgnoreCase("Paste")){
             try {
-                treeInteraction.paste(tree);
+                tree.paste();
             }
             catch (IOException ioe){
                 System.err.println(ioe.getMessage());
@@ -91,7 +87,7 @@ public class TreePopupMenuListener extends BaseActionListener {
                     JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null);
 
             if (result == 0) { //yes
-                boolean isDel = treeInteraction.deleteFileOrFolder(tree);
+                boolean isDel = tree.deleteFileOrFolder();
                 if (isDel)
                     JOptionPane.showMessageDialog(parentFrame, "Deleted file or folder successful",
                             "Successful",

@@ -5,8 +5,6 @@ import notepad.ui.Tree;
 import notepad.ui.TreePopupMenu;
 
 
-import notepad.util.TreeInteraction;
-
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
 
@@ -17,13 +15,11 @@ import java.awt.event.MouseEvent;
 public class TreeMouseListener extends BaseMouseListener {
     private Tree tree;
     private TreePopupMenu popupMenu;
-    private TreeInteraction treeInteraction;
 
     public TreeMouseListener(Tree tree, EditorWindow editorWindow, JFrame parentFrame){
         super(editorWindow);
         this.tree = tree;
         popupMenu = new TreePopupMenu(editorWindow, tree, parentFrame);
-        treeInteraction = new TreeInteraction();
     }
 
     @Override
@@ -32,7 +28,7 @@ public class TreeMouseListener extends BaseMouseListener {
         if (row >= 0) {
             if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
                 try {
-                    treeInteraction.openFile(editorWindow, tree);
+                    tree.openFile(editorWindow);
                 } catch (FileNotFoundException fe) {
                     System.err.println(fe.getMessage());
                 } catch (IOException ioe) {

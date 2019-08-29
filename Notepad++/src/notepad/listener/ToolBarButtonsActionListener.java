@@ -39,7 +39,7 @@ public class ToolBarButtonsActionListener extends BaseActionListener {
         SearchDialog dialog = new SearchDialog(mainWindow, editorWindow);
 
         if (command.equalsIgnoreCase("New")) {
-            editorWindow.addTabEditor();
+            editorWindow.addNewTab();
             int pos = editorWindow.getTabCount() - 1;
             editorWindow.setSelectedIndex(pos);
             editorWindow.getTextEditor(pos).getTextArea().requestFocusInWindow();

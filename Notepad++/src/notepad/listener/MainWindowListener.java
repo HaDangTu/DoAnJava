@@ -54,7 +54,7 @@ public class MainWindowListener extends BaseListener implements WindowListener {
             }
 
             if (editorWindow.getTabCount() == 0) {
-                editorWindow.addTabEditor();
+                editorWindow.addNewTab();
                 mainWindow.addItem(editorWindow.getTitleOfTab(0));
             }
 
