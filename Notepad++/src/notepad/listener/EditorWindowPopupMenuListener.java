@@ -5,24 +5,22 @@ import notepad.ui.MainWindow;
 import notepad.ui.TextEditor;
 import notepad.ui.RenameDialog;
 
-import notepad.util.TabInteraction;
 import notepad.util.OpenAndSaveFile;
 import notepad.util.PrintText;
 
 import javax.swing.JFileChooser;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
 
 public class EditorWindowPopupMenuListener extends BaseActionListener{
-    private TabInteraction tabInteraction;
+
     private JFileChooser fileChooser;
     private OpenAndSaveFile openAndSaveFile;
 
     public EditorWindowPopupMenuListener(EditorWindow editorWindow){
         super(editorWindow);
-        tabInteraction = new TabInteraction(editorWindow);
+
         fileChooser = new JFileChooser();
         mainWindow = (MainWindow) editorWindow.getRootPane().getParent();
         openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, mainWindow);
@@ -37,13 +35,13 @@ public class EditorWindowPopupMenuListener extends BaseActionListener{
         String command = e.getActionCommand();
         int index = editorWindow.getSelectedIndex();
         if (command.equalsIgnoreCase("Close"))
-            tabInteraction.closeTabAt(fileChooser, index);
+            editorWindow.closeTabAt(fileChooser, index);
         else if (command.equalsIgnoreCase("Close all but this"))
-            tabInteraction.closeAllButThis(fileChooser);
+            editorWindow.closeAllButThis(fileChooser);
         else if (command.equalsIgnoreCase("Close left tab"))
-            tabInteraction.closeLeftTab(fileChooser);
+            editorWindow.closeLeftTab(fileChooser);
         else if (command.equalsIgnoreCase("Close right tab"))
-            tabInteraction.closeRightTab(fileChooser);
+            editorWindow.closeRightTab(fileChooser);
         else if (command.equalsIgnoreCase("Save")){
             TextEditor textEditor = editorWindow.getTextEditor(index);
             openAndSaveFile.saveFile(textEditor, index);

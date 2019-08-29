@@ -6,7 +6,6 @@ import notepad.ui.MainWindow;
 import notepad.ui.TextEditor;
 import notepad.util.MyComparator;
 import notepad.util.OpenAndSaveFile;
-import notepad.util.TabInteraction;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -15,15 +14,13 @@ import java.awt.event.WindowListener;
 
 
 public class MainWindowListener extends BaseListener implements WindowListener {
-    private TabInteraction tabInteraction;
 
     public MainWindowListener(EditorWindow editorWindow){
         super(editorWindow);
-        tabInteraction = new TabInteraction(editorWindow);
     }
+
     @Override
     public void windowOpened(WindowEvent e) {
-        //textArea.setCaretPosition(0);
     }
 
     @Override

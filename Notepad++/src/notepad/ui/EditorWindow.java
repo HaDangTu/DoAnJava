@@ -1,10 +1,16 @@
 package notepad.ui;
 
-import notepad.listener.CloseTabButtonActionListener;
+import notepad.util.OpenAndSaveFile;
 
 import javax.swing.JTabbedPane;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 import java.util.ArrayList;
 
+/**
+ * TODO: calculate function generate new tab number
+ */
 public class EditorWindow extends JTabbedPane {
 
     private ArrayList<Integer> deletedTab;
@@ -16,19 +22,19 @@ public class EditorWindow extends JTabbedPane {
         deletedTab = new ArrayList<>();
         isWrapWord = false;
         isHideLineNumber = true;
-        loadComponent();
+        addTabEditor();
         setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
 
-    private void loadComponent(){
-        int number = getTabCount() + 1;
+    public void addTabEditor(){
+        int number = getTabCount() - 1;
         TextEditor textEditor = new TextEditor(number);
         textEditor.getTextArea().setLineWrap(isWrapWord);
         textEditor.setLineNumberEnabled(isHideLineNumber);
-        TabUI ui = new TabUI();
+        TabUI ui = new TabUI(this);
 
         if (deletedTab.size() <= 0) {
-            addTab("New " + number, textEditor);
+            addTab("New " + 1, textEditor);
             ui.setLabel(getTitleAt(this.getTabCount() - 1));
         }
         else{
@@ -36,24 +42,20 @@ public class EditorWindow extends JTabbedPane {
             ui.setLabel(getTitleAt(this.getTabCount() - 1));
             deletedTab.remove(0);
         }
-        ui.setListener(new CloseTabButtonActionListener(this, ui));
+        //ui.setListener(new CloseTabButtonActionListener(this, ui));
         setTabComponentAt(getTabCount() - 1, ui);
-    }
-
-    public void addTabEditor(){
-        loadComponent();
     }
 
     public void addTabEditor(String title){
         TextEditor textEditor = new TextEditor();
         textEditor.getTextArea().setLineWrap(isWrapWord);
         textEditor.setLineNumberEnabled(isHideLineNumber);
-        TabUI tabUI = new TabUI();
+        TabUI tabUI = new TabUI(this);
 
         addTab(title, textEditor);
         int index = getTabCount() - 1;
         tabUI.setLabel(getTitleAt(index));
-        tabUI.setListener(new CloseTabButtonActionListener(this, tabUI));
+//        tabUI.setListener(new CloseTabButtonActionListener(this, tabUI));
 
         setTabComponentAt(index, tabUI);
     }
@@ -219,5 +221,80 @@ public class EditorWindow extends JTabbedPane {
             TextEditor textEditor = getTextEditor(index);
             textEditor.setAutoComplete();
         }
+    }
+
+    /**
+     * close selected tab
+     * @param fileChooser: Show dialog to save file if necessary
+     * @param index  position of tab
+     */
+    public void closeTabAt(JFileChooser fileChooser, int index) {
+        TextEditor textEditor = getTextEditor(index);
+        if (!textEditor.getIsChanged()) {
+            if (getFilePathOfTab(index).equalsIgnoreCase(""))
+                addDeletedTab(textEditor.getNumberOfTab());
+            removeTabAt(index);
+        } else {
+            int result = JOptionPane.showConfirmDialog(null,
+                    "Do you want to save change of file " + getTitleOfTab(index) + "?",
+                    "Save file",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null);
+            if (result == 0) {
+                OpenAndSaveFile openAndSaveFile = new OpenAndSaveFile(fileChooser, this, null);
+                openAndSaveFile.saveFile(textEditor, index);
+                if (textEditor.getNumberOfTab() != -1)
+                    addDeletedTab(textEditor.getNumberOfTab());
+                removeTabAt(index);
+            } else if (result == 1)
+                removeTabAt(index);
+        }
+    }
+
+    /**
+     * close all tab which is opening
+     * @param fileChooser: Show dialog to save file if necessary
+     */
+    public void closeAllTab(JFileChooser fileChooser){
+        int tabCount = getTabCount();
+        for (int i = 0; i < tabCount; i++)
+            closeTabAt(fileChooser, 0);
+    }
+
+    /**
+     * close all tab except selected tab
+     * @param fileChooser: Show dialog to save file if necessary
+     */
+    public void closeAllButThis(JFileChooser fileChooser){
+        int i;
+        int tabCount = getTabCount();
+        int selectedTab = getSelectedIndex();
+        int deleteTab = 0;
+        for (i = 0; i < tabCount; i++){
+            if (i == selectedTab){
+                deleteTab = 1;
+                continue;
+            }
+            closeTabAt(fileChooser, deleteTab);
+        }
+    }
+
+    /**
+     * close right tab of selected tab
+     * @param fileChooser Show dialog to save file if necessary
+     */
+    public void closeRightTab(JFileChooser fileChooser){
+        int index = getSelectedIndex() + 1;
+        if (index < getTabCount())
+            closeTabAt(fileChooser, index);
+    }
+
+    /**
+     * close left tab of selected tab
+     * @param fileChooser Show dialog to save file if necessary
+     */
+    public void closeLeftTab(JFileChooser fileChooser){
+        int index = getSelectedIndex() - 1;
+        if (index >= 0)
+            closeTabAt(fileChooser, index);
     }
 }

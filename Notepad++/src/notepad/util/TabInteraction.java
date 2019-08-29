@@ -6,7 +6,7 @@ import notepad.ui.MainWindow;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
+@Deprecated
 public class TabInteraction {
     private EditorWindow editorWindow;
 

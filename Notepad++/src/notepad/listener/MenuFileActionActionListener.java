@@ -6,7 +6,6 @@ import notepad.ui.NewFileDialog;
 import notepad.ui.TextEditor;
 
 import notepad.util.OpenAndSaveFile;
-import notepad.util.TabInteraction;
 import notepad.util.PrintText;
 
 import javax.swing.JFileChooser;
@@ -20,7 +19,7 @@ public class MenuFileActionActionListener extends MenuMainWindowActionListener {
 //    private MainWindow mainWindow;
     private Tree tree;
     private OpenAndSaveFile openAndSaveFile;
-    private TabInteraction tabInteraction;
+    //private TabInteraction tabInteraction;
     private PrintText printText;
 
     public MenuFileActionActionListener(EditorWindow editorWindow, Tree tree, MainWindow mainWindow){
@@ -29,7 +28,6 @@ public class MenuFileActionActionListener extends MenuMainWindowActionListener {
         this.tree = tree;
 
         openAndSaveFile = new OpenAndSaveFile(fileChooser, editorWindow, mainWindow);
-        tabInteraction = new TabInteraction(editorWindow);
         printText = new PrintText(editorWindow);
     }
 
@@ -150,22 +148,22 @@ public class MenuFileActionActionListener extends MenuMainWindowActionListener {
                 printText.print();
             }
             catch (PrinterException pe){
-                System.err.println(pe);
+                System.err.println(pe.getMessage());
             }
         }
         else if (command.equalsIgnoreCase("Close tab")){
             int index = editorWindow.getSelectedIndex();
-            tabInteraction.closeTabAt(fileChooser, index);
+            editorWindow.closeTabAt(fileChooser, index);
         }
         else if (command.equalsIgnoreCase("Close all tab")){
-            tabInteraction.closeAllTab(fileChooser);
+            editorWindow.closeAllTab(fileChooser);
         }
         else if (command.equalsIgnoreCase("Close all but this..."))
-            tabInteraction.closeAllButThis(fileChooser);
+            editorWindow.closeAllButThis(fileChooser);
         else if (command.equalsIgnoreCase("Close right tab..."))
-            tabInteraction.closeRightTab(fileChooser);
+            editorWindow.closeRightTab(fileChooser);
         else if (command.equalsIgnoreCase("Close left tab..."))
-            tabInteraction.closeLeftTab(fileChooser);
+            editorWindow.closeLeftTab(fileChooser);
         else if (command.equalsIgnoreCase("Exit")){
             mainWindow.dispose();
         }

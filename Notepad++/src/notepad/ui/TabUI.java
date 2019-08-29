@@ -6,14 +6,14 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TabUI extends JPanel {
     private CloseTabButton button;
     private JLabel label;
-    private ImageIcon icon;
 
-    public TabUI (){
-        super();
+    public TabUI(EditorWindow editorWindow){
         //setLayout
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
         flowLayout.setVgap(0);
@@ -22,14 +22,14 @@ public class TabUI extends JPanel {
         setOpaque(false);
 
         //close button
-        icon = new ImageIcon("icon/close.png");
+        ImageIcon icon = new ImageIcon("icon/close.png");
         button = new CloseTabButton(icon);
+        button.addActionListener(new CloseTabButtonActionListener(editorWindow, button));
         //label of tab
         label = new JLabel();
 
         add(label);
         add(button);
-
     }
 
     public void setLabel(String content){
@@ -37,10 +37,4 @@ public class TabUI extends JPanel {
     }
 
     public String getLabel() {return label.getText();}
-
-    public void setListener(CloseTabButtonActionListener listener){
-        button.addActionListener(listener);
-    }
-
-
 }

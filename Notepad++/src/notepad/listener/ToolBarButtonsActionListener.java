@@ -6,7 +6,6 @@ import notepad.ui.TextEditor;
 import notepad.ui.SearchDialog;
 
 import notepad.util.OpenAndSaveFile;
-import notepad.util.TabInteraction;
 import notepad.util.UndoAndRedo;
 
 import javax.swing.JFileChooser;
@@ -21,13 +20,11 @@ public class ToolBarButtonsActionListener extends BaseActionListener {
     private JFileChooser fileChooser;
     private Tree tree;
 
-    private TabInteraction tabInteraction;
     public ToolBarButtonsActionListener(JFileChooser fileChooser, EditorWindow editorWindow,
                                         Tree tree, MainWindow mainWindow){
         super(editorWindow, mainWindow);
         this.fileChooser = fileChooser;
         this.tree = tree;
-        tabInteraction = new TabInteraction(editorWindow);
     }
 
     @Override
@@ -71,10 +68,10 @@ public class ToolBarButtonsActionListener extends BaseActionListener {
             mainWindow.setMenuItemSaveAllEnabled(false);
         }
         else if (command.equalsIgnoreCase("Close file")){
-            tabInteraction.closeTabAt(fileChooser, index);
+            editorWindow.closeTabAt(fileChooser, index);
         }
         else if (command.equalsIgnoreCase("Close all")){
-            tabInteraction.closeAllTab(fileChooser);
+            editorWindow.closeAllTab(fileChooser);
         }
         else if (command.equalsIgnoreCase("Cut")){
             textArea.cut();
