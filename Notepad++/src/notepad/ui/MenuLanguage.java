@@ -55,7 +55,7 @@ class MenuLanguage extends JMenu{
 
 
         JCheckBoxMenuItem normalText = new JCheckBoxMenuItem("Normal text");
-        normalText.setActionCommand(CategoryOfFile.NORMAL_TEXT_FILE);
+        normalText.setActionCommand("Normal text file");
         normalText.setSelected(true);
         normalText.addActionListener(langListener);
         buttonGroup.add(normalText);
@@ -82,11 +82,11 @@ class MenuLanguage extends JMenu{
         menuA = new JMenu("A");
         JCheckBoxMenuItem languageActionScript = new JCheckBoxMenuItem("ActionScript");
         languageActionScript.addActionListener(langListener);
-        languageActionScript.setActionCommand(CategoryOfFile.ACTIONSCRIPT_FILE);
+        languageActionScript.setActionCommand("Action script file");
 
         JCheckBoxMenuItem languageAssembler = new JCheckBoxMenuItem("Assembler");
         languageAssembler.addActionListener(langListener);
-        languageAssembler.setActionCommand(CategoryOfFile.ASSEMBLER_X86_FILE);
+        languageAssembler.setActionCommand("Assembler x86 file");
 
 
 
@@ -102,22 +102,22 @@ class MenuLanguage extends JMenu{
         menuC = new JMenu("C");
         JCheckBoxMenuItem languageC = new JCheckBoxMenuItem("C");
         languageC.addActionListener(langListener);
-        languageC.setActionCommand(CategoryOfFile.C_FILE);
+        languageC.setActionCommand("C source file");
 
         JCheckBoxMenuItem languageCplusplus = new JCheckBoxMenuItem("C++");
         languageCplusplus.addActionListener(langListener);
-        languageCplusplus.setActionCommand(CategoryOfFile.CPLUSPLUS_FILE);
+        languageCplusplus.setActionCommand("C++ source file");
 
         JCheckBoxMenuItem languageCSharp = new JCheckBoxMenuItem("C#");
         languageCSharp.addActionListener(langListener);
-        languageCSharp.setActionCommand(CategoryOfFile.CSHARP_FILE);
+        languageCSharp.setActionCommand("C# source file");
 
         JCheckBoxMenuItem languageCSS = new JCheckBoxMenuItem("CSS");
         languageCSS.addActionListener(langListener);
-        languageCSS.setActionCommand(CategoryOfFile.CSS_FILE);
+        languageCSS.setActionCommand("Cascades Style Sheets file");
         JCheckBoxMenuItem languageCSV = new JCheckBoxMenuItem("CSV");
         languageCSV.addActionListener(langListener);
-        languageCSV.setActionCommand(CategoryOfFile.CSV_FILE);
+        languageCSV.setActionCommand("Comma Separated Values file");
 
 
         buttonGroup.add(languageC);
@@ -137,15 +137,15 @@ class MenuLanguage extends JMenu{
         menuD = new JMenu("D");
         JCheckBoxMenuItem languageD = new JCheckBoxMenuItem("D");
         languageD.addActionListener(langListener);
-        languageD.setActionCommand(CategoryOfFile.D_FILE);
+        languageD.setActionCommand("D file");
 
         JCheckBoxMenuItem languageDart = new JCheckBoxMenuItem("Dart");
         languageDart.addActionListener(langListener);
-        languageDart.setActionCommand(CategoryOfFile.DART_FILE);
+        languageDart.setActionCommand("Dart file");
 
         JCheckBoxMenuItem languageDTD = new JCheckBoxMenuItem("DTD");
         languageDTD.addActionListener(langListener);
-        languageDTD.setActionCommand(CategoryOfFile.DTD_FILE);
+        languageDTD.setActionCommand("DTD file");
 
 
         buttonGroup.add(languageD);
@@ -162,7 +162,7 @@ class MenuLanguage extends JMenu{
         menuG = new JMenu("G");
         JCheckBoxMenuItem languageGroovy = new JCheckBoxMenuItem("Groovy");
         languageGroovy.addActionListener(langListener);
-        languageGroovy.setActionCommand(CategoryOfFile.GROOVY_FILE);
+        languageGroovy.setActionCommand("Groovy file");
 
         buttonGroup.add(languageGroovy);
 
@@ -173,11 +173,11 @@ class MenuLanguage extends JMenu{
         menuH = new JMenu("H");
         JCheckBoxMenuItem languageHTML = new JCheckBoxMenuItem("HTML");
         languageHTML.addActionListener(langListener);
-        languageHTML.setActionCommand(CategoryOfFile.HTML_FILE);
+        languageHTML.setActionCommand("Hyper Text Markup Language file");
 
         JCheckBoxMenuItem languageHTAcess = new JCheckBoxMenuItem("HTAccess");
         languageHTAcess.addActionListener(langListener);
-        languageHTAcess.setActionCommand(CategoryOfFile.HTACCESS_FILE);
+        languageHTAcess.setActionCommand("HTAccess  file");
 
 
         buttonGroup.add(languageHTML);
@@ -191,7 +191,7 @@ class MenuLanguage extends JMenu{
         menuI = new JMenu("I");
         JCheckBoxMenuItem languageINI = new JCheckBoxMenuItem("INI");
         languageINI.addActionListener(langListener);
-        languageINI.setActionCommand(CategoryOfFile.INI_FILE);
+        languageINI.setActionCommand("INI  file");
 
         buttonGroup.add(languageINI);
 
@@ -202,19 +202,19 @@ class MenuLanguage extends JMenu{
         menuJ = new JMenu("J");
         JCheckBoxMenuItem languageJava = new JCheckBoxMenuItem("Java");
         languageJava.addActionListener(langListener);
-        languageJava.setActionCommand(CategoryOfFile.JAVA_FILE);
+        languageJava.setActionCommand("Java source file");
 
         JCheckBoxMenuItem languageJavaScript = new JCheckBoxMenuItem("Java Script");
         languageJavaScript.addActionListener(langListener);
-        languageJavaScript.setActionCommand(CategoryOfFile.JAVASCRIPT_FILE);
+        languageJavaScript.setActionCommand("Javascript file");
 
         JCheckBoxMenuItem languageJson = new JCheckBoxMenuItem("JSON");
         languageJson.addActionListener(langListener);
-        languageJson.setActionCommand(CategoryOfFile.JSON_FILE);
+        languageJson.setActionCommand("JSON file");
 
         JCheckBoxMenuItem languageJSP = new JCheckBoxMenuItem("JSP");
         languageJSP.addActionListener(langListener);
-        languageJSP.setActionCommand(CategoryOfFile.JSP_FILE);
+        languageJSP.setActionCommand("JSP file");
 
         buttonGroup.add(languageJava);
         buttonGroup.add(languageJavaScript);
@@ -231,19 +231,19 @@ class MenuLanguage extends JMenu{
         menuL = new JMenu("L");
         JCheckBoxMenuItem languageLatex = new JCheckBoxMenuItem("Latex");
         languageLatex.addActionListener(langListener);
-        languageLatex.setActionCommand(CategoryOfFile.LATEX_FILE);
+        languageLatex.setActionCommand("LATEX file");
 
         JCheckBoxMenuItem languageLess = new JCheckBoxMenuItem("Less");
         languageLess.addActionListener(langListener);
-        languageLess.setActionCommand(CategoryOfFile.LESS_FILE);
+        languageLess.setActionCommand("LESS file");
 
         JCheckBoxMenuItem languageLisp = new JCheckBoxMenuItem("Lisp");
         languageLisp.addActionListener(langListener);
-        languageLisp.setActionCommand(CategoryOfFile.LISP_FILE);
+        languageLisp.setActionCommand("LISP file");
 
         JCheckBoxMenuItem languageLua = new JCheckBoxMenuItem("Lua");
         languageLua.addActionListener(langListener);
-        languageLua.setActionCommand(CategoryOfFile.LUA_FILE);
+        languageLua.setActionCommand("LUA file");
 
         buttonGroup.add(languageLatex);
         buttonGroup.add(languageLess);
@@ -260,19 +260,19 @@ class MenuLanguage extends JMenu{
         menuP = new JMenu("P");
         JCheckBoxMenuItem languagePython = new JCheckBoxMenuItem("Python");
         languagePython.addActionListener(langListener);
-        languagePython.setActionCommand(CategoryOfFile.PYTHON_FILE);
+        languagePython.setActionCommand("Python file");
 
         JCheckBoxMenuItem languagePhp = new JCheckBoxMenuItem("PHP");
         languagePhp.addActionListener(langListener);
-        languagePhp.setActionCommand(CategoryOfFile.PYTHON_FILE);
+        languagePhp.setActionCommand("PHP Hypertext Preprocessor file");
 
         JCheckBoxMenuItem languagePerl = new JCheckBoxMenuItem("Perl");
         languagePerl.addActionListener(langListener);
-        languagePerl.setActionCommand(CategoryOfFile.PERL_FILE);
+        languagePerl.setActionCommand("Perl  file");
 
         JCheckBoxMenuItem languageProperties = new JCheckBoxMenuItem("Properties");
         languageProperties.addActionListener(langListener);
-        languageProperties.setActionCommand(CategoryOfFile.PROPERTIES_FILE);
+        languageProperties.setActionCommand("PROPERTIES file");
 
         buttonGroup.add(languagePhp);
         buttonGroup.add(languagePython);
@@ -289,7 +289,7 @@ class MenuLanguage extends JMenu{
         menuR = new JMenu("R");
         JCheckBoxMenuItem languageRuby = new JCheckBoxMenuItem("Ruby");
         languageRuby.addActionListener(langListener);
-        languageRuby.setActionCommand(CategoryOfFile.RUBY_FILE);
+        languageRuby.setActionCommand("Ruby file");
 
         buttonGroup.add(languageRuby);
 
@@ -299,15 +299,15 @@ class MenuLanguage extends JMenu{
         menuS = new JMenu("S");
         JCheckBoxMenuItem languageSQL = new JCheckBoxMenuItem("SQL");
         languageSQL.addActionListener(langListener);
-        languageSQL.setActionCommand(CategoryOfFile.SQL_FILE);
+        languageSQL.setActionCommand("Structured Query Language file");
 
         JCheckBoxMenuItem languageSAS = new JCheckBoxMenuItem("SAS");
         languageSAS.addActionListener(langListener);
-        languageSAS.setActionCommand(CategoryOfFile.SAS_FILE);
+        languageSAS.setActionCommand("SAS file");
 
         JCheckBoxMenuItem languageScala = new JCheckBoxMenuItem("Scala");
         languageScala.addActionListener(langListener);
-        languageScala.setActionCommand(CategoryOfFile.SCALA_FILE);
+        languageScala.setActionCommand("SCALA file");
 
         buttonGroup.add(languageSQL);
         buttonGroup.add(languageSAS);
@@ -322,11 +322,11 @@ class MenuLanguage extends JMenu{
         menuT = new JMenu("T");
         JCheckBoxMenuItem languageTCL = new JCheckBoxMenuItem("TCL");
         languageTCL.addActionListener(langListener);
-        languageTCL.setActionCommand(CategoryOfFile.TCL_FILE);
+        languageTCL.setActionCommand("TCL file");
 
         JCheckBoxMenuItem languageTypeScript = new JCheckBoxMenuItem("TypeScript");
         languageTypeScript.addActionListener(langListener);
-        languageTypeScript.setActionCommand(CategoryOfFile.TYPESCRIPT_FILE);
+        languageTypeScript.setActionCommand("TYPESCRIPT file");
 
         buttonGroup.add(languageTCL);
         buttonGroup.add(languageTypeScript);
@@ -339,7 +339,7 @@ class MenuLanguage extends JMenu{
         menuV = new JMenu("V");
         JCheckBoxMenuItem languageVisualBasic = new JCheckBoxMenuItem("Visual Basic");
         languageVisualBasic.addActionListener(langListener);
-        languageVisualBasic.setActionCommand(CategoryOfFile.VISUAL_BASIC_FILE);
+        languageVisualBasic.setActionCommand("Visual Basic source file");
 
         buttonGroup.add(languageVisualBasic);
 
@@ -350,7 +350,7 @@ class MenuLanguage extends JMenu{
         menuW = new JMenu("W");
         JCheckBoxMenuItem languageWindowsBatch = new JCheckBoxMenuItem("Windows Batch");
         languageWindowsBatch.addActionListener(langListener);
-        languageWindowsBatch.setActionCommand(CategoryOfFile.WINDOWS_BATCH_FILE);
+        languageWindowsBatch.setActionCommand("Windows batch file");
 
         buttonGroup.add(languageWindowsBatch);
 
@@ -361,7 +361,7 @@ class MenuLanguage extends JMenu{
         menuX = new JMenu("X");
         JCheckBoxMenuItem languageXML = new JCheckBoxMenuItem("XML");
         languageXML.addActionListener(langListener);
-        languageXML.setActionCommand(CategoryOfFile.XML_FILE);
+        languageXML.setActionCommand("Extensible Markup Language file");
 
         buttonGroup.add(languageXML);
 
@@ -371,7 +371,7 @@ class MenuLanguage extends JMenu{
         menuY = new JMenu("Y");
         JCheckBoxMenuItem languageYAML = new JCheckBoxMenuItem("YAML");
         languageYAML.addActionListener(langListener);
-        languageYAML.setActionCommand(CategoryOfFile.YAML_FILE);
+        languageYAML.setActionCommand("YAML file");
 
         buttonGroup.add(languageYAML);
 

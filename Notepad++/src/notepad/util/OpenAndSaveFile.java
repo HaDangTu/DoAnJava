@@ -65,7 +65,8 @@ public class OpenAndSaveFile {
 
             CategoryOfFile categoryOfFile = new CategoryOfFile();
             String extension = categoryOfFile.getExtensionOfFile(file.getName());
-            categoryOfFile.ChangeStyleEditorForFile(extension, editorWindow);
+            Language language = categoryOfFile.getLanguageByExtension(extension);
+            editorWindow.setEditorStyle(language.getKeyStyle(), textEditor);
 
             MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);
             try{

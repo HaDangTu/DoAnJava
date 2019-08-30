@@ -28,7 +28,7 @@ public class NewFileDialog extends JDialog{
         //this.editorWindow = editorWindow;
         textFieldName = new JTextField();
         textFieldName.requestFocusInWindow();
-        textFieldName.setText(CategoryOfFile.NORMAL_TEXT_FILE);
+        textFieldName.setText(CategoryOfFile.ACTIONSCRIPT_FILE);
 
         comboBoxKind = new JComboBox<>(kind);
         comboBoxKind.addItemListener(new NewFileItemListener(this));

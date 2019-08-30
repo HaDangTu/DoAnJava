@@ -1,37 +1,37 @@
-Normal text file
-Action Script file
-Assembler file
-C file
-C++ file
-C# file
-CSS file
-CSV file
+Action script file
+Assembler x86 file
+C source file
+C header source file
+C++ source file
+C# source file
+Cascades Style Sheets file
+Comma Separated Values file
 D file
 Dart file
-Dtd file
+DTD file
 Groovy file
-HTML file
-HTAccess file
-INI file
-Java file
-JavaScript file
+Hyper Text Markup Language file
+HTAcces  file
+Java source file
+Javascript file
 JSON file
 JSP file
-Latex file
-Less file
-Lisp file	
-Lua file
-PHP file
+LATEX file
+LESS file
+LISP file
+LUA file
+Normal text file
+PHP Hypertext Preprocessor file
 Python file
 Perl file
-Properties file
+PROPERTIES file
 Ruby file
-Sql file
-Sas file
-Scala file
+Structured Query Language file
+SCALA file
+SAS file
 TCL file
-TypeScript file
-Visual Basic file
-Window batch file
-XML file
+TYPESCRIPT file
+Visual Basic source file
+Windows batch file
+Extensible Markup Language file
 YAML file

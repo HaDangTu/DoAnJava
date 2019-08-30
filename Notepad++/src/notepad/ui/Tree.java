@@ -105,12 +105,13 @@ public class Tree extends JTree {
                 editorWindow.addNewTab(file.getName());
                 int index = editorWindow.getTabCount() - 1;
                 editorWindow.setFilePathForTab(filePath, index);
-
-                CategoryOfFile category = new CategoryOfFile();
-                String extension = category.getExtensionOfFile(file.getName());
-                String fileType = category.ChangeStyleEditorForFile(extension, editorWindow);
-                editorWindow.setFileTypeForTab(fileType, index);
                 TextEditor textEditor = editorWindow.getTextEditor(index);
+
+                CategoryOfFile category = CategoryOfFile.getInstance();
+                String extension = category.getExtensionOfFile(file.getName());
+
+                editorWindow.setFileTypeForTab(extension, index);
+
                 RSyntaxTextArea textArea = textEditor.getTextArea();
 
                 MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);

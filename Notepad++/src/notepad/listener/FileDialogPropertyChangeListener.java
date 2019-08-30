@@ -4,7 +4,9 @@ import notepad.ui.EditorWindow;
 import notepad.ui.NewFileDialog;
 import notepad.ui.MainWindow;
 
+import notepad.ui.TextEditor;
 import notepad.util.CategoryOfFile;
+import notepad.util.Language;
 
 import javax.swing.*;
 
@@ -31,13 +33,15 @@ public class FileDialogPropertyChangeListener extends BaseListener implements Pr
             else {
                 editorWindow.addNewTab(dialog.getName());
                 int index = editorWindow.getTabCount() - 1;
+                TextEditor textEditor = editorWindow.getTextEditor(index);
 
-                CategoryOfFile category = new CategoryOfFile();
+                CategoryOfFile category = CategoryOfFile.getInstance();
                 String extension = category.getExtensionOfFile(dialog.getName());
-                String fileType = category.ChangeStyleEditorForFile(extension, editorWindow);
+                Language language = category.getLanguageByExtension(extension);
 
                 editorWindow.setSelectedIndex(index);
-                editorWindow.setFileTypeForTab(fileType, index);
+                editorWindow.setEditorStyle(language.getKeyStyle(), textEditor);
+                editorWindow.setFileTypeForTab(extension, index);
                 mainWindow.addItem(editorWindow.getTitleOfTab(index));
                 dialog.setVisible(false);
             }

@@ -23,8 +23,7 @@ public class StatusBar  extends JPanel{
         fileType = new JLabel();
         fileType.setPreferredSize(new Dimension(400, 15));
 
-        category = new CategoryOfFile();
-        category.initFileTypeName();
+        category = CategoryOfFile.getInstance();
 
         lengthAndLine = new JLabel();
         lengthAndLine.setPreferredSize(new Dimension(200, 15));
