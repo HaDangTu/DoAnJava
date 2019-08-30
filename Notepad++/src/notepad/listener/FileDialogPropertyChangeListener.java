@@ -37,11 +37,11 @@ public class FileDialogPropertyChangeListener extends BaseListener implements Pr
 
                 CategoryOfFile category = CategoryOfFile.getInstance();
                 String extension = category.getExtensionOfFile(dialog.getName());
-                Language language = category.getLanguageByExtension(extension);
+                Language language = category.getLanguage(extension);
 
                 editorWindow.setSelectedIndex(index);
                 editorWindow.setEditorStyle(language.getKeyStyle(), textEditor);
-                editorWindow.setFileTypeForTab(extension, index);
+                editorWindow.setFileTypeForTab(language.getFileType(), index);
                 mainWindow.addItem(editorWindow.getTitleOfTab(index));
                 dialog.setVisible(false);
             }

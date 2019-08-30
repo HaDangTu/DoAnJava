@@ -7,10 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be4116da-6dcb-4f28-950b-d328dde3f60f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/notepad/util/Language.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lang/file_type.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lang/file_type.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/FileDialogPropertyChangeListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/FileDialogPropertyChangeListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/MenuFileActionActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/MenuFileActionActionListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/MenuLanguageActionActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/MenuLanguageActionActionListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/NewCFileItemListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/NewCFileItemListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/NewCplusplusFileItemListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/listener/NewCplusplusFileItemListener.class" afterDir="false" />
@@ -18,10 +18,13 @@
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/MenuLanguage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/MenuLanguage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/NewFileDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/NewFileDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/StatusBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/StatusBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/Tree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/Tree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/TextEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/ui/TextEditor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/CategoryOfFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/CategoryOfFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/Language.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/Language.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/MyTreeCellRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/MyTreeCellRenderer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/OpenAndSaveFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Notepad++/notepad/util/OpenAndSaveFile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/FileDialogPropertyChangeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/listener/MenuFileActionActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/MenuFileActionActionListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/listener/MenuLanguageActionActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/MenuLanguageActionActionListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/listener/NewCFileItemListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/NewCFileItemListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/listener/NewCplusplusFileItemListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/listener/NewCplusplusFileItemListener.java" afterDir="false" />
@@ -29,8 +32,10 @@
       <change beforePath="$PROJECT_DIR$/src/notepad/ui/MenuLanguage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/MenuLanguage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/ui/NewFileDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/NewFileDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/ui/StatusBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/StatusBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/notepad/ui/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/ui/TextEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/ui/TextEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/util/CategoryOfFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/util/CategoryOfFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/util/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/util/Language.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notepad/util/MyTreeCellRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/util/MyTreeCellRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/notepad/util/OpenAndSaveFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/notepad/util/OpenAndSaveFile.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -146,6 +151,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/notepad/listener/MenuFileActionActionListener.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

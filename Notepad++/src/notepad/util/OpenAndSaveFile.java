@@ -63,9 +63,9 @@ public class OpenAndSaveFile {
             RSyntaxTextArea textArea = textEditor.getTextArea();
 
 
-            CategoryOfFile categoryOfFile = new CategoryOfFile();
+            CategoryOfFile categoryOfFile = CategoryOfFile.getInstance();
             String extension = categoryOfFile.getExtensionOfFile(file.getName());
-            Language language = categoryOfFile.getLanguageByExtension(extension);
+            Language language = categoryOfFile.getLanguage(extension);
             editorWindow.setEditorStyle(language.getKeyStyle(), textEditor);
 
             MyReadAndWriteAdapter adapter = new MyReadAndWriteAdapter(textArea);

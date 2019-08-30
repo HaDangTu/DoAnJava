@@ -1,7 +1,7 @@
 Action script file
 Assembler x86 file
 C source file
-C header source file
+Header file
 C++ source file
 C# source file
 Cascades Style Sheets file
@@ -11,7 +11,7 @@ Dart file
 DTD file
 Groovy file
 Hyper Text Markup Language file
-HTAcces  file
+HTAccess  file
 Java source file
 Javascript file
 JSON file

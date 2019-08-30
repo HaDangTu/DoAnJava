@@ -1,7 +1,7 @@
 package notepad.listener;
 import notepad.util.CategoryOfFile;
 import notepad.ui.NewFileDialog;
-import notepad.util.Language;
+
 
 import java.awt.event.ItemEvent;
 public class NewCplusplusFileItemListener extends NewFileItemListener {
@@ -13,9 +13,9 @@ public class NewCplusplusFileItemListener extends NewFileItemListener {
     public void itemStateChanged(ItemEvent e){
         if (e.getStateChange() == ItemEvent.SELECTED){
             CategoryOfFile category = CategoryOfFile.getInstance();
-            Language language = category.getLanguage(e.getItem().toString());
+            String extension = category.getKey(e.getItem().toString());
             String name = dialog.getName().substring(0, dialog.getName().indexOf("."));
-            dialog.setName(name + language.getExtension());
+            dialog.setName(name + extension);
         }
     }
 

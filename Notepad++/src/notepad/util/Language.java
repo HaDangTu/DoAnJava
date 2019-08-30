@@ -2,18 +2,18 @@ package notepad.util;
 
 public class Language {
     private String keyStyle;
-    private String extension;
+    private String fileType;
 
-    public Language(String keyStyle, String extension){
+    public Language(String keyStyle, String fileType){
         this.keyStyle = keyStyle;
-        this.extension = extension;
+        this.fileType = fileType;
     }
 
     public String getKeyStyle() {
         return keyStyle;
     }
 
-    public String getExtension() {
-        return extension;
+    public String getFileType() {
+        return fileType;
     }
 }

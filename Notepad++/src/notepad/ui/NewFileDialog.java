@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 
 public class NewFileDialog extends JDialog{
     protected JFrame frame;
@@ -27,8 +27,7 @@ public class NewFileDialog extends JDialog{
         this.frame = frame;
         //this.editorWindow = editorWindow;
         textFieldName = new JTextField();
-        textFieldName.requestFocusInWindow();
-        textFieldName.setText(CategoryOfFile.ACTIONSCRIPT_FILE);
+        setName(CategoryOfFile.ACTIONSCRIPT_FILE);
 
         comboBoxKind = new JComboBox<>(kind);
         comboBoxKind.addItemListener(new NewFileItemListener(this));
@@ -56,6 +55,7 @@ public class NewFileDialog extends JDialog{
         //this.editorWindow = editorWindow;
         textFieldName = new JTextField();
         textFieldName.requestFocusInWindow();
+
         labelName = new JLabel("Name: ");
 
         JComponent[] components = {labelName, textFieldName};
@@ -87,6 +87,8 @@ public class NewFileDialog extends JDialog{
 
     public void setName(String name) {
         textFieldName.setText(name);
+        textFieldName.requestFocusInWindow();
+        textFieldName.setCaretPosition(0);
     }
 
     public void setItemListener(ItemListener itemListener){

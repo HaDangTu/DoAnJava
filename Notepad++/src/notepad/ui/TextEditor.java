@@ -46,7 +46,7 @@ public class TextEditor extends JPanel{
         textArea = new RSyntaxTextArea(20, 60);
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
         filePath = "";
-        fileType = CategoryOfFile.NORMAL_TEXT_FILE;
+        fileType = "Normal text file";
 
         textArea.setCodeFoldingEnabled(true);
 
@@ -75,7 +75,7 @@ public class TextEditor extends JPanel{
         textArea = new RSyntaxTextArea(20, 60);
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
         filePath = "";
-        fileType = CategoryOfFile.NORMAL_TEXT_FILE;
+        fileType = "Normal text file";
 
 
         textArea.setCodeFoldingEnabled(true); //set code folding

@@ -1,7 +1,5 @@
 package notepad.util;
 
-import notepad.ui.EditorWindow;
-import notepad.ui.TextEditor;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
 import java.util.Enumeration;
@@ -65,7 +63,7 @@ public class CategoryOfFile {
 
     private Hashtable<String, Language> fileType;
 
-    public CategoryOfFile(){
+    private CategoryOfFile(){
         initFileType();
     }
 
@@ -78,59 +76,59 @@ public class CategoryOfFile {
 
     private void initFileType(){
         fileType = new Hashtable<>();
-        fileType.put("Action script file", new Language(SyntaxConstants.SYNTAX_STYLE_ACTIONSCRIPT, ACTIONSCRIPT_FILE));
-        fileType.put("Assembler x86 file", new Language(SyntaxConstants.SYNTAX_STYLE_ASSEMBLER_X86, ASSEMBLER_X86_FILE));
+        fileType.put(ACTIONSCRIPT_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_ACTIONSCRIPT, "Action script file"));
+        fileType.put(ASSEMBLER_X86_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_ASSEMBLER_X86, "Assembler x86 file"));
 
-        fileType.put("C source file", new Language(SyntaxConstants.SYNTAX_STYLE_C, C_FILE));
-        fileType.put("C header source file", new Language(SyntaxConstants.SYNTAX_STYLE_C, C_HEADER_FILE));
-        fileType.put("C++ source file", new Language(SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS, CPLUSPLUS_FILE));
-        fileType.put("C# source file", new Language(SyntaxConstants.SYNTAX_STYLE_CSHARP, CSHARP_FILE));
-        fileType.put("Cascades Style Sheets file", new Language(SyntaxConstants.SYNTAX_STYLE_CSS, CSS_FILE));
-        fileType.put("Comma Separated Values file", new Language(SyntaxConstants.SYNTAX_STYLE_CSV, CSV_FILE));
+        fileType.put(C_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_C, "C source file"));
+        fileType.put(C_HEADER_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_C, "Header file"));
+        fileType.put(CPLUSPLUS_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_CPLUSPLUS, "C++ source file"));
+        fileType.put(CSHARP_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_CSHARP, "C# source file"));
+        fileType.put(CSS_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_CSS, "Cascades Style Sheets file"));
+        fileType.put(CSV_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_CSV, "Comma Separated Values file"));
 
-        fileType.put("D file", new Language(SyntaxConstants.SYNTAX_STYLE_D, D_FILE));
-        fileType.put("Dart file", new Language(SyntaxConstants.SYNTAX_STYLE_DART, DART_FILE));
-        fileType.put("DTD file", new Language(SyntaxConstants.SYNTAX_STYLE_DTD, DTD_FILE));
+        fileType.put(D_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_D, "D file"));
+        fileType.put(DART_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_DART, "Dart file"));
+        fileType.put(DTD_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_DTD, "DTD file"));
 
-        fileType.put("Groovy file", new Language(SyntaxConstants.SYNTAX_STYLE_GROOVY, GROOVY_FILE));
+        fileType.put(GROOVY_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_GROOVY, "Groovy file"));
 
-        fileType.put("Hyper Text Markup Language file", new Language(SyntaxConstants.SYNTAX_STYLE_HTML, HTML_FILE));
-        fileType.put("HTAccess  file", new Language(SyntaxConstants.SYNTAX_STYLE_HTACCESS, HTACCESS_FILE));
+        fileType.put(HTML_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_HTML, "Hyper Text Markup Language file"));
+        fileType.put(HTACCESS_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_HTACCESS, "HTAccess  file"));
 
-        fileType.put("INI  file", new Language(SyntaxConstants.SYNTAX_STYLE_INI, INI_FILE));
+        fileType.put(INI_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_INI, "INI  file"));
 
-        fileType.put("Java source file", new Language(SyntaxConstants.SYNTAX_STYLE_JAVA, JAVA_FILE));
-        fileType.put("Javascript file", new Language(SyntaxConstants.SYNTAX_STYLE_JAVASCRIPT, JAVASCRIPT_FILE));
-        fileType.put("JSON file", new Language(SyntaxConstants.SYNTAX_STYLE_JSON, JSON_FILE));
-        fileType.put("JSP file", new Language(SyntaxConstants.SYNTAX_STYLE_JSP, JSP_FILE));
+        fileType.put(JAVA_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_JAVA, "Java source file"));
+        fileType.put(JAVASCRIPT_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_JAVASCRIPT, "Javascript file"));
+        fileType.put(JSON_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_JSON, "JSON file"));
+        fileType.put(JSP_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_JSP, "JSP file"));
 
-        fileType.put("LATEX file", new Language(SyntaxConstants.SYNTAX_STYLE_LATEX, LATEX_FILE));
-        fileType.put("LESS file", new Language(SyntaxConstants.SYNTAX_STYLE_LESS, LESS_FILE));
-        fileType.put("LISP file", new Language(SyntaxConstants.SYNTAX_STYLE_LISP, LISP_FILE));
-        fileType.put("LUA file", new Language(SyntaxConstants.SYNTAX_STYLE_LUA, LUA_FILE));
+        fileType.put(LATEX_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_LATEX, "LATEX file"));
+        fileType.put(LESS_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_LESS, "LESS file"));
+        fileType.put(LISP_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_LISP, "LISP file"));
+        fileType.put(LUA_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_LUA, "LUA file"));
 
-        fileType.put("Normal text", new Language(SyntaxConstants.SYNTAX_STYLE_NONE, NORMAL_TEXT_FILE));
+        fileType.put(NORMAL_TEXT_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_NONE, "Normal text file"));
 
-        fileType.put("PHP Hypertext Preprocessor file", new Language(SyntaxConstants.SYNTAX_STYLE_PHP, PHP_FILE));
-        fileType.put("Python file", new Language(SyntaxConstants.SYNTAX_STYLE_PYTHON, PYTHON_FILE));
-        fileType.put("Perl  file", new Language(SyntaxConstants.SYNTAX_STYLE_PERL, PERL_FILE));
-        fileType.put("PROPERTIES file", new Language(SyntaxConstants.SYNTAX_STYLE_PROPERTIES_FILE, PROPERTIES_FILE));
+        fileType.put(PHP_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_PHP, "PHP Hypertext Preprocessor file"));
+        fileType.put(PYTHON_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_PYTHON, "Python file"));
+        fileType.put(PERL_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_PERL, "Perl  file"));
+        fileType.put(PROPERTIES_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_PROPERTIES_FILE, "PROPERTIES file"));
 
-        fileType.put("Ruby file", new Language(SyntaxConstants.SYNTAX_STYLE_RUBY, RUBY_FILE));
+        fileType.put(RUBY_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_RUBY, "Ruby file"));
 
-        fileType.put("Structured Query Language file", new Language(SyntaxConstants.SYNTAX_STYLE_SQL, SQL_FILE));
-        fileType.put("SCALA file", new Language(SyntaxConstants.SYNTAX_STYLE_SCALA, SCALA_FILE));
-        fileType.put("SAS file", new Language(SyntaxConstants.SYNTAX_STYLE_SAS, SAS_FILE));
+        fileType.put(SQL_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_SQL, "Structured Query Language file"));
+        fileType.put(SCALA_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_SCALA, "SCALA file"));
+        fileType.put(SAS_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_SAS, "SAS file"));
 
-        fileType.put("TCL file", new Language(SyntaxConstants.SYNTAX_STYLE_TCL, TCL_FILE));
-        fileType.put("TYPESCRIPT file", new Language(SyntaxConstants.SYNTAX_STYLE_TYPESCRIPT, TYPESCRIPT_FILE));
+        fileType.put(TCL_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_TCL, "TCL file"));
+        fileType.put(TYPESCRIPT_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_TYPESCRIPT, "TYPESCRIPT file"));
 
-        fileType.put("Visual Basic source file", new Language(SyntaxConstants.SYNTAX_STYLE_VISUAL_BASIC, VISUAL_BASIC_FILE));
-        fileType.put("Windows batch file", new Language(SyntaxConstants.SYNTAX_STYLE_WINDOWS_BATCH, WINDOWS_BATCH_FILE));
+        fileType.put(VISUAL_BASIC_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_VISUAL_BASIC, "Visual Basic source file"));
+        fileType.put(WINDOWS_BATCH_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_WINDOWS_BATCH, "Windows batch file"));
 
-        fileType.put("Extensible Markup Language file", new Language(SyntaxConstants.SYNTAX_STYLE_XML, XML_FILE));
+        fileType.put(XML_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_XML, "Extensible Markup Language file"));
 
-        fileType.put("YAML file", new Language(SyntaxConstants.SYNTAX_STYLE_YAML, YAML_FILE));
+        fileType.put(YAML_FILE, new Language(SyntaxConstants.SYNTAX_STYLE_YAML, "YAML file"));
     }
 
     public boolean detectCFile(String ext){
@@ -289,29 +287,23 @@ public class CategoryOfFile {
         return fileName.substring(fileName.lastIndexOf("."));
     }
 
-    public String CovertFileExtensionToFileType(String extension){
+    /**
+     *
+     * @param fileTypeName ex C source file, C++ source file
+     * @return file extension
+     */
+    public String getKey(String fileTypeName){
         Enumeration<String> keys = fileType.keys();
         String currentKey;
         while ((currentKey = keys.nextElement()) != null){
-            Language lang = fileType.get(currentKey);
-            if (lang.getExtension().equalsIgnoreCase(extension))
+            Language language = fileType.get(currentKey);
+            if (language.getFileType().equalsIgnoreCase(fileTypeName))
                 return currentKey;
         }
         return null;
     }
 
-    public Language getLanguageByExtension(String extension){
-        Enumeration<String> keys = fileType.keys();
-        String currentKey;
-        while ((currentKey = keys.nextElement()) != null){
-            Language lang = fileType.get(currentKey);
-            if (lang.getExtension().equalsIgnoreCase(extension))
-                return lang;
-        }
-        return null;
-    }
-
-    public Language getLanguage(String fileTypeName){
-        return fileType.get(fileTypeName);
+    public Language getLanguage(String extension){
+        return fileType.get(extension);
     }
 }

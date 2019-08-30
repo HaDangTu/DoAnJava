@@ -16,9 +16,9 @@ public class NewCFileItemListener extends NewFileItemListener {
     public void itemStateChanged(ItemEvent e){
         if (e.getStateChange() == ItemEvent.SELECTED){
             CategoryOfFile category = CategoryOfFile.getInstance();
-            Language language = category.getLanguage(e.getItem().toString());
+            String extension = category.getKey(e.getItem().toString());
             String name = dialog.getName().substring(0, dialog.getName().indexOf("."));
-            dialog.setName(name + language.getExtension());
+            dialog.setName(name + extension);
         }
     }
 }

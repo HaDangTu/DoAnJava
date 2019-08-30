@@ -17,13 +17,11 @@ public class StatusBar  extends JPanel{
     private JLabel fileType;
     private JLabel lengthAndLine;
     private JLabel lineColumnSelect;
-    private CategoryOfFile category;
     public StatusBar(EditorWindow editorWindow){
         super();
         fileType = new JLabel();
         fileType.setPreferredSize(new Dimension(400, 15));
 
-        category = CategoryOfFile.getInstance();
 
         lengthAndLine = new JLabel();
         lengthAndLine.setPreferredSize(new Dimension(200, 15));
@@ -62,7 +60,7 @@ public class StatusBar  extends JPanel{
     }
 
     public void setFileType(TextEditor textEditor){
-        fileType.setText("   " + category.CovertFileExtensionToFileType(textEditor.getFileType()));
+        fileType.setText("   " + textEditor.getFileType());
     }
 
     public void setLengthAndLine(RSyntaxTextArea textArea){

@@ -38,7 +38,7 @@ public class MyTreeCellRenderer extends DefaultTreeCellRenderer{
     }
 
     private void setIconForFile(Object value, boolean expanded){
-        CategoryOfFile category = new CategoryOfFile();
+        CategoryOfFile category = CategoryOfFile.getInstance();
         File file = getFile(value);
         if (file.isDirectory()){
             if (expanded)

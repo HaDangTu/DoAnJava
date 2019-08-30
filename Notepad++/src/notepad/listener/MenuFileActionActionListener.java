@@ -44,14 +44,14 @@ public class MenuFileActionActionListener extends MenuMainWindowActionListener {
             mainWindow.addItem(editorWindow.getTitleOfTab(pos));
         }
         else if (command.equalsIgnoreCase("C file")){
-            String[] kind = {"Header file", "C file"};
+            String[] kind = {"Header file", "C source file"};
             NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
             dialog.setItemListener(new NewCFileItemListener(dialog));
             dialog.setName(".h");
             dialog.showDialog();
         }
         else if (command.equalsIgnoreCase("C++ file")){
-            String[] kind = {"Header file", "C++ file"};
+            String[] kind = {"Header file", "C++ source file"};
             NewFileDialog dialog = new NewFileDialog(mainWindow, kind, editorWindow);
             dialog.setItemListener(new NewCplusplusFileItemListener(dialog));
             dialog.setName(".h");
